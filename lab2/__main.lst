@@ -1,0 +1,1276 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 INCLUDE          reg_def.s
+    1 00000000         ;AREA    |.text|, CODE, READONLY
+    2 00000000         
+    3 00000000         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    4 00000000 50004000 
+                       GP_BA   EQU              0x50004000  ;
+    5 00000000         
+    6 00000000 00000000 
+                       GPIOA_PMD
+                               EQU              0x000       ;  R/W   GPIO Port 
+                                                            A Pin I/O Mode Cont
+                                                            rol  0xFFFF_FFFF 
+    7 00000000 00000004 
+                       GPIOA_OFFD
+                               EQU              0x004       ;  R/W   GPIO Port 
+                                                            A Pin Digital Input
+                                                             Path Disable Contr
+                                                            ol  0x0000_0000  
+    8 00000000 00000008 
+                       GPIOA_DOUT
+                               EQU              0x008       ;  R/W   GPIO Port 
+                                                            A Data Output Value
+                                                              0x0000_FFFF 
+    9 00000000 0000000C 
+                       GPIOA_DMASK
+                               EQU              0x00C       ;  R/W   GPIO Port 
+                                                            A Data Output Write
+                                                             Mask  0xXXXX_0000 
+                                                             
+   10 00000000 00000010 
+                       GPIOA_PIN
+                               EQU              0x010       ;  R  GPIO Port A P
+                                                            in Value   0x0000_X
+                                                            XXX 
+   11 00000000 00000014 
+                       GPIOA_DBEN
+                               EQU              0x014       ;  R/W   GPIO Port 
+                                                            A De - bounce Enabl
+                                                            e  0xXXXX_0000  
+   12 00000000 00000018 
+                       GPIOA_IMD
+                               EQU              0x018       ;  R/W   GPIO Port 
+                                                            A Interrupt Mode Co
+                                                            ntrol  0xXXXX_0000 
+                                                             
+   13 00000000 0000001C 
+                       GPIOA_IEN
+                               EQU              0x01C       ;  R/W   GPIO Port 
+                                                            A Interrupt Enable 
+                                                             0x0000_0000  
+   14 00000000 00000020 
+                       GPIOA_ISRC
+                               EQU              0x020       ;  R/W   GPIO Port 
+                                                            A Interrupt Source 
+                                                            Flag  0xXXXX_XXXX  
+                                                            
+   15 00000000 00000040 
+                       GPIOB_PMD
+                               EQU              0x040       ;  R/W   GPIO Port 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+                                                            B Pin I/O Mode Cont
+                                                            rol  0xFFFF_FFFF 
+   16 00000000 00000044 
+                       GPIOB_OFFD
+                               EQU              0x044       ;  R/W   GPIO Port 
+                                                             B Pin Digital Inpu
+                                                            t Path Disable Cont
+                                                            rol  0x0000_0000  
+   17 00000000 00000048 
+                       GPIOB_DOUT
+                               EQU              0x048       ;  R/W   GPIO Port 
+                                                            B Data Output Value
+                                                              0x0000_FFFF 
+   18 00000000 0000004C 
+                       GPIOB_DMASK
+                               EQU              0x04C       ;  R/W   GPIO Port 
+                                                            B Data Output Write
+                                                             Mask  0xXXXX_0000 
+                                                             
+   19 00000000 00000050 
+                       GPIOB_PIN
+                               EQU              0x050       ;  R  GPIO Port B P
+                                                            in Value   0x0000_X
+                                                            XXX 
+   20 00000000 00000054 
+                       GPIOB_DBEN
+                               EQU              0x054       ;  R/W   GPIO Port 
+                                                            B De - bounce Enabl
+                                                            e  0xXXXX_0000  
+   21 00000000 00000058 
+                       GPIOB_IMD
+                               EQU              0x058       ;  R/W   GPIO Port 
+                                                            B Interrupt Mode Co
+                                                            ntrol   0xXXXX_0000
+                                                              
+   22 00000000 0000005C 
+                       GPIOB_IEN
+                               EQU              0x05C       ;  R/W   GPIO Port 
+                                                            B Interrupt Enable 
+                                                             0x0000_0000  
+   23 00000000 00000060 
+                       GPIOB_ISRC
+                               EQU              0x060       ;  R/W   GPIO Port 
+                                                            B Interrupt Source 
+                                                            Flag   0xXXXX_XXXX 
+                                                             
+   24 00000000 00000080 
+                       GPIOC_PMD
+                               EQU              0x080       ;  R/W   GPIO Port 
+                                                            C  Pin I/O Mode Con
+                                                            trol  0xFFFF_FFFF 
+   25 00000000 00000084 
+                       GPIOC_OFFD
+                               EQU              0x084       ;  R/W   GPIO Port 
+                                                             C  Pin Digital Inp
+                                                            ut Path Disable Con
+                                                            trol  0x0000_0000  
+                                                            
+   26 00000000 00000088 
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+                       GPIOC_DOUT
+                               EQU              0x088       ;  R/W   GPIO Port 
+                                                            C Data Output Value
+                                                               0x0000_FFFF 
+   27 00000000 0000008C 
+                       GPIOC_DMASK
+                               EQU              0x08C       ;  R/W   GPIO Port 
+                                                            C Data Output Write
+                                                             Mask  0xXXXX_0000 
+                                                             
+   28 00000000 00000090 
+                       GPIOC_PIN
+                               EQU              0x090       ;  R  GPIO Port C P
+                                                            in Value   0x0000_X
+                                                            XXX 
+   29 00000000 00000094 
+                       GPIOC_DBEN
+                               EQU              0x094       ;  R/W   GPIO Port 
+                                                            C De- bounce Enable
+                                                              0xXXXX_0000  
+   30 00000000 00000098 
+                       GPIOC_IMD
+                               EQU              0x098       ;  R/W   GPIO Port 
+                                                            C Interrupt Mode Co
+                                                            ntrol  0xXXXX_0000 
+                                                             
+   31 00000000 0000009C 
+                       GPIOC_IEN
+                               EQU              0x09C       ;  R/W   GPIO Port 
+                                                            C Interrupt Enable 
+                                                             0x0000_0000  
+   32 00000000 000000A0 
+                       GPIOC_ISRC
+                               EQU              0x0A0       ;  R/W   GPIO Port 
+                                                            C Interrupt Source 
+                                                            Flag  0xXXXX_XXXX  
+                                                            
+   33 00000000 000000C0 
+                       GPIOD_PMD
+                               EQU              0x0C0       ;  R/W   GPIO Port 
+                                                            D  Pin I/O Mode Con
+                                                            trol  0xFFFF_FFFF 
+   34 00000000 000000C4 
+                       GPIOD_OFFD
+                               EQU              0x0C4       ;  R/W   GPIO Port 
+                                                             D  Pin Digital Inp
+                                                            ut Path Disable Con
+                                                            trol  0x0000_0000  
+                                                            
+   35 00000000 000000C8 
+                       GPIOD_DOUT
+                               EQU              0x0C8       ;  R/W   GPIO Port 
+                                                            D Data Output Value
+                                                               0x0000_FFFF 
+   36 00000000 000000CC 
+                       GPIOD_DMASK
+                               EQU              0x0CC       ;  R/W   GPIO Port 
+                                                            D Data Output Write
+                                                             Mask  0xXXXX_0000 
+
+
+
+ARM Macro Assembler    Page 4 
+
+
+                                                             
+   37 00000000 000000D0 
+                       GPIOD_PIN
+                               EQU              0x0D0       ;  R  GPIO Port D P
+                                                            in Value   0x0000_X
+                                                            XXX 
+   38 00000000 000000D4 
+                       GPIOD_DBEN
+                               EQU              0x0D4       ;  R/W   GPIO Port 
+                                                            D De- bounce Enable
+                                                               0xXXXX_0000  
+   39 00000000 000000D8 
+                       GPIOD_IMD
+                               EQU              0x0D8       ;  R/W   GPIO Port 
+                                                            D Interrupt Mode Co
+                                                            ntrol  0xXXXX_0000 
+                                                             
+   40 00000000 000000DC 
+                       GPIOD_IEN
+                               EQU              0x0DC       ;  R/W   GPIO Port 
+                                                            D Interrupt Enable 
+                                                             0x0000_0000  
+   41 00000000 000000E0 
+                       GPIOD_ISRC
+                               EQU              0x0E0       ;  R/W   GPIO Port 
+                                                            D Interrupt Source 
+                                                            Flag  0xXXXX_XXXX  
+                                                            
+   42 00000000 00000100 
+                       GPIOE_PMD
+                               EQU              0x100       ;  R/W   GPIO Port 
+                                                            E Pin I/O Mode Cont
+                                                            rol  0xFFFF_FFFF 
+   43 00000000 00000104 
+                       GPIOE_OFFD
+                               EQU              0x104       ;  R/W   GPIO Port 
+                                                             E Pin Digital Inpu
+                                                            t Path Disable Cont
+                                                            rol  0x0000_0000  
+   44 00000000 00000108 
+                       GPIOE_DOUT
+                               EQU              0x108       ;  R/W   GPIO Port 
+                                                            E Data Output Value
+                                                              0x0000_FFFF 
+   45 00000000 0000010C 
+                       GPIOE_DMASK
+                               EQU              0x10C       ;  R/W   GPIO Port 
+                                                            E Data Output Write
+                                                             Mask  0xXXX X_0000
+                                                              
+   46 00000000 00000110 
+                       GPIOE_PIN
+                               EQU              0x110       ;  R  GPIO Port E P
+                                                            in Value   0x0000_X
+                                                            XXX 
+   47 00000000 00000114 
+                       GPIOE_DBEN
+                               EQU              0x114       ;  R/W   GPIO Port 
+                                                            E De - bounce Enabl
+
+
+
+ARM Macro Assembler    Page 5 
+
+
+                                                            e  0xXXXX_0000  
+   48 00000000 00000118 
+                       GPIOE_IMD
+                               EQU              0x118       ;  R/W   GPIO Port 
+                                                            E Interrupt Mode Co
+                                                            ntrol  0xXXXX_0000 
+                                                             
+   49 00000000 0000011C 
+                       GPIOE_IEN
+                               EQU              0x11C       ;  R/W   GPIO Port 
+                                                            E Interrupt Enable 
+                                                             0x0000_0000  
+   50 00000000 00000120 
+                       GPIOE_ISRC
+                               EQU              0x120       ;  R/W   GPIO Port 
+                                                            E Interrupt Source 
+                                                            Flag   0xXXXX_XXX
+   51 00000000         
+   52 00000000         
+   53 00000000 50000200 
+                       CLK_BA  EQU              0x50000200  ;
+   54 00000000         ;PWRCON   EQU  0x00;  R/W  System Power Down Control Reg
+                       ister  0x0000_001X
+   55 00000000         ;AHBCLK   EQU  0x04;  R/W  AHB Devices Clock Enable Cont
+                       rol Register  0x0000_000D
+   56 00000000         ;APBCLK   EQU  0x08;  R/W  APB Devices Clock Enable Cont
+                       rol Register  0x0000_000X
+   57 00000000 0000000C 
+                       CLKSTATUS
+                               EQU              0x0C        ;  R/W  Clock statu
+                                                            s monitor Register 
+                                                             0x0000_00XX
+   58 00000000 00000010 
+                       CLKSEL0 EQU              0x10        ;  R/W  Clock Sourc
+                                                            e Select Control Re
+                                                            gister 0  0x0000_00
+                                                            3X
+   59 00000000         ;CLKSEL1  EQU  0x14;  R/W  Clock Source SelectControl Re
+                       gister 1  0xFFFF_FFFF
+   60 00000000 0000001C 
+                       CLKSEL2 EQU              0x1C        ;  R/W  Clock Sourc
+                                                            e Select Control Re
+                                                            gister 2  0x0000_00
+                                                            FF
+   61 00000000 00000018 
+                       CLKDIV  EQU              0x18        ;  R/W  Clock Divid
+                                                            erNumber Register  
+                                                            0x0000_0000 
+   62 00000000 00000020 
+                       PLLCON  EQU              0x20        ;  R/W  PLL Control
+                                                             Register  0x0005_C
+                                                            22E
+   63 00000000 00000024 
+                       FRQDIV  EQU              0x24        ;  R/W  Frequency D
+                                                            ivider Control Regi
+                                                            ster  0x0000_0000
+   64 00000000         
+   65 00000000 E000E000 
+                       SCS_BA  EQU              0xE000E000  ;
+
+
+
+ARM Macro Assembler    Page 6 
+
+
+   66 00000000 00000010 
+                       SYST_CSR
+                               EQU              0x10        ;  R/W  SysTick Con
+                                                            trol and Status Reg
+                                                            ister  0x0000_0000
+   67 00000000 00000014 
+                       SYST_RVR
+                               EQU              0x14        ;  R/W  SysTick Rel
+                                                            oad value Register 
+                                                             0xXXXX_XXXX
+   68 00000000 00000018 
+                       SYST_CVR
+                               EQU              0x18        ;  R/W  SysTick Cur
+                                                            rent value Register
+                                                              0xXXXX_XXXX
+   69 00000000         
+   70 00000000         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   71 00000000         
+   72 00000000                 END
+    2 00000000                 AREA             |.text|, CODE, READONLY
+    3 00000000         
+    4 00000000         __main  PROC
+    5 00000000                 EXPORT           __main             [WEAK]
+    6 00000000 4833            LDR              R0, =SCS_BA
+    7 00000002         Blinky_loop
+    8 00000002 4833            LDR              R0, =SCS_BA
+    9 00000004 4933            LDR              R1, =500
+   10 00000006         Blinky_inner_loop1
+   11 00000006         Blinky_inner_loop2
+   12 00000006 4A34            LDR              R2, =0x10000
+   13 00000008 6903            LDR              R3, [R0, #SYST_CSR]
+   14 0000000A 4213            TST              R3, R2
+   15 0000000C D0FB            BEQ              Blinky_inner_loop2
+   16 0000000E 1E49            SUBS             R1, R1, #1
+   17 00000010 D1F9            BNE              Blinky_inner_loop1
+   18 00000012         
+   19 00000012         case0
+   20 00000012         
+   21 00000012 2200            MOVS             R2, #0
+   22 00000014 4931            LDR              R1, =GP_BA
+   23 00000016 4B32            LDR              R3, =GPIOC_PIN
+   24 00000018 58CB            LDR              R3, [R1, R3] ; read GPIOB to R3
+                                                            
+   25 0000001A 4832            LDR              R0, =0x8000 ; mask for pin15
+   26 0000001C 181B            ADDS             R3, R0      ;
+   27 0000001E D006            BEQ              but_pressed
+   28 00000020         
+   29 00000020         ; ScanKey
+   30 00000020         
+   31 00000020 4931            LDR              R1, =ScanKey
+   32 00000022 4788            BLX              R1
+   33 00000024         
+   34 00000024 43C0            MVNS             R0, R0
+   35 00000026 0300            LSLS             R0, #12
+   36 00000028 492C            LDR              R1, =GP_BA
+   37 0000002A 4A30            LDR              R2, =GPIOC_DOUT
+   38 0000002C 5088            STR              R0, [R1, R2]
+   39 0000002E         ;B Blinky_loop
+   40 0000002E         ;ADDS R6, R6, #1
+
+
+
+ARM Macro Assembler    Page 7 
+
+
+   41 0000002E         ;BX LR 
+   42 0000002E         ;LDR  R1, =GP_BA 
+   43 0000002E         ;LDR  R2, =GPIOD_DOUT
+   44 0000002E         ;LDR  R3, [R1, R2] ;0x80 * 4 
+   45 0000002E         ;LDR  R3, [R1, R2]
+   46 0000002E         ;MVNS  R3, R3
+   47 0000002E         ;STR  R3, [R1, R2]
+   48 0000002E         
+   49 0000002E         
+   50 0000002E         
+   51 0000002E         but_pressed
+   52 0000002E E7E8            B                Blinky_loop
+   53 00000030                 ENDP
+   54 00000030         
+   55 00000030         ScanKey PROC
+   56 00000030 492A            LDR              R1, =GP_BA
+   57 00000032 4A2F            LDR              R2, =0x0000003B ; ????????? ??.
+                                                            1,4,7
+   58 00000034 4B2F            LDR              R3, =GPIOA_DOUT
+   59 00000036 50CA            STR              R2, [R1, R3]
+   60 00000038         ;Delay for 1000 Tmcu
+   61 00000038 4C2F            LDR              R4, =10
+   62 0000003A         Wait
+   63 0000003A 1E64            SUBS             R4,R4,#1
+   64 0000003C D1FD            BNE              Wait
+   65 0000003E 4B2F            LDR              R3, =GPIOA_PIN
+   66 00000040 58CB            LDR              R3, [R1, R3]
+   67 00000042 482F            LDR              R0, =0x38   ;
+   68 00000044 4003            ANDS             R3, R0      ; ????? ??? GPA3, 4
+                                                            , 5
+   69 00000046 482F            LDR              R0, =0x30   ; ???? ?????????? 1
+                                                            10, ????????? GPA3
+   70 00000048 4283            CMP              R3, R0
+   71 0000004A D02F            BEQ              ret_but1
+   72 0000004C 482E            LDR              R0, =0x28   ; ???? ?????????? 1
+                                                            01, ????????? GPA4
+   73 0000004E 4283            CMP              R3, R0
+   74 00000050 D02E            BEQ              ret_but2
+   75 00000052 482E            LDR              R0, =0x18   ; ???? ?????????? 0
+                                                            11, ????????? GPA5
+   76 00000054 4283            CMP              R3, R0
+   77 00000056 D02D            BEQ              ret_but3
+   78 00000058         
+   79 00000058         ;BX LR
+   80 00000058 4920            LDR              R1, =GP_BA
+   81 0000005A 4A2D            LDR              R2, =0x0000003D ; ????????? ??.
+                                                            1,4,7
+   82 0000005C 4B25            LDR              R3, =GPIOA_DOUT
+   83 0000005E 50CA            STR              R2, [R1, R3]
+   84 00000060 4C25            LDR              R4, =10
+   85 00000062         Wait1
+   86 00000062 1E64            SUBS             R4,R4,#1
+   87 00000064 D1FD            BNE              Wait1
+   88 00000066 4B25            LDR              R3, =GPIOA_PIN
+   89 00000068 58CB            LDR              R3, [R1, R3]
+   90 0000006A 4825            LDR              R0, =0x38   ;
+   91 0000006C 4003            ANDS             R3, R0      ; ????? ??? GPA3, 4
+                                                            , 5
+   92 0000006E 4825            LDR              R0, =0x30   ; ???? ?????????? 1
+
+
+
+ARM Macro Assembler    Page 8 
+
+
+                                                            10, ????????? GPA3
+   93 00000070 4283            CMP              R3, R0
+   94 00000072 D021            BEQ              ret_but4
+   95 00000074 4824            LDR              R0, =0x28   ; ???? ?????????? 1
+                                                            01, ????????? GPA4
+   96 00000076 4283            CMP              R3, R0
+   97 00000078 D020            BEQ              ret_but5
+   98 0000007A 4824            LDR              R0, =0x18   ; ???? ?????????? 0
+                                                            11, ????????? GPA5
+   99 0000007C 4283            CMP              R3, R0
+  100 0000007E D01F            BEQ              ret_but6
+  101 00000080         
+  102 00000080         
+  103 00000080 4916            LDR              R1, =GP_BA
+  104 00000082 4A24            LDR              R2, =0x0000003E ; ????????? ??.
+                                                            1,4,7
+  105 00000084 4B1B            LDR              R3, =GPIOA_DOUT
+  106 00000086 50CA            STR              R2, [R1, R3]
+  107 00000088 4C1B            LDR              R4, =10
+  108 0000008A         Wait2
+  109 0000008A 1E64            SUBS             R4,R4,#1
+  110 0000008C D1FD            BNE              Wait2
+  111 0000008E 4B1B            LDR              R3, =GPIOA_PIN
+  112 00000090 58CB            LDR              R3, [R1, R3]
+  113 00000092 481B            LDR              R0, =0x38   ;
+  114 00000094 4003            ANDS             R3, R0      ; ????? ??? GPA3, 4
+                                                            , 5
+  115 00000096 481B            LDR              R0, =0x30   ; ???? ?????????? 1
+                                                            10, ????????? GPA3
+  116 00000098 4283            CMP              R3, R0
+  117 0000009A D013            BEQ              ret_but7
+  118 0000009C 481A            LDR              R0, =0x28   ; ???? ?????????? 1
+                                                            01, ????????? GPA4
+  119 0000009E 4283            CMP              R3, R0
+  120 000000A0 D012            BEQ              ret_but8
+  121 000000A2 481A            LDR              R0, =0x18   ; ???? ?????????? 0
+                                                            11, ????????? GPA5
+  122 000000A4 4283            CMP              R3, R0
+  123 000000A6 D011            BEQ              ret_but9
+  124 000000A8 2000            MOVS             R0, #0
+  125 000000AA 4770            BX               LR
+  126 000000AC         
+  127 000000AC         
+  128 000000AC         ret_but1
+  129 000000AC 481A            LDR              R0, =0x1    ; ?????????? ? R0 ?
+                                                            ???? 1
+  130 000000AE 4770            BX               LR
+  131 000000B0         ret_but2
+  132 000000B0 481A            LDR              R0, =0x2    ; ?????????? ? R0 ?
+                                                            ???? 4
+  133 000000B2 4770            BX               LR
+  134 000000B4         ret_but3
+  135 000000B4 481A            LDR              R0, =0x3    ; ?????????? ? R0 ?
+                                                            ???? 7
+  136 000000B6 4770            BX               LR
+  137 000000B8         
+  138 000000B8         ret_but4
+  139 000000B8 4819            LDR              R0, =0x3    ; ?????????? ? R0 ?
+                                                            ???? 1
+
+
+
+ARM Macro Assembler    Page 9 
+
+
+  140 000000BA 4770            BX               LR
+  141 000000BC         ret_but5
+  142 000000BC 4819            LDR              R0, =0x9    ; ?????????? ? R0 ?
+                                                            ???? 4
+  143 000000BE 4770            BX               LR
+  144 000000C0         ret_but6
+  145 000000C0 4819            LDR              R0, =0x7    ; ?????????? ? R0 ?
+                                                            ???? 7
+  146 000000C2 4770            BX               LR
+  147 000000C4         
+  148 000000C4         
+  149 000000C4         ret_but7
+  150 000000C4 4819            LDR              R0, =0x6    ; ?????????? ? R0 ?
+                                                            ???? 1
+  151 000000C6 4770            BX               LR
+  152 000000C8         ret_but8
+  153 000000C8 480A            LDR              R0, =0x8    ; ?????????? ? R0 ?
+                                                            ???? 4
+  154 000000CA 4770            BX               LR
+  155 000000CC         ret_but9
+  156 000000CC 4815            LDR              R0, =0x9    ; ?????????? ? R0 ?
+                                                            ???? 7
+  157 000000CE 4770            BX               LR
+  158 000000D0         
+  159 000000D0         
+  160 000000D0         ;ADDS R6, R6, #1
+  161 000000D0         ;BX LR
+  162 000000D0                 ENDP
+  163 000000D0                 END
+              E000E000 
+              000001F4 
+              00010000 
+              50004000 
+              00000090 
+              00008000 
+              00000000 
+              00000088 
+              0000003B 
+              00000008 
+              0000000A 
+              00000010 
+              00000038 
+              00000030 
+              00000028 
+              00000018 
+              0000003D 
+              0000003E 
+              00000001 
+              00000002 
+              00000003 
+              00000009 
+              00000007 
+              00000006 
+Command Line: --debug --xref --cpu=Cortex-M0 --apcs=interwork --depend=.\__main
+.d -o.\__main.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0
+\CMSIS\Include --predefine="__EVAL SETA 1" --list=.\__main.lst __main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 2 in file __main.s
+   Uses
+      None
+Comment: .text unused
+Blinky_inner_loop1 00000006
+
+Symbol: Blinky_inner_loop1
+   Definitions
+      At line 10 in file __main.s
+   Uses
+      At line 17 in file __main.s
+Comment: Blinky_inner_loop1 used once
+Blinky_inner_loop2 00000006
+
+Symbol: Blinky_inner_loop2
+   Definitions
+      At line 11 in file __main.s
+   Uses
+      At line 15 in file __main.s
+Comment: Blinky_inner_loop2 used once
+Blinky_loop 00000002
+
+Symbol: Blinky_loop
+   Definitions
+      At line 7 in file __main.s
+   Uses
+      At line 52 in file __main.s
+Comment: Blinky_loop used once
+ScanKey 00000030
+
+Symbol: ScanKey
+   Definitions
+      At line 55 in file __main.s
+   Uses
+      At line 31 in file __main.s
+Comment: ScanKey used once
+Wait 0000003A
+
+Symbol: Wait
+   Definitions
+      At line 62 in file __main.s
+   Uses
+      At line 64 in file __main.s
+Comment: Wait used once
+Wait1 00000062
+
+Symbol: Wait1
+   Definitions
+      At line 85 in file __main.s
+   Uses
+      At line 87 in file __main.s
+Comment: Wait1 used once
+Wait2 0000008A
+
+Symbol: Wait2
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+   Definitions
+      At line 108 in file __main.s
+   Uses
+      At line 110 in file __main.s
+Comment: Wait2 used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 4 in file __main.s
+   Uses
+      At line 5 in file __main.s
+Comment: __main used once
+but_pressed 0000002E
+
+Symbol: but_pressed
+   Definitions
+      At line 51 in file __main.s
+   Uses
+      At line 27 in file __main.s
+Comment: but_pressed used once
+case0 00000012
+
+Symbol: case0
+   Definitions
+      At line 19 in file __main.s
+   Uses
+      None
+Comment: case0 unused
+ret_but1 000000AC
+
+Symbol: ret_but1
+   Definitions
+      At line 128 in file __main.s
+   Uses
+      At line 71 in file __main.s
+Comment: ret_but1 used once
+ret_but2 000000B0
+
+Symbol: ret_but2
+   Definitions
+      At line 131 in file __main.s
+   Uses
+      At line 74 in file __main.s
+Comment: ret_but2 used once
+ret_but3 000000B4
+
+Symbol: ret_but3
+   Definitions
+      At line 134 in file __main.s
+   Uses
+      At line 77 in file __main.s
+Comment: ret_but3 used once
+ret_but4 000000B8
+
+Symbol: ret_but4
+   Definitions
+      At line 138 in file __main.s
+   Uses
+
+
+
+ARM Macro Assembler    Page 3 Alphabetic symbol ordering
+Relocatable symbols
+
+      At line 94 in file __main.s
+Comment: ret_but4 used once
+ret_but5 000000BC
+
+Symbol: ret_but5
+   Definitions
+      At line 141 in file __main.s
+   Uses
+      At line 97 in file __main.s
+Comment: ret_but5 used once
+ret_but6 000000C0
+
+Symbol: ret_but6
+   Definitions
+      At line 144 in file __main.s
+   Uses
+      At line 100 in file __main.s
+Comment: ret_but6 used once
+ret_but7 000000C4
+
+Symbol: ret_but7
+   Definitions
+      At line 149 in file __main.s
+   Uses
+      At line 117 in file __main.s
+Comment: ret_but7 used once
+ret_but8 000000C8
+
+Symbol: ret_but8
+   Definitions
+      At line 152 in file __main.s
+   Uses
+      At line 120 in file __main.s
+Comment: ret_but8 used once
+ret_but9 000000CC
+
+Symbol: ret_but9
+   Definitions
+      At line 155 in file __main.s
+   Uses
+      At line 123 in file __main.s
+Comment: ret_but9 used once
+20 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+CLKDIV 00000018
+
+Symbol: CLKDIV
+   Definitions
+      At line 61 in file reg_def.s
+   Uses
+      None
+Comment: CLKDIV unused
+CLKSEL0 00000010
+
+Symbol: CLKSEL0
+   Definitions
+      At line 58 in file reg_def.s
+   Uses
+      None
+Comment: CLKSEL0 unused
+CLKSEL2 0000001C
+
+Symbol: CLKSEL2
+   Definitions
+      At line 60 in file reg_def.s
+   Uses
+      None
+Comment: CLKSEL2 unused
+CLKSTATUS 0000000C
+
+Symbol: CLKSTATUS
+   Definitions
+      At line 57 in file reg_def.s
+   Uses
+      None
+Comment: CLKSTATUS unused
+CLK_BA 50000200
+
+Symbol: CLK_BA
+   Definitions
+      At line 53 in file reg_def.s
+   Uses
+      None
+Comment: CLK_BA unused
+FRQDIV 00000024
+
+Symbol: FRQDIV
+   Definitions
+      At line 63 in file reg_def.s
+   Uses
+      None
+Comment: FRQDIV unused
+GPIOA_DBEN 00000014
+
+Symbol: GPIOA_DBEN
+   Definitions
+      At line 11 in file reg_def.s
+   Uses
+      None
+Comment: GPIOA_DBEN unused
+GPIOA_DMASK 0000000C
+
+Symbol: GPIOA_DMASK
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 9 in file reg_def.s
+   Uses
+      None
+Comment: GPIOA_DMASK unused
+GPIOA_DOUT 00000008
+
+Symbol: GPIOA_DOUT
+   Definitions
+      At line 8 in file reg_def.s
+   Uses
+      At line 58 in file __main.s
+      At line 82 in file __main.s
+      At line 105 in file __main.s
+
+GPIOA_IEN 0000001C
+
+Symbol: GPIOA_IEN
+   Definitions
+      At line 13 in file reg_def.s
+   Uses
+      None
+Comment: GPIOA_IEN unused
+GPIOA_IMD 00000018
+
+Symbol: GPIOA_IMD
+   Definitions
+      At line 12 in file reg_def.s
+   Uses
+      None
+Comment: GPIOA_IMD unused
+GPIOA_ISRC 00000020
+
+Symbol: GPIOA_ISRC
+   Definitions
+      At line 14 in file reg_def.s
+   Uses
+      None
+Comment: GPIOA_ISRC unused
+GPIOA_OFFD 00000004
+
+Symbol: GPIOA_OFFD
+   Definitions
+      At line 7 in file reg_def.s
+   Uses
+      None
+Comment: GPIOA_OFFD unused
+GPIOA_PIN 00000010
+
+Symbol: GPIOA_PIN
+   Definitions
+      At line 10 in file reg_def.s
+   Uses
+      At line 65 in file __main.s
+      At line 88 in file __main.s
+      At line 111 in file __main.s
+
+GPIOA_PMD 00000000
+
+
+
+
+ARM Macro Assembler    Page 3 Alphabetic symbol ordering
+Absolute symbols
+
+Symbol: GPIOA_PMD
+   Definitions
+      At line 6 in file reg_def.s
+   Uses
+      None
+Comment: GPIOA_PMD unused
+GPIOB_DBEN 00000054
+
+Symbol: GPIOB_DBEN
+   Definitions
+      At line 20 in file reg_def.s
+   Uses
+      None
+Comment: GPIOB_DBEN unused
+GPIOB_DMASK 0000004C
+
+Symbol: GPIOB_DMASK
+   Definitions
+      At line 18 in file reg_def.s
+   Uses
+      None
+Comment: GPIOB_DMASK unused
+GPIOB_DOUT 00000048
+
+Symbol: GPIOB_DOUT
+   Definitions
+      At line 17 in file reg_def.s
+   Uses
+      None
+Comment: GPIOB_DOUT unused
+GPIOB_IEN 0000005C
+
+Symbol: GPIOB_IEN
+   Definitions
+      At line 22 in file reg_def.s
+   Uses
+      None
+Comment: GPIOB_IEN unused
+GPIOB_IMD 00000058
+
+Symbol: GPIOB_IMD
+   Definitions
+      At line 21 in file reg_def.s
+   Uses
+      None
+Comment: GPIOB_IMD unused
+GPIOB_ISRC 00000060
+
+Symbol: GPIOB_ISRC
+   Definitions
+      At line 23 in file reg_def.s
+   Uses
+      None
+Comment: GPIOB_ISRC unused
+GPIOB_OFFD 00000044
+
+Symbol: GPIOB_OFFD
+   Definitions
+      At line 16 in file reg_def.s
+
+
+
+ARM Macro Assembler    Page 4 Alphabetic symbol ordering
+Absolute symbols
+
+   Uses
+      None
+Comment: GPIOB_OFFD unused
+GPIOB_PIN 00000050
+
+Symbol: GPIOB_PIN
+   Definitions
+      At line 19 in file reg_def.s
+   Uses
+      None
+Comment: GPIOB_PIN unused
+GPIOB_PMD 00000040
+
+Symbol: GPIOB_PMD
+   Definitions
+      At line 15 in file reg_def.s
+   Uses
+      None
+Comment: GPIOB_PMD unused
+GPIOC_DBEN 00000094
+
+Symbol: GPIOC_DBEN
+   Definitions
+      At line 29 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_DBEN unused
+GPIOC_DMASK 0000008C
+
+Symbol: GPIOC_DMASK
+   Definitions
+      At line 27 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_DMASK unused
+GPIOC_DOUT 00000088
+
+Symbol: GPIOC_DOUT
+   Definitions
+      At line 26 in file reg_def.s
+   Uses
+      At line 37 in file __main.s
+Comment: GPIOC_DOUT used once
+GPIOC_IEN 0000009C
+
+Symbol: GPIOC_IEN
+   Definitions
+      At line 31 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_IEN unused
+GPIOC_IMD 00000098
+
+Symbol: GPIOC_IMD
+   Definitions
+      At line 30 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_IMD unused
+
+
+
+ARM Macro Assembler    Page 5 Alphabetic symbol ordering
+Absolute symbols
+
+GPIOC_ISRC 000000A0
+
+Symbol: GPIOC_ISRC
+   Definitions
+      At line 32 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_ISRC unused
+GPIOC_OFFD 00000084
+
+Symbol: GPIOC_OFFD
+   Definitions
+      At line 25 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_OFFD unused
+GPIOC_PIN 00000090
+
+Symbol: GPIOC_PIN
+   Definitions
+      At line 28 in file reg_def.s
+   Uses
+      At line 23 in file __main.s
+Comment: GPIOC_PIN used once
+GPIOC_PMD 00000080
+
+Symbol: GPIOC_PMD
+   Definitions
+      At line 24 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_PMD unused
+GPIOD_DBEN 000000D4
+
+Symbol: GPIOD_DBEN
+   Definitions
+      At line 38 in file reg_def.s
+   Uses
+      None
+Comment: GPIOD_DBEN unused
+GPIOD_DMASK 000000CC
+
+Symbol: GPIOD_DMASK
+   Definitions
+      At line 36 in file reg_def.s
+   Uses
+      None
+Comment: GPIOD_DMASK unused
+GPIOD_DOUT 000000C8
+
+Symbol: GPIOD_DOUT
+   Definitions
+      At line 35 in file reg_def.s
+   Uses
+      None
+Comment: GPIOD_DOUT unused
+GPIOD_IEN 000000DC
+
+Symbol: GPIOD_IEN
+
+
+
+ARM Macro Assembler    Page 6 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 40 in file reg_def.s
+   Uses
+      None
+Comment: GPIOD_IEN unused
+GPIOD_IMD 000000D8
+
+Symbol: GPIOD_IMD
+   Definitions
+      At line 39 in file reg_def.s
+   Uses
+      None
+Comment: GPIOD_IMD unused
+GPIOD_ISRC 000000E0
+
+Symbol: GPIOD_ISRC
+   Definitions
+      At line 41 in file reg_def.s
+   Uses
+      None
+Comment: GPIOD_ISRC unused
+GPIOD_OFFD 000000C4
+
+Symbol: GPIOD_OFFD
+   Definitions
+      At line 34 in file reg_def.s
+   Uses
+      None
+Comment: GPIOD_OFFD unused
+GPIOD_PIN 000000D0
+
+Symbol: GPIOD_PIN
+   Definitions
+      At line 37 in file reg_def.s
+   Uses
+      None
+Comment: GPIOD_PIN unused
+GPIOD_PMD 000000C0
+
+Symbol: GPIOD_PMD
+   Definitions
+      At line 33 in file reg_def.s
+   Uses
+      None
+Comment: GPIOD_PMD unused
+GPIOE_DBEN 00000114
+
+Symbol: GPIOE_DBEN
+   Definitions
+      At line 47 in file reg_def.s
+   Uses
+      None
+Comment: GPIOE_DBEN unused
+GPIOE_DMASK 0000010C
+
+Symbol: GPIOE_DMASK
+   Definitions
+      At line 45 in file reg_def.s
+   Uses
+
+
+
+ARM Macro Assembler    Page 7 Alphabetic symbol ordering
+Absolute symbols
+
+      None
+Comment: GPIOE_DMASK unused
+GPIOE_DOUT 00000108
+
+Symbol: GPIOE_DOUT
+   Definitions
+      At line 44 in file reg_def.s
+   Uses
+      None
+Comment: GPIOE_DOUT unused
+GPIOE_IEN 0000011C
+
+Symbol: GPIOE_IEN
+   Definitions
+      At line 49 in file reg_def.s
+   Uses
+      None
+Comment: GPIOE_IEN unused
+GPIOE_IMD 00000118
+
+Symbol: GPIOE_IMD
+   Definitions
+      At line 48 in file reg_def.s
+   Uses
+      None
+Comment: GPIOE_IMD unused
+GPIOE_ISRC 00000120
+
+Symbol: GPIOE_ISRC
+   Definitions
+      At line 50 in file reg_def.s
+   Uses
+      None
+Comment: GPIOE_ISRC unused
+GPIOE_OFFD 00000104
+
+Symbol: GPIOE_OFFD
+   Definitions
+      At line 43 in file reg_def.s
+   Uses
+      None
+Comment: GPIOE_OFFD unused
+GPIOE_PIN 00000110
+
+Symbol: GPIOE_PIN
+   Definitions
+      At line 46 in file reg_def.s
+   Uses
+      None
+Comment: GPIOE_PIN unused
+GPIOE_PMD 00000100
+
+Symbol: GPIOE_PMD
+   Definitions
+      At line 42 in file reg_def.s
+   Uses
+      None
+Comment: GPIOE_PMD unused
+GP_BA 50004000
+
+
+
+ARM Macro Assembler    Page 8 Alphabetic symbol ordering
+Absolute symbols
+
+
+Symbol: GP_BA
+   Definitions
+      At line 4 in file reg_def.s
+   Uses
+      At line 22 in file __main.s
+      At line 36 in file __main.s
+      At line 56 in file __main.s
+      At line 80 in file __main.s
+      At line 103 in file __main.s
+
+PLLCON 00000020
+
+Symbol: PLLCON
+   Definitions
+      At line 62 in file reg_def.s
+   Uses
+      None
+Comment: PLLCON unused
+SCS_BA E000E000
+
+Symbol: SCS_BA
+   Definitions
+      At line 65 in file reg_def.s
+   Uses
+      At line 6 in file __main.s
+      At line 8 in file __main.s
+
+SYST_CSR 00000010
+
+Symbol: SYST_CSR
+   Definitions
+      At line 66 in file reg_def.s
+   Uses
+      At line 13 in file __main.s
+Comment: SYST_CSR used once
+SYST_CVR 00000018
+
+Symbol: SYST_CVR
+   Definitions
+      At line 68 in file reg_def.s
+   Uses
+      None
+Comment: SYST_CVR unused
+SYST_RVR 00000014
+
+Symbol: SYST_RVR
+   Definitions
+      At line 67 in file reg_def.s
+   Uses
+      None
+Comment: SYST_RVR unused
+57 symbols
+410 symbols in table
