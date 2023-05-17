@@ -1,0 +1,12 @@
+Dependencies for Project 'lab5', Target 'Target 1': (DO NOT MODIFY !)
+F (.\startup_NUC1xx.s)(0x53C520F0)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include--list .\startup_nuc1xx.lst --xref -o .\startup_nuc1xx.o --depend .\startup_nuc1xx.d)
+F (.\main.c)(0x6464FCE6)(-c --cpu Cortex-M0 -D__EVAL -g -O0 --apcs=interwork -I.\CMSIS\CM0\CoreSupport -I.\CMSIS\CM0\DeviceSupport\Nuvoton\NUC1xx -I.\NuvotonPlatform_Keil\Include-I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-o .\main.o --omf_browse .\main.crf --depend .\main.d)
+I (.\CMSIS\CM0\DeviceSupport\Nuvoton\NUC1xx\NUC1xx.h)(0x4F61F904)
+I (.\CMSIS\CM0\CoreSupport\core_cm0.h)(0x4F61F904)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x53468EA4)
+I (.\CMSIS\CM0\DeviceSupport\Nuvoton\NUC1xx\system_NUC1xx.h)(0x4F61F904)
+I (.\NuvotonPlatform_Keil\Include\System\SysInfra.h)(0x4F61F93A)
+I (.\NuvotonPlatform_Keil\Include\System\ModuleID.h)(0x4F61F93A)
+F (.\SystemInit.s)(0x6464E9C6)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include--list .\systeminit.lst --xref -o .\systeminit.o --depend .\systeminit.d)
+I (reg_def.s)(0x6464E482)
+F (.\reg_def.s)(0x6464E482)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include--list .\reg_def.lst --xref -o .\reg_def.o --depend .\reg_def.d)
