@@ -1,8 +1,8 @@
 Dependencies for Project 'lab2', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 6190000::V6.19::ARMCLANG
-F (.\startup_NUC1xx.s)(0x64648A92)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-ID:/AllProgs/MDK_ARM/Core/ARM/RV31/INC-ID:/AllProgs/MDK_ARM/Core/ARM/CMSIS/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538"-o ./startup_nuc1xx.o)
-F (.\__main.s)(0x6464929D)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-ID:/AllProgs/MDK_ARM/Core/ARM/RV31/INC-ID:/AllProgs/MDK_ARM/Core/ARM/CMSIS/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538"-o ./__main.o)
-I (reg_def.s)(0x6464928A)
-F (.\SystemInit.s)(0x64648729)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-ID:/AllProgs/MDK_ARM/Core/ARM/RV31/INC-ID:/AllProgs/MDK_ARM/Core/ARM/CMSIS/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538"-o ./systeminit.o)
-I (reg_def.s)(0x6464928A)
-F (.\reg_def.s)(0x6464928A)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-ID:/AllProgs/MDK_ARM/Core/ARM/RV31/INC-ID:/AllProgs/MDK_ARM/Core/ARM/CMSIS/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538"-o ./reg_def.o)
+F (.\startup_NUC1xx.s)(0x646494E4)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-ID:/AllProgs/MDK_ARM/Core/ARM/RV31/INC-ID:/AllProgs/MDK_ARM/Core/ARM/CMSIS/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538"-o ./startup_nuc1xx.o)
+F (.\__main.s)(0x6464A002)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-ID:/AllProgs/MDK_ARM/Core/ARM/RV31/INC-ID:/AllProgs/MDK_ARM/Core/ARM/CMSIS/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538"-o ./__main.o)
+I (reg_def.s)(0x646494E3)
+F (.\SystemInit.s)(0x646498D1)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-ID:/AllProgs/MDK_ARM/Core/ARM/RV31/INC-ID:/AllProgs/MDK_ARM/Core/ARM/CMSIS/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538"-o ./systeminit.o)
+I (reg_def.s)(0x646494E3)
+F (.\reg_def.s)(0x646494E3)(--target=arm-arm-none-eabi -mcpu=cortex-m0 -masm=auto  -Wa,armasm,--diag_suppress=A1950W -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-ID:/AllProgs/MDK_ARM/Core/ARM/RV31/INC-ID:/AllProgs/MDK_ARM/Core/ARM/CMSIS/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 538"-o ./reg_def.o)

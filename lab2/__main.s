@@ -39,21 +39,22 @@ case0
 				LSLS 	R0, #12 
 				LDR 	R1, =GP_BA
 				LDR 	R2, =GPIOC_DOUT
-				STR 	R0, [R1, R2]
+				STR 	R0, [R1, R2]		; output to LED
 
 but_pressed		
 				B		Blinky_loop 
-				ENDP
+				
+			ENDP
 		
 ScanKey 		PROC
+	
+				; 1, 4, 7
+	
 				LDR 	R1, =GP_BA
 				LDR 	R2, =0x0000003B 	; active bt 1, 4, 7
 				LDR 	R3, =GPIOA_DOUT
 				STR		R2, [R1, R3]
-
-;Delay for 1000 Tmcu
-
-				LDR 	R4, =10
+				LDR 	R4, =10				; Delay for 10 Tmcu
 				
 Wait
 
@@ -68,13 +69,14 @@ Wait
 				BEQ 	ret_but1
 				LDR 	R0, =0x28 			; if 101 then GPA4
 				CMP 	R3, R0
-				BEQ		ret_but2
+				BEQ		ret_but4
 				LDR 	R0, =0x18 			; if 011 then GPA5
 				CMP 	R3, R0
-				BEQ 	ret_but3
-	
-				LDR 	R1, =GP_BA
-				LDR 	R2, =0x0000003D		; activete btn 1, 4, 7
+				BEQ 	ret_but7	
+				
+				; 2, 5, 8
+				
+				LDR 	R2, =0x0000003D		; activete btn 2, 5, 8
 				LDR 	R3, =GPIOA_DOUT
 				STR		R2, [R1, R3]
 				LDR 	R4, =10
@@ -89,23 +91,24 @@ Wait1
 				ANDS 	R3, R0 				; mask for GPA3, GPA4, GPA5
 				LDR 	R0, =0x30 			; if 110 then GPA3
 				CMP 	R3, R0
-				BEQ 	ret_but4
+				BEQ 	ret_but2
 				LDR 	R0, =0x28 			; if 101 then GPA4
 				CMP 	R3, R0
 				BEQ 	ret_but5
 				LDR 	R0, =0x18 			; if 011 then GPA5
 				CMP 	R3, R0
-				BEQ 	ret_but6
-				
-				LDR 	R1, =GP_BA
-				LDR 	R2, =0x0000003E		; activate btn 2, 5, 8
+				BEQ 	ret_but8	
+
+				; 3, 6, 9
+			
+				LDR 	R2, =0x0000003E		; activate btn 3, 6, 9
 				LDR 	R3, =GPIOA_DOUT
 				STR		R2, [R1, R3]
 				LDR 	R4, =10
 				
 Wait2
 
-				SUBS 	R4,R4,#1
+				SUBS 	R4, R4, #1
 				BNE 	Wait2
 				LDR 	R3, =GPIOA_PIN
 				LDR 	R3, [R1, R3]
@@ -113,10 +116,10 @@ Wait2
 				ANDS 	R3, R0				; mask for GPA3, GPA4, GPA5
 				LDR 	R0, =0x30 			; if 110 then GPA3
 				CMP 	R3, R0
-				BEQ 	ret_but7
+				BEQ 	ret_but3
 				LDR 	R0, =0x28 			; if 101 then GPA4
 				CMP 	R3, R0
-				BEQ 	ret_but8
+				BEQ 	ret_but6
 				LDR 	R0, =0x18 			; if 011 then GPA5
 				CMP 	R3, R0
 				BEQ 	ret_but9
@@ -166,10 +169,10 @@ ret_but8
 ret_but9
 
 				LDR		R0, =0x9
-				BX		LR		
-		
+				BX		LR				
 		
 		;ADDS R6, R6, #1
 				;BX LR
-	ENDP	
+				
+		ENDP	
 	END
