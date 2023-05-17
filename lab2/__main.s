@@ -17,7 +17,7 @@ Blinky_inner_loop2
 				LDR		R3,	[R0, #SYST_CSR]
 				TST		R3, R2
 				BEQ		Blinky_inner_loop2
-				SUBS	R1, R1, #1
+				SUBS	R1, R1, #5
 				BNE		Blinky_inner_loop1
 		
 case0
@@ -42,6 +42,13 @@ case0
 				STR 	R0, [R1, R2]		; output to LED
 
 but_pressed		
+				;ADDS	R2, R2, #1
+				;MOVS	R0, R2
+				;MVNS	R0, R0
+				;LSLS	R0, #12
+				;LDR		R1,	=GP_BA
+				;LDR		R3, =GPIOC_DOUT
+				;STR		R0, [R1, R3]
 				B		Blinky_loop 
 				
 			ENDP

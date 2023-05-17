@@ -1,0 +1,401 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 INCLUDE          reg_def.s
+    1 00000000         ;AREA    |.text|, CODE, READONLY
+    2 00000000         
+    3 00000000         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    4 00000000 50004000 
+                       GP_BA   EQU              0x50004000  ;
+    5 00000000 00000080 
+                       GPIOC_PMD
+                               EQU              0x080       ;  R/W  GPIO Port C
+                                                             Pin I/O Mode Contr
+                                                            ol  0xFFFF_FFFF
+    6 00000000 00000084 
+                       GPIOC_OFFD
+                               EQU              0x084       ;  R/W  GPIO Port C
+                                                             Pin Digital Input 
+                                                            Path Disable Contro
+                                                            l  0x0000_0000 
+    7 00000000 00000088 
+                       GPIOC_DOUT
+                               EQU              0x088       ;  R/W  GPIO Port C
+                                                             Data Output Value 
+                                                             0x0000_FFFF
+    8 00000000 0000008C 
+                       GPIOC_DMASK
+                               EQU              0x08C       ;  R/W  GPIO Port C
+                                                             Data Output Write 
+                                                            Mask  0x0000_0000 
+    9 00000000 00000090 
+                       GPIOC_PIN
+                               EQU              0x090       ;  R    GPIO Port C
+                                                             Pin Value  0x0000_
+                                                            XXXX
+   10 00000000 00000094 
+                       GPIOC_DBEN
+                               EQU              0x094       ;  R/W  GPIO Port C
+                                                             De-bounce Enable  
+                                                            0x0000_0000 
+   11 00000000 00000098 
+                       GPIOC_IMD
+                               EQU              0x098       ;  R/W  GPIO Port C
+                                                             Interrupt Mode Con
+                                                            trol  0x0000_0000
+   12 00000000 0000009C 
+                       GPIOC_IEN
+                               EQU              0x09C       ;  R/W  GPIO Port C
+                                                             Interrupt Enable  
+                                                            0x0000_0000 
+   13 00000000 000000A0 
+                       GPIOC_ISRC
+                               EQU              0x0A0       ;  R/W  GPIO Port C
+                                                             Interrupt Source F
+                                                            lag  0xXXXX_XXXX
+   14 00000000         
+   15 00000000 50000200 
+                       CLK_BA  EQU              0x50000200  ;
+   16 00000000         ;PWRCON   EQU  0x00;  R/W  System Power Down Control Reg
+                       ister  0x0000_001X
+   17 00000000         ;AHBCLK   EQU  0x04;  R/W  AHB Devices Clock Enable Cont
+                       rol Register  0x0000_000D
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   18 00000000         ;APBCLK   EQU  0x08;  R/W  APB Devices Clock Enable Cont
+                       rol Register  0x0000_000X
+   19 00000000 0000000C 
+                       CLKSTATUS
+                               EQU              0x0C        ;  R/W  Clock statu
+                                                            s monitor Register 
+                                                             0x0000_00XX
+   20 00000000 00000010 
+                       CLKSEL0 EQU              0x10        ;  R/W  Clock Sourc
+                                                            e Select Control Re
+                                                            gister 0  0x0000_00
+                                                            3X
+   21 00000000         ;CLKSEL1  EQU  0x14;  R/W  Clock Source SelectControl Re
+                       gister 1  0xFFFF_FFFF
+   22 00000000 0000001C 
+                       CLKSEL2 EQU              0x1C        ;  R/W  Clock Sourc
+                                                            e Select Control Re
+                                                            gister 2  0x0000_00
+                                                            FF
+   23 00000000 00000018 
+                       CLKDIV  EQU              0x18        ;  R/W  Clock Divid
+                                                            erNumber Register  
+                                                            0x0000_0000 
+   24 00000000 00000020 
+                       PLLCON  EQU              0x20        ;  R/W  PLL Control
+                                                             Register  0x0005_C
+                                                            22E
+   25 00000000 00000024 
+                       FRQDIV  EQU              0x24        ;  R/W  Frequency D
+                                                            ivider Control Regi
+                                                            ster  0x0000_0000
+   26 00000000         
+   27 00000000 E000E000 
+                       SCS_BA  EQU              0xE000E000  ;
+   28 00000000 00000010 
+                       SYST_CSR
+                               EQU              0x10        ;  R/W  SysTick Con
+                                                            trol and Status Reg
+                                                            ister  0x0000_0000
+   29 00000000 00000014 
+                       SYST_RVR
+                               EQU              0x14        ;  R/W  SysTick Rel
+                                                            oad value Register 
+                                                             0xXXXX_XXXX
+   30 00000000 00000018 
+                       SYST_CVR
+                               EQU              0x18        ;  R/W  SysTick Cur
+                                                            rent value Register
+                                                              0xXXXX_XXXX
+   31 00000000         
+   32 00000000         ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   33 00000000         
+   34 00000000                 END
+    2 00000000                 AREA             |.text|, CODE, READONLY
+    3 00000000         
+    4 00000000         __main  PROC
+    5 00000000                 EXPORT           __main             [WEAK]
+    6 00000000 4806            LDR              R0, =SCS_BA
+    7 00000002         Blinky_loop
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+    8 00000002         
+    9 00000002 4907            LDR              R1, =500
+   10 00000004         Blinky_inner_loop1
+   11 00000004         Blinky_inner_loop2
+   12 00000004 4A07            LDR              R2, =0x00010000
+   13 00000006 6903            LDR              R3, [R0, #SYST_CSR]
+   14 00000008 4213            TST              R3, R2
+   15 0000000A D0FB            BEQ              Blinky_inner_loop2
+   16 0000000C 1F49            SUBS             R1, R1, #5
+   17 0000000E D1F9            BNE              Blinky_inner_loop1
+   18 00000010         
+   19 00000010         ; Toogle bits
+   20 00000010         
+   21 00000010 4905            LDR              R1, =GP_BA
+   22 00000012 4A06            LDR              R2, =GPIOC_DOUT
+   23 00000014 588B            LDR              R3, [R1, R2] ;0x80 * 4 
+   24 00000016         ;LDR  R3, [R1, R2]
+   25 00000016 43DB            MVNS             R3, R3
+   26 00000018 508B            STR              R3, [R1, R2]
+   27 0000001A E7F2            B                Blinky_loop
+   28 0000001C                 ENDP
+   29 0000001C                 END
+              E000E000 
+              000001F4 
+              00010000 
+              50004000 
+              00000088 
+Command Line: --debug --xref --cpu=Cortex-M0 --apcs=interwork --depend=.\__main
+.d -o.\__main.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0
+\CMSIS\Include --predefine="__EVAL SETA 1" --list=.\__main.lst __main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 2 in file __main.s
+   Uses
+      None
+Comment: .text unused
+Blinky_inner_loop1 00000004
+
+Symbol: Blinky_inner_loop1
+   Definitions
+      At line 10 in file __main.s
+   Uses
+      At line 17 in file __main.s
+Comment: Blinky_inner_loop1 used once
+Blinky_inner_loop2 00000004
+
+Symbol: Blinky_inner_loop2
+   Definitions
+      At line 11 in file __main.s
+   Uses
+      At line 15 in file __main.s
+Comment: Blinky_inner_loop2 used once
+Blinky_loop 00000002
+
+Symbol: Blinky_loop
+   Definitions
+      At line 7 in file __main.s
+   Uses
+      At line 27 in file __main.s
+Comment: Blinky_loop used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 4 in file __main.s
+   Uses
+      At line 5 in file __main.s
+Comment: __main used once
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+CLKDIV 00000018
+
+Symbol: CLKDIV
+   Definitions
+      At line 23 in file reg_def.s
+   Uses
+      None
+Comment: CLKDIV unused
+CLKSEL0 00000010
+
+Symbol: CLKSEL0
+   Definitions
+      At line 20 in file reg_def.s
+   Uses
+      None
+Comment: CLKSEL0 unused
+CLKSEL2 0000001C
+
+Symbol: CLKSEL2
+   Definitions
+      At line 22 in file reg_def.s
+   Uses
+      None
+Comment: CLKSEL2 unused
+CLKSTATUS 0000000C
+
+Symbol: CLKSTATUS
+   Definitions
+      At line 19 in file reg_def.s
+   Uses
+      None
+Comment: CLKSTATUS unused
+CLK_BA 50000200
+
+Symbol: CLK_BA
+   Definitions
+      At line 15 in file reg_def.s
+   Uses
+      None
+Comment: CLK_BA unused
+FRQDIV 00000024
+
+Symbol: FRQDIV
+   Definitions
+      At line 25 in file reg_def.s
+   Uses
+      None
+Comment: FRQDIV unused
+GPIOC_DBEN 00000094
+
+Symbol: GPIOC_DBEN
+   Definitions
+      At line 10 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_DBEN unused
+GPIOC_DMASK 0000008C
+
+Symbol: GPIOC_DMASK
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Absolute symbols
+
+   Definitions
+      At line 8 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_DMASK unused
+GPIOC_DOUT 00000088
+
+Symbol: GPIOC_DOUT
+   Definitions
+      At line 7 in file reg_def.s
+   Uses
+      At line 22 in file __main.s
+Comment: GPIOC_DOUT used once
+GPIOC_IEN 0000009C
+
+Symbol: GPIOC_IEN
+   Definitions
+      At line 12 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_IEN unused
+GPIOC_IMD 00000098
+
+Symbol: GPIOC_IMD
+   Definitions
+      At line 11 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_IMD unused
+GPIOC_ISRC 000000A0
+
+Symbol: GPIOC_ISRC
+   Definitions
+      At line 13 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_ISRC unused
+GPIOC_OFFD 00000084
+
+Symbol: GPIOC_OFFD
+   Definitions
+      At line 6 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_OFFD unused
+GPIOC_PIN 00000090
+
+Symbol: GPIOC_PIN
+   Definitions
+      At line 9 in file reg_def.s
+   Uses
+      None
+Comment: GPIOC_PIN unused
+GPIOC_PMD 00000080
+
+Symbol: GPIOC_PMD
+   Definitions
+      At line 5 in file reg_def.s
+   Uses
+
+
+
+ARM Macro Assembler    Page 3 Alphabetic symbol ordering
+Absolute symbols
+
+      None
+Comment: GPIOC_PMD unused
+GP_BA 50004000
+
+Symbol: GP_BA
+   Definitions
+      At line 4 in file reg_def.s
+   Uses
+      At line 21 in file __main.s
+Comment: GP_BA used once
+PLLCON 00000020
+
+Symbol: PLLCON
+   Definitions
+      At line 24 in file reg_def.s
+   Uses
+      None
+Comment: PLLCON unused
+SCS_BA E000E000
+
+Symbol: SCS_BA
+   Definitions
+      At line 27 in file reg_def.s
+   Uses
+      At line 6 in file __main.s
+Comment: SCS_BA used once
+SYST_CSR 00000010
+
+Symbol: SYST_CSR
+   Definitions
+      At line 28 in file reg_def.s
+   Uses
+      At line 13 in file __main.s
+Comment: SYST_CSR used once
+SYST_CVR 00000018
+
+Symbol: SYST_CVR
+   Definitions
+      At line 30 in file reg_def.s
+   Uses
+      None
+Comment: SYST_CVR unused
+SYST_RVR 00000014
+
+Symbol: SYST_RVR
+   Definitions
+      At line 29 in file reg_def.s
+   Uses
+      None
+Comment: SYST_RVR unused
+21 symbols
+359 symbols in table
