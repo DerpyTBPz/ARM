@@ -422,11 +422,6 @@
               <FileType>2</FileType>
               <FilePath>.\SystemInit.s</FilePath>
             </File>
-            <File>
-              <FileName>reg_def.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\reg_def.s</FilePath>
-            </File>
           </Files>
         </Group>
       </Groups>

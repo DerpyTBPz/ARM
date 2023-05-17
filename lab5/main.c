@@ -121,7 +121,7 @@ void case2_1()
 			{
 				while ((SysTick->CTRL & 0x10000)==0);
 			}
-			if(UART0->FSR.RX_EMPTY == 1)
+			if(UART0->FSR.RX_EMPTY == 0)
 				{
 					rx = UART0->DATA;
 					UART0->DATA = rx;
