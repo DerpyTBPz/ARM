@@ -1,0 +1,10 @@
+.\obj\drvrtc.o: NUC1xx_lib\Driver\DrvRTC.c
+.\obj\drvrtc.o: D:\Keil4\ARM\RV31\INC\stdio.h
+.\obj\drvrtc.o: .\NUC1xx_lib\CMSIS\CM0\NUC1xx.h
+.\obj\drvrtc.o: .\NUC1xx_lib\CMSIS\CM0\core_cm0.h
+.\obj\drvrtc.o: D:\Keil4\ARM\RV31\INC\stdint.h
+.\obj\drvrtc.o: .\NUC1xx_lib\CMSIS\CM0\system_NUC1xx.h
+.\obj\drvrtc.o: .\NUC1xx_lib\Include\System\SysInfra.h
+.\obj\drvrtc.o: .\NUC1xx_lib\Include\System\ModuleID.h
+.\obj\drvrtc.o: .\NUC1xx_lib\Include\Driver\DrvRTC.h
+.\obj\drvrtc.o: .\NUC1xx_lib\Include\Driver\DrvGPIO.h

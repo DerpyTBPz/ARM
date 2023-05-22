@@ -1,0 +1,13 @@
+.\obj\blockq.o: ..\Common\Minimal\BlockQ.c
+.\obj\blockq.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\blockq.o: ..\..\Source\include\FreeRTOS.h
+.\obj\blockq.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\blockq.o: ..\..\Source\include\projdefs.h
+.\obj\blockq.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\blockq.o: ..\..\Source\include\portable.h
+.\obj\blockq.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\blockq.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\blockq.o: ..\..\Source\include\task.h
+.\obj\blockq.o: ..\..\Source\include\list.h
+.\obj\blockq.o: ..\..\Source\include\queue.h
+.\obj\blockq.o: ..\Common\include\BlockQ.h

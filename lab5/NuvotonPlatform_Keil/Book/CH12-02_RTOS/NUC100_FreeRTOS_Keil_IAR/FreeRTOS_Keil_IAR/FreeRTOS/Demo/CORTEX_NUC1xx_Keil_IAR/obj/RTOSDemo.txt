@@ -1,0 +1,1887 @@
+
+========================================================================
+
+** ELF Header Information
+
+    File Name: .\obj\RTOSDemo.axf
+
+    Machine class: ELFCLASS32 (32-bit)
+    Data encoding: ELFDATA2LSB (Little endian)
+    Header version: EV_CURRENT (Current version)
+    Operating System ABI: none
+    ABI Version: 0
+    File Type: ET_EXEC (Executable) (2)
+    Machine: EM_ARM (ARM)
+
+    Image Entry point: 0x000000c1
+    Flags: EF_ARM_HASENTRY (0x05000002)
+
+    ARM ELF revision: 5 (ABI version 2)
+
+    Built with
+    ARM C/C++ Compiler, 4.1 [Build 481]
+    ARM Assembler, 4.1 [Build 481]
+    ARM Linker, 4.1 [Build 481] 
+
+    Header size: 52 bytes (0x34)
+    Program header entry size: 32 bytes (0x20)
+    Section header entry size: 40 bytes (0x28)
+
+    Program header entries: 1
+    Section header entries: 16
+
+    Program header offset: 53644 (0x0000d18c)
+    Section header offset: 53676 (0x0000d1ac)
+
+    Section header string table index: 15
+
+========================================================================
+
+** Program header #0 (PT_LOAD) [PF_X + PF_W + PF_R + PF_ARM_ENTRY]
+    Size : 18316 bytes (3756 bytes in file)
+    Virtual address: 0x00000000 (Alignment 8)
+
+
+========================================================================
+
+** Section #1 'ER_IROM1' (SHT_PROGBITS) [SHF_ALLOC + SHF_EXECINSTR]
+    Size   : 3668 bytes (alignment 4)
+    Address: 0x00000000
+
+    $d.realdata
+    RESET
+    __Vectors
+        0x00000000:    20003938    89.     DCD    536885560
+        0x00000004:    00000165    e...    DCD    357
+        0x00000008:    00000185    ....    DCD    389
+        0x0000000c:    00000187    ....    DCD    391
+        0x00000010:    00000000    ....    DCD    0
+        0x00000014:    00000000    ....    DCD    0
+        0x00000018:    00000000    ....    DCD    0
+        0x0000001c:    00000000    ....    DCD    0
+        0x00000020:    00000000    ....    DCD    0
+        0x00000024:    00000000    ....    DCD    0
+        0x00000028:    00000000    ....    DCD    0
+        0x0000002c:    00000189    ....    DCD    393
+        0x00000030:    00000000    ....    DCD    0
+        0x00000034:    00000000    ....    DCD    0
+        0x00000038:    00000111    ....    DCD    273
+        0x0000003c:    00000d19    ....    DCD    3353
+        0x00000040:    0000018f    ....    DCD    399
+        0x00000044:    0000018f    ....    DCD    399
+        0x00000048:    0000018f    ....    DCD    399
+        0x0000004c:    0000018f    ....    DCD    399
+        0x00000050:    0000018f    ....    DCD    399
+        0x00000054:    0000018f    ....    DCD    399
+        0x00000058:    0000018f    ....    DCD    399
+        0x0000005c:    0000018f    ....    DCD    399
+        0x00000060:    0000018f    ....    DCD    399
+        0x00000064:    0000018f    ....    DCD    399
+        0x00000068:    0000018f    ....    DCD    399
+        0x0000006c:    0000018f    ....    DCD    399
+        0x00000070:    0000018f    ....    DCD    399
+        0x00000074:    0000018f    ....    DCD    399
+        0x00000078:    0000018f    ....    DCD    399
+        0x0000007c:    0000018f    ....    DCD    399
+        0x00000080:    0000018f    ....    DCD    399
+        0x00000084:    0000018f    ....    DCD    399
+        0x00000088:    0000018f    ....    DCD    399
+        0x0000008c:    0000018f    ....    DCD    399
+        0x00000090:    0000018f    ....    DCD    399
+        0x00000094:    0000018f    ....    DCD    399
+        0x00000098:    0000018f    ....    DCD    399
+        0x0000009c:    0000018f    ....    DCD    399
+        0x000000a0:    0000018f    ....    DCD    399
+        0x000000a4:    0000018f    ....    DCD    399
+        0x000000a8:    0000018f    ....    DCD    399
+        0x000000ac:    0000018f    ....    DCD    399
+        0x000000b0:    0000018f    ....    DCD    399
+        0x000000b4:    0000018f    ....    DCD    399
+        0x000000b8:    0000018f    ....    DCD    399
+        0x000000bc:    0000018f    ....    DCD    399
+    $t
+    .ARM.Collect$$$$00000000
+    .ARM.Collect$$$$00000001
+    __main
+    _main_stk
+        0x000000c0:    4803        .H      LDR      r0,__lit__00000000 ; [0xd0] = 0x20003938
+        0x000000c2:    4685        .F      MOV      sp,r0
+    .ARM.Collect$$$$00000004
+    _main_scatterload
+        0x000000c4:    f000fe7c    ..|.    BL       __scatterload ; 0xdc0
+    .ARM.Collect$$$$00000007
+    __main_after_scatterload
+    _main_init
+        0x000000c8:    4800        .H      LDR      r0,[pc,#0] ; [0xcc] = 0x25f
+        0x000000ca:    4700        .G      BX       r0
+    $d
+        0x000000cc:    0000025f    _...    DCD    607
+    .ARM.Collect$$$$00002712
+    __lit__00000000
+        0x000000d0:    20003938    89.     DCD    536885560
+    $t
+    .emb_text
+    vPortStartFirstTask
+        0x000000d4:    bf00        ..      NOP      
+        0x000000d6:    4b20         K      LDR      r3,[pc,#128] ; [0x158] = 0x20000000
+        0x000000d8:    6819        .h      LDR      r1,[r3,#0]
+        0x000000da:    6808        .h      LDR      r0,[r1,#0]
+        0x000000dc:    c8f0        ..      LDM      r0!,{r4-r7}
+        0x000000de:    c80e        ..      LDM      r0!,{r1-r3}
+        0x000000e0:    4688        .F      MOV      r8,r1
+        0x000000e2:    4691        .F      MOV      r9,r2
+        0x000000e4:    469a        .F      MOV      r10,r3
+        0x000000e6:    c802        ..      LDM      r0!,{r1}
+        0x000000e8:    468b        .F      MOV      r11,r1
+        0x000000ea:    f3808809    ....    MSR      PSP,r0
+        0x000000ee:    2002        .       MOVS     r0,#2
+        0x000000f0:    f3808814    ....    MSR      CONTROL,r0
+        0x000000f4:    b004        ..      ADD      sp,sp,#0x10
+        0x000000f6:    bc0f        ..      POP      {r0-r3}
+        0x000000f8:    f3838803    ....    MSR      XPSR,r3
+        0x000000fc:    468e        .F      MOV      lr,r1
+        0x000000fe:    4684        .F      MOV      r12,r0
+        0x00000100:    b404        ..      PUSH     {r2}
+        0x00000102:    b087        ..      SUB      sp,sp,#0x1c
+        0x00000104:    bc0f        ..      POP      {r0-r3}
+        0x00000106:    b003        ..      ADD      sp,sp,#0xc
+        0x00000108:    b662        b.      CPSIE    i
+        0x0000010a:    bd00        ..      POP      {pc}
+    $d
+        0x0000010c:    00000000    ....    DCD    0
+    $t
+    xPortPendSVHandler
+        0x00000110:    f3ef8009    ....    MRS      r0,PSP
+        0x00000114:    4b10        .K      LDR      r3,[pc,#64] ; [0x158] = 0x20000000
+        0x00000116:    681a        .h      LDR      r2,[r3,#0]
+        0x00000118:    3820         8      SUBS     r0,r0,#0x20
+        0x0000011a:    c0f0        ..      STM      r0!,{r4-r7}
+        0x0000011c:    4644        DF      MOV      r4,r8
+        0x0000011e:    464d        MF      MOV      r5,r9
+        0x00000120:    4656        VF      MOV      r6,r10
+        0x00000122:    465f        _F      MOV      r7,r11
+        0x00000124:    c0f0        ..      STM      r0!,{r4-r7}
+        0x00000126:    3820         8      SUBS     r0,r0,#0x20
+        0x00000128:    6010        .`      STR      r0,[r2,#0]
+        0x0000012a:    b508        ..      PUSH     {r3,lr}
+        0x0000012c:    b672        r.      CPSID    i
+        0x0000012e:    f000fbda    ....    BL       vTaskSwitchContext ; 0x8e6
+        0x00000132:    b662        b.      CPSIE    i
+        0x00000134:    4668        hF      MOV      r0,sp
+        0x00000136:    c808        ..      LDM      r0!,{r3}
+        0x00000138:    c802        ..      LDM      r0!,{r1}
+        0x0000013a:    468e        .F      MOV      lr,r1
+        0x0000013c:    4685        .F      MOV      sp,r0
+        0x0000013e:    6819        .h      LDR      r1,[r3,#0]
+        0x00000140:    6808        .h      LDR      r0,[r1,#0]
+        0x00000142:    c8f0        ..      LDM      r0!,{r4-r7}
+        0x00000144:    c80e        ..      LDM      r0!,{r1-r3}
+        0x00000146:    4688        .F      MOV      r8,r1
+        0x00000148:    4691        .F      MOV      r9,r2
+        0x0000014a:    469a        .F      MOV      r10,r3
+        0x0000014c:    c802        ..      LDM      r0!,{r1}
+        0x0000014e:    468b        .F      MOV      r11,r1
+        0x00000150:    f3808809    ....    MSR      PSP,r0
+        0x00000154:    4770        pG      BX       lr
+        0x00000156:    bf00        ..      NOP      
+    $d
+        0x00000158:    20000000    ...     DCD    536870912
+    $t
+    vPortSetInterruptMask
+        0x0000015c:    b672        r.      CPSID    i
+        0x0000015e:    4770        pG      BX       lr
+    vPortClearInterruptMask
+        0x00000160:    b662        b.      CPSIE    i
+        0x00000162:    4770        pG      BX       lr
+    .text
+    Reset_Handler
+        0x00000164:    480a        .H      LDR      r0,[pc,#40] ; [0x190] = 0x50000100
+        0x00000166:    6901        .i      LDR      r1,[r0,#0x10]
+        0x00000168:    293f        ?)      CMP      r1,#0x3f
+        0x0000016a:    d109        ..      BNE      0x180 ; Reset_Handler + 28
+        0x0000016c:    4909        .I      LDR      r1,[pc,#36] ; [0x194] = 0x59
+        0x0000016e:    6001        .`      STR      r1,[r0,#0]
+        0x00000170:    4909        .I      LDR      r1,[pc,#36] ; [0x198] = 0x16
+        0x00000172:    6001        .`      STR      r1,[r0,#0]
+        0x00000174:    4909        .I      LDR      r1,[pc,#36] ; [0x19c] = 0x88
+        0x00000176:    6001        .`      STR      r1,[r0,#0]
+        0x00000178:    4909        .I      LDR      r1,[pc,#36] ; [0x1a0] = 0x20
+        0x0000017a:    6101        .a      STR      r1,[r0,#0x10]
+        0x0000017c:    2100        .!      MOVS     r1,#0
+        0x0000017e:    6001        .`      STR      r1,[r0,#0]
+        0x00000180:    4808        .H      LDR      r0,[pc,#32] ; [0x1a4] = 0xc1
+        0x00000182:    4700        .G      BX       r0
+    NMI_Handler
+        0x00000184:    e7fe        ..      B        NMI_Handler ; 0x184
+    HardFault_Handler
+        0x00000186:    e7fe        ..      B        HardFault_Handler ; 0x186
+    SVC_Handler
+        0x00000188:    e7fe        ..      B        SVC_Handler ; 0x188
+    PendSV_Handler
+        0x0000018a:    e7fe        ..      B        PendSV_Handler ; 0x18a
+    SysTick_Handler
+        0x0000018c:    e7fe        ..      B        SysTick_Handler ; 0x18c
+    Default_Handler
+    ACMP_IRQHandler
+    ADC_IRQHandler
+    BOD_IRQHandler
+    CAN0_IRQHandler
+    EINT0_IRQHandler
+    EINT1_IRQHandler
+    GPAB_IRQHandler
+    GPCDE_IRQHandler
+    I2C0_IRQHandler
+    I2C1_IRQHandler
+    I2S_IRQHandler
+    PDMA_IRQHandler
+    PS2_IRQHandler
+    PWMA_IRQHandler
+    PWMB_IRQHandler
+    PWRWU_IRQHandler
+    RTC_IRQHandler
+    SPI0_IRQHandler
+    SPI1_IRQHandler
+    SPI2_IRQHandler
+    SPI3_IRQHandler
+    TMR0_IRQHandler
+    TMR1_IRQHandler
+    TMR2_IRQHandler
+    TMR3_IRQHandler
+    UART02_IRQHandler
+    UART1_IRQHandler
+    USBD_IRQHandler
+    WDT_IRQHandler
+        0x0000018e:    e7fe        ..      B        Default_Handler ; 0x18e
+    $d
+        0x00000190:    50000100    ...P    DCD    1342177536
+        0x00000194:    00000059    Y...    DCD    89
+        0x00000198:    00000016    ....    DCD    22
+        0x0000019c:    00000088    ....    DCD    136
+        0x000001a0:    00000020     ...    DCD    32
+        0x000001a4:    000000c1    ....    DCD    193
+    $t
+    .text
+    NUC1xx_UART_Init
+        0x000001a8:    b570        p.      PUSH     {r4-r6,lr}
+        0x000001aa:    2005        .       MOVS     r0,#5
+        0x000001ac:    0700        ..      LSLS     r0,r0,#28
+        0x000001ae:    6b41        Ak      LDR      r1,[r0,#0x34]
+        0x000001b0:    2501        .%      MOVS     r5,#1
+        0x000001b2:    4329        )C      ORRS     r1,r1,r5
+        0x000001b4:    6341        Ac      STR      r1,[r0,#0x34]
+        0x000001b6:    6b41        Ak      LDR      r1,[r0,#0x34]
+        0x000001b8:    2302        .#      MOVS     r3,#2
+        0x000001ba:    4319        .C      ORRS     r1,r1,r3
+        0x000001bc:    6341        Ac      STR      r1,[r0,#0x34]
+        0x000001be:    6b42        Bk      LDR      r2,[r0,#0x34]
+        0x000001c0:    2104        .!      MOVS     r1,#4
+        0x000001c2:    430a        .C      ORRS     r2,r2,r1
+        0x000001c4:    6342        Bc      STR      r2,[r0,#0x34]
+        0x000001c6:    6b42        Bk      LDR      r2,[r0,#0x34]
+        0x000001c8:    2408        .$      MOVS     r4,#8
+        0x000001ca:    4322        "C      ORRS     r2,r2,r4
+        0x000001cc:    6342        Bc      STR      r2,[r0,#0x34]
+        0x000001ce:    68c6        .h      LDR      r6,[r0,#0xc]
+        0x000001d0:    038a        ..      LSLS     r2,r1,#14
+        0x000001d2:    4316        .C      ORRS     r6,r6,r2
+        0x000001d4:    60c6        .`      STR      r6,[r0,#0xc]
+        0x000001d6:    68c6        .h      LDR      r6,[r0,#0xc]
+        0x000001d8:    4396        .C      BICS     r6,r6,r2
+        0x000001da:    60c6        .`      STR      r6,[r0,#0xc]
+        0x000001dc:    4836        6H      LDR      r0,[pc,#216] ; [0x2b8] = 0x50000200
+        0x000001de:    6886        .h      LDR      r6,[r0,#8]
+        0x000001e0:    4316        .C      ORRS     r6,r6,r2
+        0x000001e2:    6086        .`      STR      r6,[r0,#8]
+        0x000001e4:    6946        Fi      LDR      r6,[r0,#0x14]
+        0x000001e6:    2203        ."      MOVS     r2,#3
+        0x000001e8:    0612        ..      LSLS     r2,r2,#24
+        0x000001ea:    4396        .C      BICS     r6,r6,r2
+        0x000001ec:    6146        Fa      STR      r6,[r0,#0x14]
+        0x000001ee:    6806        .h      LDR      r6,[r0,#0]
+        0x000001f0:    432e        .C      ORRS     r6,r6,r5
+        0x000001f2:    6006        .`      STR      r6,[r0,#0]
+        0x000001f4:    6945        Ei      LDR      r5,[r0,#0x14]
+        0x000001f6:    4395        .C      BICS     r5,r5,r2
+        0x000001f8:    6145        Ea      STR      r5,[r0,#0x14]
+        0x000001fa:    4830        0H      LDR      r0,[pc,#192] ; [0x2bc] = 0x40050000
+        0x000001fc:    6882        .h      LDR      r2,[r0,#8]
+        0x000001fe:    430a        .C      ORRS     r2,r2,r1
+        0x00000200:    6082        .`      STR      r2,[r0,#8]
+        0x00000202:    6882        .h      LDR      r2,[r0,#8]
+        0x00000204:    431a        .C      ORRS     r2,r2,r3
+        0x00000206:    6082        .`      STR      r2,[r0,#8]
+        0x00000208:    6882        .h      LDR      r2,[r0,#8]
+        0x0000020a:    23f0        .#      MOVS     r3,#0xf0
+        0x0000020c:    439a        .C      BICS     r2,r2,r3
+        0x0000020e:    6082        .`      STR      r2,[r0,#8]
+        0x00000210:    68c2        .h      LDR      r2,[r0,#0xc]
+        0x00000212:    2320         #      MOVS     r3,#0x20
+        0x00000214:    439a        .C      BICS     r2,r2,r3
+        0x00000216:    60c2        .`      STR      r2,[r0,#0xc]
+        0x00000218:    68c2        .h      LDR      r2,[r0,#0xc]
+        0x0000021a:    2310        .#      MOVS     r3,#0x10
+        0x0000021c:    439a        .C      BICS     r2,r2,r3
+        0x0000021e:    60c2        .`      STR      r2,[r0,#0xc]
+        0x00000220:    68c2        .h      LDR      r2,[r0,#0xc]
+        0x00000222:    43a2        .C      BICS     r2,r2,r4
+        0x00000224:    60c2        .`      STR      r2,[r0,#0xc]
+        0x00000226:    68c2        .h      LDR      r2,[r0,#0xc]
+        0x00000228:    2303        .#      MOVS     r3,#3
+        0x0000022a:    431a        .C      ORRS     r2,r2,r3
+        0x0000022c:    60c2        .`      STR      r2,[r0,#0xc]
+        0x0000022e:    68c2        .h      LDR      r2,[r0,#0xc]
+        0x00000230:    438a        .C      BICS     r2,r2,r1
+        0x00000232:    60c2        .`      STR      r2,[r0,#0xc]
+        0x00000234:    2100        .!      MOVS     r1,#0
+        0x00000236:    6201        .b      STR      r1,[r0,#0x20]
+        0x00000238:    6a41        Aj      LDR      r1,[r0,#0x24]
+        0x0000023a:    06a2        ..      LSLS     r2,r4,#26
+        0x0000023c:    4311        .C      ORRS     r1,r1,r2
+        0x0000023e:    6241        Ab      STR      r1,[r0,#0x24]
+        0x00000240:    6a41        Aj      LDR      r1,[r0,#0x24]
+        0x00000242:    1052        R.      ASRS     r2,r2,#1
+        0x00000244:    4311        .C      ORRS     r1,r1,r2
+        0x00000246:    6241        Ab      STR      r1,[r0,#0x24]
+        0x00000248:    6a41        Aj      LDR      r1,[r0,#0x24]
+        0x0000024a:    220f        ."      MOVS     r2,#0xf
+        0x0000024c:    0612        ..      LSLS     r2,r2,#24
+        0x0000024e:    4311        .C      ORRS     r1,r1,r2
+        0x00000250:    6241        Ab      STR      r1,[r0,#0x24]
+        0x00000252:    6a41        Aj      LDR      r1,[r0,#0x24]
+        0x00000254:    0c09        ..      LSRS     r1,r1,#16
+        0x00000256:    0409        ..      LSLS     r1,r1,#16
+        0x00000258:    3166        f1      ADDS     r1,r1,#0x66
+        0x0000025a:    6241        Ab      STR      r1,[r0,#0x24]
+        0x0000025c:    bd70        p.      POP      {r4-r6,pc}
+    main
+        0x0000025e:    b510        ..      PUSH     {r4,lr}
+        0x00000260:    f000f806    ....    BL       prvSetupHardware ; 0x270
+        0x00000264:    f000f84a    ..J.    BL       vStartThreadTasks ; 0x2fc
+        0x00000268:    f000fb11    ....    BL       vTaskStartScheduler ; 0x88e
+        0x0000026c:    2000        .       MOVS     r0,#0
+        0x0000026e:    bd10        ..      POP      {r4,pc}
+    prvSetupHardware
+        0x00000270:    4813        .H      LDR      r0,[pc,#76] ; [0x2c0] = 0x50000100
+        0x00000272:    2159        Y!      MOVS     r1,#0x59
+        0x00000274:    6001        .`      STR      r1,[r0,#0]
+        0x00000276:    2116        .!      MOVS     r1,#0x16
+        0x00000278:    6001        .`      STR      r1,[r0,#0]
+        0x0000027a:    2188        .!      MOVS     r1,#0x88
+        0x0000027c:    6001        .`      STR      r1,[r0,#0]
+        0x0000027e:    480e        .H      LDR      r0,[pc,#56] ; [0x2b8] = 0x50000200
+        0x00000280:    6801        .h      LDR      r1,[r0,#0]
+        0x00000282:    2201        ."      MOVS     r2,#1
+        0x00000284:    4311        .C      ORRS     r1,r1,r2
+        0x00000286:    6001        .`      STR      r1,[r0,#0]
+        0x00000288:    6801        .h      LDR      r1,[r0,#0]
+        0x0000028a:    2210        ."      MOVS     r2,#0x10
+        0x0000028c:    4311        .C      ORRS     r1,r1,r2
+        0x0000028e:    6001        .`      STR      r1,[r0,#0]
+        0x00000290:    6a01        .j      LDR      r1,[r0,#0x20]
+        0x00000292:    01c2        ..      LSLS     r2,r0,#7
+        0x00000294:    4391        .C      BICS     r1,r1,r2
+        0x00000296:    6201        .b      STR      r1,[r0,#0x20]
+        0x00000298:    6a01        .j      LDR      r1,[r0,#0x20]
+        0x0000029a:    0242        B.      LSLS     r2,r0,#9
+        0x0000029c:    4391        .C      BICS     r1,r1,r2
+        0x0000029e:    6201        .b      STR      r1,[r0,#0x20]
+        0x000002a0:    6901        .i      LDR      r1,[r0,#0x10]
+        0x000002a2:    08c9        ..      LSRS     r1,r1,#3
+        0x000002a4:    00c9        ..      LSLS     r1,r1,#3
+        0x000002a6:    1c89        ..      ADDS     r1,r1,#2
+        0x000002a8:    6101        .a      STR      r1,[r0,#0x10]
+        0x000002aa:    6901        .i      LDR      r1,[r0,#0x10]
+        0x000002ac:    2238        8"      MOVS     r2,#0x38
+        0x000002ae:    4391        .C      BICS     r1,r1,r2
+        0x000002b0:    3118        .1      ADDS     r1,r1,#0x18
+        0x000002b2:    6101        .a      STR      r1,[r0,#0x10]
+        0x000002b4:    e778        x.      B        NUC1xx_UART_Init ; 0x1a8
+    $d
+        0x000002b6:    0000        ..      DCW    0
+        0x000002b8:    50000200    ...P    DCD    1342177792
+        0x000002bc:    40050000    ...@    DCD    1074069504
+        0x000002c0:    50000100    ...P    DCD    1342177536
+    $t
+    .text
+    Thread_Task2
+        0x000002c4:    b508        ..      PUSH     {r3,lr}
+        0x000002c6:    f000fb02    ....    BL       xTaskGetTickCount ; 0x8ce
+        0x000002ca:    2419        .$      MOVS     r4,#0x19
+        0x000002cc:    0164        d.      LSLS     r4,r4,#5
+        0x000002ce:    9000        ..      STR      r0,[sp,#0]
+        0x000002d0:    4621        !F      MOV      r1,r4
+        0x000002d2:    4668        hF      MOV      r0,sp
+        0x000002d4:    f000f9ad    ....    BL       vTaskDelayUntil ; 0x632
+        0x000002d8:    a014        ..      ADR      r0,{pc}+0x54 ; 0x32c
+        0x000002da:    f000fd83    ....    BL       __0printf$bare ; 0xde4
+        0x000002de:    e7f7        ..      B        0x2d0 ; Thread_Task2 + 12
+    Thread_Task1
+        0x000002e0:    b508        ..      PUSH     {r3,lr}
+        0x000002e2:    f000faf4    ....    BL       xTaskGetTickCount ; 0x8ce
+        0x000002e6:    24ff        .$      MOVS     r4,#0xff
+        0x000002e8:    3491        .4      ADDS     r4,r4,#0x91
+        0x000002ea:    9000        ..      STR      r0,[sp,#0]
+        0x000002ec:    4621        !F      MOV      r1,r4
+        0x000002ee:    4668        hF      MOV      r0,sp
+        0x000002f0:    f000f99f    ....    BL       vTaskDelayUntil ; 0x632
+        0x000002f4:    a011        ..      ADR      r0,{pc}+0x48 ; 0x33c
+        0x000002f6:    f000fd75    ..u.    BL       __0printf$bare ; 0xde4
+        0x000002fa:    e7f7        ..      B        0x2ec ; Thread_Task1 + 12
+    vStartThreadTasks
+        0x000002fc:    b51f        ..      PUSH     {r0-r4,lr}
+        0x000002fe:    2300        .#      MOVS     r3,#0
+        0x00000300:    2001        .       MOVS     r0,#1
+        0x00000302:    9000        ..      STR      r0,[sp,#0]
+        0x00000304:    9301        ..      STR      r3,[sp,#4]
+        0x00000306:    9302        ..      STR      r3,[sp,#8]
+        0x00000308:    2280        ."      MOVS     r2,#0x80
+        0x0000030a:    a110        ..      ADR      r1,{pc}+0x42 ; 0x34c
+        0x0000030c:    9303        ..      STR      r3,[sp,#0xc]
+        0x0000030e:    4812        .H      LDR      r0,[pc,#72] ; [0x358] = 0x2e1
+        0x00000310:    f000f82c    ..,.    BL       xTaskGenericCreate ; 0x36c
+        0x00000314:    2300        .#      MOVS     r3,#0
+        0x00000316:    2001        .       MOVS     r0,#1
+        0x00000318:    9000        ..      STR      r0,[sp,#0]
+        0x0000031a:    9301        ..      STR      r3,[sp,#4]
+        0x0000031c:    9302        ..      STR      r3,[sp,#8]
+        0x0000031e:    2280        ."      MOVS     r2,#0x80
+        0x00000320:    a10e        ..      ADR      r1,{pc}+0x3c ; 0x35c
+        0x00000322:    9303        ..      STR      r3,[sp,#0xc]
+        0x00000324:    4810        .H      LDR      r0,[pc,#64] ; [0x368] = 0x2c5
+        0x00000326:    f000f821    ..!.    BL       xTaskGenericCreate ; 0x36c
+        0x0000032a:    bd1f        ..      POP      {r0-r4,pc}
+    $d
+        0x0000032c:    6b736154    Task    DCD    1802723668
+        0x00000330:    61632032    2 ca    DCD    1633886258
+        0x00000334:    64656c6c    lled    DCD    1684368492
+        0x00000338:    000a2d2d    --..    DCD    666925
+        0x0000033c:    6b736154    Task    DCD    1802723668
+        0x00000340:    61632031    1 ca    DCD    1633886257
+        0x00000344:    64656c6c    lled    DCD    1684368492
+        0x00000348:    00000a2d    -...    DCD    2605
+        0x0000034c:    545f6854    Th_T    DCD    1415538772
+        0x00000350:    316b7361    ask1    DCD    829125473
+        0x00000354:    00000000    ....    DCD    0
+        0x00000358:    000002e1    ....    DCD    737
+        0x0000035c:    545f6854    Th_T    DCD    1415538772
+        0x00000360:    326b7361    ask2    DCD    845902689
+        0x00000364:    00000000    ....    DCD    0
+        0x00000368:    000002c5    ....    DCD    709
+    $t
+    .text
+    xTaskGenericCreate
+        0x0000036c:    b5ff        ..      PUSH     {r0-r7,lr}
+        0x0000036e:    b081        ..      SUB      sp,sp,#4
+        0x00000370:    4615        .F      MOV      r5,r2
+        0x00000372:    2048        H       MOVS     r0,#0x48
+        0x00000374:    9f0a        ..      LDR      r7,[sp,#0x28]
+        0x00000376:    9e0c        ..      LDR      r6,[sp,#0x30]
+        0x00000378:    f000fc1c    ....    BL       pvPortMalloc ; 0xbb4
+        0x0000037c:    00ad        ..      LSLS     r5,r5,#2
+        0x0000037e:    4604        .F      MOV      r4,r0
+        0x00000380:    2800        .(      CMP      r0,#0
+        0x00000382:    d00b        ..      BEQ      0x39c ; xTaskGenericCreate + 48
+        0x00000384:    0030        0.      MOVS     r0,r6
+        0x00000386:    d102        ..      BNE      0x38e ; xTaskGenericCreate + 34
+        0x00000388:    4628        (F      MOV      r0,r5
+        0x0000038a:    f000fc13    ....    BL       pvPortMalloc ; 0xbb4
+        0x0000038e:    6320         c      STR      r0,[r4,#0x30]
+        0x00000390:    2800        .(      CMP      r0,#0
+        0x00000392:    d038        8.      BEQ      0x406 ; xTaskGenericCreate + 154
+        0x00000394:    22a5        ."      MOVS     r2,#0xa5
+        0x00000396:    4629        )F      MOV      r1,r5
+        0x00000398:    f000fcf2    ....    BL       __aeabi_memset ; 0xd80
+        0x0000039c:    2c00        .,      CMP      r4,#0
+        0x0000039e:    d07e        ~.      BEQ      0x49e ; xTaskGenericCreate + 306
+        0x000003a0:    6b20         k      LDR      r0,[r4,#0x30]
+        0x000003a2:    1f2d        -.      SUBS     r5,r5,#4
+        0x000003a4:    1940        @.      ADDS     r0,r0,r5
+        0x000003a6:    08c5        ..      LSRS     r5,r0,#3
+        0x000003a8:    4620         F      MOV      r0,r4
+        0x000003aa:    00ed        ..      LSLS     r5,r5,#3
+        0x000003ac:    463e        >F      MOV      r6,r7
+        0x000003ae:    2210        ."      MOVS     r2,#0x10
+        0x000003b0:    3034        40      ADDS     r0,r0,#0x34
+        0x000003b2:    9902        ..      LDR      r1,[sp,#8]
+        0x000003b4:    f000fcf7    ....    BL       strncpy ; 0xda6
+        0x000003b8:    2100        .!      MOVS     r1,#0
+        0x000003ba:    2043        C       MOVS     r0,#0x43
+        0x000003bc:    5501        .U      STRB     r1,[r0,r4]
+        0x000003be:    2e06        ..      CMP      r6,#6
+        0x000003c0:    d300        ..      BCC      0x3c4 ; xTaskGenericCreate + 88
+        0x000003c2:    2605        .&      MOVS     r6,#5
+        0x000003c4:    62e6        .b      STR      r6,[r4,#0x2c]
+        0x000003c6:    1d20         .      ADDS     r0,r4,#4
+        0x000003c8:    6466        fd      STR      r6,[r4,#0x44]
+        0x000003ca:    f000fbb8    ....    BL       vListInitialiseItem ; 0xb3e
+        0x000003ce:    4620         F      MOV      r0,r4
+        0x000003d0:    3018        .0      ADDS     r0,r0,#0x18
+        0x000003d2:    f000fbb4    ....    BL       vListInitialiseItem ; 0xb3e
+        0x000003d6:    2006        .       MOVS     r0,#6
+        0x000003d8:    1b80        ..      SUBS     r0,r0,r6
+        0x000003da:    6124        $a      STR      r4,[r4,#0x10]
+        0x000003dc:    61a0        .a      STR      r0,[r4,#0x18]
+        0x000003de:    6264        db      STR      r4,[r4,#0x24]
+        0x000003e0:    4628        (F      MOV      r0,r5
+        0x000003e2:    9a04        ..      LDR      r2,[sp,#0x10]
+        0x000003e4:    9901        ..      LDR      r1,[sp,#4]
+        0x000003e6:    f000fc5b    ..[.    BL       pxPortInitialiseStack ; 0xca0
+        0x000003ea:    6020         `      STR      r0,[r4,#0]
+        0x000003ec:    f000fc83    ....    BL       vPortEnterCritical ; 0xcf6
+        0x000003f0:    4ef8        .N      LDR      r6,[pc,#992] ; [0x7d4] = 0x20000000
+        0x000003f2:    68b0        .h      LDR      r0,[r6,#8]
+        0x000003f4:    1c40        @.      ADDS     r0,r0,#1
+        0x000003f6:    60b0        .`      STR      r0,[r6,#8]
+        0x000003f8:    68b0        .h      LDR      r0,[r6,#8]
+        0x000003fa:    2801        .(      CMP      r0,#1
+        0x000003fc:    d008        ..      BEQ      0x410 ; xTaskGenericCreate + 164
+        0x000003fe:    69b0        .i      LDR      r0,[r6,#0x18]
+        0x00000400:    2800        .(      CMP      r0,#0
+        0x00000402:    d02a        *.      BEQ      0x45a ; xTaskGenericCreate + 238
+        0x00000404:    e02e        ..      B        0x464 ; xTaskGenericCreate + 248
+        0x00000406:    4620         F      MOV      r0,r4
+        0x00000408:    f000fc25    ..%.    BL       vPortFree ; 0xc56
+        0x0000040c:    2400        .$      MOVS     r4,#0
+        0x0000040e:    e7c5        ..      B        0x39c ; xTaskGenericCreate + 48
+        0x00000410:    6034        4`      STR      r4,[r6,#0]
+        0x00000412:    2500        .%      MOVS     r5,#0
+        0x00000414:    2014        .       MOVS     r0,#0x14
+        0x00000416:    49f0        .I      LDR      r1,[pc,#960] ; [0x7d8] = 0x20000058
+        0x00000418:    4368        hC      MULS     r0,r5,r0
+        0x0000041a:    1840        @.      ADDS     r0,r0,r1
+        0x0000041c:    f000fb84    ....    BL       vListInitialise ; 0xb28
+        0x00000420:    1c6d        m.      ADDS     r5,r5,#1
+        0x00000422:    2d06        .-      CMP      r5,#6
+        0x00000424:    d3f6        ..      BCC      0x414 ; xTaskGenericCreate + 168
+        0x00000426:    48ec        .H      LDR      r0,[pc,#944] ; [0x7d8] = 0x20000058
+        0x00000428:    3078        x0      ADDS     r0,r0,#0x78
+        0x0000042a:    f000fb7d    ..}.    BL       vListInitialise ; 0xb28
+        0x0000042e:    48ea        .H      LDR      r0,[pc,#936] ; [0x7d8] = 0x20000058
+        0x00000430:    308c        .0      ADDS     r0,r0,#0x8c
+        0x00000432:    f000fb79    ..y.    BL       vListInitialise ; 0xb28
+        0x00000436:    48e8        .H      LDR      r0,[pc,#928] ; [0x7d8] = 0x20000058
+        0x00000438:    30a0        .0      ADDS     r0,r0,#0xa0
+        0x0000043a:    f000fb75    ..u.    BL       vListInitialise ; 0xb28
+        0x0000043e:    48e6        .H      LDR      r0,[pc,#920] ; [0x7d8] = 0x20000058
+        0x00000440:    30b4        .0      ADDS     r0,r0,#0xb4
+        0x00000442:    f000fb71    ..q.    BL       vListInitialise ; 0xb28
+        0x00000446:    48e4        .H      LDR      r0,[pc,#912] ; [0x7d8] = 0x20000058
+        0x00000448:    30c8        .0      ADDS     r0,r0,#0xc8
+        0x0000044a:    f000fb6d    ..m.    BL       vListInitialise ; 0xb28
+        0x0000044e:    48e2        .H      LDR      r0,[pc,#904] ; [0x7d8] = 0x20000058
+        0x00000450:    3078        x0      ADDS     r0,r0,#0x78
+        0x00000452:    6330        0c      STR      r0,[r6,#0x30]
+        0x00000454:    3014        .0      ADDS     r0,r0,#0x14
+        0x00000456:    6370        pc      STR      r0,[r6,#0x34]
+        0x00000458:    e004        ..      B        0x464 ; xTaskGenericCreate + 248
+        0x0000045a:    6830        0h      LDR      r0,[r6,#0]
+        0x0000045c:    6ac0        .j      LDR      r0,[r0,#0x2c]
+        0x0000045e:    42b8        .B      CMP      r0,r7
+        0x00000460:    d800        ..      BHI      0x464 ; xTaskGenericCreate + 248
+        0x00000462:    6034        4`      STR      r4,[r6,#0]
+        0x00000464:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x00000466:    6931        1i      LDR      r1,[r6,#0x10]
+        0x00000468:    4288        .B      CMP      r0,r1
+        0x0000046a:    d900        ..      BLS      0x46e ; xTaskGenericCreate + 258
+        0x0000046c:    6130        0a      STR      r0,[r6,#0x10]
+        0x0000046e:    6af1        .j      LDR      r1,[r6,#0x2c]
+        0x00000470:    1c49        I.      ADDS     r1,r1,#1
+        0x00000472:    62f1        .b      STR      r1,[r6,#0x2c]
+        0x00000474:    6971        qi      LDR      r1,[r6,#0x14]
+        0x00000476:    4288        .B      CMP      r0,r1
+        0x00000478:    d900        ..      BLS      0x47c ; xTaskGenericCreate + 272
+        0x0000047a:    6170        pa      STR      r0,[r6,#0x14]
+        0x0000047c:    2114        .!      MOVS     r1,#0x14
+        0x0000047e:    4348        HC      MULS     r0,r1,r0
+        0x00000480:    49d5        .I      LDR      r1,[pc,#852] ; [0x7d8] = 0x20000058
+        0x00000482:    1840        @.      ADDS     r0,r0,r1
+        0x00000484:    1d21        !.      ADDS     r1,r4,#4
+        0x00000486:    f000fb5d    ..].    BL       vListInsertEnd ; 0xb44
+        0x0000048a:    2501        .%      MOVS     r5,#1
+        0x0000048c:    f000fc3b    ..;.    BL       vPortExitCritical ; 0xd06
+        0x00000490:    980b        ..      LDR      r0,[sp,#0x2c]
+        0x00000492:    2800        .(      CMP      r0,#0
+        0x00000494:    d000        ..      BEQ      0x498 ; xTaskGenericCreate + 300
+        0x00000496:    6004        .`      STR      r4,[r0,#0]
+        0x00000498:    69b0        .i      LDR      r0,[r6,#0x18]
+        0x0000049a:    2800        .(      CMP      r0,#0
+        0x0000049c:    e000        ..      B        0x4a0 ; xTaskGenericCreate + 308
+        0x0000049e:    e009        ..      B        0x4b4 ; xTaskGenericCreate + 328
+        0x000004a0:    d005        ..      BEQ      0x4ae ; xTaskGenericCreate + 322
+        0x000004a2:    6830        0h      LDR      r0,[r6,#0]
+        0x000004a4:    6ac0        .j      LDR      r0,[r0,#0x2c]
+        0x000004a6:    42b8        .B      CMP      r0,r7
+        0x000004a8:    d201        ..      BCS      0x4ae ; xTaskGenericCreate + 322
+        0x000004aa:    f000fc1f    ....    BL       vPortYieldFromISR ; 0xcec
+        0x000004ae:    4628        (F      MOV      r0,r5
+        0x000004b0:    b005        ..      ADD      sp,sp,#0x14
+        0x000004b2:    bdf0        ..      POP      {r4-r7,pc}
+        0x000004b4:    2500        .%      MOVS     r5,#0
+        0x000004b6:    43ed        .C      MVNS     r5,r5
+        0x000004b8:    e7f9        ..      B        0x4ae ; xTaskGenericCreate + 322
+    vTaskDelete
+        0x000004ba:    b570        p.      PUSH     {r4-r6,lr}
+        0x000004bc:    4604        .F      MOV      r4,r0
+        0x000004be:    f000fc1a    ....    BL       vPortEnterCritical ; 0xcf6
+        0x000004c2:    4ec4        .N      LDR      r6,[pc,#784] ; [0x7d4] = 0x20000000
+        0x000004c4:    6830        0h      LDR      r0,[r6,#0]
+        0x000004c6:    4284        .B      CMP      r4,r0
+        0x000004c8:    d100        ..      BNE      0x4cc ; vTaskDelete + 18
+        0x000004ca:    2400        .$      MOVS     r4,#0
+        0x000004cc:    0025        %.      MOVS     r5,r4
+        0x000004ce:    d100        ..      BNE      0x4d2 ; vTaskDelete + 24
+        0x000004d0:    6835        5h      LDR      r5,[r6,#0]
+        0x000004d2:    1d28        (.      ADDS     r0,r5,#4
+        0x000004d4:    f000fb5c    ..\.    BL       vListRemove ; 0xb90
+        0x000004d8:    6aa8        .j      LDR      r0,[r5,#0x28]
+        0x000004da:    2800        .(      CMP      r0,#0
+        0x000004dc:    d003        ..      BEQ      0x4e6 ; vTaskDelete + 44
+        0x000004de:    4628        (F      MOV      r0,r5
+        0x000004e0:    3018        .0      ADDS     r0,r0,#0x18
+        0x000004e2:    f000fb55    ..U.    BL       vListRemove ; 0xb90
+        0x000004e6:    48bc        .H      LDR      r0,[pc,#752] ; [0x7d8] = 0x20000058
+        0x000004e8:    1d29        ).      ADDS     r1,r5,#4
+        0x000004ea:    30b4        .0      ADDS     r0,r0,#0xb4
+        0x000004ec:    f000fb2a    ..*.    BL       vListInsertEnd ; 0xb44
+        0x000004f0:    6870        ph      LDR      r0,[r6,#4]
+        0x000004f2:    1c40        @.      ADDS     r0,r0,#1
+        0x000004f4:    6070        p`      STR      r0,[r6,#4]
+        0x000004f6:    6af0        .j      LDR      r0,[r6,#0x2c]
+        0x000004f8:    1c40        @.      ADDS     r0,r0,#1
+        0x000004fa:    62f0        .b      STR      r0,[r6,#0x2c]
+        0x000004fc:    f000fc03    ....    BL       vPortExitCritical ; 0xd06
+        0x00000500:    69b0        .i      LDR      r0,[r6,#0x18]
+        0x00000502:    2800        .(      CMP      r0,#0
+        0x00000504:    d003        ..      BEQ      0x50e ; vTaskDelete + 84
+        0x00000506:    2c00        .,      CMP      r4,#0
+        0x00000508:    d101        ..      BNE      0x50e ; vTaskDelete + 84
+        0x0000050a:    f000fbef    ....    BL       vPortYieldFromISR ; 0xcec
+        0x0000050e:    bd70        p.      POP      {r4-r6,pc}
+    vTaskIncrementTick
+        0x00000510:    b570        p.      PUSH     {r4-r6,lr}
+        0x00000512:    4db0        .M      LDR      r5,[pc,#704] ; [0x7d4] = 0x20000000
+        0x00000514:    69e8        .i      LDR      r0,[r5,#0x1c]
+        0x00000516:    2800        .(      CMP      r0,#0
+        0x00000518:    d003        ..      BEQ      0x522 ; vTaskIncrementTick + 18
+        0x0000051a:    6a28        (j      LDR      r0,[r5,#0x20]
+        0x0000051c:    1c40        @.      ADDS     r0,r0,#1
+        0x0000051e:    6228        (b      STR      r0,[r5,#0x20]
+        0x00000520:    bd70        p.      POP      {r4-r6,pc}
+        0x00000522:    68e8        .h      LDR      r0,[r5,#0xc]
+        0x00000524:    1c40        @.      ADDS     r0,r0,#1
+        0x00000526:    60e8        .`      STR      r0,[r5,#0xc]
+        0x00000528:    68e8        .h      LDR      r0,[r5,#0xc]
+        0x0000052a:    2800        .(      CMP      r0,#0
+        0x0000052c:    d106        ..      BNE      0x53c ; vTaskIncrementTick + 44
+        0x0000052e:    6b28        (k      LDR      r0,[r5,#0x30]
+        0x00000530:    6b69        ik      LDR      r1,[r5,#0x34]
+        0x00000532:    6329        )c      STR      r1,[r5,#0x30]
+        0x00000534:    6368        hc      STR      r0,[r5,#0x34]
+        0x00000536:    6aa8        .j      LDR      r0,[r5,#0x28]
+        0x00000538:    1c40        @.      ADDS     r0,r0,#1
+        0x0000053a:    62a8        .b      STR      r0,[r5,#0x28]
+        0x0000053c:    4ea6        .N      LDR      r6,[pc,#664] ; [0x7d8] = 0x20000058
+        0x0000053e:    e018        ..      B        0x572 ; vTaskIncrementTick + 98
+        0x00000540:    6860        `h      LDR      r0,[r4,#4]
+        0x00000542:    68e9        .h      LDR      r1,[r5,#0xc]
+        0x00000544:    4288        .B      CMP      r0,r1
+        0x00000546:    d8eb        ..      BHI      0x520 ; vTaskIncrementTick + 16
+        0x00000548:    1d20         .      ADDS     r0,r4,#4
+        0x0000054a:    f000fb21    ..!.    BL       vListRemove ; 0xb90
+        0x0000054e:    6aa0        .j      LDR      r0,[r4,#0x28]
+        0x00000550:    2800        .(      CMP      r0,#0
+        0x00000552:    d003        ..      BEQ      0x55c ; vTaskIncrementTick + 76
+        0x00000554:    4620         F      MOV      r0,r4
+        0x00000556:    3018        .0      ADDS     r0,r0,#0x18
+        0x00000558:    f000fb1a    ....    BL       vListRemove ; 0xb90
+        0x0000055c:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x0000055e:    6969        ii      LDR      r1,[r5,#0x14]
+        0x00000560:    4288        .B      CMP      r0,r1
+        0x00000562:    d900        ..      BLS      0x566 ; vTaskIncrementTick + 86
+        0x00000564:    6168        ha      STR      r0,[r5,#0x14]
+        0x00000566:    2114        .!      MOVS     r1,#0x14
+        0x00000568:    4348        HC      MULS     r0,r1,r0
+        0x0000056a:    1980        ..      ADDS     r0,r0,r6
+        0x0000056c:    1d21        !.      ADDS     r1,r4,#4
+        0x0000056e:    f000fae9    ....    BL       vListInsertEnd ; 0xb44
+        0x00000572:    6b28        (k      LDR      r0,[r5,#0x30]
+        0x00000574:    6800        .h      LDR      r0,[r0,#0]
+        0x00000576:    2800        .(      CMP      r0,#0
+        0x00000578:    d003        ..      BEQ      0x582 ; vTaskIncrementTick + 114
+        0x0000057a:    6b28        (k      LDR      r0,[r5,#0x30]
+        0x0000057c:    68c0        .h      LDR      r0,[r0,#0xc]
+        0x0000057e:    68c4        .h      LDR      r4,[r0,#0xc]
+        0x00000580:    e000        ..      B        0x584 ; vTaskIncrementTick + 116
+        0x00000582:    2400        .$      MOVS     r4,#0
+        0x00000584:    2c00        .,      CMP      r4,#0
+        0x00000586:    d1db        ..      BNE      0x540 ; vTaskIncrementTick + 48
+        0x00000588:    bd70        p.      POP      {r4-r6,pc}
+    xTaskResumeAll
+        0x0000058a:    b5f8        ..      PUSH     {r3-r7,lr}
+        0x0000058c:    2700        .'      MOVS     r7,#0
+        0x0000058e:    f000fbb2    ....    BL       vPortEnterCritical ; 0xcf6
+        0x00000592:    4e90        .N      LDR      r6,[pc,#576] ; [0x7d4] = 0x20000000
+        0x00000594:    69f0        .i      LDR      r0,[r6,#0x1c]
+        0x00000596:    1e40        @.      SUBS     r0,r0,#1
+        0x00000598:    61f0        .a      STR      r0,[r6,#0x1c]
+        0x0000059a:    69f0        .i      LDR      r0,[r6,#0x1c]
+        0x0000059c:    2800        .(      CMP      r0,#0
+        0x0000059e:    d13f        ?.      BNE      0x620 ; xTaskResumeAll + 150
+        0x000005a0:    68b0        .h      LDR      r0,[r6,#8]
+        0x000005a2:    2800        .(      CMP      r0,#0
+        0x000005a4:    d03c        <.      BEQ      0x620 ; xTaskResumeAll + 150
+        0x000005a6:    2500        .%      MOVS     r5,#0
+        0x000005a8:    e018        ..      B        0x5dc ; xTaskResumeAll + 82
+        0x000005aa:    4620         F      MOV      r0,r4
+        0x000005ac:    3018        .0      ADDS     r0,r0,#0x18
+        0x000005ae:    f000faef    ....    BL       vListRemove ; 0xb90
+        0x000005b2:    1d20         .      ADDS     r0,r4,#4
+        0x000005b4:    f000faec    ....    BL       vListRemove ; 0xb90
+        0x000005b8:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x000005ba:    6971        qi      LDR      r1,[r6,#0x14]
+        0x000005bc:    4288        .B      CMP      r0,r1
+        0x000005be:    d900        ..      BLS      0x5c2 ; xTaskResumeAll + 56
+        0x000005c0:    6170        pa      STR      r0,[r6,#0x14]
+        0x000005c2:    2114        .!      MOVS     r1,#0x14
+        0x000005c4:    4348        HC      MULS     r0,r1,r0
+        0x000005c6:    4984        .I      LDR      r1,[pc,#528] ; [0x7d8] = 0x20000058
+        0x000005c8:    1840        @.      ADDS     r0,r0,r1
+        0x000005ca:    1d21        !.      ADDS     r1,r4,#4
+        0x000005cc:    f000faba    ....    BL       vListInsertEnd ; 0xb44
+        0x000005d0:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x000005d2:    6831        1h      LDR      r1,[r6,#0]
+        0x000005d4:    6ac9        .j      LDR      r1,[r1,#0x2c]
+        0x000005d6:    4288        .B      CMP      r0,r1
+        0x000005d8:    d300        ..      BCC      0x5dc ; xTaskResumeAll + 82
+        0x000005da:    2501        .%      MOVS     r5,#1
+        0x000005dc:    487e        ~H      LDR      r0,[pc,#504] ; [0x7d8] = 0x20000058
+        0x000005de:    30a0        .0      ADDS     r0,r0,#0xa0
+        0x000005e0:    6801        .h      LDR      r1,[r0,#0]
+        0x000005e2:    2900        .)      CMP      r1,#0
+        0x000005e4:    d002        ..      BEQ      0x5ec ; xTaskResumeAll + 98
+        0x000005e6:    68c0        .h      LDR      r0,[r0,#0xc]
+        0x000005e8:    68c4        .h      LDR      r4,[r0,#0xc]
+        0x000005ea:    e000        ..      B        0x5ee ; xTaskResumeAll + 100
+        0x000005ec:    2400        .$      MOVS     r4,#0
+        0x000005ee:    2c00        .,      CMP      r4,#0
+        0x000005f0:    d1db        ..      BNE      0x5aa ; xTaskResumeAll + 32
+        0x000005f2:    6a30        0j      LDR      r0,[r6,#0x20]
+        0x000005f4:    2800        .(      CMP      r0,#0
+        0x000005f6:    d105        ..      BNE      0x604 ; xTaskResumeAll + 122
+        0x000005f8:    e008        ..      B        0x60c ; xTaskResumeAll + 130
+        0x000005fa:    f7ffff89    ....    BL       vTaskIncrementTick ; 0x510
+        0x000005fe:    6a30        0j      LDR      r0,[r6,#0x20]
+        0x00000600:    1e40        @.      SUBS     r0,r0,#1
+        0x00000602:    6230        0b      STR      r0,[r6,#0x20]
+        0x00000604:    6a30        0j      LDR      r0,[r6,#0x20]
+        0x00000606:    2800        .(      CMP      r0,#0
+        0x00000608:    d1f7        ..      BNE      0x5fa ; xTaskResumeAll + 112
+        0x0000060a:    e004        ..      B        0x616 ; xTaskResumeAll + 140
+        0x0000060c:    2d01        .-      CMP      r5,#1
+        0x0000060e:    d002        ..      BEQ      0x616 ; xTaskResumeAll + 140
+        0x00000610:    6a70        pj      LDR      r0,[r6,#0x24]
+        0x00000612:    2801        .(      CMP      r0,#1
+        0x00000614:    d104        ..      BNE      0x620 ; xTaskResumeAll + 150
+        0x00000616:    2000        .       MOVS     r0,#0
+        0x00000618:    2701        .'      MOVS     r7,#1
+        0x0000061a:    6270        pb      STR      r0,[r6,#0x24]
+        0x0000061c:    f000fb66    ..f.    BL       vPortYieldFromISR ; 0xcec
+        0x00000620:    f000fb71    ..q.    BL       vPortExitCritical ; 0xd06
+        0x00000624:    4638        8F      MOV      r0,r7
+        0x00000626:    bdf8        ..      POP      {r3-r7,pc}
+    vTaskSuspendAll
+        0x00000628:    486a        jH      LDR      r0,[pc,#424] ; [0x7d4] = 0x20000000
+        0x0000062a:    69c1        .i      LDR      r1,[r0,#0x1c]
+        0x0000062c:    1c49        I.      ADDS     r1,r1,#1
+        0x0000062e:    61c1        .a      STR      r1,[r0,#0x1c]
+        0x00000630:    4770        pG      BX       lr
+    vTaskDelayUntil
+        0x00000632:    b570        p.      PUSH     {r4-r6,lr}
+        0x00000634:    4606        .F      MOV      r6,r0
+        0x00000636:    460c        .F      MOV      r4,r1
+        0x00000638:    2200        ."      MOVS     r2,#0
+        0x0000063a:    f7fffff5    ....    BL       vTaskSuspendAll ; 0x628
+        0x0000063e:    4d65        eM      LDR      r5,[pc,#404] ; [0x7d4] = 0x20000000
+        0x00000640:    6833        3h      LDR      r3,[r6,#0]
+        0x00000642:    68e8        .h      LDR      r0,[r5,#0xc]
+        0x00000644:    191c        ..      ADDS     r4,r3,r4
+        0x00000646:    4283        .B      CMP      r3,r0
+        0x00000648:    d902        ..      BLS      0x650 ; vTaskDelayUntil + 30
+        0x0000064a:    42a3        .B      CMP      r3,r4
+        0x0000064c:    d802        ..      BHI      0x654 ; vTaskDelayUntil + 34
+        0x0000064e:    e005        ..      B        0x65c ; vTaskDelayUntil + 42
+        0x00000650:    42a3        .B      CMP      r3,r4
+        0x00000652:    d802        ..      BHI      0x65a ; vTaskDelayUntil + 40
+        0x00000654:    68e8        .h      LDR      r0,[r5,#0xc]
+        0x00000656:    4284        .B      CMP      r4,r0
+        0x00000658:    d900        ..      BLS      0x65c ; vTaskDelayUntil + 42
+        0x0000065a:    2201        ."      MOVS     r2,#1
+        0x0000065c:    6034        4`      STR      r4,[r6,#0]
+        0x0000065e:    2a00        .*      CMP      r2,#0
+        0x00000660:    d010        ..      BEQ      0x684 ; vTaskDelayUntil + 82
+        0x00000662:    6828        (h      LDR      r0,[r5,#0]
+        0x00000664:    1d00        ..      ADDS     r0,r0,#4
+        0x00000666:    f000fa93    ....    BL       vListRemove ; 0xb90
+        0x0000066a:    6828        (h      LDR      r0,[r5,#0]
+        0x0000066c:    6044        D`      STR      r4,[r0,#4]
+        0x0000066e:    68e8        .h      LDR      r0,[r5,#0xc]
+        0x00000670:    6829        )h      LDR      r1,[r5,#0]
+        0x00000672:    4284        .B      CMP      r4,r0
+        0x00000674:    d202        ..      BCS      0x67c ; vTaskDelayUntil + 74
+        0x00000676:    1d09        ..      ADDS     r1,r1,#4
+        0x00000678:    6b68        hk      LDR      r0,[r5,#0x34]
+        0x0000067a:    e001        ..      B        0x680 ; vTaskDelayUntil + 78
+        0x0000067c:    1d09        ..      ADDS     r1,r1,#4
+        0x0000067e:    6b28        (k      LDR      r0,[r5,#0x30]
+        0x00000680:    f000fa6e    ..n.    BL       vListInsert ; 0xb60
+        0x00000684:    f7ffff81    ....    BL       xTaskResumeAll ; 0x58a
+        0x00000688:    2800        .(      CMP      r0,#0
+        0x0000068a:    d101        ..      BNE      0x690 ; vTaskDelayUntil + 94
+        0x0000068c:    f000fb2e    ....    BL       vPortYieldFromISR ; 0xcec
+        0x00000690:    bd70        p.      POP      {r4-r6,pc}
+    vTaskDelay
+        0x00000692:    b570        p.      PUSH     {r4-r6,lr}
+        0x00000694:    0002        ..      MOVS     r2,r0
+        0x00000696:    d019        ..      BEQ      0x6cc ; vTaskDelay + 58
+        0x00000698:    f7ffffc6    ....    BL       vTaskSuspendAll ; 0x628
+        0x0000069c:    4d4d        MM      LDR      r5,[pc,#308] ; [0x7d4] = 0x20000000
+        0x0000069e:    68e8        .h      LDR      r0,[r5,#0xc]
+        0x000006a0:    1884        ..      ADDS     r4,r0,r2
+        0x000006a2:    6828        (h      LDR      r0,[r5,#0]
+        0x000006a4:    1d00        ..      ADDS     r0,r0,#4
+        0x000006a6:    f000fa73    ..s.    BL       vListRemove ; 0xb90
+        0x000006aa:    6828        (h      LDR      r0,[r5,#0]
+        0x000006ac:    6044        D`      STR      r4,[r0,#4]
+        0x000006ae:    68e8        .h      LDR      r0,[r5,#0xc]
+        0x000006b0:    6829        )h      LDR      r1,[r5,#0]
+        0x000006b2:    4284        .B      CMP      r4,r0
+        0x000006b4:    d202        ..      BCS      0x6bc ; vTaskDelay + 42
+        0x000006b6:    1d09        ..      ADDS     r1,r1,#4
+        0x000006b8:    6b68        hk      LDR      r0,[r5,#0x34]
+        0x000006ba:    e001        ..      B        0x6c0 ; vTaskDelay + 46
+        0x000006bc:    1d09        ..      ADDS     r1,r1,#4
+        0x000006be:    6b28        (k      LDR      r0,[r5,#0x30]
+        0x000006c0:    f000fa4e    ..N.    BL       vListInsert ; 0xb60
+        0x000006c4:    f7ffff61    ..a.    BL       xTaskResumeAll ; 0x58a
+        0x000006c8:    2800        .(      CMP      r0,#0
+        0x000006ca:    d101        ..      BNE      0x6d0 ; vTaskDelay + 62
+        0x000006cc:    f000fb0e    ....    BL       vPortYieldFromISR ; 0xcec
+        0x000006d0:    bd70        p.      POP      {r4-r6,pc}
+    uxTaskPriorityGet
+        0x000006d2:    b510        ..      PUSH     {r4,lr}
+        0x000006d4:    4604        .F      MOV      r4,r0
+        0x000006d6:    f000fb0e    ....    BL       vPortEnterCritical ; 0xcf6
+        0x000006da:    2c00        .,      CMP      r4,#0
+        0x000006dc:    d101        ..      BNE      0x6e2 ; uxTaskPriorityGet + 16
+        0x000006de:    483d        =H      LDR      r0,[pc,#244] ; [0x7d4] = 0x20000000
+        0x000006e0:    6804        .h      LDR      r4,[r0,#0]
+        0x000006e2:    6ae4        .j      LDR      r4,[r4,#0x2c]
+        0x000006e4:    f000fb0f    ....    BL       vPortExitCritical ; 0xd06
+        0x000006e8:    4620         F      MOV      r0,r4
+        0x000006ea:    bd10        ..      POP      {r4,pc}
+    vTaskPrioritySet
+        0x000006ec:    b5f8        ..      PUSH     {r3-r7,lr}
+        0x000006ee:    2700        .'      MOVS     r7,#0
+        0x000006f0:    4606        .F      MOV      r6,r0
+        0x000006f2:    460d        .F      MOV      r5,r1
+        0x000006f4:    2906        .)      CMP      r1,#6
+        0x000006f6:    d300        ..      BCC      0x6fa ; vTaskPrioritySet + 14
+        0x000006f8:    2505        .%      MOVS     r5,#5
+        0x000006fa:    f000fafc    ....    BL       vPortEnterCritical ; 0xcf6
+        0x000006fe:    4835        5H      LDR      r0,[pc,#212] ; [0x7d4] = 0x20000000
+        0x00000700:    6800        .h      LDR      r0,[r0,#0]
+        0x00000702:    4286        .B      CMP      r6,r0
+        0x00000704:    d100        ..      BNE      0x708 ; vTaskPrioritySet + 28
+        0x00000706:    2600        .&      MOVS     r6,#0
+        0x00000708:    0034        4.      MOVS     r4,r6
+        0x0000070a:    d101        ..      BNE      0x710 ; vTaskPrioritySet + 36
+        0x0000070c:    4831        1H      LDR      r0,[pc,#196] ; [0x7d4] = 0x20000000
+        0x0000070e:    6804        .h      LDR      r4,[r0,#0]
+        0x00000710:    6c60        `l      LDR      r0,[r4,#0x44]
+        0x00000712:    42a8        .B      CMP      r0,r5
+        0x00000714:    d029        ).      BEQ      0x76a ; vTaskPrioritySet + 126
+        0x00000716:    4285        .B      CMP      r5,r0
+        0x00000718:    d902        ..      BLS      0x720 ; vTaskPrioritySet + 52
+        0x0000071a:    2e00        ..      CMP      r6,#0
+        0x0000071c:    d102        ..      BNE      0x724 ; vTaskPrioritySet + 56
+        0x0000071e:    e002        ..      B        0x726 ; vTaskPrioritySet + 58
+        0x00000720:    2e00        ..      CMP      r6,#0
+        0x00000722:    d100        ..      BNE      0x726 ; vTaskPrioritySet + 58
+        0x00000724:    2701        .'      MOVS     r7,#1
+        0x00000726:    6ae2        .j      LDR      r2,[r4,#0x2c]
+        0x00000728:    4290        .B      CMP      r0,r2
+        0x0000072a:    d100        ..      BNE      0x72e ; vTaskPrioritySet + 66
+        0x0000072c:    62e5        .b      STR      r5,[r4,#0x2c]
+        0x0000072e:    2106        .!      MOVS     r1,#6
+        0x00000730:    1b49        I.      SUBS     r1,r1,r5
+        0x00000732:    6465        ed      STR      r5,[r4,#0x44]
+        0x00000734:    61a1        .a      STR      r1,[r4,#0x18]
+        0x00000736:    2214        ."      MOVS     r2,#0x14
+        0x00000738:    4d27        'M      LDR      r5,[pc,#156] ; [0x7d8] = 0x20000058
+        0x0000073a:    4350        PC      MULS     r0,r2,r0
+        0x0000073c:    6961        ai      LDR      r1,[r4,#0x14]
+        0x0000073e:    1940        @.      ADDS     r0,r0,r5
+        0x00000740:    4281        .B      CMP      r1,r0
+        0x00000742:    d10e        ..      BNE      0x762 ; vTaskPrioritySet + 118
+        0x00000744:    1d20         .      ADDS     r0,r4,#4
+        0x00000746:    f000fa23    ..#.    BL       vListRemove ; 0xb90
+        0x0000074a:    4922        "I      LDR      r1,[pc,#136] ; [0x7d4] = 0x20000000
+        0x0000074c:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x0000074e:    694a        Ji      LDR      r2,[r1,#0x14]
+        0x00000750:    4290        .B      CMP      r0,r2
+        0x00000752:    d900        ..      BLS      0x756 ; vTaskPrioritySet + 106
+        0x00000754:    6148        Ha      STR      r0,[r1,#0x14]
+        0x00000756:    2114        .!      MOVS     r1,#0x14
+        0x00000758:    4348        HC      MULS     r0,r1,r0
+        0x0000075a:    1940        @.      ADDS     r0,r0,r5
+        0x0000075c:    1d21        !.      ADDS     r1,r4,#4
+        0x0000075e:    f000f9f1    ....    BL       vListInsertEnd ; 0xb44
+        0x00000762:    2f01        ./      CMP      r7,#1
+        0x00000764:    d101        ..      BNE      0x76a ; vTaskPrioritySet + 126
+        0x00000766:    f000fac1    ....    BL       vPortYieldFromISR ; 0xcec
+        0x0000076a:    f000facc    ....    BL       vPortExitCritical ; 0xd06
+        0x0000076e:    bdf8        ..      POP      {r3-r7,pc}
+    vTaskSuspend
+        0x00000770:    b570        p.      PUSH     {r4-r6,lr}
+        0x00000772:    4605        .F      MOV      r5,r0
+        0x00000774:    f000fabf    ....    BL       vPortEnterCritical ; 0xcf6
+        0x00000778:    4816        .H      LDR      r0,[pc,#88] ; [0x7d4] = 0x20000000
+        0x0000077a:    6801        .h      LDR      r1,[r0,#0]
+        0x0000077c:    428d        .B      CMP      r5,r1
+        0x0000077e:    d100        ..      BNE      0x782 ; vTaskSuspend + 18
+        0x00000780:    2500        .%      MOVS     r5,#0
+        0x00000782:    002c        ,.      MOVS     r4,r5
+        0x00000784:    d100        ..      BNE      0x788 ; vTaskSuspend + 24
+        0x00000786:    6804        .h      LDR      r4,[r0,#0]
+        0x00000788:    1d20         .      ADDS     r0,r4,#4
+        0x0000078a:    f000fa01    ....    BL       vListRemove ; 0xb90
+        0x0000078e:    6aa0        .j      LDR      r0,[r4,#0x28]
+        0x00000790:    2800        .(      CMP      r0,#0
+        0x00000792:    d003        ..      BEQ      0x79c ; vTaskSuspend + 44
+        0x00000794:    4620         F      MOV      r0,r4
+        0x00000796:    3018        .0      ADDS     r0,r0,#0x18
+        0x00000798:    f000f9fa    ....    BL       vListRemove ; 0xb90
+        0x0000079c:    480e        .H      LDR      r0,[pc,#56] ; [0x7d8] = 0x20000058
+        0x0000079e:    1d21        !.      ADDS     r1,r4,#4
+        0x000007a0:    30c8        .0      ADDS     r0,r0,#0xc8
+        0x000007a2:    f000f9cf    ....    BL       vListInsertEnd ; 0xb44
+        0x000007a6:    f000faae    ....    BL       vPortExitCritical ; 0xd06
+        0x000007aa:    2d00        .-      CMP      r5,#0
+        0x000007ac:    d101        ..      BNE      0x7b2 ; vTaskSuspend + 66
+        0x000007ae:    f000fa9d    ....    BL       vPortYieldFromISR ; 0xcec
+        0x000007b2:    bd70        p.      POP      {r4-r6,pc}
+    xTaskIsTaskSuspended
+        0x000007b4:    4b08        .K      LDR      r3,[pc,#32] ; [0x7d8] = 0x20000058
+        0x000007b6:    6942        Bi      LDR      r2,[r0,#0x14]
+        0x000007b8:    2100        .!      MOVS     r1,#0
+        0x000007ba:    33c8        .3      ADDS     r3,r3,#0xc8
+        0x000007bc:    429a        .B      CMP      r2,r3
+        0x000007be:    d107        ..      BNE      0x7d0 ; xTaskIsTaskSuspended + 28
+        0x000007c0:    6a80        .j      LDR      r0,[r0,#0x28]
+        0x000007c2:    461a        .F      MOV      r2,r3
+        0x000007c4:    3a28        (:      SUBS     r2,r2,#0x28
+        0x000007c6:    4290        .B      CMP      r0,r2
+        0x000007c8:    d002        ..      BEQ      0x7d0 ; xTaskIsTaskSuspended + 28
+        0x000007ca:    2800        .(      CMP      r0,#0
+        0x000007cc:    d100        ..      BNE      0x7d0 ; xTaskIsTaskSuspended + 28
+        0x000007ce:    2101        .!      MOVS     r1,#1
+        0x000007d0:    4608        .F      MOV      r0,r1
+        0x000007d2:    4770        pG      BX       lr
+    $d
+        0x000007d4:    20000000    ...     DCD    536870912
+        0x000007d8:    20000058    X..     DCD    536871000
+    $t
+    vTaskResume
+        0x000007dc:    b570        p.      PUSH     {r4-r6,lr}
+        0x000007de:    0004        ..      MOVS     r4,r0
+        0x000007e0:    d022        ".      BEQ      0x828 ; vTaskResume + 76
+        0x000007e2:    4dcc        .M      LDR      r5,[pc,#816] ; [0xb14] = 0x20000000
+        0x000007e4:    6828        (h      LDR      r0,[r5,#0]
+        0x000007e6:    4284        .B      CMP      r4,r0
+        0x000007e8:    d01e        ..      BEQ      0x828 ; vTaskResume + 76
+        0x000007ea:    f000fa84    ....    BL       vPortEnterCritical ; 0xcf6
+        0x000007ee:    4620         F      MOV      r0,r4
+        0x000007f0:    f7ffffe0    ....    BL       xTaskIsTaskSuspended ; 0x7b4
+        0x000007f4:    2801        .(      CMP      r0,#1
+        0x000007f6:    d115        ..      BNE      0x824 ; vTaskResume + 72
+        0x000007f8:    1d20         .      ADDS     r0,r4,#4
+        0x000007fa:    f000f9c9    ....    BL       vListRemove ; 0xb90
+        0x000007fe:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x00000800:    6969        ii      LDR      r1,[r5,#0x14]
+        0x00000802:    4288        .B      CMP      r0,r1
+        0x00000804:    d900        ..      BLS      0x808 ; vTaskResume + 44
+        0x00000806:    6168        ha      STR      r0,[r5,#0x14]
+        0x00000808:    2114        .!      MOVS     r1,#0x14
+        0x0000080a:    4348        HC      MULS     r0,r1,r0
+        0x0000080c:    49c2        .I      LDR      r1,[pc,#776] ; [0xb18] = 0x20000058
+        0x0000080e:    1840        @.      ADDS     r0,r0,r1
+        0x00000810:    1d21        !.      ADDS     r1,r4,#4
+        0x00000812:    f000f997    ....    BL       vListInsertEnd ; 0xb44
+        0x00000816:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x00000818:    6829        )h      LDR      r1,[r5,#0]
+        0x0000081a:    6ac9        .j      LDR      r1,[r1,#0x2c]
+        0x0000081c:    4288        .B      CMP      r0,r1
+        0x0000081e:    d301        ..      BCC      0x824 ; vTaskResume + 72
+        0x00000820:    f000fa64    ..d.    BL       vPortYieldFromISR ; 0xcec
+        0x00000824:    f000fa6f    ..o.    BL       vPortExitCritical ; 0xd06
+        0x00000828:    bd70        p.      POP      {r4-r6,pc}
+    xTaskResumeFromISR
+        0x0000082a:    b570        p.      PUSH     {r4-r6,lr}
+        0x0000082c:    4604        .F      MOV      r4,r0
+        0x0000082e:    2500        .%      MOVS     r5,#0
+        0x00000830:    f7ffffc0    ....    BL       xTaskIsTaskSuspended ; 0x7b4
+        0x00000834:    2801        .(      CMP      r0,#1
+        0x00000836:    d11f        ..      BNE      0x878 ; xTaskResumeFromISR + 78
+        0x00000838:    4eb6        .N      LDR      r6,[pc,#728] ; [0xb14] = 0x20000000
+        0x0000083a:    69f0        .i      LDR      r0,[r6,#0x1c]
+        0x0000083c:    2800        .(      CMP      r0,#0
+        0x0000083e:    d004        ..      BEQ      0x84a ; xTaskResumeFromISR + 32
+        0x00000840:    4621        !F      MOV      r1,r4
+        0x00000842:    48b5        .H      LDR      r0,[pc,#724] ; [0xb18] = 0x20000058
+        0x00000844:    3118        .1      ADDS     r1,r1,#0x18
+        0x00000846:    30a0        .0      ADDS     r0,r0,#0xa0
+        0x00000848:    e014        ..      B        0x874 ; xTaskResumeFromISR + 74
+        0x0000084a:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x0000084c:    6831        1h      LDR      r1,[r6,#0]
+        0x0000084e:    6ac9        .j      LDR      r1,[r1,#0x2c]
+        0x00000850:    4288        .B      CMP      r0,r1
+        0x00000852:    d301        ..      BCC      0x858 ; xTaskResumeFromISR + 46
+        0x00000854:    2501        .%      MOVS     r5,#1
+        0x00000856:    e000        ..      B        0x85a ; xTaskResumeFromISR + 48
+        0x00000858:    2500        .%      MOVS     r5,#0
+        0x0000085a:    1d20         .      ADDS     r0,r4,#4
+        0x0000085c:    f000f998    ....    BL       vListRemove ; 0xb90
+        0x00000860:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x00000862:    6971        qi      LDR      r1,[r6,#0x14]
+        0x00000864:    4288        .B      CMP      r0,r1
+        0x00000866:    d900        ..      BLS      0x86a ; xTaskResumeFromISR + 64
+        0x00000868:    6170        pa      STR      r0,[r6,#0x14]
+        0x0000086a:    2114        .!      MOVS     r1,#0x14
+        0x0000086c:    4348        HC      MULS     r0,r1,r0
+        0x0000086e:    49aa        .I      LDR      r1,[pc,#680] ; [0xb18] = 0x20000058
+        0x00000870:    1840        @.      ADDS     r0,r0,r1
+        0x00000872:    1d21        !.      ADDS     r1,r4,#4
+        0x00000874:    f000f966    ..f.    BL       vListInsertEnd ; 0xb44
+        0x00000878:    4628        (F      MOV      r0,r5
+        0x0000087a:    bd70        p.      POP      {r4-r6,pc}
+    prvIdleTask
+        0x0000087c:    4ca6        .L      LDR      r4,[pc,#664] ; [0xb18] = 0x20000058
+        0x0000087e:    f000f91a    ....    BL       prvCheckTasksWaitingTermination ; 0xab6
+        0x00000882:    6820         h      LDR      r0,[r4,#0]
+        0x00000884:    2801        .(      CMP      r0,#1
+        0x00000886:    d9fa        ..      BLS      0x87e ; prvIdleTask + 2
+        0x00000888:    f000fa30    ..0.    BL       vPortYieldFromISR ; 0xcec
+        0x0000088c:    e7f7        ..      B        0x87e ; prvIdleTask + 2
+    vTaskStartScheduler
+        0x0000088e:    b51f        ..      PUSH     {r0-r4,lr}
+        0x00000890:    2300        .#      MOVS     r3,#0
+        0x00000892:    9300        ..      STR      r3,[sp,#0]
+        0x00000894:    9301        ..      STR      r3,[sp,#4]
+        0x00000896:    9302        ..      STR      r3,[sp,#8]
+        0x00000898:    2280        ."      MOVS     r2,#0x80
+        0x0000089a:    a1a0        ..      ADR      r1,{pc}+0x282 ; 0xb1c
+        0x0000089c:    48a1        .H      LDR      r0,[pc,#644] ; [0xb24] = 0x87d
+        0x0000089e:    9303        ..      STR      r3,[sp,#0xc]
+        0x000008a0:    f7fffd64    ..d.    BL       xTaskGenericCreate ; 0x36c
+        0x000008a4:    2801        .(      CMP      r0,#1
+        0x000008a6:    d108        ..      BNE      0x8ba ; vTaskStartScheduler + 44
+        0x000008a8:    f7fffc58    ..X.    BL       vPortSetInterruptMask ; 0x15c
+        0x000008ac:    4899        .H      LDR      r0,[pc,#612] ; [0xb14] = 0x20000000
+        0x000008ae:    2101        .!      MOVS     r1,#1
+        0x000008b0:    6181        .a      STR      r1,[r0,#0x18]
+        0x000008b2:    2100        .!      MOVS     r1,#0
+        0x000008b4:    60c1        .`      STR      r1,[r0,#0xc]
+        0x000008b6:    f000fa01    ....    BL       xPortStartScheduler ; 0xcbc
+        0x000008ba:    bd1f        ..      POP      {r0-r4,pc}
+    vTaskEndScheduler
+        0x000008bc:    b510        ..      PUSH     {r4,lr}
+        0x000008be:    f7fffc4d    ..M.    BL       vPortSetInterruptMask ; 0x15c
+        0x000008c2:    4994        .I      LDR      r1,[pc,#592] ; [0xb14] = 0x20000000
+        0x000008c4:    2000        .       MOVS     r0,#0
+        0x000008c6:    6188        .a      STR      r0,[r1,#0x18]
+        0x000008c8:    f000fa0f    ....    BL       vPortEndScheduler ; 0xcea
+        0x000008cc:    bd10        ..      POP      {r4,pc}
+    xTaskGetTickCount
+        0x000008ce:    b510        ..      PUSH     {r4,lr}
+        0x000008d0:    f000fa11    ....    BL       vPortEnterCritical ; 0xcf6
+        0x000008d4:    488f        .H      LDR      r0,[pc,#572] ; [0xb14] = 0x20000000
+        0x000008d6:    68c4        .h      LDR      r4,[r0,#0xc]
+        0x000008d8:    f000fa15    ....    BL       vPortExitCritical ; 0xd06
+        0x000008dc:    4620         F      MOV      r0,r4
+        0x000008de:    bd10        ..      POP      {r4,pc}
+    uxTaskGetNumberOfTasks
+        0x000008e0:    488c        .H      LDR      r0,[pc,#560] ; [0xb14] = 0x20000000
+        0x000008e2:    6880        .h      LDR      r0,[r0,#8]
+        0x000008e4:    e775        u.      B        0x7d2 ; xTaskIsTaskSuspended + 30
+    vTaskSwitchContext
+        0x000008e6:    498b        .I      LDR      r1,[pc,#556] ; [0xb14] = 0x20000000
+        0x000008e8:    69ca        .i      LDR      r2,[r1,#0x1c]
+        0x000008ea:    488b        .H      LDR      r0,[pc,#556] ; [0xb18] = 0x20000058
+        0x000008ec:    2a00        .*      CMP      r2,#0
+        0x000008ee:    d004        ..      BEQ      0x8fa ; vTaskSwitchContext + 20
+        0x000008f0:    2001        .       MOVS     r0,#1
+        0x000008f2:    6248        Hb      STR      r0,[r1,#0x24]
+        0x000008f4:    e76d        m.      B        0x7d2 ; xTaskIsTaskSuspended + 30
+        0x000008f6:    1e52        R.      SUBS     r2,r2,#1
+        0x000008f8:    614a        Ja      STR      r2,[r1,#0x14]
+        0x000008fa:    694a        Ji      LDR      r2,[r1,#0x14]
+        0x000008fc:    2314        .#      MOVS     r3,#0x14
+        0x000008fe:    435a        ZC      MULS     r2,r3,r2
+        0x00000900:    5882        .X      LDR      r2,[r0,r2]
+        0x00000902:    2a00        .*      CMP      r2,#0
+        0x00000904:    694a        Ji      LDR      r2,[r1,#0x14]
+        0x00000906:    d0f6        ..      BEQ      0x8f6 ; vTaskSwitchContext + 16
+        0x00000908:    435a        ZC      MULS     r2,r3,r2
+        0x0000090a:    1810        ..      ADDS     r0,r2,r0
+        0x0000090c:    6842        Bh      LDR      r2,[r0,#4]
+        0x0000090e:    6852        Rh      LDR      r2,[r2,#4]
+        0x00000910:    4603        .F      MOV      r3,r0
+        0x00000912:    3308        .3      ADDS     r3,r3,#8
+        0x00000914:    6042        B`      STR      r2,[r0,#4]
+        0x00000916:    429a        .B      CMP      r2,r3
+        0x00000918:    d101        ..      BNE      0x91e ; vTaskSwitchContext + 56
+        0x0000091a:    6852        Rh      LDR      r2,[r2,#4]
+        0x0000091c:    6042        B`      STR      r2,[r0,#4]
+        0x0000091e:    68d0        .h      LDR      r0,[r2,#0xc]
+        0x00000920:    6008        .`      STR      r0,[r1,#0]
+        0x00000922:    e756        V.      B        0x7d2 ; xTaskIsTaskSuspended + 30
+    vTaskPlaceOnEventList
+        0x00000924:    b570        p.      PUSH     {r4-r6,lr}
+        0x00000926:    4c7b        {L      LDR      r4,[pc,#492] ; [0xb14] = 0x20000000
+        0x00000928:    460d        .F      MOV      r5,r1
+        0x0000092a:    6821        !h      LDR      r1,[r4,#0]
+        0x0000092c:    3118        .1      ADDS     r1,r1,#0x18
+        0x0000092e:    f000f917    ....    BL       vListInsert ; 0xb60
+        0x00000932:    6820         h      LDR      r0,[r4,#0]
+        0x00000934:    1d00        ..      ADDS     r0,r0,#4
+        0x00000936:    f000f92b    ..+.    BL       vListRemove ; 0xb90
+        0x0000093a:    1c68        h.      ADDS     r0,r5,#1
+        0x0000093c:    d00a        ..      BEQ      0x954 ; vTaskPlaceOnEventList + 48
+        0x0000093e:    68e0        .h      LDR      r0,[r4,#0xc]
+        0x00000940:    6821        !h      LDR      r1,[r4,#0]
+        0x00000942:    1940        @.      ADDS     r0,r0,r5
+        0x00000944:    6048        H`      STR      r0,[r1,#4]
+        0x00000946:    68e1        .h      LDR      r1,[r4,#0xc]
+        0x00000948:    4288        .B      CMP      r0,r1
+        0x0000094a:    6821        !h      LDR      r1,[r4,#0]
+        0x0000094c:    d209        ..      BCS      0x962 ; vTaskPlaceOnEventList + 62
+        0x0000094e:    1d09        ..      ADDS     r1,r1,#4
+        0x00000950:    6b60        `k      LDR      r0,[r4,#0x34]
+        0x00000952:    e008        ..      B        0x966 ; vTaskPlaceOnEventList + 66
+        0x00000954:    6821        !h      LDR      r1,[r4,#0]
+        0x00000956:    4870        pH      LDR      r0,[pc,#448] ; [0xb18] = 0x20000058
+        0x00000958:    1d09        ..      ADDS     r1,r1,#4
+        0x0000095a:    30c8        .0      ADDS     r0,r0,#0xc8
+        0x0000095c:    f000f8f2    ....    BL       vListInsertEnd ; 0xb44
+        0x00000960:    bd70        p.      POP      {r4-r6,pc}
+        0x00000962:    1d09        ..      ADDS     r1,r1,#4
+        0x00000964:    6b20         k      LDR      r0,[r4,#0x30]
+        0x00000966:    f000f8fb    ....    BL       vListInsert ; 0xb60
+        0x0000096a:    bd70        p.      POP      {r4-r6,pc}
+    xTaskRemoveFromEventList
+        0x0000096c:    b570        p.      PUSH     {r4-r6,lr}
+        0x0000096e:    6801        .h      LDR      r1,[r0,#0]
+        0x00000970:    2900        .)      CMP      r1,#0
+        0x00000972:    d002        ..      BEQ      0x97a ; xTaskRemoveFromEventList + 14
+        0x00000974:    68c0        .h      LDR      r0,[r0,#0xc]
+        0x00000976:    68c4        .h      LDR      r4,[r0,#0xc]
+        0x00000978:    e000        ..      B        0x97c ; xTaskRemoveFromEventList + 16
+        0x0000097a:    2400        .$      MOVS     r4,#0
+        0x0000097c:    4620         F      MOV      r0,r4
+        0x0000097e:    3018        .0      ADDS     r0,r0,#0x18
+        0x00000980:    4606        .F      MOV      r6,r0
+        0x00000982:    f000f905    ....    BL       vListRemove ; 0xb90
+        0x00000986:    4d63        cM      LDR      r5,[pc,#396] ; [0xb14] = 0x20000000
+        0x00000988:    69e8        .i      LDR      r0,[r5,#0x1c]
+        0x0000098a:    2800        .(      CMP      r0,#0
+        0x0000098c:    d003        ..      BEQ      0x996 ; xTaskRemoveFromEventList + 42
+        0x0000098e:    4862        bH      LDR      r0,[pc,#392] ; [0xb18] = 0x20000058
+        0x00000990:    4631        1F      MOV      r1,r6
+        0x00000992:    30a0        .0      ADDS     r0,r0,#0xa0
+        0x00000994:    e00c        ..      B        0x9b0 ; xTaskRemoveFromEventList + 68
+        0x00000996:    1d20         .      ADDS     r0,r4,#4
+        0x00000998:    f000f8fa    ....    BL       vListRemove ; 0xb90
+        0x0000099c:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x0000099e:    6969        ii      LDR      r1,[r5,#0x14]
+        0x000009a0:    4288        .B      CMP      r0,r1
+        0x000009a2:    d900        ..      BLS      0x9a6 ; xTaskRemoveFromEventList + 58
+        0x000009a4:    6168        ha      STR      r0,[r5,#0x14]
+        0x000009a6:    2114        .!      MOVS     r1,#0x14
+        0x000009a8:    4348        HC      MULS     r0,r1,r0
+        0x000009aa:    495b        [I      LDR      r1,[pc,#364] ; [0xb18] = 0x20000058
+        0x000009ac:    1840        @.      ADDS     r0,r0,r1
+        0x000009ae:    1d21        !.      ADDS     r1,r4,#4
+        0x000009b0:    f000f8c8    ....    BL       vListInsertEnd ; 0xb44
+        0x000009b4:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x000009b6:    6829        )h      LDR      r1,[r5,#0]
+        0x000009b8:    6ac9        .j      LDR      r1,[r1,#0x2c]
+        0x000009ba:    4288        .B      CMP      r0,r1
+        0x000009bc:    d301        ..      BCC      0x9c2 ; xTaskRemoveFromEventList + 86
+        0x000009be:    2001        .       MOVS     r0,#1
+        0x000009c0:    bd70        p.      POP      {r4-r6,pc}
+        0x000009c2:    2000        .       MOVS     r0,#0
+        0x000009c4:    bd70        p.      POP      {r4-r6,pc}
+    vTaskSetTimeOutState
+        0x000009c6:    4953        SI      LDR      r1,[pc,#332] ; [0xb14] = 0x20000000
+        0x000009c8:    6a8a        .j      LDR      r2,[r1,#0x28]
+        0x000009ca:    6002        .`      STR      r2,[r0,#0]
+        0x000009cc:    68c9        .h      LDR      r1,[r1,#0xc]
+        0x000009ce:    6041        A`      STR      r1,[r0,#4]
+        0x000009d0:    e6ff        ..      B        0x7d2 ; xTaskIsTaskSuspended + 30
+    xTaskCheckForTimeOut
+        0x000009d2:    b570        p.      PUSH     {r4-r6,lr}
+        0x000009d4:    4604        .F      MOV      r4,r0
+        0x000009d6:    460d        .F      MOV      r5,r1
+        0x000009d8:    f000f98d    ....    BL       vPortEnterCritical ; 0xcf6
+        0x000009dc:    6828        (h      LDR      r0,[r5,#0]
+        0x000009de:    1c41        A.      ADDS     r1,r0,#1
+        0x000009e0:    d014        ..      BEQ      0xa0c ; xTaskCheckForTimeOut + 58
+        0x000009e2:    494c        LI      LDR      r1,[pc,#304] ; [0xb14] = 0x20000000
+        0x000009e4:    6822        "h      LDR      r2,[r4,#0]
+        0x000009e6:    6a8b        .j      LDR      r3,[r1,#0x28]
+        0x000009e8:    429a        .B      CMP      r2,r3
+        0x000009ea:    d003        ..      BEQ      0x9f4 ; xTaskCheckForTimeOut + 34
+        0x000009ec:    6862        bh      LDR      r2,[r4,#4]
+        0x000009ee:    68cb        .h      LDR      r3,[r1,#0xc]
+        0x000009f0:    429a        .B      CMP      r2,r3
+        0x000009f2:    d90d        ..      BLS      0xa10 ; xTaskCheckForTimeOut + 62
+        0x000009f4:    6862        bh      LDR      r2,[r4,#4]
+        0x000009f6:    68cb        .h      LDR      r3,[r1,#0xc]
+        0x000009f8:    1a9b        ..      SUBS     r3,r3,r2
+        0x000009fa:    4283        .B      CMP      r3,r0
+        0x000009fc:    d208        ..      BCS      0xa10 ; xTaskCheckForTimeOut + 62
+        0x000009fe:    68c9        .h      LDR      r1,[r1,#0xc]
+        0x00000a00:    1a89        ..      SUBS     r1,r1,r2
+        0x00000a02:    1a40        @.      SUBS     r0,r0,r1
+        0x00000a04:    6028        (`      STR      r0,[r5,#0]
+        0x00000a06:    4620         F      MOV      r0,r4
+        0x00000a08:    f7ffffdd    ....    BL       vTaskSetTimeOutState ; 0x9c6
+        0x00000a0c:    2400        .$      MOVS     r4,#0
+        0x00000a0e:    e000        ..      B        0xa12 ; xTaskCheckForTimeOut + 64
+        0x00000a10:    2401        .$      MOVS     r4,#1
+        0x00000a12:    f000f978    ..x.    BL       vPortExitCritical ; 0xd06
+        0x00000a16:    4620         F      MOV      r0,r4
+        0x00000a18:    bd70        p.      POP      {r4-r6,pc}
+    vTaskMissedYield
+        0x00000a1a:    493e        >I      LDR      r1,[pc,#248] ; [0xb14] = 0x20000000
+        0x00000a1c:    2001        .       MOVS     r0,#1
+        0x00000a1e:    6248        Hb      STR      r0,[r1,#0x24]
+        0x00000a20:    e6d7        ..      B        0x7d2 ; xTaskIsTaskSuspended + 30
+    xTaskGetCurrentTaskHandle
+        0x00000a22:    483c        <H      LDR      r0,[pc,#240] ; [0xb14] = 0x20000000
+        0x00000a24:    6800        .h      LDR      r0,[r0,#0]
+        0x00000a26:    e6d4        ..      B        0x7d2 ; xTaskIsTaskSuspended + 30
+    vTaskPriorityInherit
+        0x00000a28:    b570        p.      PUSH     {r4-r6,lr}
+        0x00000a2a:    4d3a        :M      LDR      r5,[pc,#232] ; [0xb14] = 0x20000000
+        0x00000a2c:    4604        .F      MOV      r4,r0
+        0x00000a2e:    6ac0        .j      LDR      r0,[r0,#0x2c]
+        0x00000a30:    6829        )h      LDR      r1,[r5,#0]
+        0x00000a32:    6ac9        .j      LDR      r1,[r1,#0x2c]
+        0x00000a34:    4288        .B      CMP      r0,r1
+        0x00000a36:    d21c        ..      BCS      0xa72 ; vTaskPriorityInherit + 74
+        0x00000a38:    6828        (h      LDR      r0,[r5,#0]
+        0x00000a3a:    2106        .!      MOVS     r1,#6
+        0x00000a3c:    6ac0        .j      LDR      r0,[r0,#0x2c]
+        0x00000a3e:    2214        ."      MOVS     r2,#0x14
+        0x00000a40:    1a08        ..      SUBS     r0,r1,r0
+        0x00000a42:    61a0        .a      STR      r0,[r4,#0x18]
+        0x00000a44:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x00000a46:    4e34        4N      LDR      r6,[pc,#208] ; [0xb18] = 0x20000058
+        0x00000a48:    4350        PC      MULS     r0,r2,r0
+        0x00000a4a:    6961        ai      LDR      r1,[r4,#0x14]
+        0x00000a4c:    1980        ..      ADDS     r0,r0,r6
+        0x00000a4e:    4281        .B      CMP      r1,r0
+        0x00000a50:    d110        ..      BNE      0xa74 ; vTaskPriorityInherit + 76
+        0x00000a52:    1d20         .      ADDS     r0,r4,#4
+        0x00000a54:    f000f89c    ....    BL       vListRemove ; 0xb90
+        0x00000a58:    6828        (h      LDR      r0,[r5,#0]
+        0x00000a5a:    6ac0        .j      LDR      r0,[r0,#0x2c]
+        0x00000a5c:    62e0        .b      STR      r0,[r4,#0x2c]
+        0x00000a5e:    6969        ii      LDR      r1,[r5,#0x14]
+        0x00000a60:    4288        .B      CMP      r0,r1
+        0x00000a62:    d900        ..      BLS      0xa66 ; vTaskPriorityInherit + 62
+        0x00000a64:    6168        ha      STR      r0,[r5,#0x14]
+        0x00000a66:    2114        .!      MOVS     r1,#0x14
+        0x00000a68:    4348        HC      MULS     r0,r1,r0
+        0x00000a6a:    1980        ..      ADDS     r0,r0,r6
+        0x00000a6c:    1d21        !.      ADDS     r1,r4,#4
+        0x00000a6e:    f000f869    ..i.    BL       vListInsertEnd ; 0xb44
+        0x00000a72:    bd70        p.      POP      {r4-r6,pc}
+        0x00000a74:    6828        (h      LDR      r0,[r5,#0]
+        0x00000a76:    6ac0        .j      LDR      r0,[r0,#0x2c]
+        0x00000a78:    62e0        .b      STR      r0,[r4,#0x2c]
+        0x00000a7a:    bd70        p.      POP      {r4-r6,pc}
+    vTaskPriorityDisinherit
+        0x00000a7c:    b510        ..      PUSH     {r4,lr}
+        0x00000a7e:    0004        ..      MOVS     r4,r0
+        0x00000a80:    d018        ..      BEQ      0xab4 ; vTaskPriorityDisinherit + 56
+        0x00000a82:    6c61        al      LDR      r1,[r4,#0x44]
+        0x00000a84:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x00000a86:    4288        .B      CMP      r0,r1
+        0x00000a88:    d014        ..      BEQ      0xab4 ; vTaskPriorityDisinherit + 56
+        0x00000a8a:    1d20         .      ADDS     r0,r4,#4
+        0x00000a8c:    f000f880    ....    BL       vListRemove ; 0xb90
+        0x00000a90:    6c60        `l      LDR      r0,[r4,#0x44]
+        0x00000a92:    2106        .!      MOVS     r1,#6
+        0x00000a94:    62e0        .b      STR      r0,[r4,#0x2c]
+        0x00000a96:    1a08        ..      SUBS     r0,r1,r0
+        0x00000a98:    61a0        .a      STR      r0,[r4,#0x18]
+        0x00000a9a:    491e        .I      LDR      r1,[pc,#120] ; [0xb14] = 0x20000000
+        0x00000a9c:    6ae0        .j      LDR      r0,[r4,#0x2c]
+        0x00000a9e:    694a        Ji      LDR      r2,[r1,#0x14]
+        0x00000aa0:    4290        .B      CMP      r0,r2
+        0x00000aa2:    d900        ..      BLS      0xaa6 ; vTaskPriorityDisinherit + 42
+        0x00000aa4:    6148        Ha      STR      r0,[r1,#0x14]
+        0x00000aa6:    2114        .!      MOVS     r1,#0x14
+        0x00000aa8:    4348        HC      MULS     r0,r1,r0
+        0x00000aaa:    491b        .I      LDR      r1,[pc,#108] ; [0xb18] = 0x20000058
+        0x00000aac:    1840        @.      ADDS     r0,r0,r1
+        0x00000aae:    1d21        !.      ADDS     r1,r4,#4
+        0x00000ab0:    f000f848    ..H.    BL       vListInsertEnd ; 0xb44
+        0x00000ab4:    bd10        ..      POP      {r4,pc}
+    prvCheckTasksWaitingTermination
+        0x00000ab6:    b570        p.      PUSH     {r4-r6,lr}
+        0x00000ab8:    4d16        .M      LDR      r5,[pc,#88] ; [0xb14] = 0x20000000
+        0x00000aba:    6868        hh      LDR      r0,[r5,#4]
+        0x00000abc:    2800        .(      CMP      r0,#0
+        0x00000abe:    d027        '.      BEQ      0xb10 ; prvCheckTasksWaitingTermination + 90
+        0x00000ac0:    f7fffdb2    ....    BL       vTaskSuspendAll ; 0x628
+        0x00000ac4:    4e14        .N      LDR      r6,[pc,#80] ; [0xb18] = 0x20000058
+        0x00000ac6:    36b4        .6      ADDS     r6,r6,#0xb4
+        0x00000ac8:    6830        0h      LDR      r0,[r6,#0]
+        0x00000aca:    2800        .(      CMP      r0,#0
+        0x00000acc:    d00c        ..      BEQ      0xae8 ; prvCheckTasksWaitingTermination + 50
+        0x00000ace:    2400        .$      MOVS     r4,#0
+        0x00000ad0:    f7fffd5b    ..[.    BL       xTaskResumeAll ; 0x58a
+        0x00000ad4:    2c00        .,      CMP      r4,#0
+        0x00000ad6:    d11b        ..      BNE      0xb10 ; prvCheckTasksWaitingTermination + 90
+        0x00000ad8:    f000f90d    ....    BL       vPortEnterCritical ; 0xcf6
+        0x00000adc:    6830        0h      LDR      r0,[r6,#0]
+        0x00000ade:    2800        .(      CMP      r0,#0
+        0x00000ae0:    d004        ..      BEQ      0xaec ; prvCheckTasksWaitingTermination + 54
+        0x00000ae2:    68f0        .h      LDR      r0,[r6,#0xc]
+        0x00000ae4:    68c4        .h      LDR      r4,[r0,#0xc]
+        0x00000ae6:    e002        ..      B        0xaee ; prvCheckTasksWaitingTermination + 56
+        0x00000ae8:    2401        .$      MOVS     r4,#1
+        0x00000aea:    e7f1        ..      B        0xad0 ; prvCheckTasksWaitingTermination + 26
+        0x00000aec:    2400        .$      MOVS     r4,#0
+        0x00000aee:    1d20         .      ADDS     r0,r4,#4
+        0x00000af0:    f000f84e    ..N.    BL       vListRemove ; 0xb90
+        0x00000af4:    68a8        .h      LDR      r0,[r5,#8]
+        0x00000af6:    1e40        @.      SUBS     r0,r0,#1
+        0x00000af8:    60a8        .`      STR      r0,[r5,#8]
+        0x00000afa:    6868        hh      LDR      r0,[r5,#4]
+        0x00000afc:    1e40        @.      SUBS     r0,r0,#1
+        0x00000afe:    6068        h`      STR      r0,[r5,#4]
+        0x00000b00:    f000f901    ....    BL       vPortExitCritical ; 0xd06
+        0x00000b04:    6b20         k      LDR      r0,[r4,#0x30]
+        0x00000b06:    f000f8a6    ....    BL       vPortFree ; 0xc56
+        0x00000b0a:    4620         F      MOV      r0,r4
+        0x00000b0c:    f000f8a3    ....    BL       vPortFree ; 0xc56
+        0x00000b10:    bd70        p.      POP      {r4-r6,pc}
+    $d
+        0x00000b12:    0000        ..      DCW    0
+        0x00000b14:    20000000    ...     DCD    536870912
+        0x00000b18:    20000058    X..     DCD    536871000
+        0x00000b1c:    454c4449    IDLE    DCD    1162626121
+        0x00000b20:    00000000    ....    DCD    0
+        0x00000b24:    0000087d    }...    DCD    2173
+    $t
+    .text
+    vListInitialise
+        0x00000b28:    4601        .F      MOV      r1,r0
+        0x00000b2a:    3108        .1      ADDS     r1,r1,#8
+        0x00000b2c:    2200        ."      MOVS     r2,#0
+        0x00000b2e:    43d2        .C      MVNS     r2,r2
+        0x00000b30:    6082        .`      STR      r2,[r0,#8]
+        0x00000b32:    6041        A`      STR      r1,[r0,#4]
+        0x00000b34:    60c1        .`      STR      r1,[r0,#0xc]
+        0x00000b36:    6101        .a      STR      r1,[r0,#0x10]
+        0x00000b38:    2100        .!      MOVS     r1,#0
+        0x00000b3a:    6001        .`      STR      r1,[r0,#0]
+        0x00000b3c:    4770        pG      BX       lr
+    vListInitialiseItem
+        0x00000b3e:    2100        .!      MOVS     r1,#0
+        0x00000b40:    6101        .a      STR      r1,[r0,#0x10]
+        0x00000b42:    4770        pG      BX       lr
+    vListInsertEnd
+        0x00000b44:    6842        Bh      LDR      r2,[r0,#4]
+        0x00000b46:    6853        Sh      LDR      r3,[r2,#4]
+        0x00000b48:    604b        K`      STR      r3,[r1,#4]
+        0x00000b4a:    6843        Ch      LDR      r3,[r0,#4]
+        0x00000b4c:    608b        .`      STR      r3,[r1,#8]
+        0x00000b4e:    6853        Sh      LDR      r3,[r2,#4]
+        0x00000b50:    6099        .`      STR      r1,[r3,#8]
+        0x00000b52:    6051        Q`      STR      r1,[r2,#4]
+        0x00000b54:    6041        A`      STR      r1,[r0,#4]
+        0x00000b56:    6108        .a      STR      r0,[r1,#0x10]
+        0x00000b58:    6801        .h      LDR      r1,[r0,#0]
+        0x00000b5a:    1c49        I.      ADDS     r1,r1,#1
+        0x00000b5c:    6001        .`      STR      r1,[r0,#0]
+        0x00000b5e:    4770        pG      BX       lr
+    vListInsert
+        0x00000b60:    b510        ..      PUSH     {r4,lr}
+        0x00000b62:    680b        .h      LDR      r3,[r1,#0]
+        0x00000b64:    1c5a        Z.      ADDS     r2,r3,#1
+        0x00000b66:    d002        ..      BEQ      0xb6e ; vListInsert + 14
+        0x00000b68:    4602        .F      MOV      r2,r0
+        0x00000b6a:    3208        .2      ADDS     r2,r2,#8
+        0x00000b6c:    e002        ..      B        0xb74 ; vListInsert + 20
+        0x00000b6e:    6902        .i      LDR      r2,[r0,#0x10]
+        0x00000b70:    e004        ..      B        0xb7c ; vListInsert + 28
+        0x00000b72:    6852        Rh      LDR      r2,[r2,#4]
+        0x00000b74:    6854        Th      LDR      r4,[r2,#4]
+        0x00000b76:    6824        $h      LDR      r4,[r4,#0]
+        0x00000b78:    429c        .B      CMP      r4,r3
+        0x00000b7a:    d9fa        ..      BLS      0xb72 ; vListInsert + 18
+        0x00000b7c:    6853        Sh      LDR      r3,[r2,#4]
+        0x00000b7e:    604b        K`      STR      r3,[r1,#4]
+        0x00000b80:    6099        .`      STR      r1,[r3,#8]
+        0x00000b82:    608a        .`      STR      r2,[r1,#8]
+        0x00000b84:    6051        Q`      STR      r1,[r2,#4]
+        0x00000b86:    6108        .a      STR      r0,[r1,#0x10]
+        0x00000b88:    6801        .h      LDR      r1,[r0,#0]
+        0x00000b8a:    1c49        I.      ADDS     r1,r1,#1
+        0x00000b8c:    6001        .`      STR      r1,[r0,#0]
+        0x00000b8e:    bd10        ..      POP      {r4,pc}
+    vListRemove
+        0x00000b90:    6841        Ah      LDR      r1,[r0,#4]
+        0x00000b92:    6882        .h      LDR      r2,[r0,#8]
+        0x00000b94:    608a        .`      STR      r2,[r1,#8]
+        0x00000b96:    6882        .h      LDR      r2,[r0,#8]
+        0x00000b98:    6841        Ah      LDR      r1,[r0,#4]
+        0x00000b9a:    6051        Q`      STR      r1,[r2,#4]
+        0x00000b9c:    6901        .i      LDR      r1,[r0,#0x10]
+        0x00000b9e:    684a        Jh      LDR      r2,[r1,#4]
+        0x00000ba0:    4282        .B      CMP      r2,r0
+        0x00000ba2:    d101        ..      BNE      0xba8 ; vListRemove + 24
+        0x00000ba4:    6882        .h      LDR      r2,[r0,#8]
+        0x00000ba6:    604a        J`      STR      r2,[r1,#4]
+        0x00000ba8:    2200        ."      MOVS     r2,#0
+        0x00000baa:    6102        .a      STR      r2,[r0,#0x10]
+        0x00000bac:    6808        .h      LDR      r0,[r1,#0]
+        0x00000bae:    1e40        @.      SUBS     r0,r0,#1
+        0x00000bb0:    6008        .`      STR      r0,[r1,#0]
+        0x00000bb2:    4770        pG      BX       lr
+    .text
+    pvPortMalloc
+        0x00000bb4:    b5f8        ..      PUSH     {r3-r7,lr}
+        0x00000bb6:    4604        .F      MOV      r4,r0
+        0x00000bb8:    2500        .%      MOVS     r5,#0
+        0x00000bba:    f7fffd35    ..5.    BL       vTaskSuspendAll ; 0x628
+        0x00000bbe:    4835        5H      LDR      r0,[pc,#212] ; [0xc94] = 0x20000038
+        0x00000bc0:    4606        .F      MOV      r6,r0
+        0x00000bc2:    4601        .F      MOV      r1,r0
+        0x00000bc4:    6842        Bh      LDR      r2,[r0,#4]
+        0x00000bc6:    3608        .6      ADDS     r6,r6,#8
+        0x00000bc8:    3110        .1      ADDS     r1,r1,#0x10
+        0x00000bca:    2a00        .*      CMP      r2,#0
+        0x00000bcc:    d10a        ..      BNE      0xbe4 ; pvPortMalloc + 48
+        0x00000bce:    2700        .'      MOVS     r7,#0
+        0x00000bd0:    4a31        1J      LDR      r2,[pc,#196] ; [0xc98] = 0x20000138
+        0x00000bd2:    6077        w`      STR      r7,[r6,#4]
+        0x00000bd4:    230d        .#      MOVS     r3,#0xd
+        0x00000bd6:    6032        2`      STR      r2,[r6,#0]
+        0x00000bd8:    029b        ..      LSLS     r3,r3,#10
+        0x00000bda:    600f        .`      STR      r7,[r1,#0]
+        0x00000bdc:    604b        K`      STR      r3,[r1,#4]
+        0x00000bde:    c20a        ..      STM      r2!,{r1,r3}
+        0x00000be0:    2201        ."      MOVS     r2,#1
+        0x00000be2:    6042        B`      STR      r2,[r0,#4]
+        0x00000be4:    2c00        .,      CMP      r4,#0
+        0x00000be6:    d007        ..      BEQ      0xbf8 ; pvPortMalloc + 68
+        0x00000be8:    3410        .4      ADDS     r4,r4,#0x10
+        0x00000bea:    0762        b.      LSLS     r2,r4,#29
+        0x00000bec:    d004        ..      BEQ      0xbf8 ; pvPortMalloc + 68
+        0x00000bee:    0762        b.      LSLS     r2,r4,#29
+        0x00000bf0:    0f52        R.      LSRS     r2,r2,#29
+        0x00000bf2:    2308        .#      MOVS     r3,#8
+        0x00000bf4:    1a9a        ..      SUBS     r2,r3,r2
+        0x00000bf6:    1914        ..      ADDS     r4,r2,r4
+        0x00000bf8:    4b28        (K      LDR      r3,[pc,#160] ; [0xc9c] = 0x33ff
+        0x00000bfa:    1e62        b.      SUBS     r2,r4,#1
+        0x00000bfc:    429a        .B      CMP      r2,r3
+        0x00000bfe:    d226        &.      BCS      0xc4e ; pvPortMalloc + 154
+        0x00000c00:    4f24        $O      LDR      r7,[pc,#144] ; [0xc94] = 0x20000038
+        0x00000c02:    6832        2h      LDR      r2,[r6,#0]
+        0x00000c04:    3708        .7      ADDS     r7,r7,#8
+        0x00000c06:    e001        ..      B        0xc0c ; pvPortMalloc + 88
+        0x00000c08:    4617        .F      MOV      r7,r2
+        0x00000c0a:    461a        .F      MOV      r2,r3
+        0x00000c0c:    6853        Sh      LDR      r3,[r2,#4]
+        0x00000c0e:    42a3        .B      CMP      r3,r4
+        0x00000c10:    d202        ..      BCS      0xc18 ; pvPortMalloc + 100
+        0x00000c12:    6813        .h      LDR      r3,[r2,#0]
+        0x00000c14:    2b00        .+      CMP      r3,#0
+        0x00000c16:    d1f7        ..      BNE      0xc08 ; pvPortMalloc + 84
+        0x00000c18:    428a        .B      CMP      r2,r1
+        0x00000c1a:    d018        ..      BEQ      0xc4e ; pvPortMalloc + 154
+        0x00000c1c:    683d        =h      LDR      r5,[r7,#0]
+        0x00000c1e:    6811        .h      LDR      r1,[r2,#0]
+        0x00000c20:    6039        9`      STR      r1,[r7,#0]
+        0x00000c22:    6851        Qh      LDR      r1,[r2,#4]
+        0x00000c24:    3510        .5      ADDS     r5,r5,#0x10
+        0x00000c26:    1b09        ..      SUBS     r1,r1,r4
+        0x00000c28:    2920         )      CMP      r1,#0x20
+        0x00000c2a:    d90d        ..      BLS      0xc48 ; pvPortMalloc + 148
+        0x00000c2c:    1913        ..      ADDS     r3,r2,r4
+        0x00000c2e:    6059        Y`      STR      r1,[r3,#4]
+        0x00000c30:    4918        .I      LDR      r1,[pc,#96] ; [0xc94] = 0x20000038
+        0x00000c32:    6054        T`      STR      r4,[r2,#4]
+        0x00000c34:    3108        .1      ADDS     r1,r1,#8
+        0x00000c36:    685e        ^h      LDR      r6,[r3,#4]
+        0x00000c38:    e000        ..      B        0xc3c ; pvPortMalloc + 136
+        0x00000c3a:    4611        .F      MOV      r1,r2
+        0x00000c3c:    680a        .h      LDR      r2,[r1,#0]
+        0x00000c3e:    6857        Wh      LDR      r7,[r2,#4]
+        0x00000c40:    42b7        .B      CMP      r7,r6
+        0x00000c42:    d3fa        ..      BCC      0xc3a ; pvPortMalloc + 134
+        0x00000c44:    601a        .`      STR      r2,[r3,#0]
+        0x00000c46:    600b        .`      STR      r3,[r1,#0]
+        0x00000c48:    6801        .h      LDR      r1,[r0,#0]
+        0x00000c4a:    1b09        ..      SUBS     r1,r1,r4
+        0x00000c4c:    6001        .`      STR      r1,[r0,#0]
+        0x00000c4e:    f7fffc9c    ....    BL       xTaskResumeAll ; 0x58a
+        0x00000c52:    4628        (F      MOV      r0,r5
+        0x00000c54:    bdf8        ..      POP      {r3-r7,pc}
+    vPortFree
+        0x00000c56:    b510        ..      PUSH     {r4,lr}
+        0x00000c58:    2800        .(      CMP      r0,#0
+        0x00000c5a:    d015        ..      BEQ      0xc88 ; vPortFree + 50
+        0x00000c5c:    4604        .F      MOV      r4,r0
+        0x00000c5e:    3c10        .<      SUBS     r4,r4,#0x10
+        0x00000c60:    f7fffce2    ....    BL       vTaskSuspendAll ; 0x628
+        0x00000c64:    490b        .I      LDR      r1,[pc,#44] ; [0xc94] = 0x20000038
+        0x00000c66:    6860        `h      LDR      r0,[r4,#4]
+        0x00000c68:    3108        .1      ADDS     r1,r1,#8
+        0x00000c6a:    e000        ..      B        0xc6e ; vPortFree + 24
+        0x00000c6c:    4611        .F      MOV      r1,r2
+        0x00000c6e:    680a        .h      LDR      r2,[r1,#0]
+        0x00000c70:    6853        Sh      LDR      r3,[r2,#4]
+        0x00000c72:    4283        .B      CMP      r3,r0
+        0x00000c74:    d3fa        ..      BCC      0xc6c ; vPortFree + 22
+        0x00000c76:    6022        "`      STR      r2,[r4,#0]
+        0x00000c78:    600c        .`      STR      r4,[r1,#0]
+        0x00000c7a:    4806        .H      LDR      r0,[pc,#24] ; [0xc94] = 0x20000038
+        0x00000c7c:    6861        ah      LDR      r1,[r4,#4]
+        0x00000c7e:    6802        .h      LDR      r2,[r0,#0]
+        0x00000c80:    1889        ..      ADDS     r1,r1,r2
+        0x00000c82:    6001        .`      STR      r1,[r0,#0]
+        0x00000c84:    f7fffc81    ....    BL       xTaskResumeAll ; 0x58a
+        0x00000c88:    bd10        ..      POP      {r4,pc}
+    xPortGetFreeHeapSize
+        0x00000c8a:    4802        .H      LDR      r0,[pc,#8] ; [0xc94] = 0x20000038
+        0x00000c8c:    6800        .h      LDR      r0,[r0,#0]
+        0x00000c8e:    4770        pG      BX       lr
+    vPortInitialiseBlocks
+        0x00000c90:    4770        pG      BX       lr
+    $d
+        0x00000c92:    0000        ..      DCW    0
+        0x00000c94:    20000038    8..     DCD    536870968
+        0x00000c98:    20000138    8..     DCD    536871224
+        0x00000c9c:    000033ff    .3..    DCD    13311
+    $t
+    .text
+    pxPortInitialiseStack
+        0x00000ca0:    b510        ..      PUSH     {r4,lr}
+        0x00000ca2:    1f03        ..      SUBS     r3,r0,#4
+        0x00000ca4:    2401        .$      MOVS     r4,#1
+        0x00000ca6:    0624        $.      LSLS     r4,r4,#24
+        0x00000ca8:    3808        .8      SUBS     r0,r0,#8
+        0x00000caa:    601c        .`      STR      r4,[r3,#0]
+        0x00000cac:    6001        .`      STR      r1,[r0,#0]
+        0x00000cae:    1f00        ..      SUBS     r0,r0,#4
+        0x00000cb0:    2100        .!      MOVS     r1,#0
+        0x00000cb2:    6001        .`      STR      r1,[r0,#0]
+        0x00000cb4:    3814        .8      SUBS     r0,r0,#0x14
+        0x00000cb6:    6002        .`      STR      r2,[r0,#0]
+        0x00000cb8:    3820         8      SUBS     r0,r0,#0x20
+        0x00000cba:    bd10        ..      POP      {r4,pc}
+    xPortStartScheduler
+        0x00000cbc:    b510        ..      PUSH     {r4,lr}
+        0x00000cbe:    481c        .H      LDR      r0,[pc,#112] ; [0xd30] = 0xe000ed00
+        0x00000cc0:    6a01        .j      LDR      r1,[r0,#0x20]
+        0x00000cc2:    2203        ."      MOVS     r2,#3
+        0x00000cc4:    0592        ..      LSLS     r2,r2,#22
+        0x00000cc6:    4311        .C      ORRS     r1,r1,r2
+        0x00000cc8:    6201        .b      STR      r1,[r0,#0x20]
+        0x00000cca:    6a01        .j      LDR      r1,[r0,#0x20]
+        0x00000ccc:    0212        ..      LSLS     r2,r2,#8
+        0x00000cce:    4311        .C      ORRS     r1,r1,r2
+        0x00000cd0:    6201        .b      STR      r1,[r0,#0x20]
+        0x00000cd2:    4819        .H      LDR      r0,[pc,#100] ; [0xd38] = 0xe000e000
+        0x00000cd4:    4917        .I      LDR      r1,[pc,#92] ; [0xd34] = 0xbb7f
+        0x00000cd6:    6141        Aa      STR      r1,[r0,#0x14]
+        0x00000cd8:    2107        .!      MOVS     r1,#7
+        0x00000cda:    6101        .a      STR      r1,[r0,#0x10]
+        0x00000cdc:    4917        .I      LDR      r1,[pc,#92] ; [0xd3c] = 0x20000050
+        0x00000cde:    2000        .       MOVS     r0,#0
+        0x00000ce0:    6008        .`      STR      r0,[r1,#0]
+        0x00000ce2:    f7fff9f7    ....    BL       vPortStartFirstTask ; 0xd4
+        0x00000ce6:    2000        .       MOVS     r0,#0
+        0x00000ce8:    bd10        ..      POP      {r4,pc}
+    vPortEndScheduler
+        0x00000cea:    4770        pG      BX       lr
+    vPortYieldFromISR
+        0x00000cec:    2001        .       MOVS     r0,#1
+        0x00000cee:    4910        .I      LDR      r1,[pc,#64] ; [0xd30] = 0xe000ed00
+        0x00000cf0:    0700        ..      LSLS     r0,r0,#28
+        0x00000cf2:    6048        H`      STR      r0,[r1,#4]
+        0x00000cf4:    4770        pG      BX       lr
+    vPortEnterCritical
+        0x00000cf6:    b510        ..      PUSH     {r4,lr}
+        0x00000cf8:    f7fffa30    ..0.    BL       vPortSetInterruptMask ; 0x15c
+        0x00000cfc:    480f        .H      LDR      r0,[pc,#60] ; [0xd3c] = 0x20000050
+        0x00000cfe:    6801        .h      LDR      r1,[r0,#0]
+        0x00000d00:    1c49        I.      ADDS     r1,r1,#1
+        0x00000d02:    6001        .`      STR      r1,[r0,#0]
+        0x00000d04:    bd10        ..      POP      {r4,pc}
+    vPortExitCritical
+        0x00000d06:    b510        ..      PUSH     {r4,lr}
+        0x00000d08:    490c        .I      LDR      r1,[pc,#48] ; [0xd3c] = 0x20000050
+        0x00000d0a:    6808        .h      LDR      r0,[r1,#0]
+        0x00000d0c:    1e40        @.      SUBS     r0,r0,#1
+        0x00000d0e:    6008        .`      STR      r0,[r1,#0]
+        0x00000d10:    d101        ..      BNE      0xd16 ; vPortExitCritical + 16
+        0x00000d12:    f7fffa25    ..%.    BL       vPortClearInterruptMask ; 0x160
+        0x00000d16:    bd10        ..      POP      {r4,pc}
+    xPortSysTickHandler
+        0x00000d18:    b510        ..      PUSH     {r4,lr}
+        0x00000d1a:    2001        .       MOVS     r0,#1
+        0x00000d1c:    4904        .I      LDR      r1,[pc,#16] ; [0xd30] = 0xe000ed00
+        0x00000d1e:    0700        ..      LSLS     r0,r0,#28
+        0x00000d20:    6048        H`      STR      r0,[r1,#4]
+        0x00000d22:    f7fffa1b    ....    BL       vPortSetInterruptMask ; 0x15c
+        0x00000d26:    f7fffbf3    ....    BL       vTaskIncrementTick ; 0x510
+        0x00000d2a:    f7fffa19    ....    BL       vPortClearInterruptMask ; 0x160
+        0x00000d2e:    bd10        ..      POP      {r4,pc}
+    $d
+        0x00000d30:    e000ed00    ....    DCD    3758157056
+        0x00000d34:    0000bb7f    ....    DCD    47999
+        0x00000d38:    e000e000    ....    DCD    3758153728
+        0x00000d3c:    20000050    P..     DCD    536870992
+    $t
+    .text
+    SendChar
+        0x00000d40:    490e        .I      LDR      r1,[pc,#56] ; [0xd7c] = 0x40050000
+        0x00000d42:    698a        .i      LDR      r2,[r1,#0x18]
+        0x00000d44:    0212        ..      LSLS     r2,r2,#8
+        0x00000d46:    d4fc        ..      BMI      0xd42 ; SendChar + 2
+        0x00000d48:    6008        .`      STR      r0,[r1,#0]
+        0x00000d4a:    280a        .(      CMP      r0,#0xa
+        0x00000d4c:    d104        ..      BNE      0xd58 ; SendChar + 24
+        0x00000d4e:    6988        .i      LDR      r0,[r1,#0x18]
+        0x00000d50:    0200        ..      LSLS     r0,r0,#8
+        0x00000d52:    d4fc        ..      BMI      0xd4e ; SendChar + 14
+        0x00000d54:    200d        .       MOVS     r0,#0xd
+        0x00000d56:    6008        .`      STR      r0,[r1,#0]
+        0x00000d58:    4770        pG      BX       lr
+    GetChar
+        0x00000d5a:    4808        .H      LDR      r0,[pc,#32] ; [0xd7c] = 0x40050000
+        0x00000d5c:    6981        .i      LDR      r1,[r0,#0x18]
+        0x00000d5e:    0449        I.      LSLS     r1,r1,#17
+        0x00000d60:    d4fc        ..      BMI      0xd5c ; GetChar + 2
+        0x00000d62:    6800        .h      LDR      r0,[r0,#0]
+        0x00000d64:    b2c0        ..      UXTB     r0,r0
+        0x00000d66:    4770        pG      BX       lr
+    _ttywrch
+        0x00000d68:    e7ea        ..      B        SendChar ; 0xd40
+    fputc
+        0x00000d6a:    b500        ..      PUSH     {lr}
+        0x00000d6c:    f7ffffe8    ....    BL       SendChar ; 0xd40
+        0x00000d70:    2000        .       MOVS     r0,#0
+        0x00000d72:    bd00        ..      POP      {pc}
+    fgetc
+        0x00000d74:    e7f1        ..      B        GetChar ; 0xd5a
+    ferror
+        0x00000d76:    2000        .       MOVS     r0,#0
+        0x00000d78:    43c0        .C      MVNS     r0,r0
+        0x00000d7a:    4770        pG      BX       lr
+    $d
+        0x00000d7c:    40050000    ...@    DCD    1074069504
+    $t
+    .text
+    __aeabi_memset
+    __aeabi_memset4
+    __aeabi_memset8
+        0x00000d80:    b2d2        ..      UXTB     r2,r2
+        0x00000d82:    e001        ..      B        0xd88 ; __aeabi_memset + 8
+        0x00000d84:    7002        .p      STRB     r2,[r0,#0]
+        0x00000d86:    1c40        @.      ADDS     r0,r0,#1
+        0x00000d88:    1e49        I.      SUBS     r1,r1,#1
+        0x00000d8a:    d2fb        ..      BCS      0xd84 ; __aeabi_memset + 4
+        0x00000d8c:    4770        pG      BX       lr
+    __aeabi_memclr
+    __aeabi_memclr4
+    __aeabi_memclr8
+        0x00000d8e:    2200        ."      MOVS     r2,#0
+        0x00000d90:    e7f6        ..      B        __aeabi_memset ; 0xd80
+    _memset$wrapper
+        0x00000d92:    b510        ..      PUSH     {r4,lr}
+        0x00000d94:    4604        .F      MOV      r4,r0
+        0x00000d96:    4608        .F      MOV      r0,r1
+        0x00000d98:    4611        .F      MOV      r1,r2
+        0x00000d9a:    4602        .F      MOV      r2,r0
+        0x00000d9c:    4620         F      MOV      r0,r4
+        0x00000d9e:    f7ffffef    ....    BL       __aeabi_memset ; 0xd80
+        0x00000da2:    4620         F      MOV      r0,r4
+        0x00000da4:    bd10        ..      POP      {r4,pc}
+    .text
+    strncpy
+        0x00000da6:    b510        ..      PUSH     {r4,lr}
+        0x00000da8:    4604        .F      MOV      r4,r0
+        0x00000daa:    e005        ..      B        0xdb8 ; strncpy + 18
+        0x00000dac:    780b        .x      LDRB     r3,[r1,#0]
+        0x00000dae:    7003        .p      STRB     r3,[r0,#0]
+        0x00000db0:    1c40        @.      ADDS     r0,r0,#1
+        0x00000db2:    2b00        .+      CMP      r3,#0
+        0x00000db4:    d000        ..      BEQ      0xdb8 ; strncpy + 18
+        0x00000db6:    1c49        I.      ADDS     r1,r1,#1
+        0x00000db8:    1e52        R.      SUBS     r2,r2,#1
+        0x00000dba:    d2f7        ..      BCS      0xdac ; strncpy + 6
+        0x00000dbc:    4620         F      MOV      r0,r4
+        0x00000dbe:    bd10        ..      POP      {r4,pc}
+    .text
+    __scatterload
+    __scatterload_rt2
+        0x00000dc0:    4c06        .L      LDR      r4,[pc,#24] ; [0xddc] = 0xe34
+        0x00000dc2:    2501        .%      MOVS     r5,#1
+        0x00000dc4:    4e06        .N      LDR      r6,[pc,#24] ; [0xde0] = 0xe54
+        0x00000dc6:    e005        ..      B        0xdd4 ; __scatterload + 20
+        0x00000dc8:    4620         F      MOV      r0,r4
+        0x00000dca:    68e3        .h      LDR      r3,[r4,#0xc]
+        0x00000dcc:    c807        ..      LDM      r0,{r0-r2}
+        0x00000dce:    432b        +C      ORRS     r3,r3,r5
+        0x00000dd0:    4798        .G      BLX      r3
+        0x00000dd2:    3410        .4      ADDS     r4,r4,#0x10
+        0x00000dd4:    42b4        .B      CMP      r4,r6
+        0x00000dd6:    d3f7        ..      BCC      0xdc8 ; __scatterload + 8
+        0x00000dd8:    f7fff976    ..v.    BL       __main_after_scatterload ; 0xc8
+    $d
+        0x00000ddc:    00000e34    4...    DCD    3636
+        0x00000de0:    00000e54    T...    DCD    3668
+    $t
+    i.__0printf$bare
+    __0printf$bare
+    __1printf$bare
+    __2printf
+        0x00000de4:    b510        ..      PUSH     {r4,lr}
+        0x00000de6:    4a02        .J      LDR      r2,[pc,#8] ; [0xdf0] = 0xd6b
+        0x00000de8:    4902        .I      LDR      r1,[pc,#8] ; [0xdf4] = 0x20000054
+        0x00000dea:    f000f814    ....    BL       _printf_core ; 0xe16
+        0x00000dee:    bd10        ..      POP      {r4,pc}
+    $d
+        0x00000df0:    00000d6b    k...    DCD    3435
+        0x00000df4:    20000054    T..     DCD    536870996
+    $t
+    i.__scatterload_copy
+    __scatterload_copy
+        0x00000df8:    e002        ..      B        0xe00 ; __scatterload_copy + 8
+        0x00000dfa:    c808        ..      LDM      r0!,{r3}
+        0x00000dfc:    1f12        ..      SUBS     r2,r2,#4
+        0x00000dfe:    c108        ..      STM      r1!,{r3}
+        0x00000e00:    2a00        .*      CMP      r2,#0
+        0x00000e02:    d1fa        ..      BNE      0xdfa ; __scatterload_copy + 2
+        0x00000e04:    4770        pG      BX       lr
+    i.__scatterload_null
+    __scatterload_null
+        0x00000e06:    4770        pG      BX       lr
+    i.__scatterload_zeroinit
+    __scatterload_zeroinit
+        0x00000e08:    2000        .       MOVS     r0,#0
+        0x00000e0a:    e001        ..      B        0xe10 ; __scatterload_zeroinit + 8
+        0x00000e0c:    c101        ..      STM      r1!,{r0}
+        0x00000e0e:    1f12        ..      SUBS     r2,r2,#4
+        0x00000e10:    2a00        .*      CMP      r2,#0
+        0x00000e12:    d1fb        ..      BNE      0xe0c ; __scatterload_zeroinit + 4
+        0x00000e14:    4770        pG      BX       lr
+    i._printf_core
+    _printf_core
+        0x00000e16:    b5f8        ..      PUSH     {r3-r7,lr}
+        0x00000e18:    4604        .F      MOV      r4,r0
+        0x00000e1a:    460f        .F      MOV      r7,r1
+        0x00000e1c:    4616        .F      MOV      r6,r2
+        0x00000e1e:    2500        .%      MOVS     r5,#0
+        0x00000e20:    e003        ..      B        0xe2a ; _printf_core + 20
+        0x00000e22:    4639        9F      MOV      r1,r7
+        0x00000e24:    47b0        .G      BLX      r6
+        0x00000e26:    1c6d        m.      ADDS     r5,r5,#1
+        0x00000e28:    1c64        d.      ADDS     r4,r4,#1
+        0x00000e2a:    7820         x      LDRB     r0,[r4,#0]
+        0x00000e2c:    2800        .(      CMP      r0,#0
+        0x00000e2e:    d1f8        ..      BNE      0xe22 ; _printf_core + 12
+        0x00000e30:    4628        (F      MOV      r0,r5
+        0x00000e32:    bdf8        ..      POP      {r3-r7,pc}
+    $d.realdata
+    Region$$Table$$Base
+        0x00000e34:    00000e54    T...    DCD    3668
+        0x00000e38:    20000000    ...     DCD    536870912
+        0x00000e3c:    00000058    X...    DCD    88
+        0x00000e40:    00000df8    ....    DCD    3576
+        0x00000e44:    00000eac    ....    DCD    3756
+        0x00000e48:    20000058    X..     DCD    536871000
+        0x00000e4c:    000038e0    .8..    DCD    14560
+        0x00000e50:    00000e08    ....    DCD    3592
+    Region$$Table$$Limit
+
+** Section #2 'RW_IRAM1' (SHT_PROGBITS) [SHF_ALLOC + SHF_WRITE]
+    Size   : 88 bytes (alignment 4)
+    Address: 0x20000000
+
+
+** Section #3 'RW_IRAM1' (SHT_NOBITS) [SHF_ALLOC + SHF_WRITE]
+    Size   : 14560 bytes (alignment 8)
+    Address: 0x20000058
+
+
+** Section #4 '.debug_abbrev' (SHT_PROGBITS)
+    Size   : 1476 bytes
+
+
+** Section #5 '.debug_frame' (SHT_PROGBITS)
+    Size   : 1904 bytes
+
+
+** Section #6 '.debug_info' (SHT_PROGBITS)
+    Size   : 13180 bytes
+
+
+** Section #7 '.debug_line' (SHT_PROGBITS)
+    Size   : 5152 bytes
+
+
+** Section #8 '.debug_loc' (SHT_PROGBITS)
+    Size   : 3664 bytes
+
+
+** Section #9 '.debug_macinfo' (SHT_PROGBITS)
+    Size   : 7480 bytes
+
+
+** Section #10 '.debug_pubnames' (SHT_PROGBITS)
+    Size   : 1388 bytes
+
+
+** Section #11 '.symtab' (SHT_SYMTAB)
+    Size   : 4832 bytes (alignment 4)
+    String table #12 '.strtab'
+    Last local symbol no. 140
+
+
+** Section #12 '.strtab' (SHT_STRTAB)
+    Size   : 4280 bytes
+
+
+** Section #13 '.note' (SHT_NOTE)
+    Size   : 28 bytes (alignment 4)
+
+
+** Section #14 '.comment' (SHT_PROGBITS)
+    Size   : 6296 bytes
+
+
+** Section #15 '.shstrtab' (SHT_STRTAB)
+    Size   : 156 bytes
+
+

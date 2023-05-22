@@ -1,0 +1,770 @@
+###############################################################################
+#                                                                             #
+#                                                       06/Jul/2010  14:34:50 #
+# IAR ANSI C/C++ Compiler V5.50.0.21878/W32 EVALUATION for ARM                #
+# Copyright (C) 1999-2010 IAR Systems AB.                                     #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\BlockQ #
+#                    .c                                                       #
+#    Command line =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\BlockQ #
+#                    .c -D IAR_ARM_CM0 -lCN E:\FreeRTOS_Keil_IAR\FreeRTOS\Dem #
+#                    o\CORTEX_NUC1xx_Keil_IAR\Debug\List\ --diag_suppress     #
+#                    Pe550,Pa082,Pa039 -o E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\ #
+#                    CORTEX_NUC1xx_Keil_IAR\Debug\Obj\ --no_cse --no_unroll   #
+#                    --no_inline --no_code_motion --no_tbaa --no_clustering   #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M0  #
+#                    -e --fpu=None --dlib_config "D:\Program                  #
+#                    Files\ARM\INC\DLib_Config_Full.h" -I                     #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\..\common\include\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\..\..\source\include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_K #
+#                    eil_IAR\NUC1xxBSP\NuvotonPlatform_Keil\Include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\ -I      #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\ #
+#                    Demo\CORTEX_NUC1xx_Keil_IAR\User_Demo\include\ -I        #
+#                    "D:\Program Files\ARM\INC\" -Ol                          #
+#    List file    =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\BlockQ.lst                                  #
+#    Object file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\BlockQ.o                                     #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\BlockQ.c
+      1          /*
+      2              FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
+      3          
+      4              ***************************************************************************
+      5              *                                                                         *
+      6              * If you are:                                                             *
+      7              *                                                                         *
+      8              *    + New to FreeRTOS,                                                   *
+      9              *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
+     10              *    + Looking for basic training,                                        *
+     11              *    + Wanting to improve your FreeRTOS skills and productivity           *
+     12              *                                                                         *
+     13              * then take a look at the FreeRTOS eBook                                  *
+     14              *                                                                         *
+     15              *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
+     16              *                  http://www.FreeRTOS.org/Documentation                  *
+     17              *                                                                         *
+     18              * A pdf reference manual is also available.  Both are usually delivered   *
+     19              * to your inbox within 20 minutes to two hours when purchased between 8am *
+     20              * and 8pm GMT (although please allow up to 24 hours in case of            *
+     21              * exceptional circumstances).  Thank you for your support!                *
+     22              *                                                                         *
+     23              ***************************************************************************
+     24          
+     25              This file is part of the FreeRTOS distribution.
+     26          
+     27              FreeRTOS is free software; you can redistribute it and/or modify it under
+     28              the terms of the GNU General Public License (version 2) as published by the
+     29              Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
+     30              ***NOTE*** The exception to the GPL is included to allow you to distribute
+     31              a combined work that includes FreeRTOS without being obliged to provide the
+     32              source code for proprietary components outside of the FreeRTOS kernel.
+     33              FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
+     34              ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+     35              FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+     36              more details. You should have received a copy of the GNU General Public 
+     37              License and the FreeRTOS license exception along with FreeRTOS; if not it 
+     38              can be viewed here: http://www.freertos.org/a00114.html and also obtained 
+     39              by writing to Richard Barry, contact details for whom are available on the
+     40              FreeRTOS WEB site.
+     41          
+     42              1 tab == 4 spaces!
+     43          
+     44              http://www.FreeRTOS.org - Documentation, latest information, license and
+     45              contact details.
+     46          
+     47              http://www.SafeRTOS.com - A version that is certified for use in safety
+     48              critical systems.
+     49          
+     50              http://www.OpenRTOS.com - Commercial support, development, porting,
+     51              licensing and training services.
+     52          */
+     53          
+     54          /*
+     55           * Creates six tasks that operate on three queues as follows:
+     56           *
+     57           * The first two tasks send and receive an incrementing number to/from a queue.
+     58           * One task acts as a producer and the other as the consumer.  The consumer is a
+     59           * higher priority than the producer and is set to block on queue reads.  The queue
+     60           * only has space for one item - as soon as the producer posts a message on the
+     61           * queue the consumer will unblock, pre-empt the producer, and remove the item.
+     62           *
+     63           * The second two tasks work the other way around.  Again the queue used only has
+     64           * enough space for one item.  This time the consumer has a lower priority than the
+     65           * producer.  The producer will try to post on the queue blocking when the queue is
+     66           * full.  When the consumer wakes it will remove the item from the queue, causing
+     67           * the producer to unblock, pre-empt the consumer, and immediately re-fill the
+     68           * queue.
+     69           *
+     70           * The last two tasks use the same queue producer and consumer functions.  This time the queue has
+     71           * enough space for lots of items and the tasks operate at the same priority.  The
+     72           * producer will execute, placing items into the queue.  The consumer will start
+     73           * executing when either the queue becomes full (causing the producer to block) or
+     74           * a context switch occurs (tasks of the same priority will time slice).
+     75           *
+     76           */
+     77          
+     78          /*
+     79          
+     80          Changes from V4.1.1
+     81          
+     82          	+ The second set of tasks were created the wrong way around.  This has been
+     83          	  corrected.
+     84          */
+     85          
+     86          
+     87          #include <stdlib.h>
+     88          
+     89          /* Scheduler include files. */
+     90          #include "FreeRTOS.h"
+     91          #include "task.h"
+     92          #include "queue.h"
+     93          
+     94          /* Demo program include files. */
+     95          #include "BlockQ.h"
+     96          
+     97          #define blckqSTACK_SIZE		configMINIMAL_STACK_SIZE
+     98          #define blckqNUM_TASK_SETS	( 3 )
+     99          
+    100          /* Structure used to pass parameters to the blocking queue tasks. */
+    101          typedef struct BLOCKING_QUEUE_PARAMETERS
+    102          {
+    103          	xQueueHandle xQueue;					/*< The queue to be used by the task. */
+    104          	portTickType xBlockTime;				/*< The block time to use on queue reads/writes. */
+    105          	volatile short *psCheckVariable;	/*< Incremented on each successful cycle to check the task is still running. */
+    106          } xBlockingQueueParameters;
+    107          
+    108          /* Task function that creates an incrementing number and posts it on a queue. */
+    109          static portTASK_FUNCTION_PROTO( vBlockingQueueProducer, pvParameters );
+    110          
+    111          /* Task function that removes the incrementing number from a queue and checks that
+    112          it is the expected number. */
+    113          static portTASK_FUNCTION_PROTO( vBlockingQueueConsumer, pvParameters );
+    114          
+    115          /* Variables which are incremented each time an item is removed from a queue, and
+    116          found to be the expected value.
+    117          These are used to check that the tasks are still running. */
+
+   \                                 In section .bss, align 4
+    118          static volatile short sBlockingConsumerCount[ blckqNUM_TASK_SETS ] = { ( unsigned short ) 0, ( unsigned short ) 0, ( unsigned short ) 0 };
+   \                     sBlockingConsumerCount:
+   \   00000000                      DS8 8
+    119          
+    120          /* Variable which are incremented each time an item is posted on a queue.   These
+    121          are used to check that the tasks are still running. */
+
+   \                                 In section .bss, align 4
+    122          static volatile short sBlockingProducerCount[ blckqNUM_TASK_SETS ] = { ( unsigned short ) 0, ( unsigned short ) 0, ( unsigned short ) 0 };
+   \                     sBlockingProducerCount:
+   \   00000000                      DS8 8
+    123          
+    124          /*-----------------------------------------------------------*/
+    125          
+
+   \                                 In section .text, align 2, keep-with-next
+    126          void vStartBlockingQueueTasks( unsigned portBASE_TYPE uxPriority )
+    127          {
+   \                     vStartBlockingQueueTasks:
+   \   00000000   F1B5               PUSH     {R0,R4-R7,LR}
+   \   00000002   86B0               SUB      SP,SP,#+24
+    128          xBlockingQueueParameters *pxQueueParameters1, *pxQueueParameters2;
+    129          xBlockingQueueParameters *pxQueueParameters3, *pxQueueParameters4;
+    130          xBlockingQueueParameters *pxQueueParameters5, *pxQueueParameters6;
+    131          const unsigned portBASE_TYPE uxQueueSize1 = 1, uxQueueSize5 = 5;
+   \   00000004   0120               MOVS     R0,#+1
+   \   00000006   0490               STR      R0,[SP, #+16]
+   \   00000008   0520               MOVS     R0,#+5
+   \   0000000A   0590               STR      R0,[SP, #+20]
+    132          const portTickType xBlockTime = ( portTickType ) 1000 / portTICK_RATE_MS;
+   \   0000000C   FA26               MOVS     R6,#+250
+   \   0000000E   B600               LSLS     R6,R6,#+2        ;; #+1000
+    133          const portTickType xDontBlock = ( portTickType ) 0;
+   \   00000010   0027               MOVS     R7,#+0
+    134          
+    135          	/* Create the first two tasks as described at the top of the file. */
+    136          	
+    137          	/* First create the structure used to pass parameters to the consumer tasks. */
+    138          	pxQueueParameters1 = ( xBlockingQueueParameters * ) pvPortMalloc( sizeof( xBlockingQueueParameters ) );
+   \   00000012   0C20               MOVS     R0,#+12
+   \   00000014   ........           BL       pvPortMalloc
+   \   00000018   0500               MOVS     R5,R0
+    139          
+    140          	/* Create the queue used by the first two tasks to pass the incrementing number.
+    141          	Pass a pointer to the queue in the parameter structure. */
+    142          	pxQueueParameters1->xQueue = xQueueCreate( uxQueueSize1, ( unsigned portBASE_TYPE ) sizeof( unsigned short ) );
+   \   0000001A   0221               MOVS     R1,#+2
+   \   0000001C   0498               LDR      R0,[SP, #+16]
+   \   0000001E   ........           BL       xQueueCreate
+   \   00000022   2860               STR      R0,[R5, #+0]
+    143          
+    144          	/* The consumer is created first so gets a block time as described above. */
+    145          	pxQueueParameters1->xBlockTime = xBlockTime;
+   \   00000024   6E60               STR      R6,[R5, #+4]
+    146          
+    147          	/* Pass in the variable that this task is going to increment so we can check it
+    148          	is still running. */
+    149          	pxQueueParameters1->psCheckVariable = &( sBlockingConsumerCount[ 0 ] );
+   \   00000026   ....               LDR      R0,??DataTable1
+   \   00000028   A860               STR      R0,[R5, #+8]
+    150          		
+    151          	/* Create the structure used to pass parameters to the producer task. */
+    152          	pxQueueParameters2 = ( xBlockingQueueParameters * ) pvPortMalloc( sizeof( xBlockingQueueParameters ) );
+   \   0000002A   0C20               MOVS     R0,#+12
+   \   0000002C   ........           BL       pvPortMalloc
+   \   00000030   0400               MOVS     R4,R0
+    153          
+    154          	/* Pass the queue to this task also, using the parameter structure. */
+    155          	pxQueueParameters2->xQueue = pxQueueParameters1->xQueue;
+   \   00000032   2868               LDR      R0,[R5, #+0]
+   \   00000034   2060               STR      R0,[R4, #+0]
+    156          
+    157          	/* The producer is not going to block - as soon as it posts the consumer will
+    158          	wake and remove the item so the producer should always have room to post. */
+    159          	pxQueueParameters2->xBlockTime = xDontBlock;
+   \   00000036   6760               STR      R7,[R4, #+4]
+    160          
+    161          	/* Pass in the variable that this task is going to increment so we can check
+    162          	it is still running. */
+    163          	pxQueueParameters2->psCheckVariable = &( sBlockingProducerCount[ 0 ] );
+   \   00000038   ....               LDR      R0,??DataTable1_1
+   \   0000003A   A060               STR      R0,[R4, #+8]
+    164          
+    165          
+    166          	/* Note the producer has a lower priority than the consumer when the tasks are
+    167          	spawned. */
+    168          	xTaskCreate( vBlockingQueueConsumer, ( signed char * ) "QConsB1", blckqSTACK_SIZE, ( void * ) pxQueueParameters1, uxPriority, NULL );
+   \   0000003C   0020               MOVS     R0,#+0
+   \   0000003E   0390               STR      R0,[SP, #+12]
+   \   00000040   0020               MOVS     R0,#+0
+   \   00000042   0290               STR      R0,[SP, #+8]
+   \   00000044   0020               MOVS     R0,#+0
+   \   00000046   0190               STR      R0,[SP, #+4]
+   \   00000048   0698               LDR      R0,[SP, #+24]
+   \   0000004A   0090               STR      R0,[SP, #+0]
+   \   0000004C   2B00               MOVS     R3,R5
+   \   0000004E   8022               MOVS     R2,#+128
+   \   00000050   ....               LDR      R1,??DataTable1_2
+   \   00000052   ....               LDR      R0,??DataTable1_3
+   \   00000054   ........           BL       xTaskGenericCreate
+    169          	xTaskCreate( vBlockingQueueProducer, ( signed char * ) "QProdB2", blckqSTACK_SIZE, ( void * ) pxQueueParameters2, tskIDLE_PRIORITY, NULL );
+   \   00000058   0020               MOVS     R0,#+0
+   \   0000005A   0390               STR      R0,[SP, #+12]
+   \   0000005C   0020               MOVS     R0,#+0
+   \   0000005E   0290               STR      R0,[SP, #+8]
+   \   00000060   0020               MOVS     R0,#+0
+   \   00000062   0190               STR      R0,[SP, #+4]
+   \   00000064   0020               MOVS     R0,#+0
+   \   00000066   0090               STR      R0,[SP, #+0]
+   \   00000068   2300               MOVS     R3,R4
+   \   0000006A   8022               MOVS     R2,#+128
+   \   0000006C   ....               LDR      R1,??DataTable1_4
+   \   0000006E   ....               LDR      R0,??DataTable1_5
+   \   00000070   ........           BL       xTaskGenericCreate
+    170          
+    171          	
+    172          
+    173          	/* Create the second two tasks as described at the top of the file.   This uses
+    174          	the same mechanism but reverses the task priorities. */
+    175          
+    176          	pxQueueParameters3 = ( xBlockingQueueParameters * ) pvPortMalloc( sizeof( xBlockingQueueParameters ) );
+   \   00000074   0C20               MOVS     R0,#+12
+   \   00000076   ........           BL       pvPortMalloc
+   \   0000007A   0500               MOVS     R5,R0
+    177          	pxQueueParameters3->xQueue = xQueueCreate( uxQueueSize1, ( unsigned portBASE_TYPE ) sizeof( unsigned short ) );
+   \   0000007C   0221               MOVS     R1,#+2
+   \   0000007E   0498               LDR      R0,[SP, #+16]
+   \   00000080   ........           BL       xQueueCreate
+   \   00000084   2860               STR      R0,[R5, #+0]
+    178          	pxQueueParameters3->xBlockTime = xDontBlock;
+   \   00000086   6F60               STR      R7,[R5, #+4]
+    179          	pxQueueParameters3->psCheckVariable = &( sBlockingProducerCount[ 1 ] );
+   \   00000088   ....               LDR      R0,??DataTable1_1
+   \   0000008A   801C               ADDS     R0,R0,#+2
+   \   0000008C   A860               STR      R0,[R5, #+8]
+    180          
+    181          	pxQueueParameters4 = ( xBlockingQueueParameters * ) pvPortMalloc( sizeof( xBlockingQueueParameters ) );
+   \   0000008E   0C20               MOVS     R0,#+12
+   \   00000090   ........           BL       pvPortMalloc
+   \   00000094   0400               MOVS     R4,R0
+    182          	pxQueueParameters4->xQueue = pxQueueParameters3->xQueue;
+   \   00000096   2868               LDR      R0,[R5, #+0]
+   \   00000098   2060               STR      R0,[R4, #+0]
+    183          	pxQueueParameters4->xBlockTime = xBlockTime;
+   \   0000009A   6660               STR      R6,[R4, #+4]
+    184          	pxQueueParameters4->psCheckVariable = &( sBlockingConsumerCount[ 1 ] );
+   \   0000009C   ....               LDR      R0,??DataTable1
+   \   0000009E   801C               ADDS     R0,R0,#+2
+   \   000000A0   A060               STR      R0,[R4, #+8]
+    185          
+    186          	xTaskCreate( vBlockingQueueConsumer, ( signed char * ) "QProdB3", blckqSTACK_SIZE, ( void * ) pxQueueParameters3, tskIDLE_PRIORITY, NULL );
+   \   000000A2   0020               MOVS     R0,#+0
+   \   000000A4   0390               STR      R0,[SP, #+12]
+   \   000000A6   0020               MOVS     R0,#+0
+   \   000000A8   0290               STR      R0,[SP, #+8]
+   \   000000AA   0020               MOVS     R0,#+0
+   \   000000AC   0190               STR      R0,[SP, #+4]
+   \   000000AE   0020               MOVS     R0,#+0
+   \   000000B0   0090               STR      R0,[SP, #+0]
+   \   000000B2   2B00               MOVS     R3,R5
+   \   000000B4   8022               MOVS     R2,#+128
+   \   000000B6   ....               LDR      R1,??DataTable1_6
+   \   000000B8   ....               LDR      R0,??DataTable1_3
+   \   000000BA   ........           BL       xTaskGenericCreate
+    187          	xTaskCreate( vBlockingQueueProducer, ( signed char * ) "QConsB4", blckqSTACK_SIZE, ( void * ) pxQueueParameters4, uxPriority, NULL );
+   \   000000BE   0020               MOVS     R0,#+0
+   \   000000C0   0390               STR      R0,[SP, #+12]
+   \   000000C2   0020               MOVS     R0,#+0
+   \   000000C4   0290               STR      R0,[SP, #+8]
+   \   000000C6   0020               MOVS     R0,#+0
+   \   000000C8   0190               STR      R0,[SP, #+4]
+   \   000000CA   0698               LDR      R0,[SP, #+24]
+   \   000000CC   0090               STR      R0,[SP, #+0]
+   \   000000CE   2300               MOVS     R3,R4
+   \   000000D0   8022               MOVS     R2,#+128
+   \   000000D2   ....               LDR      R1,??DataTable1_7
+   \   000000D4   ....               LDR      R0,??DataTable1_5
+   \   000000D6   ........           BL       xTaskGenericCreate
+    188          
+    189          
+    190          
+    191          	/* Create the last two tasks as described above.  The mechanism is again just
+    192          	the same.  This time both parameter structures are given a block time. */
+    193          	pxQueueParameters5 = ( xBlockingQueueParameters * ) pvPortMalloc( sizeof( xBlockingQueueParameters ) );
+   \   000000DA   0C20               MOVS     R0,#+12
+   \   000000DC   ........           BL       pvPortMalloc
+   \   000000E0   0500               MOVS     R5,R0
+    194          	pxQueueParameters5->xQueue = xQueueCreate( uxQueueSize5, ( unsigned portBASE_TYPE ) sizeof( unsigned short ) );
+   \   000000E2   0221               MOVS     R1,#+2
+   \   000000E4   0598               LDR      R0,[SP, #+20]
+   \   000000E6   ........           BL       xQueueCreate
+   \   000000EA   2860               STR      R0,[R5, #+0]
+    195          	pxQueueParameters5->xBlockTime = xBlockTime;
+   \   000000EC   6E60               STR      R6,[R5, #+4]
+    196          	pxQueueParameters5->psCheckVariable = &( sBlockingProducerCount[ 2 ] );
+   \   000000EE   ....               LDR      R0,??DataTable1_1
+   \   000000F0   001D               ADDS     R0,R0,#+4
+   \   000000F2   A860               STR      R0,[R5, #+8]
+    197          
+    198          	pxQueueParameters6 = ( xBlockingQueueParameters * ) pvPortMalloc( sizeof( xBlockingQueueParameters ) );
+   \   000000F4   0C20               MOVS     R0,#+12
+   \   000000F6   ........           BL       pvPortMalloc
+   \   000000FA   0400               MOVS     R4,R0
+    199          	pxQueueParameters6->xQueue = pxQueueParameters5->xQueue;
+   \   000000FC   2868               LDR      R0,[R5, #+0]
+   \   000000FE   2060               STR      R0,[R4, #+0]
+    200          	pxQueueParameters6->xBlockTime = xBlockTime;
+   \   00000100   6660               STR      R6,[R4, #+4]
+    201          	pxQueueParameters6->psCheckVariable = &( sBlockingConsumerCount[ 2 ] );	
+   \   00000102   ....               LDR      R0,??DataTable1
+   \   00000104   001D               ADDS     R0,R0,#+4
+   \   00000106   A060               STR      R0,[R4, #+8]
+    202          
+    203          	xTaskCreate( vBlockingQueueProducer, ( signed char * ) "QProdB5", blckqSTACK_SIZE, ( void * ) pxQueueParameters5, tskIDLE_PRIORITY, NULL );
+   \   00000108   0020               MOVS     R0,#+0
+   \   0000010A   0390               STR      R0,[SP, #+12]
+   \   0000010C   0020               MOVS     R0,#+0
+   \   0000010E   0290               STR      R0,[SP, #+8]
+   \   00000110   0020               MOVS     R0,#+0
+   \   00000112   0190               STR      R0,[SP, #+4]
+   \   00000114   0020               MOVS     R0,#+0
+   \   00000116   0090               STR      R0,[SP, #+0]
+   \   00000118   2B00               MOVS     R3,R5
+   \   0000011A   8022               MOVS     R2,#+128
+   \   0000011C   ....               LDR      R1,??DataTable1_8
+   \   0000011E   ....               LDR      R0,??DataTable1_5
+   \   00000120   ........           BL       xTaskGenericCreate
+    204          	xTaskCreate( vBlockingQueueConsumer, ( signed char * ) "QConsB6", blckqSTACK_SIZE, ( void * ) pxQueueParameters6, tskIDLE_PRIORITY, NULL );
+   \   00000124   0020               MOVS     R0,#+0
+   \   00000126   0390               STR      R0,[SP, #+12]
+   \   00000128   0020               MOVS     R0,#+0
+   \   0000012A   0290               STR      R0,[SP, #+8]
+   \   0000012C   0020               MOVS     R0,#+0
+   \   0000012E   0190               STR      R0,[SP, #+4]
+   \   00000130   0020               MOVS     R0,#+0
+   \   00000132   0090               STR      R0,[SP, #+0]
+   \   00000134   2300               MOVS     R3,R4
+   \   00000136   8022               MOVS     R2,#+128
+   \   00000138   ....               LDR      R1,??DataTable1_9
+   \   0000013A   ....               LDR      R0,??DataTable1_3
+   \   0000013C   ........           BL       xTaskGenericCreate
+    205          }
+   \   00000140   07B0               ADD      SP,SP,#+28
+   \   00000142   F0BD               POP      {R4-R7,PC}       ;; return
+    206          /*-----------------------------------------------------------*/
+    207          
+
+   \                                 In section .text, align 2, keep-with-next
+    208          static portTASK_FUNCTION( vBlockingQueueProducer, pvParameters )
+    209          {
+   \                     vBlockingQueueProducer:
+   \   00000000   38B5               PUSH     {R3-R5,LR}
+    210          unsigned short usValue = 0;
+   \   00000002   6946               MOV      R1,SP
+   \   00000004   0022               MOVS     R2,#+0
+   \   00000006   0A80               STRH     R2,[R1, #+0]
+    211          xBlockingQueueParameters *pxQueueParameters;
+    212          short sErrorEverOccurred = pdFALSE;
+   \   00000008   0025               MOVS     R5,#+0
+    213          
+    214          	pxQueueParameters = ( xBlockingQueueParameters * ) pvParameters;
+   \   0000000A   0400               MOVS     R4,R0
+   \   0000000C   00E0               B        ??vBlockingQueueProducer_0
+    215          
+    216          	for( ;; )
+    217          	{		
+    218          		if( xQueueSend( pxQueueParameters->xQueue, ( void * ) &usValue, pxQueueParameters->xBlockTime ) != pdPASS )
+    219          		{
+    220          			sErrorEverOccurred = pdTRUE;
+   \                     ??vBlockingQueueProducer_1:
+   \   0000000E   0125               MOVS     R5,#+1
+    221          		}
+   \                     ??vBlockingQueueProducer_0:
+   \   00000010   0023               MOVS     R3,#+0
+   \   00000012   6268               LDR      R2,[R4, #+4]
+   \   00000014   6946               MOV      R1,SP
+   \   00000016   2068               LDR      R0,[R4, #+0]
+   \   00000018   ........           BL       xQueueGenericSend
+   \   0000001C   0128               CMP      R0,#+1
+   \   0000001E   F6D1               BNE      ??vBlockingQueueProducer_1
+    222          		else
+    223          		{
+    224          			/* We have successfully posted a message, so increment the variable
+    225          			used to check we are still running. */
+    226          			if( sErrorEverOccurred == pdFALSE )
+   \   00000020   2DB2               SXTH     R5,R5
+   \   00000022   002D               CMP      R5,#+0
+   \   00000024   04D1               BNE      ??vBlockingQueueProducer_2
+    227          			{
+    228          				( *pxQueueParameters->psCheckVariable )++;
+   \   00000026   A068               LDR      R0,[R4, #+8]
+   \   00000028   0088               LDRH     R0,[R0, #+0]
+   \   0000002A   401C               ADDS     R0,R0,#+1
+   \   0000002C   A168               LDR      R1,[R4, #+8]
+   \   0000002E   0880               STRH     R0,[R1, #+0]
+    229          			}
+    230          
+    231          			/* Increment the variable we are going to post next time round.  The
+    232          			consumer will expect the numbers to	follow in numerical order. */
+    233          			++usValue;
+   \                     ??vBlockingQueueProducer_2:
+   \   00000030   6846               MOV      R0,SP
+   \   00000032   0088               LDRH     R0,[R0, #+0]
+   \   00000034   401C               ADDS     R0,R0,#+1
+   \   00000036   6946               MOV      R1,SP
+   \   00000038   0880               STRH     R0,[R1, #+0]
+   \   0000003A   E9E7               B        ??vBlockingQueueProducer_0
+    234          		}
+    235          	}
+    236          }
+    237          /*-----------------------------------------------------------*/
+    238          
+
+   \                                 In section .text, align 2, keep-with-next
+    239          static portTASK_FUNCTION( vBlockingQueueConsumer, pvParameters )
+    240          {
+   \                     vBlockingQueueConsumer:
+   \   00000000   70B5               PUSH     {R4-R6,LR}
+   \   00000002   82B0               SUB      SP,SP,#+8
+    241          unsigned short usData, usExpectedValue = 0;
+   \   00000004   0024               MOVS     R4,#+0
+    242          xBlockingQueueParameters *pxQueueParameters;
+    243          short sErrorEverOccurred = pdFALSE;
+   \   00000006   0026               MOVS     R6,#+0
+    244          
+    245          	pxQueueParameters = ( xBlockingQueueParameters * ) pvParameters;
+   \   00000008   0500               MOVS     R5,R0
+   \   0000000A   02E0               B        ??vBlockingQueueConsumer_0
+    246          
+    247          	for( ;; )
+    248          	{	
+    249          		if( xQueueReceive( pxQueueParameters->xQueue, &usData, pxQueueParameters->xBlockTime ) == pdPASS )
+    250          		{
+    251          			if( usData != usExpectedValue )
+    252          			{
+    253          				/* Catch-up. */
+    254          				usExpectedValue = usData;
+   \                     ??vBlockingQueueConsumer_1:
+   \   0000000C   6846               MOV      R0,SP
+   \   0000000E   0488               LDRH     R4,[R0, #+0]
+    255          
+    256          				sErrorEverOccurred = pdTRUE;
+   \   00000010   0126               MOVS     R6,#+1
+    257          			}
+   \                     ??vBlockingQueueConsumer_0:
+   \   00000012   0023               MOVS     R3,#+0
+   \   00000014   6A68               LDR      R2,[R5, #+4]
+   \   00000016   6946               MOV      R1,SP
+   \   00000018   2868               LDR      R0,[R5, #+0]
+   \   0000001A   ........           BL       xQueueGenericReceive
+   \   0000001E   0128               CMP      R0,#+1
+   \   00000020   F7D1               BNE      ??vBlockingQueueConsumer_0
+   \   00000022   6846               MOV      R0,SP
+   \   00000024   0088               LDRH     R0,[R0, #+0]
+   \   00000026   A4B2               UXTH     R4,R4
+   \   00000028   A042               CMP      R0,R4
+   \   0000002A   EFD1               BNE      ??vBlockingQueueConsumer_1
+    258          			else
+    259          			{
+    260          				/* We have successfully received a message, so increment the
+    261          				variable used to check we are still running. */	
+    262          				if( sErrorEverOccurred == pdFALSE )
+   \   0000002C   36B2               SXTH     R6,R6
+   \   0000002E   002E               CMP      R6,#+0
+   \   00000030   04D1               BNE      ??vBlockingQueueConsumer_2
+    263          				{
+    264          					( *pxQueueParameters->psCheckVariable )++;
+   \   00000032   A868               LDR      R0,[R5, #+8]
+   \   00000034   0088               LDRH     R0,[R0, #+0]
+   \   00000036   401C               ADDS     R0,R0,#+1
+   \   00000038   A968               LDR      R1,[R5, #+8]
+   \   0000003A   0880               STRH     R0,[R1, #+0]
+    265          				}
+    266          							
+    267          				/* Increment the value we expect to remove from the queue next time
+    268          				round. */
+    269          				++usExpectedValue;
+   \                     ??vBlockingQueueConsumer_2:
+   \   0000003C   641C               ADDS     R4,R4,#+1
+   \   0000003E   E8E7               B        ??vBlockingQueueConsumer_0
+    270          			}			
+    271          		}		
+    272          	}
+    273          }
+    274          /*-----------------------------------------------------------*/
+    275          
+    276          /* This is called to check that all the created tasks are still running. */
+
+   \                                 In section .text, align 2, keep-with-next
+    277          portBASE_TYPE xAreBlockingQueuesStillRunning( void )
+    278          {
+   \                     xAreBlockingQueuesStillRunning:
+   \   00000000   30B5               PUSH     {R4,R5,LR}
+    279          static short sLastBlockingConsumerCount[ blckqNUM_TASK_SETS ] = { ( unsigned short ) 0, ( unsigned short ) 0, ( unsigned short ) 0 };
+    280          static short sLastBlockingProducerCount[ blckqNUM_TASK_SETS ] = { ( unsigned short ) 0, ( unsigned short ) 0, ( unsigned short ) 0 };
+    281          portBASE_TYPE xReturn = pdPASS, xTasks;
+   \   00000002   0120               MOVS     R0,#+1
+    282          
+    283          	/* Not too worried about mutual exclusion on these variables as they are 16
+    284          	bits and we are only reading them. We also only care to see if they have
+    285          	changed or not.
+    286          	
+    287          	Loop through each check variable to and return pdFALSE if any are found not
+    288          	to have changed since the last call. */
+    289          
+    290          	for( xTasks = 0; xTasks < blckqNUM_TASK_SETS; xTasks++ )
+   \   00000004   0021               MOVS     R1,#+0
+   \   00000006   26E0               B        ??xAreBlockingQueuesStillRunning_0
+    291          	{
+    292          		if( sBlockingConsumerCount[ xTasks ] == sLastBlockingConsumerCount[ xTasks ]  )
+   \                     ??xAreBlockingQueuesStillRunning_1:
+   \   00000008   0222               MOVS     R2,#+2
+   \   0000000A   4A43               MULS     R2,R1,R2
+   \   0000000C   ....               LDR      R3,??DataTable1
+   \   0000000E   9A5E               LDRSH    R2,[R3, R2]
+   \   00000010   0223               MOVS     R3,#+2
+   \   00000012   4B43               MULS     R3,R1,R3
+   \   00000014   ....               LDR      R4,??DataTable1_10
+   \   00000016   E35E               LDRSH    R3,[R4, R3]
+   \   00000018   9A42               CMP      R2,R3
+   \   0000001A   00D1               BNE      ??xAreBlockingQueuesStillRunning_2
+    293          		{
+    294          			xReturn = pdFALSE;
+   \   0000001C   0020               MOVS     R0,#+0
+    295          		}
+    296          		sLastBlockingConsumerCount[ xTasks ] = sBlockingConsumerCount[ xTasks ];
+   \                     ??xAreBlockingQueuesStillRunning_2:
+   \   0000001E   0222               MOVS     R2,#+2
+   \   00000020   4A43               MULS     R2,R1,R2
+   \   00000022   ....               LDR      R3,??DataTable1_10
+   \   00000024   0224               MOVS     R4,#+2
+   \   00000026   4C43               MULS     R4,R1,R4
+   \   00000028   ....               LDR      R5,??DataTable1
+   \   0000002A   2C5B               LDRH     R4,[R5, R4]
+   \   0000002C   9C52               STRH     R4,[R3, R2]
+    297          
+    298          
+    299          		if( sBlockingProducerCount[ xTasks ] == sLastBlockingProducerCount[ xTasks ]  )
+   \   0000002E   0222               MOVS     R2,#+2
+   \   00000030   4A43               MULS     R2,R1,R2
+   \   00000032   ....               LDR      R3,??DataTable1_1
+   \   00000034   9A5E               LDRSH    R2,[R3, R2]
+   \   00000036   0223               MOVS     R3,#+2
+   \   00000038   4B43               MULS     R3,R1,R3
+   \   0000003A   ....               LDR      R4,??DataTable1_11
+   \   0000003C   E35E               LDRSH    R3,[R4, R3]
+   \   0000003E   9A42               CMP      R2,R3
+   \   00000040   00D1               BNE      ??xAreBlockingQueuesStillRunning_3
+    300          		{
+    301          			xReturn = pdFALSE;
+   \   00000042   0020               MOVS     R0,#+0
+    302          		}
+    303          		sLastBlockingProducerCount[ xTasks ] = sBlockingProducerCount[ xTasks ];
+   \                     ??xAreBlockingQueuesStillRunning_3:
+   \   00000044   0222               MOVS     R2,#+2
+   \   00000046   4A43               MULS     R2,R1,R2
+   \   00000048   ....               LDR      R3,??DataTable1_11
+   \   0000004A   0224               MOVS     R4,#+2
+   \   0000004C   4C43               MULS     R4,R1,R4
+   \   0000004E   ....               LDR      R5,??DataTable1_1
+   \   00000050   2C5B               LDRH     R4,[R5, R4]
+   \   00000052   9C52               STRH     R4,[R3, R2]
+    304          	}
+   \   00000054   491C               ADDS     R1,R1,#+1
+   \                     ??xAreBlockingQueuesStillRunning_0:
+   \   00000056   0329               CMP      R1,#+3
+   \   00000058   D6DB               BLT      ??xAreBlockingQueuesStillRunning_1
+    305          
+    306          	return xReturn;
+   \   0000005A   30BD               POP      {R4,R5,PC}       ;; return
+    307          }
+
+   \                                 In section .bss, align 4
+   \                     ??sLastBlockingConsumerCount:
+   \   00000000                      DS8 8
+
+   \                                 In section .bss, align 4
+   \                     ??sLastBlockingProducerCount:
+   \   00000000                      DS8 8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   ........           DC32     sBlockingConsumerCount
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   ........           DC32     sBlockingProducerCount
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \   00000000   ........           DC32     `?<Constant "QConsB1">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_3:
+   \   00000000   ........           DC32     vBlockingQueueConsumer
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_4:
+   \   00000000   ........           DC32     `?<Constant "QProdB2">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_5:
+   \   00000000   ........           DC32     vBlockingQueueProducer
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_6:
+   \   00000000   ........           DC32     `?<Constant "QProdB3">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_7:
+   \   00000000   ........           DC32     `?<Constant "QConsB4">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_8:
+   \   00000000   ........           DC32     `?<Constant "QProdB5">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_9:
+   \   00000000   ........           DC32     `?<Constant "QConsB6">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_10:
+   \   00000000   ........           DC32     ??sLastBlockingConsumerCount
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_11:
+   \   00000000   ........           DC32     ??sLastBlockingProducerCount
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "QConsB1">`:
+   \   00000000   51436F6E7342       DC8 "QConsB1"
+   \              3100        
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "QProdB2">`:
+   \   00000000   5150726F6442       DC8 "QProdB2"
+   \              3200        
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "QProdB3">`:
+   \   00000000   5150726F6442       DC8 "QProdB3"
+   \              3300        
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "QConsB4">`:
+   \   00000000   51436F6E7342       DC8 "QConsB4"
+   \              3400        
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "QProdB5">`:
+   \   00000000   5150726F6442       DC8 "QProdB5"
+   \              3500        
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "QConsB6">`:
+   \   00000000   51436F6E7342       DC8 "QConsB6"
+   \              3600        
+    308          
+
+   Maximum stack usage in bytes:
+
+     Function                       .cstack
+     --------                       -------
+     vBlockingQueueConsumer             24
+     vBlockingQueueProducer             16
+     vStartBlockingQueueTasks           48
+     xAreBlockingQueuesStillRunning     12
+
+
+   Section sizes:
+
+     Function/Label                 Bytes
+     --------------                 -----
+     sBlockingConsumerCount            8
+     sBlockingProducerCount            8
+     vStartBlockingQueueTasks        324
+     vBlockingQueueProducer           60
+     vBlockingQueueConsumer           64
+     xAreBlockingQueuesStillRunning   92
+     sLastBlockingConsumerCount        8
+     sLastBlockingProducerCount        8
+     ??DataTable1                      4
+     ??DataTable1_1                    4
+     ??DataTable1_2                    4
+     ??DataTable1_3                    4
+     ??DataTable1_4                    4
+     ??DataTable1_5                    4
+     ??DataTable1_6                    4
+     ??DataTable1_7                    4
+     ??DataTable1_8                    4
+     ??DataTable1_9                    4
+     ??DataTable1_10                   4
+     ??DataTable1_11                   4
+     ?<Constant "QConsB1">             8
+     ?<Constant "QProdB2">             8
+     ?<Constant "QProdB3">             8
+     ?<Constant "QConsB4">             8
+     ?<Constant "QProdB5">             8
+     ?<Constant "QConsB6">             8
+
+ 
+  32 bytes in section .bss
+  48 bytes in section .rodata
+ 588 bytes in section .text
+ 
+ 588 bytes of CODE  memory
+  48 bytes of CONST memory
+  32 bytes of DATA  memory
+
+Errors: none
+Warnings: none

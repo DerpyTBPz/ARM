@@ -1,0 +1,17 @@
+.\obj\semaphore_test.o: User_Demo\Semaphore_Test.c
+.\obj\semaphore_test.o: D:\Keil4\ARM\RV31\INC\stdio.h
+.\obj\semaphore_test.o: ..\..\Source\include\FreeRTOS.h
+.\obj\semaphore_test.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\semaphore_test.o: ..\..\Source\include\projdefs.h
+.\obj\semaphore_test.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\semaphore_test.o: ..\..\Source\include\portable.h
+.\obj\semaphore_test.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\semaphore_test.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\semaphore_test.o: ..\..\Source\include\task.h
+.\obj\semaphore_test.o: ..\..\Source\include\list.h
+.\obj\semaphore_test.o: ..\..\Source\include\queue.h
+.\obj\semaphore_test.o: ..\..\Source\include\semphr.h
+.\obj\semaphore_test.o: ..\..\Source\include\queue.h
+.\obj\semaphore_test.o: ..\CORTEX_NUC1xx_Keil_IAR\App_Cfg.h
+.\obj\semaphore_test.o: .\User_Demo\include\NUC1xx_Test.h
+.\obj\semaphore_test.o: ..\..\Source\include\task.h

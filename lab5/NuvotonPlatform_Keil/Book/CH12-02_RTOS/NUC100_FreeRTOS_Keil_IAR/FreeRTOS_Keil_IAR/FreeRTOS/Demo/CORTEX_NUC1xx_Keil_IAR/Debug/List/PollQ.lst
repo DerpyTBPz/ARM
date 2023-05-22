@@ -1,0 +1,532 @@
+###############################################################################
+#                                                                             #
+#                                                       06/Jul/2010  14:34:52 #
+# IAR ANSI C/C++ Compiler V5.50.0.21878/W32 EVALUATION for ARM                #
+# Copyright (C) 1999-2010 IAR Systems AB.                                     #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\PollQ. #
+#                    c                                                        #
+#    Command line =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\PollQ. #
+#                    c -D IAR_ARM_CM0 -lCN E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo #
+#                    \CORTEX_NUC1xx_Keil_IAR\Debug\List\ --diag_suppress      #
+#                    Pe550,Pa082,Pa039 -o E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\ #
+#                    CORTEX_NUC1xx_Keil_IAR\Debug\Obj\ --no_cse --no_unroll   #
+#                    --no_inline --no_code_motion --no_tbaa --no_clustering   #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M0  #
+#                    -e --fpu=None --dlib_config "D:\Program                  #
+#                    Files\ARM\INC\DLib_Config_Full.h" -I                     #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\..\common\include\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\..\..\source\include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_K #
+#                    eil_IAR\NUC1xxBSP\NuvotonPlatform_Keil\Include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\ -I      #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\ #
+#                    Demo\CORTEX_NUC1xx_Keil_IAR\User_Demo\include\ -I        #
+#                    "D:\Program Files\ARM\INC\" -Ol                          #
+#    List file    =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\PollQ.lst                                   #
+#    Object file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\PollQ.o                                      #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\PollQ.c
+      1          /*
+      2              FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
+      3          
+      4              ***************************************************************************
+      5              *                                                                         *
+      6              * If you are:                                                             *
+      7              *                                                                         *
+      8              *    + New to FreeRTOS,                                                   *
+      9              *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
+     10              *    + Looking for basic training,                                        *
+     11              *    + Wanting to improve your FreeRTOS skills and productivity           *
+     12              *                                                                         *
+     13              * then take a look at the FreeRTOS eBook                                  *
+     14              *                                                                         *
+     15              *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
+     16              *                  http://www.FreeRTOS.org/Documentation                  *
+     17              *                                                                         *
+     18              * A pdf reference manual is also available.  Both are usually delivered   *
+     19              * to your inbox within 20 minutes to two hours when purchased between 8am *
+     20              * and 8pm GMT (although please allow up to 24 hours in case of            *
+     21              * exceptional circumstances).  Thank you for your support!                *
+     22              *                                                                         *
+     23              ***************************************************************************
+     24          
+     25              This file is part of the FreeRTOS distribution.
+     26          
+     27              FreeRTOS is free software; you can redistribute it and/or modify it under
+     28              the terms of the GNU General Public License (version 2) as published by the
+     29              Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
+     30              ***NOTE*** The exception to the GPL is included to allow you to distribute
+     31              a combined work that includes FreeRTOS without being obliged to provide the
+     32              source code for proprietary components outside of the FreeRTOS kernel.
+     33              FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
+     34              ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+     35              FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+     36              more details. You should have received a copy of the GNU General Public 
+     37              License and the FreeRTOS license exception along with FreeRTOS; if not it 
+     38              can be viewed here: http://www.freertos.org/a00114.html and also obtained 
+     39              by writing to Richard Barry, contact details for whom are available on the
+     40              FreeRTOS WEB site.
+     41          
+     42              1 tab == 4 spaces!
+     43          
+     44              http://www.FreeRTOS.org - Documentation, latest information, license and
+     45              contact details.
+     46          
+     47              http://www.SafeRTOS.com - A version that is certified for use in safety
+     48              critical systems.
+     49          
+     50              http://www.OpenRTOS.com - Commercial support, development, porting,
+     51              licensing and training services.
+     52          */
+     53          
+     54          /*
+     55           * This version of PollQ. c is for use on systems that have limited stack
+     56           * space and no display facilities.  The complete version can be found in
+     57           * the Demo/Common/Full directory.
+     58           *
+     59           * Creates two tasks that communicate over a single queue.  One task acts as a
+     60           * producer, the other a consumer.
+     61           *
+     62           * The producer loops for three iteration, posting an incrementing number onto the
+     63           * queue each cycle.  It then delays for a fixed period before doing exactly the
+     64           * same again.
+     65           *
+     66           * The consumer loops emptying the queue.  Each item removed from the queue is
+     67           * checked to ensure it contains the expected value.  When the queue is empty it
+     68           * blocks for a fixed period, then does the same again.
+     69           *
+     70           * All queue access is performed without blocking.  The consumer completely empties
+     71           * the queue each time it runs so the producer should never find the queue full.
+     72           *
+     73           * An error is flagged if the consumer obtains an unexpected value or the producer
+     74           * find the queue is full.
+     75           */
+     76          
+     77          /*
+     78          Changes from V2.0.0
+     79          
+     80          	+ Delay periods are now specified using variables and constants of
+     81          	  portTickType rather than unsigned long.
+     82          */
+     83          
+     84          #include <stdlib.h>
+     85          
+     86          /* Scheduler include files. */
+     87          #include "FreeRTOS.h"
+     88          #include "task.h"
+     89          #include "queue.h"
+     90          
+     91          /* Demo program include files. */
+     92          #include "PollQ.h"
+     93          
+     94          #define pollqSTACK_SIZE			configMINIMAL_STACK_SIZE
+     95          #define pollqQUEUE_SIZE			( 10 )
+     96          #define pollqPRODUCER_DELAY		( ( portTickType ) 200 / portTICK_RATE_MS )
+     97          #define pollqCONSUMER_DELAY		( pollqPRODUCER_DELAY - ( portTickType ) ( 20 / portTICK_RATE_MS ) )
+     98          #define pollqNO_DELAY			( ( portTickType ) 0 )
+     99          #define pollqVALUES_TO_PRODUCE	( ( signed portBASE_TYPE ) 3 )
+    100          #define pollqINITIAL_VALUE		( ( signed portBASE_TYPE ) 0 )
+    101          
+    102          /* The task that posts the incrementing number onto the queue. */
+    103          static portTASK_FUNCTION_PROTO( vPolledQueueProducer, pvParameters );
+    104          
+    105          /* The task that empties the queue. */
+    106          static portTASK_FUNCTION_PROTO( vPolledQueueConsumer, pvParameters );
+    107          
+    108          /* Variables that are used to check that the tasks are still running with no
+    109          errors. */
+
+   \                                 In section .bss, align 4
+    110          static volatile signed portBASE_TYPE xPollingConsumerCount = pollqINITIAL_VALUE, xPollingProducerCount = pollqINITIAL_VALUE;
+   \                     xPollingConsumerCount:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     xPollingProducerCount:
+   \   00000000                      DS8 4
+    111          
+    112          /*-----------------------------------------------------------*/
+    113          
+
+   \                                 In section .text, align 2, keep-with-next
+    114          void vStartPolledQueueTasks( unsigned portBASE_TYPE uxPriority )
+    115          {
+   \                     vStartPolledQueueTasks:
+   \   00000000   1FB5               PUSH     {R0-R4,LR}
+   \   00000002   0400               MOVS     R4,R0
+    116          static xQueueHandle xPolledQueue;
+    117          
+    118          	/* Create the queue used by the producer and consumer. */
+    119          	xPolledQueue = xQueueCreate( pollqQUEUE_SIZE, ( unsigned portBASE_TYPE ) sizeof( unsigned short ) );
+   \   00000004   0221               MOVS     R1,#+2
+   \   00000006   0A20               MOVS     R0,#+10
+   \   00000008   ........           BL       xQueueCreate
+   \   0000000C   ....               LDR      R1,??DataTable3
+   \   0000000E   0860               STR      R0,[R1, #+0]
+    120          
+    121          	/* vQueueAddToRegistry() adds the queue to the queue registry, if one is
+    122          	in use.  The queue registry is provided as a means for kernel aware 
+    123          	debuggers to locate queues and has no purpose if a kernel aware debugger
+    124          	is not being used.  The call to vQueueAddToRegistry() will be removed
+    125          	by the pre-processor if configQUEUE_REGISTRY_SIZE is not defined or is 
+    126          	defined to be less than 1. */
+    127          	vQueueAddToRegistry( xPolledQueue, ( signed char * ) "Poll_Test_Queue" );
+    128          
+    129          	/* Spawn the producer and consumer. */
+    130          	xTaskCreate( vPolledQueueConsumer, ( signed char * ) "QConsNB", pollqSTACK_SIZE, ( void * ) &xPolledQueue, uxPriority, ( xTaskHandle * ) NULL );
+   \   00000010   0020               MOVS     R0,#+0
+   \   00000012   0390               STR      R0,[SP, #+12]
+   \   00000014   0020               MOVS     R0,#+0
+   \   00000016   0290               STR      R0,[SP, #+8]
+   \   00000018   0020               MOVS     R0,#+0
+   \   0000001A   0190               STR      R0,[SP, #+4]
+   \   0000001C   0094               STR      R4,[SP, #+0]
+   \   0000001E   ....               LDR      R3,??DataTable3
+   \   00000020   8022               MOVS     R2,#+128
+   \   00000022   ....               LDR      R1,??DataTable3_1
+   \   00000024   ....               LDR      R0,??DataTable3_2
+   \   00000026   ........           BL       xTaskGenericCreate
+    131          	xTaskCreate( vPolledQueueProducer, ( signed char * ) "QProdNB", pollqSTACK_SIZE, ( void * ) &xPolledQueue, uxPriority, ( xTaskHandle * ) NULL );
+   \   0000002A   0020               MOVS     R0,#+0
+   \   0000002C   0390               STR      R0,[SP, #+12]
+   \   0000002E   0020               MOVS     R0,#+0
+   \   00000030   0290               STR      R0,[SP, #+8]
+   \   00000032   0020               MOVS     R0,#+0
+   \   00000034   0190               STR      R0,[SP, #+4]
+   \   00000036   0094               STR      R4,[SP, #+0]
+   \   00000038   ....               LDR      R3,??DataTable3
+   \   0000003A   8022               MOVS     R2,#+128
+   \   0000003C   ....               LDR      R1,??DataTable3_3
+   \   0000003E   ....               LDR      R0,??DataTable3_4
+   \   00000040   ........           BL       xTaskGenericCreate
+    132          }
+   \   00000044   1FBD               POP      {R0-R4,PC}       ;; return
+
+   \                                 In section .bss, align 4
+   \                     ??xPolledQueue:
+   \   00000000                      DS8 4
+    133          /*-----------------------------------------------------------*/
+    134          
+
+   \                                 In section .text, align 2, keep-with-next
+    135          static portTASK_FUNCTION( vPolledQueueProducer, pvParameters )
+    136          {
+   \                     vPolledQueueProducer:
+   \   00000000   70B5               PUSH     {R4-R6,LR}
+   \   00000002   82B0               SUB      SP,SP,#+8
+   \   00000004   0600               MOVS     R6,R0
+    137          unsigned short usValue = ( unsigned short ) 0;
+   \   00000006   6846               MOV      R0,SP
+   \   00000008   0021               MOVS     R1,#+0
+   \   0000000A   0180               STRH     R1,[R0, #+0]
+    138          signed portBASE_TYPE xError = pdFALSE, xLoop;
+   \   0000000C   0025               MOVS     R5,#+0
+   \   0000000E   02E0               B        ??vPolledQueueProducer_0
+    139          
+    140          	for( ;; )
+    141          	{		
+    142          		for( xLoop = 0; xLoop < pollqVALUES_TO_PRODUCE; xLoop++ )
+    143          		{
+    144          			/* Send an incrementing number on the queue without blocking. */
+    145          			if( xQueueSend( *( ( xQueueHandle * ) pvParameters ), ( void * ) &usValue, pollqNO_DELAY ) != pdPASS )
+    146          			{
+    147          				/* We should never find the queue full so if we get here there
+    148          				has been an error. */
+    149          				xError = pdTRUE;
+    150          			}
+    151          			else
+    152          			{
+    153          				if( xError == pdFALSE )
+    154          				{
+    155          					/* If an error has ever been recorded we stop incrementing the
+    156          					check variable. */
+    157          					portENTER_CRITICAL();
+    158          						xPollingProducerCount++;
+    159          					portEXIT_CRITICAL();
+    160          				}
+    161          
+    162          				/* Update the value we are going to post next time around. */
+    163          				usValue++;
+    164          			}
+    165          		}
+    166          
+    167          		/* Wait before we start posting again to ensure the consumer runs and
+    168          		empties the queue. */
+    169          		vTaskDelay( pollqPRODUCER_DELAY );
+   \                     ??vPolledQueueProducer_1:
+   \   00000010   C820               MOVS     R0,#+200
+   \   00000012   ........           BL       vTaskDelay
+   \                     ??vPolledQueueProducer_0:
+   \   00000016   0024               MOVS     R4,#+0
+   \   00000018   10E0               B        ??vPolledQueueProducer_2
+   \                     ??vPolledQueueProducer_3:
+   \   0000001A   002D               CMP      R5,#+0
+   \   0000001C   08D1               BNE      ??vPolledQueueProducer_4
+   \   0000001E   ........           BL       vPortEnterCritical
+   \   00000022   ....               LDR      R0,??DataTable3_5
+   \   00000024   0068               LDR      R0,[R0, #+0]
+   \   00000026   401C               ADDS     R0,R0,#+1
+   \   00000028   ....               LDR      R1,??DataTable3_5
+   \   0000002A   0860               STR      R0,[R1, #+0]
+   \   0000002C   ........           BL       vPortExitCritical
+   \                     ??vPolledQueueProducer_4:
+   \   00000030   6846               MOV      R0,SP
+   \   00000032   0088               LDRH     R0,[R0, #+0]
+   \   00000034   401C               ADDS     R0,R0,#+1
+   \   00000036   6946               MOV      R1,SP
+   \   00000038   0880               STRH     R0,[R1, #+0]
+   \                     ??vPolledQueueProducer_5:
+   \   0000003A   641C               ADDS     R4,R4,#+1
+   \                     ??vPolledQueueProducer_2:
+   \   0000003C   032C               CMP      R4,#+3
+   \   0000003E   E7DA               BGE      ??vPolledQueueProducer_1
+   \   00000040   0023               MOVS     R3,#+0
+   \   00000042   0022               MOVS     R2,#+0
+   \   00000044   6946               MOV      R1,SP
+   \   00000046   3068               LDR      R0,[R6, #+0]
+   \   00000048   ........           BL       xQueueGenericSend
+   \   0000004C   0128               CMP      R0,#+1
+   \   0000004E   E4D0               BEQ      ??vPolledQueueProducer_3
+   \   00000050   0125               MOVS     R5,#+1
+   \   00000052   F2E7               B        ??vPolledQueueProducer_5
+    170          	}
+    171          }  /*lint !e818 Function prototype must conform to API. */
+    172          /*-----------------------------------------------------------*/
+    173          
+
+   \                                 In section .text, align 2, keep-with-next
+    174          static portTASK_FUNCTION( vPolledQueueConsumer, pvParameters )
+    175          {
+   \                     vPolledQueueConsumer:
+   \   00000000   70B5               PUSH     {R4-R6,LR}
+   \   00000002   82B0               SUB      SP,SP,#+8
+   \   00000004   0600               MOVS     R6,R0
+    176          unsigned short usData, usExpectedValue = ( unsigned short ) 0;
+   \   00000006   0024               MOVS     R4,#+0
+    177          signed portBASE_TYPE xError = pdFALSE;
+   \   00000008   0025               MOVS     R5,#+0
+   \   0000000A   02E0               B        ??vPolledQueueConsumer_0
+    178          
+    179          	for( ;; )
+    180          	{		
+    181          		/* Loop until the queue is empty. */
+    182          		while( uxQueueMessagesWaiting( *( ( xQueueHandle * ) pvParameters ) ) )
+    183          		{
+    184          			if( xQueueReceive( *( ( xQueueHandle * ) pvParameters ), &usData, pollqNO_DELAY ) == pdPASS )
+    185          			{
+    186          				if( usData != usExpectedValue )
+    187          				{
+    188          					/* This is not what we expected to receive so an error has
+    189          					occurred. */
+    190          					xError = pdTRUE;
+    191          
+    192          					/* Catch-up to the value we received so our next expected
+    193          					value should again be correct. */
+    194          					usExpectedValue = usData;
+    195          				}
+    196          				else
+    197          				{
+    198          					if( xError == pdFALSE )
+    199          					{
+    200          						/* Only increment the check variable if no errors have
+    201          						occurred. */
+    202          						portENTER_CRITICAL();
+    203          							xPollingConsumerCount++;
+    204          						portEXIT_CRITICAL();
+    205          					}
+    206          				}
+    207          
+    208          				/* Next time round we would expect the number to be one higher. */
+    209          				usExpectedValue++;
+    210          			}
+    211          		}
+    212          
+    213          		/* Now the queue is empty we block, allowing the producer to place more
+    214          		items in the queue. */
+    215          		vTaskDelay( pollqCONSUMER_DELAY );
+   \                     ??vPolledQueueConsumer_1:
+   \   0000000C   B420               MOVS     R0,#+180
+   \   0000000E   ........           BL       vTaskDelay
+   \                     ??vPolledQueueConsumer_0:
+   \   00000012   3068               LDR      R0,[R6, #+0]
+   \   00000014   ........           BL       uxQueueMessagesWaiting
+   \   00000018   0028               CMP      R0,#+0
+   \   0000001A   F7D0               BEQ      ??vPolledQueueConsumer_1
+   \   0000001C   0023               MOVS     R3,#+0
+   \   0000001E   0022               MOVS     R2,#+0
+   \   00000020   6946               MOV      R1,SP
+   \   00000022   3068               LDR      R0,[R6, #+0]
+   \   00000024   ........           BL       xQueueGenericReceive
+   \   00000028   0128               CMP      R0,#+1
+   \   0000002A   F2D1               BNE      ??vPolledQueueConsumer_0
+   \   0000002C   6846               MOV      R0,SP
+   \   0000002E   0088               LDRH     R0,[R0, #+0]
+   \   00000030   A4B2               UXTH     R4,R4
+   \   00000032   A042               CMP      R0,R4
+   \   00000034   03D0               BEQ      ??vPolledQueueConsumer_2
+   \   00000036   0125               MOVS     R5,#+1
+   \   00000038   6846               MOV      R0,SP
+   \   0000003A   0488               LDRH     R4,[R0, #+0]
+   \   0000003C   0AE0               B        ??vPolledQueueConsumer_3
+   \                     ??vPolledQueueConsumer_2:
+   \   0000003E   002D               CMP      R5,#+0
+   \   00000040   08D1               BNE      ??vPolledQueueConsumer_3
+   \   00000042   ........           BL       vPortEnterCritical
+   \   00000046   ....               LDR      R0,??DataTable3_6
+   \   00000048   0068               LDR      R0,[R0, #+0]
+   \   0000004A   401C               ADDS     R0,R0,#+1
+   \   0000004C   ....               LDR      R1,??DataTable3_6
+   \   0000004E   0860               STR      R0,[R1, #+0]
+   \   00000050   ........           BL       vPortExitCritical
+   \                     ??vPolledQueueConsumer_3:
+   \   00000054   641C               ADDS     R4,R4,#+1
+   \   00000056   DCE7               B        ??vPolledQueueConsumer_0
+    216          	}
+    217          } /*lint !e818 Function prototype must conform to API. */
+    218          /*-----------------------------------------------------------*/
+    219          
+    220          /* This is called to check that all the created tasks are still running with no errors. */
+
+   \                                 In section .text, align 2, keep-with-next
+    221          portBASE_TYPE xArePollingQueuesStillRunning( void )
+    222          {
+   \                     xArePollingQueuesStillRunning:
+   \   00000000   00B5               PUSH     {LR}
+    223          portBASE_TYPE xReturn;
+    224          
+    225          	/* Check both the consumer and producer poll count to check they have both
+    226          	been changed since out last trip round.  We do not need a critical section
+    227          	around the check variables as this is called from a higher priority than
+    228          	the other tasks that access the same variables. */
+    229          	if( ( xPollingConsumerCount == pollqINITIAL_VALUE ) ||
+    230          		( xPollingProducerCount == pollqINITIAL_VALUE )
+    231          	  )
+   \   00000002   ....               LDR      R0,??DataTable3_6
+   \   00000004   0068               LDR      R0,[R0, #+0]
+   \   00000006   0028               CMP      R0,#+0
+   \   00000008   03D0               BEQ      ??xArePollingQueuesStillRunning_0
+   \   0000000A   ....               LDR      R0,??DataTable3_5
+   \   0000000C   0068               LDR      R0,[R0, #+0]
+   \   0000000E   0028               CMP      R0,#+0
+   \   00000010   01D1               BNE      ??xArePollingQueuesStillRunning_1
+    232          	{
+    233          		xReturn = pdFALSE;
+   \                     ??xArePollingQueuesStillRunning_0:
+   \   00000012   0020               MOVS     R0,#+0
+   \   00000014   00E0               B        ??xArePollingQueuesStillRunning_2
+    234          	}
+    235          	else
+    236          	{
+    237          		xReturn = pdTRUE;
+   \                     ??xArePollingQueuesStillRunning_1:
+   \   00000016   0120               MOVS     R0,#+1
+    238          	}
+    239          
+    240          	/* Set the check variables back down so we know if they have been
+    241          	incremented the next time around. */
+    242          	xPollingConsumerCount = pollqINITIAL_VALUE;
+   \                     ??xArePollingQueuesStillRunning_2:
+   \   00000018   ....               LDR      R1,??DataTable3_6
+   \   0000001A   0022               MOVS     R2,#+0
+   \   0000001C   0A60               STR      R2,[R1, #+0]
+    243          	xPollingProducerCount = pollqINITIAL_VALUE;
+   \   0000001E   ....               LDR      R1,??DataTable3_5
+   \   00000020   0022               MOVS     R2,#+0
+   \   00000022   0A60               STR      R2,[R1, #+0]
+    244          
+    245          	return xReturn;
+   \   00000024   00BD               POP      {PC}             ;; return
+    246          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \   00000000   ........           DC32     ??xPolledQueue
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_1:
+   \   00000000   ........           DC32     `?<Constant "QConsNB">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_2:
+   \   00000000   ........           DC32     vPolledQueueConsumer
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_3:
+   \   00000000   ........           DC32     `?<Constant "QProdNB">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_4:
+   \   00000000   ........           DC32     vPolledQueueProducer
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_5:
+   \   00000000   ........           DC32     xPollingProducerCount
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_6:
+   \   00000000   ........           DC32     xPollingConsumerCount
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "QConsNB">`:
+   \   00000000   51436F6E734E       DC8 "QConsNB"
+   \              4200        
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "QProdNB">`:
+   \   00000000   5150726F644E       DC8 "QProdNB"
+   \              4200        
+
+   Maximum stack usage in bytes:
+
+     Function                      .cstack
+     --------                      -------
+     vPolledQueueConsumer              24
+     vPolledQueueProducer              24
+     vStartPolledQueueTasks            24
+     xArePollingQueuesStillRunning      4
+
+
+   Section sizes:
+
+     Function/Label                Bytes
+     --------------                -----
+     xPollingConsumerCount            4
+     xPollingProducerCount            4
+     vStartPolledQueueTasks          70
+     xPolledQueue                     4
+     vPolledQueueProducer            84
+     vPolledQueueConsumer            88
+     xArePollingQueuesStillRunning   38
+     ??DataTable3                     4
+     ??DataTable3_1                   4
+     ??DataTable3_2                   4
+     ??DataTable3_3                   4
+     ??DataTable3_4                   4
+     ??DataTable3_5                   4
+     ??DataTable3_6                   4
+     ?<Constant "QConsNB">            8
+     ?<Constant "QProdNB">            8
+
+ 
+  12 bytes in section .bss
+  16 bytes in section .rodata
+ 308 bytes in section .text
+ 
+ 308 bytes of CODE  memory
+  16 bytes of CONST memory
+  12 bytes of DATA  memory
+
+Errors: none
+Warnings: none

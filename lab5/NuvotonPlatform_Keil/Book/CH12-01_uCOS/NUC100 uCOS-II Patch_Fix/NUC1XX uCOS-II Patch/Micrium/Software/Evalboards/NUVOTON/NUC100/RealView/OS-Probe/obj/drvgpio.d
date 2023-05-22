@@ -1,0 +1,9 @@
+.\obj\drvgpio.o: ..\..\..\..\NUC1XX_BSP\NuvotonPlatform_Keil\Src\Driver\DrvGPIO.c
+.\obj\drvgpio.o: C:\Keil\ARM\RV31\INC\stdio.h
+.\obj\drvgpio.o: ..\..\..\..\NUC1XX_BSP\CMSIS\CM0\NUC100.h
+.\obj\drvgpio.o: ..\..\..\..\NUC1XX_BSP\CMSIS\CM0\core_cm0.h
+.\obj\drvgpio.o: C:\Keil\ARM\RV31\INC\stdint.h
+.\obj\drvgpio.o: ..\..\..\..\NUC1XX_BSP\CMSIS\CM0\system_NUC100.h
+.\obj\drvgpio.o: ..\..\..\..\NUC1XX_BSP\NuvotonPlatform_Keil\Include\System\SysInfra.h
+.\obj\drvgpio.o: ..\..\..\..\NUC1XX_BSP\NuvotonPlatform_Keil\Include\System\ModuleID.h
+.\obj\drvgpio.o: ..\..\..\..\NUC1XX_BSP\NuvotonPlatform_Keil\Include\Driver\DrvGPIO.h

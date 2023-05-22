@@ -1,0 +1,1424 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>3373000995</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\Debug\Obj\DrvGPIO.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\retarget.pbi</file>
+      <file>$TOOLKIT_DIR$\INC\yvals.h</file>
+      <file>$PROJ_DIR$\..\Common\include\flash.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\list.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\Thread_Test.pbi</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\DrvTimer.h</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\CMSIS\CM0\core_cm0.h</file>
+      <file>$PROJ_DIR$\..\Common\include\AltBlckQ.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\ParTest.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\list.o</file>
+      <file>$TOOLKIT_DIR$\INC\ycheck.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\DrvSYS.pbi</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\AltBlock.c</file>
+      <file>$PROJ_DIR$\User_Demo\Queue_Test.c</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\dynamic.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\semtest.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\retarget.o</file>
+      <file>$TOOLKIT_DIR$\INC\stdlib.h</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Include\System\SysInfra.h</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\system_NUC1xx.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\PollQ.o</file>
+      <file>$TOOLKIT_DIR$\INC\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\Drive_Demo\Smpl_DrvUART.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\core_cm0.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\IntQueueTimer.o</file>
+      <file>$PROJ_DIR$\..\..\Source\include\list.h</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\DrvSYS.h</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\AltBlckQ.c</file>
+      <file>$PROJ_DIR$\..\Common\include\GenQTest.h</file>
+      <file>$TOOLKIT_DIR$\lib\rt6M_tl.a</file>
+      <file>$PROJ_DIR$\Debug\Obj\flash.pbi</file>
+      <file>$PROJ_DIR$\Debug\Exe\RTOSDemo.bin</file>
+      <file>$PROJ_DIR$\Debug\Obj\integer.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\Sem_Bin_Test.pbi</file>
+      <file>$PROJ_DIR$\..\Common\include\integer.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\AltPollQ.o</file>
+      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+      <file>$PROJ_DIR$\..\..\Source\include\StackMacros.h</file>
+      <file>$PROJ_DIR$\Debug\List\PollQ.lst</file>
+      <file>$PROJ_DIR$\Debug\List\countsem.lst</file>
+      <file>$PROJ_DIR$\Debug\List\blocktim.lst</file>
+      <file>$PROJ_DIR$\Debug\Obj\heap_2.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\heap_2.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\BlockQ.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\blocktim.pbi</file>
+      <file>$PROJ_DIR$\..\Common\include\semtest.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\AltQTest.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\port.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\startup_NUCxxx_iar.o</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Include\System\SysInfra.h</file>
+      <file>$PROJ_DIR$\Debug\List\Smpl_DrvUART.lst</file>
+      <file>$PROJ_DIR$\Debug\List\Thread_Test.lst</file>
+      <file>$PROJ_DIR$\Debug\List\GenQTest.lst</file>
+      <file>$PROJ_DIR$\Debug\List\recmutex.lst</file>
+      <file>$PROJ_DIR$\Debug\List\retarget.lst</file>
+      <file>$PROJ_DIR$\Debug\List\semtest.lst</file>
+      <file>$PROJ_DIR$\Debug\List\port.lst</file>
+      <file>$PROJ_DIR$\Debug\List\QPeek.lst</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\IntQueue.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\recmutex.pbi</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\DrvGPIO.c</file>
+      <file>$TOOLKIT_DIR$\INC\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\INC\stddef.h</file>
+      <file>$PROJ_DIR$\Debug\List\BlockQ.lst</file>
+      <file>$PROJ_DIR$\..\Common\include\comtest.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\AltBlock.o</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\AltQTest.c</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\BlockQ.c</file>
+      <file>$TOOLKIT_DIR$\INC\string.h</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Include\System\ModuleID.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\DrvUART.pbi</file>
+      <file>$PROJ_DIR$\..\..\Source\portable\IAR\ARM_CM0\portmacro.h</file>
+      <file>$PROJ_DIR$\..\Common\include\PollQ.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\IntQueue.o</file>
+      <file>$PROJ_DIR$\IntQueueTimer.h</file>
+      <file>$PROJ_DIR$\..\Common\include\partest.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\QPeek.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\DrvUART.c</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\CMSIS\CM0\core_cm0.c</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\CMSIS\CM0\system_NUC1xx.c</file>
+      <file>$TOOLKIT_DIR$\INC\intrinsics.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\blocktim.o</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\blocktim.c</file>
+      <file>$PROJ_DIR$\..\Common\include\AltBlock.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\Smpl_DrvUART.o</file>
+      <file>$TOOLKIT_DIR$\INC\math.h</file>
+      <file>$PROJ_DIR$\Debug\List\RTOSDemo.log</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\system_NUC1xx.c</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\countsem.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\DrvADC.o</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Include\Driver\DrvADC.h</file>
+      <file>$PROJ_DIR$\ParTest\ParTest.c</file>
+      <file>$PROJ_DIR$\..\..\Source\include\queue.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\dynamic.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\flop.pbi</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Driver\DrvADC.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\queue.o</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\startup\arm\startup_NUCxxx_iar.s</file>
+      <file>$PROJ_DIR$\..\Common\include\QPeek.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\Sem_Bin_Test.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\AltBlock.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\Smpl_DrvUART.pbi</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\flash.c</file>
+      <file>$PROJ_DIR$\IntQueueTimer.c</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\GenQTest.c</file>
+      <file>$PROJ_DIR$\..\Common\include\recmutex.h</file>
+      <file>$PROJ_DIR$\Debug\List\IntQueueTimer.lst</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\startup\iar\startup_NUCxxx_iar.s</file>
+      <file>$PROJ_DIR$\Debug\Obj\RTOSDemo.pbd</file>
+      <file>$PROJ_DIR$\Debug\Obj\DrvADC.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\IntQueueTimer.pbi</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\Debug\List\AltBlckQ.lst</file>
+      <file>$PROJ_DIR$\User_Demo\Sem_Bin_Test.c</file>
+      <file>$PROJ_DIR$\Debug\List\ParTest.lst</file>
+      <file>$PROJ_DIR$\..\..\Source\include\croutine.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\semtest.o</file>
+      <file>$PROJ_DIR$\..\..\Source\queue.c</file>
+      <file>$PROJ_DIR$\..\..\Source\tasks.c</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\retarget.c</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\CMSIS\CM0\startup\iar\startup_NUCxxx_iar.s</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\DrvSYS.c</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\death.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\recmutex.o</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\DrvUART.h</file>
+      <file>$TOOLKIT_DIR$\INC\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Driver\DrvGPIO.c</file>
+      <file>$PROJ_DIR$\User_Demo\Smpl_DrvUART.c</file>
+      <file>$PROJ_DIR$\User_Demo\Thread_Test.c</file>
+      <file>$PROJ_DIR$\..\..\Source\portable\MemMang\heap_2.c</file>
+      <file>$TOOLKIT_DIR$\INC\DLib_Threads.h</file>
+      <file>$TOOLKIT_DIR$\INC\stdint.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\QPeek.o</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\DrvGPIO.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\AltPollQ.pbi</file>
+      <file>$PROJ_DIR$\Debug\List\core_cm0.lst</file>
+      <file>$PROJ_DIR$\..\Common\include\death.h</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\integer.c</file>
+      <file>$PROJ_DIR$\Debug\List\flop.lst</file>
+      <file>$PROJ_DIR$\Debug\Obj\Queue_Test.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\ParTest.pbi</file>
+      <file>$PROJ_DIR$\..\Common\include\flop.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\IntQueue.pbi</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\CMSIS\CM0\NUC1xx.h</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\PollQ.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\flash.o</file>
+      <file>$PROJ_DIR$\..\Common\include\BlockQ.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\death.o</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\AltPollQ.c</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\core_cm0.h</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Include\Driver\DrvGPIO.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\GenQTest.pbi</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Driver\DrvSYS.c</file>
+      <file>$PROJ_DIR$\..\..\Source\portable\IAR\ARM_CM0\port.c</file>
+      <file>$PROJ_DIR$\..\..\Source\portable\IAR\ARM_CM0\portasm.s</file>
+      <file>$PROJ_DIR$\Debug\Exe\RTOSDemo.out</file>
+      <file>$PROJ_DIR$\Debug\Obj\PollQ.pbi</file>
+      <file>$PROJ_DIR$\..\Common\include\AltQTest.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\GenQTest.o</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\comtest.c</file>
+      <file>$TOOLKIT_DIR$\lib\dl6M_tl_if.a</file>
+      <file>$PROJ_DIR$\Debug\Obj\core_cm0.pbi</file>
+      <file>$PROJ_DIR$\Debug\List\RTOSDemo.map</file>
+      <file>$PROJ_DIR$\Debug\Obj\AltBlckQ.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.o</file>
+      <file>$TOOLKIT_DIR$\INC\DLib_Config_Full.h</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Include\System\ModuleID.h</file>
+      <file>$PROJ_DIR$\..\..\Source\list.c</file>
+      <file>$PROJ_DIR$\..\Common\include\countsem.h</file>
+      <file>$PROJ_DIR$\..\..\Source\include\portable.h</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Driver\retarget.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\queue.pbi</file>
+      <file>$PROJ_DIR$\User_Demo\include\NUC1xx_Test.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\Thread_Test.o</file>
+      <file>$PROJ_DIR$\Debug\List\AltPollQ.lst</file>
+      <file>$PROJ_DIR$\Debug\Obj\BlockQ.pbi</file>
+      <file>$PROJ_DIR$\Debug\List\AltBlock.lst</file>
+      <file>$PROJ_DIR$\Debug\Obj\Queue_Test.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\port.pbi</file>
+      <file>$PROJ_DIR$\..\..\Source\include\FreeRTOS.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\tasks.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\integer.pbi</file>
+      <file>$PROJ_DIR$\Drive_Demo\Queue_Test.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_NUC1xx.o</file>
+      <file>$PROJ_DIR$\Drive_Demo\Sem_Bin_Test.c</file>
+      <file>$TOOLKIT_DIR$\INC\ymath.h</file>
+      <file>$PROJ_DIR$\..\Common\include\blocktim.h</file>
+      <file>$PROJ_DIR$\NUC1xxBSP\CMSIS\CM0\system_NUC1xx.h</file>
+      <file>$PROJ_DIR$\App_Cfg.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\DrvGPIO.pbi</file>
+      <file>$PROJ_DIR$\..\..\Source\include\semphr.h</file>
+      <file>$TOOLKIT_DIR$\INC\DLib_Product_string.h</file>
+      <file>$PROJ_DIR$\..\..\Source\include\projdefs.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\comtest.pbi</file>
+      <file>$PROJ_DIR$\Drive_Demo\Thread_Test.c</file>
+      <file>$TOOLKIT_DIR$\INC\DLib_Product.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\tasks.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_NUC1xx.pbi</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\flop.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\dynamic.o</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Include\Driver\DrvUART.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\portasm.o</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\NUC1xx.h</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Include\Driver\NUC1xx_Test.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\countsem.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\AltQTest.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\flop.o</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Driver\DrvUART.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\AltBlckQ.pbi</file>
+      <file>$PROJ_DIR$\..\..\Source\include\task.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\DrvSYS.o</file>
+      <file>$PROJ_DIR$\Smpl_DrvUART.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\death.pbi</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\QPeek.c</file>
+      <file>$PROJ_DIR$\..\Common\include\AltPollQ.h</file>
+      <file>$PROJ_DIR$\..\Common\include\dynamic.h</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\semtest.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\countsem.o</file>
+      <file>$PROJ_DIR$\..\Common\include\serial.h</file>
+      <file>$PROJ_DIR$\FreeRTOSConfig.h</file>
+      <file>$TOOLKIT_DIR$\INC\stdio.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\comtest.o</file>
+      <file>$PROJ_DIR$\Debug\List\DrvADC.lst</file>
+      <file>$PROJ_DIR$\RTOSDemo.icf</file>
+      <file>$PROJ_DIR$\..\..\Source\include\mpu_wrappers.h</file>
+      <file>$PROJ_DIR$\..\Common\include\IntQueue.h</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\Include\Driver\DrvSYS.h</file>
+      <file>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\core_cm0.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\DrvUART.o</file>
+      <file>$PROJ_DIR$\Debug\List\IntQueue.lst</file>
+      <file>$PROJ_DIR$\Debug\List\integer.lst</file>
+      <file>$PROJ_DIR$\Debug\List\death.lst</file>
+      <file>$PROJ_DIR$\..\Common\Minimal\recmutex.c</file>
+      <file>$PROJ_DIR$\Debug\List\heap_2.lst</file>
+      <file>$PROJ_DIR$\Debug\List\main.lst</file>
+      <file>$PROJ_DIR$\Debug\List\dynamic.lst</file>
+      <file>$PROJ_DIR$\Debug\List\system_NUC1xx.lst</file>
+      <file>$PROJ_DIR$\Debug\List\queue.lst</file>
+      <file>$PROJ_DIR$\Debug\List\flash.lst</file>
+      <file>$PROJ_DIR$\Debug\List\list.lst</file>
+      <file>$PROJ_DIR$\Debug\List\Queue_Test.lst</file>
+      <file>$PROJ_DIR$\Debug\List\tasks.lst</file>
+      <file>$PROJ_DIR$\Debug\List\AltQTest.lst</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\AltBlock.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 178 66</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 102</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 181 63 11 2 127 167 197 22 132 62 194 221 171 72 226 211 26 94 85</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 181 63 11 2 127 197 22 132 62 194 221 171 72 226 211 26 94 85</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\User_Demo\Queue_Test.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 242 179</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 141</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 222 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 94 174</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\dynamic.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 237 201</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 95</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 192 94 217</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 192 94 217</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Drive_Demo\Smpl_DrvUART.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 86</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 103</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 202 204 151 133 82 20 19 168 152 205 181 63 194 221 171 72 226 211 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\AltBlckQ.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 114 165</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 210</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 94 8</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 8</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 157 164 88</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\IntQueue.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 231 74</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 144</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 69 11 2 127 167 197 22 132 62 193 181 63 194 221 171 72 226 94 211 26 227 75</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 69 11 2 127 197 22 132 62 193 181 63 194 221 171 72 226 94 211 26 227 75</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\DrvGPIO.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 191</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 145 7 133 82 189 50 70 135</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\AltQTest.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 244 207</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 47</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 94 192 159</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 192 159</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\BlockQ.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 64 44</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 177</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 94 148</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 148</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\DrvUART.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 230</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 71</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 145 7 133 82 189 50 70 126 27</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xxBSP\CMSIS\CM0\core_cm0.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 137 24</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 163</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 133 11 2 127 167 197 22 132</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 133 11 2 127 197 22 132</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xxBSP\CMSIS\CM0\system_NUC1xx.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 238 185</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 199</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 133 11 2 127 167 197 22 132 145 7 82 189 50 70</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 133 11 2 127 197 22 132 145 7 82 189 50 70</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\blocktim.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 41 83</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 45</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 181 63 11 2 127 167 197 22 132 62 194 221 171 72 226 211 26 94 188</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 181 63 11 2 127 197 22 132 62 194 221 171 72 226 211 26 94 188</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\system_NUC1xx.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 185</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 199</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 133 11 2 127 197 22 132 204 151 82 20 19 168</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\countsem.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 40 219</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 206</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 181 63 11 2 127 167 197 22 132 62 194 221 171 72 226 211 26 192 94 170</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 181 63 11 2 127 197 22 132 62 194 221 171 72 226 211 26 192 94 170</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\ParTest\ParTest.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 116 9</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 142</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 181 63 11 2 127 167 197 22 132 62 194 221 171 72 226 211 26 76 145 7 133 82 189 50 70</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 181 63 11 2 127 197 22 132 62 194 221 171 72 226 211 26 76 145 7 133 82 189 50 70</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xx_lib\Driver\DrvADC.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 224 91</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 111</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 204 151 133 11 2 127 167 197 22 132 82 20 19 168 92 228</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 204 151 133 11 2 127 197 22 132 82 20 19 168 92 228</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\startup\arm\startup_NUCxxx_iar.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 49</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\flash.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 240 147</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 31</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 76 3</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 76 3</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\IntQueueTimer.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 108 25</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 112</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 222 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 75 227 6 145 7 133 82 189 50 70</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 181 63 194 221 171 72 226 75 227 6 145 7 133 82 189 50 70</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\GenQTest.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 53 160</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 153</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 94 192 29</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 192 29</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\startup\iar\startup_NUCxxx_iar.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 49</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Obj\RTOSDemo.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 210 102 136 47 177 191 12 71 153 144 112 142 158 77 141 103 5 45 163 206 214 95 31 96 42 183 4 78 180 173 60 1 16 199 182</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 236 166</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 78</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 222 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 94 126 145 7 133 82 189 50 70 135 27 174 190 148</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 126 145 7 133 82 189 50 70 135 27 174 190 148</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\User_Demo\Sem_Bin_Test.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 101</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 192 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\queue.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 239 98</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 173</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 69 193 181 63 194 221 171 72 226 211 26 117</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 69 193 181 63 194 221 171 72 226 211 26 117</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\tasks.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 243 198</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 182</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 222 11 2 127 167 197 22 132 62 18 69 193 181 63 194 221 171 72 226 211 26 38</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 18 69 193 181 63 194 221 171 72 226 211 26 38</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\retarget.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 55 17</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 222 11 2 127 167 197 22 132 62 145 7 133 82 189 50 70</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 145 7 133 82 189 50 70</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xxBSP\CMSIS\CM0\startup\iar\startup_NUCxxx_iar.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 49</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\DrvSYS.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 212</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 12</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 145 7 133 82 189 50 70 27</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\death.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 233 149</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 214</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 138</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 138</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xx_lib\Driver\DrvGPIO.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 0</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 191</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 204 151 133 82 20 19 168 152</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\User_Demo\Smpl_DrvUART.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 51 86</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 103</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 222 11 2 127 167 197 22 132 62 126 145 7 133 82 189 50 70 135 174 181 63 194 221 171 72 226 211 26</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 126 145 7 133 82 189 50 70 135 174 181 63 194 221 171 72 226 211 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\User_Demo\Thread_Test.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 52 175</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 5</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 222 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 174</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\portable\MemMang\heap_2.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 235 43</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\integer.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 232 33</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 183</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 35</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 35</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\PollQ.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 39 21</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 158</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 94 73</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 73</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\AltPollQ.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 176 36</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 136</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 94 216</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 216</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xx_lib\Driver\DrvSYS.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 212</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 12</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 204 151 133 82 20 19 168 228</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\portable\IAR\ARM_CM0\port.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 57 48</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 180</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 181 63 11 2 127 167 197 22 132 62 194 221 171 72 226 211 26</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 181 63 11 2 127 197 22 132 62 194 221 171 72 226 211 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\portable\IAR\ARM_CM0\portasm.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 203</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>AARM</name>
+          <file> 221</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\RTOSDemo.out</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 164 88</file>
+        </tool>
+        <tool>
+          <name>OBJCOPY</name>
+          <file> 32</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 225 165 66 36 207 44 160 74 25 9 21 134 179 86 175 83 24 219 149 201 147 208 43 33 10 166 48 203 98 125 17 118 49 185 198 37 30 162</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\comtest.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 223</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 195</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 220 65 76</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\Source\list.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 241 10</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 4</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 26</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 26</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xx_lib\Driver\retarget.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 17</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 204 151 133 82 20 19 168</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Drive_Demo\Queue_Test.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 179</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 141</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 205</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Drive_Demo\Sem_Bin_Test.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 101</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 192 205</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Drive_Demo\Thread_Test.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 175</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 5</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 205</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\flop.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 140 208</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 96</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 87 187 181 63 194 221 171 72 226 211 26 143</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 87 187 181 63 194 221 171 72 226 211 26 143</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xx_lib\Driver\DrvUART.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 230</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 71</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222 11 2 127 197 22 132 62 204 151 133 82 20 19 168 202 228</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Smpl_DrvUART.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 51 86</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 103</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 222 11 2 127 167 197 22 132 62 202 204 151 133 82 20 19 168 152</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\QPeek.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 58 134</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 77</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 94 192 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 94 192 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\semtest.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 56 118</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 16</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18 11 2 127 167 197 22 132 62 181 63 194 221 171 72 226 211 26 192 94 46</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18 11 2 127 197 22 132 62 181 63 194 221 171 72 226 211 26 192 94 46</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\NUC1xx_lib\CMSIS\CM0\core_cm0.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 24</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 163</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 133 11 2 127 197 22 132</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\Common\Minimal\recmutex.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 54 125</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 60</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 181 63 11 2 127 167 197 22 132 62 194 221 171 72 226 211 26 192 94 107</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 181 63 11 2 127 197 22 132 62 194 221 171 72 226 211 26 192 94 107</file>
+        </tool>
+      </inputs>
+    </file>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\DrvGPIO.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\DrvUART.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\User_Demo\Sem_Bin_Test.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>$PROJ_DIR$\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\DrvSYS.c</name>
+      <tool>ICCARM</tool>
+    </forcedrebuild>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>ILINK</tool>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

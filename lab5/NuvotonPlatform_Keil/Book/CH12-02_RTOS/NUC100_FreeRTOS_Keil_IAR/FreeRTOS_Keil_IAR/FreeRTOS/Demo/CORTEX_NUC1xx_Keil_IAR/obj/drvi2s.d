@@ -1,0 +1,10 @@
+.\obj\drvi2s.o: NUC1xx_lib\Driver\DrvI2S.c
+.\obj\drvi2s.o: D:\Keil4\ARM\RV31\INC\stdio.h
+.\obj\drvi2s.o: .\NUC1xx_lib\Include\Driver\DrvI2S.h
+.\obj\drvi2s.o: .\NUC1xx_lib\CMSIS\CM0\NUC1xx.h
+.\obj\drvi2s.o: .\NUC1xx_lib\CMSIS\CM0\core_cm0.h
+.\obj\drvi2s.o: D:\Keil4\ARM\RV31\INC\stdint.h
+.\obj\drvi2s.o: .\NUC1xx_lib\CMSIS\CM0\system_NUC1xx.h
+.\obj\drvi2s.o: .\NUC1xx_lib\Include\System\SysInfra.h
+.\obj\drvi2s.o: .\NUC1xx_lib\Include\System\ModuleID.h
+.\obj\drvi2s.o: .\NUC1xx_lib\Include\Driver\DrvSYS.h

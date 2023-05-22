@@ -1,0 +1,13 @@
+.\obj\altblckq.o: ..\Common\Minimal\AltBlckQ.c
+.\obj\altblckq.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\altblckq.o: ..\..\Source\include\FreeRTOS.h
+.\obj\altblckq.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\altblckq.o: ..\..\Source\include\projdefs.h
+.\obj\altblckq.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\altblckq.o: ..\..\Source\include\portable.h
+.\obj\altblckq.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\altblckq.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\altblckq.o: ..\..\Source\include\task.h
+.\obj\altblckq.o: ..\..\Source\include\list.h
+.\obj\altblckq.o: ..\..\Source\include\queue.h
+.\obj\altblckq.o: ..\Common\include\AltBlckQ.h

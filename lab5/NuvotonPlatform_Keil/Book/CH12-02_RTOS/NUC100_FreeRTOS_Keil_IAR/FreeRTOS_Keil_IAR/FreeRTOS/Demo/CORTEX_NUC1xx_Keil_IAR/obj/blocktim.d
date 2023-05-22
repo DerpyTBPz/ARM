@@ -1,0 +1,12 @@
+.\obj\blocktim.o: ..\Common\Minimal\blocktim.c
+.\obj\blocktim.o: ..\..\Source\include\FreeRTOS.h
+.\obj\blocktim.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\blocktim.o: ..\..\Source\include\projdefs.h
+.\obj\blocktim.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\blocktim.o: ..\..\Source\include\portable.h
+.\obj\blocktim.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\blocktim.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\blocktim.o: ..\..\Source\include\task.h
+.\obj\blocktim.o: ..\..\Source\include\list.h
+.\obj\blocktim.o: ..\..\Source\include\queue.h
+.\obj\blocktim.o: ..\Common\include\blocktim.h
