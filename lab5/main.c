@@ -117,7 +117,7 @@ void case2_1()
 	
 	while(1) 
 		{
-			for (i = 0; i < 200; i++)
+			for (i = 0; i < 10; i++)
 			{
 				while ((SysTick->CTRL & 0x10000)==0);
 			}
@@ -145,6 +145,7 @@ int main()
 	
 	case2_1();
 	InterruptInit();
+	//UART02_IRQHandler();
 	
 	
 	return 0;
