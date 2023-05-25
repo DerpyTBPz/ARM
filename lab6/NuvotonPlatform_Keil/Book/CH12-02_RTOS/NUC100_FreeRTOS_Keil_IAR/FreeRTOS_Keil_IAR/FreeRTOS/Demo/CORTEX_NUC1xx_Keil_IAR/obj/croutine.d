@@ -1,0 +1,11 @@
+.\obj\croutine.o: ..\..\Source\croutine.c
+.\obj\croutine.o: ..\..\Source\include\FreeRTOS.h
+.\obj\croutine.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\croutine.o: ..\..\Source\include\projdefs.h
+.\obj\croutine.o: ..\CORTEX_NUC1xx_Keil\FreeRTOSConfig.h
+.\obj\croutine.o: ..\..\Source\include\portable.h
+.\obj\croutine.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\croutine.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\croutine.o: ..\..\Source\include\task.h
+.\obj\croutine.o: ..\..\Source\include\list.h
+.\obj\croutine.o: ..\..\Source\include\croutine.h

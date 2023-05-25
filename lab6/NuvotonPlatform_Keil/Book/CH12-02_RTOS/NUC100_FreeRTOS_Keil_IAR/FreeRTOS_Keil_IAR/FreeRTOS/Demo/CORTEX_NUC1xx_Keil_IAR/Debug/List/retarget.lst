@@ -1,0 +1,296 @@
+###############################################################################
+#                                                                             #
+#                                                       06/Jul/2010  14:34:57 #
+# IAR ANSI C/C++ Compiler V5.50.0.21878/W32 EVALUATION for ARM                #
+# Copyright (C) 1999-2010 IAR Systems AB.                                     #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\retarget.c   #
+#    Command line =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\retarget.c   #
+#                    -D IAR_ARM_CM0 -lCN E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\C #
+#                    ORTEX_NUC1xx_Keil_IAR\Debug\List\ --diag_suppress        #
+#                    Pe550,Pa082,Pa039 -o E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\ #
+#                    CORTEX_NUC1xx_Keil_IAR\Debug\Obj\ --no_cse --no_unroll   #
+#                    --no_inline --no_code_motion --no_tbaa --no_clustering   #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M0  #
+#                    -e --fpu=None --dlib_config "D:\Program                  #
+#                    Files\ARM\INC\DLib_Config_Full.h" -I                     #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\..\common\include\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\..\..\source\include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_K #
+#                    eil_IAR\NUC1xxBSP\NuvotonPlatform_Keil\Include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\ -I      #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\ #
+#                    Demo\CORTEX_NUC1xx_Keil_IAR\User_Demo\include\ -I        #
+#                    "D:\Program Files\ARM\INC\" -Ol                          #
+#    List file    =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\retarget.lst                                #
+#    Object file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\retarget.o                                   #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IAR\NUC1xxBSP\NuvotonPlatform_Keil\Src\Driver\retarget.c
+      1          /*---------------------------------------------------------------------------------------------------------*/
+      2          /*                                                                                                         */
+      3          /* Copyright(c) 2009 Nuvoton Technology Corp. All rights reserved.                                         */
+      4          /*                                                                                                         */
+      5          /*---------------------------------------------------------------------------------------------------------*/
+      6          #include <stdio.h>
+      7          #include "NUC1xx.h"
+      8          
+      9          #if defined ( __CC_ARM   )
+     10          #if (__ARMCC_VERSION < 400000)
+     11          #else
+     12          /* Insist on keeping widthprec, to avoid X propagation by benign code in C-lib */
+     13          #pragma import _printf_widthprec
+     14          #endif
+     15          #endif
+     16          
+     17          /*---------------------------------------------------------------------------------------------------------*/
+     18          /* Macro Definition                                                                                        */
+     19          /*---------------------------------------------------------------------------------------------------------*/
+     20          /* Using UART0 or UART1 */  
+     21          #define DEBUG_PORT   0 		    /*0:UART0  1:UART1 2:UART2 */
+     22          
+     23          /*---------------------------------------------------------------------------------------------------------*/
+     24          /* Global variables                                                                                        */
+     25          /*---------------------------------------------------------------------------------------------------------*/
+     26          struct __FILE { int handle; /* Add whatever you need here */ };
+
+   \                                 In section .bss, align 4
+     27          FILE __stdout;
+   \                     __stdout:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+     28          FILE __stdin;
+   \                     __stdin:
+   \   00000000                      DS8 4
+     29          
+     30          
+     31          /*---------------------------------------------------------------------------------------------------------*/
+     32          /* Routine to write a char                                                                                 */
+     33          /*---------------------------------------------------------------------------------------------------------*/
+
+   \                                 In section .text, align 2, keep-with-next
+     34          void SendChar(int ch)
+     35          {
+   \                     SendChar:
+   \   00000000   00B5               PUSH     {LR}
+     36          	if(DEBUG_PORT == 1)
+     37          	{
+     38          	    while(UART1->FSR.TX_FULL == 1);
+     39          		UART1->DATA = ch;
+     40          	    if(ch == '\n'){
+     41          	        while(UART1->FSR.TX_FULL == 1);
+     42          	        UART1->DATA = '\r';
+     43          	    }
+     44          	}
+     45          	else if(DEBUG_PORT == 0)
+     46          	{
+     47          		while(UART0->FSR.TX_FULL == 1);
+   \                     ??SendChar_0:
+   \   00000002   ....               LDR      R1,??DataTable1  ;; 0x40050018
+   \   00000004   0968               LDR      R1,[R1, #+0]
+   \   00000006   8022               MOVS     R2,#+128
+   \   00000008   1204               LSLS     R2,R2,#+16       ;; #+8388608
+   \   0000000A   0A40               ANDS     R2,R2,R1
+   \   0000000C   1100               MOVS     R1,R2
+   \   0000000E   C90D               LSRS     R1,R1,#+23
+   \   00000010   0129               CMP      R1,#+1
+   \   00000012   F6D0               BEQ      ??SendChar_0
+     48          		UART0->DATA = ch;
+   \   00000014   ....               LDR      R1,??DataTable1_1  ;; 0x40050000
+   \   00000016   0860               STR      R0,[R1, #+0]
+     49          	    if(ch == '\n'){
+   \   00000018   0A28               CMP      R0,#+10
+   \   0000001A   0BD1               BNE      ??SendChar_1
+     50          	        while(UART0->FSR.TX_FULL == 1);
+   \                     ??SendChar_2:
+   \   0000001C   ....               LDR      R0,??DataTable1  ;; 0x40050018
+   \   0000001E   0068               LDR      R0,[R0, #+0]
+   \   00000020   8021               MOVS     R1,#+128
+   \   00000022   0904               LSLS     R1,R1,#+16       ;; #+8388608
+   \   00000024   0140               ANDS     R1,R1,R0
+   \   00000026   0800               MOVS     R0,R1
+   \   00000028   C00D               LSRS     R0,R0,#+23
+   \   0000002A   0128               CMP      R0,#+1
+   \   0000002C   F6D0               BEQ      ??SendChar_2
+     51          	        UART0->DATA = '\r';
+   \   0000002E   ....               LDR      R0,??DataTable1_1  ;; 0x40050000
+   \   00000030   0D21               MOVS     R1,#+13
+   \   00000032   0160               STR      R1,[R0, #+0]
+     52          	    }
+     53          	}
+     54          	else
+     55          	{
+     56          		while(UART2->FSR.TX_FULL == 1);
+     57          		UART2->DATA = ch;
+     58          	    if(ch == '\n'){
+     59          	        while(UART2->FSR.TX_FULL == 1);
+     60          	        UART2->DATA = '\r';
+     61          	    }
+     62          	}
+     63          }
+   \                     ??SendChar_1:
+   \   00000034   00BD               POP      {PC}             ;; return
+     64          
+     65          /*---------------------------------------------------------------------------------------------------------*/
+     66          /* Routine to get a char                                                                                   */
+     67          /*---------------------------------------------------------------------------------------------------------*/
+
+   \                                 In section .text, align 2, keep-with-next
+     68          char GetChar()
+     69          {
+   \                     GetChar:
+   \   00000000   00B5               PUSH     {LR}
+     70          	if(DEBUG_PORT == 1)
+     71          	{
+     72          		while (1){
+     73          			if(UART1->FSR.RX_EMPTY == 0 )
+     74          			{
+     75          				return (UART1->DATA);
+     76          				
+     77          		    }
+     78          		}
+     79          	}
+     80          	else if(DEBUG_PORT == 0)
+     81          	{
+     82          		while (1){
+     83          			if(UART0->FSR.RX_EMPTY == 0 )
+   \                     ??GetChar_0:
+   \   00000002   ....               LDR      R0,??DataTable1  ;; 0x40050018
+   \   00000004   0068               LDR      R0,[R0, #+0]
+   \   00000006   8021               MOVS     R1,#+128
+   \   00000008   C901               LSLS     R1,R1,#+7        ;; #+16384
+   \   0000000A   0140               ANDS     R1,R1,R0
+   \   0000000C   0800               MOVS     R0,R1
+   \   0000000E   800B               LSRS     R0,R0,#+14
+   \   00000010   0028               CMP      R0,#+0
+   \   00000012   F6D1               BNE      ??GetChar_0
+     84          			{
+     85          				return (UART0->DATA);
+   \   00000014   ....               LDR      R0,??DataTable1_1  ;; 0x40050000
+   \   00000016   0068               LDR      R0,[R0, #+0]
+   \   00000018   C0B2               UXTB     R0,R0
+   \   0000001A   00BD               POP      {PC}             ;; return
+     86          				
+     87          		    }
+     88          		}
+     89          	}
+     90          	else 
+     91          	{
+     92          		while (1){
+     93          			if(UART2->FSR.RX_EMPTY == 0 )
+     94          			{
+     95          				return (UART2->DATA);
+     96          				
+     97          		    }
+     98          		}
+     99          	}
+    100          }
+    101          
+    102          
+    103          /*---------------------------------------------------------------------------------------------------------*/
+    104          /* C library retargetting                                                                                  */
+    105          /*---------------------------------------------------------------------------------------------------------*/
+    106          
+
+   \                                 In section .text, align 2, keep-with-next
+    107          void _ttywrch(int ch)
+    108          {
+   \                     _ttywrch:
+   \   00000000   80B5               PUSH     {R7,LR}
+    109            SendChar(ch);
+   \   00000002   ........           BL       SendChar
+    110            return;
+   \   00000006   01BD               POP      {R0,PC}          ;; return
+    111          }
+    112          
+
+   \                                 In section .text, align 2, keep-with-next
+    113          int fputc(int ch, FILE *f)
+    114          {
+   \                     fputc:
+   \   00000000   80B5               PUSH     {R7,LR}
+    115            SendChar(ch);
+   \   00000002   ........           BL       SendChar
+    116            return 0;
+   \   00000006   0020               MOVS     R0,#+0
+   \   00000008   02BD               POP      {R1,PC}          ;; return
+    117          }
+    118          
+
+   \                                 In section .text, align 2, keep-with-next
+    119          int fgetc(FILE *f) {
+   \                     fgetc:
+   \   00000000   80B5               PUSH     {R7,LR}
+    120            return (GetChar());
+   \   00000002   ........           BL       GetChar
+   \   00000006   02BD               POP      {R1,PC}          ;; return
+    121          }
+    122          
+    123          
+
+   \                                 In section .text, align 2, keep-with-next
+    124          int ferror(FILE *f) {
+    125            return EOF;
+   \                     ferror:
+   \   00000000   0020               MOVS     R0,#+0
+   \   00000002   C043               MVNS     R0,R0            ;; #-1
+   \   00000004   7047               BX       LR               ;; return
+    126          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   18000540           DC32     0x40050018
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   00000540           DC32     0x40050000
+
+   Maximum stack usage in bytes:
+
+     Function .cstack
+     -------- -------
+     GetChar       4
+     SendChar      4
+     _ttywrch      8
+     ferror        0
+     fgetc         8
+     fputc         8
+
+
+   Section sizes:
+
+     Function/Label Bytes
+     -------------- -----
+     __stdout          4
+     __stdin           4
+     SendChar         54
+     GetChar          28
+     _ttywrch          8
+     fputc            10
+     fgetc             8
+     ferror            6
+     ??DataTable1      4
+     ??DataTable1_1    4
+
+ 
+   8 bytes in section .bss
+ 122 bytes in section .text
+ 
+ 122 bytes of CODE memory
+   8 bytes of DATA memory
+
+Errors: none
+Warnings: none

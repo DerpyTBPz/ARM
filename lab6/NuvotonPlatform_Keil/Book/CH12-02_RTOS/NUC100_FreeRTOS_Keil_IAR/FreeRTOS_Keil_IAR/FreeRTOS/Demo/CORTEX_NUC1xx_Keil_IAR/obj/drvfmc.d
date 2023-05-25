@@ -1,0 +1,9 @@
+.\obj\drvfmc.o: NUC1xx_lib\Driver\DrvFMC.c
+.\obj\drvfmc.o: D:\Keil4\ARM\RV31\INC\stdio.h
+.\obj\drvfmc.o: .\NUC1xx_lib\Include\Driver\DrvFMC.h
+.\obj\drvfmc.o: .\NUC1xx_lib\CMSIS\CM0\NUC1xx.h
+.\obj\drvfmc.o: .\NUC1xx_lib\CMSIS\CM0\core_cm0.h
+.\obj\drvfmc.o: D:\Keil4\ARM\RV31\INC\stdint.h
+.\obj\drvfmc.o: .\NUC1xx_lib\CMSIS\CM0\system_NUC1xx.h
+.\obj\drvfmc.o: .\NUC1xx_lib\Include\System\SysInfra.h
+.\obj\drvfmc.o: .\NUC1xx_lib\Include\System\ModuleID.h

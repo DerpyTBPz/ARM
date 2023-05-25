@@ -1,0 +1,15 @@
+.\obj\qpeek.o: ..\Common\Minimal\QPeek.c
+.\obj\qpeek.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\qpeek.o: ..\..\Source\include\FreeRTOS.h
+.\obj\qpeek.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\qpeek.o: ..\..\Source\include\projdefs.h
+.\obj\qpeek.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\qpeek.o: ..\..\Source\include\portable.h
+.\obj\qpeek.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\qpeek.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\qpeek.o: ..\..\Source\include\task.h
+.\obj\qpeek.o: ..\..\Source\include\list.h
+.\obj\qpeek.o: ..\..\Source\include\queue.h
+.\obj\qpeek.o: ..\..\Source\include\semphr.h
+.\obj\qpeek.o: ..\..\Source\include\queue.h
+.\obj\qpeek.o: ..\Common\include\QPeek.h

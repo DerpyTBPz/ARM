@@ -1,0 +1,13 @@
+.\obj\flash.o: ..\Common\Minimal\flash.c
+.\obj\flash.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\flash.o: ..\..\Source\include\FreeRTOS.h
+.\obj\flash.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\flash.o: ..\..\Source\include\projdefs.h
+.\obj\flash.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\flash.o: ..\..\Source\include\portable.h
+.\obj\flash.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\flash.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\flash.o: ..\..\Source\include\task.h
+.\obj\flash.o: ..\..\Source\include\list.h
+.\obj\flash.o: ..\Common\include\partest.h
+.\obj\flash.o: ..\Common\include\flash.h

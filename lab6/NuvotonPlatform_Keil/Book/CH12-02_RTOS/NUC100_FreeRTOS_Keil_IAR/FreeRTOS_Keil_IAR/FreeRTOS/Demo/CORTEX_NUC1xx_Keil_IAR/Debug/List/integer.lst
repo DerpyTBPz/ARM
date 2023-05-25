@@ -1,0 +1,416 @@
+###############################################################################
+#                                                                             #
+#                                                       06/Jul/2010  14:34:55 #
+# IAR ANSI C/C++ Compiler V5.50.0.21878/W32 EVALUATION for ARM                #
+# Copyright (C) 1999-2010 IAR Systems AB.                                     #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\intege #
+#                    r.c                                                      #
+#    Command line =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\intege #
+#                    r.c -D IAR_ARM_CM0 -lCN E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\Debug\List\ --diag_suppress    #
+#                    Pe550,Pa082,Pa039 -o E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\ #
+#                    CORTEX_NUC1xx_Keil_IAR\Debug\Obj\ --no_cse --no_unroll   #
+#                    --no_inline --no_code_motion --no_tbaa --no_clustering   #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M0  #
+#                    -e --fpu=None --dlib_config "D:\Program                  #
+#                    Files\ARM\INC\DLib_Config_Full.h" -I                     #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\..\common\include\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\..\..\source\include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_K #
+#                    eil_IAR\NUC1xxBSP\NuvotonPlatform_Keil\Include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\ -I      #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\ #
+#                    Demo\CORTEX_NUC1xx_Keil_IAR\User_Demo\include\ -I        #
+#                    "D:\Program Files\ARM\INC\" -Ol                          #
+#    List file    =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\integer.lst                                 #
+#    Object file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\integer.o                                    #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\integer.c
+      1          /*
+      2              FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
+      3          
+      4              ***************************************************************************
+      5              *                                                                         *
+      6              * If you are:                                                             *
+      7              *                                                                         *
+      8              *    + New to FreeRTOS,                                                   *
+      9              *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
+     10              *    + Looking for basic training,                                        *
+     11              *    + Wanting to improve your FreeRTOS skills and productivity           *
+     12              *                                                                         *
+     13              * then take a look at the FreeRTOS eBook                                  *
+     14              *                                                                         *
+     15              *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
+     16              *                  http://www.FreeRTOS.org/Documentation                  *
+     17              *                                                                         *
+     18              * A pdf reference manual is also available.  Both are usually delivered   *
+     19              * to your inbox within 20 minutes to two hours when purchased between 8am *
+     20              * and 8pm GMT (although please allow up to 24 hours in case of            *
+     21              * exceptional circumstances).  Thank you for your support!                *
+     22              *                                                                         *
+     23              ***************************************************************************
+     24          
+     25              This file is part of the FreeRTOS distribution.
+     26          
+     27              FreeRTOS is free software; you can redistribute it and/or modify it under
+     28              the terms of the GNU General Public License (version 2) as published by the
+     29              Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
+     30              ***NOTE*** The exception to the GPL is included to allow you to distribute
+     31              a combined work that includes FreeRTOS without being obliged to provide the
+     32              source code for proprietary components outside of the FreeRTOS kernel.
+     33              FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
+     34              ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+     35              FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+     36              more details. You should have received a copy of the GNU General Public 
+     37              License and the FreeRTOS license exception along with FreeRTOS; if not it 
+     38              can be viewed here: http://www.freertos.org/a00114.html and also obtained 
+     39              by writing to Richard Barry, contact details for whom are available on the
+     40              FreeRTOS WEB site.
+     41          
+     42              1 tab == 4 spaces!
+     43          
+     44              http://www.FreeRTOS.org - Documentation, latest information, license and
+     45              contact details.
+     46          
+     47              http://www.SafeRTOS.com - A version that is certified for use in safety
+     48              critical systems.
+     49          
+     50              http://www.OpenRTOS.com - Commercial support, development, porting,
+     51              licensing and training services.
+     52          */
+     53          
+     54          /*
+     55           * This version of integer. c is for use on systems that have limited stack
+     56           * space and no display facilities.  The complete version can be found in
+     57           * the Demo/Common/Full directory.
+     58           *
+     59           * As with the full version, the tasks created in this file are a good test 
+     60           * of the scheduler context switch mechanism.  The processor has to access 
+     61           * 32bit variables in two or four chunks (depending on the processor).  The low 
+     62           * priority of these tasks means there is a high probability that a context 
+     63           * switch will occur mid calculation.  See flop. c documentation for 
+     64           * more information.
+     65           *
+     66           */
+     67          
+     68          /*
+     69          Changes from V1.2.1
+     70          
+     71          	+ The constants used in the calculations are larger to ensure the
+     72          	  optimiser does not truncate them to 16 bits.
+     73          
+     74          Changes from V1.2.3
+     75          
+     76          	+ uxTaskCheck is now just used as a boolean.  Instead of incrementing
+     77          	  the variable each cycle of the task, the variable is simply set to
+     78          	  true.  sAreIntegerMathsTaskStillRunning() sets it back to false and
+     79          	  expects it to have been set back to true by the time it is called
+     80          	  again.
+     81          	+ A division has been included in the calculation.
+     82          */
+     83          
+     84          #include <stdlib.h>
+     85          
+     86          /* Scheduler include files. */
+     87          #include "FreeRTOS.h"
+     88          #include "task.h"
+     89          
+     90          /* Demo program include files. */
+     91          #include "integer.h"
+     92          
+     93          /* The constants used in the calculation. */
+     94          #define intgCONST1				( ( long ) 123 )
+     95          #define intgCONST2				( ( long ) 234567 )
+     96          #define intgCONST3				( ( long ) -3 )
+     97          #define intgCONST4				( ( long ) 7 )
+     98          #define intgEXPECTED_ANSWER		( ( ( intgCONST1 + intgCONST2 ) * intgCONST3 ) / intgCONST4 )
+     99          
+    100          #define intgSTACK_SIZE			configMINIMAL_STACK_SIZE
+    101          
+    102          /* As this is the minimal version, we will only create one task. */
+    103          #define intgNUMBER_OF_TASKS		( 1 )
+    104          
+    105          /* The task function.  Repeatedly performs a 32 bit calculation, checking the
+    106          result against the expected result.  If the result is incorrect then the
+    107          context switch must have caused some corruption. */
+    108          static portTASK_FUNCTION_PROTO( vCompeteingIntMathTask, pvParameters );
+    109          
+    110          /* Variables that are set to true within the calculation task to indicate
+    111          that the task is still executing.  The check task sets the variable back to
+    112          false, flagging an error if the variable is still false the next time it
+    113          is called. */
+
+   \                                 In section .bss, align 4
+    114          static volatile signed portBASE_TYPE xTaskCheck[ intgNUMBER_OF_TASKS ] = { ( signed portBASE_TYPE ) pdFALSE };
+   \                     xTaskCheck:
+   \   00000000                      DS8 4
+    115          
+    116          /*-----------------------------------------------------------*/
+    117          
+
+   \                                 In section .text, align 2, keep-with-next
+    118          void vStartIntegerMathTasks( unsigned portBASE_TYPE uxPriority )
+    119          {
+   \                     vStartIntegerMathTasks:
+   \   00000000   30B5               PUSH     {R4,R5,LR}
+   \   00000002   85B0               SUB      SP,SP,#+20
+   \   00000004   0500               MOVS     R5,R0
+    120          short sTask;
+    121          
+    122          	for( sTask = 0; sTask < intgNUMBER_OF_TASKS; sTask++ )
+   \   00000006   0024               MOVS     R4,#+0
+   \   00000008   11E0               B        ??vStartIntegerMathTasks_0
+    123          	{
+    124          		xTaskCreate( vCompeteingIntMathTask, ( signed char * ) "IntMath", intgSTACK_SIZE, ( void * ) &( xTaskCheck[ sTask ] ), uxPriority, ( xTaskHandle * ) NULL );
+   \                     ??vStartIntegerMathTasks_1:
+   \   0000000A   0020               MOVS     R0,#+0
+   \   0000000C   0390               STR      R0,[SP, #+12]
+   \   0000000E   0020               MOVS     R0,#+0
+   \   00000010   0290               STR      R0,[SP, #+8]
+   \   00000012   0020               MOVS     R0,#+0
+   \   00000014   0190               STR      R0,[SP, #+4]
+   \   00000016   0095               STR      R5,[SP, #+0]
+   \   00000018   24B2               SXTH     R4,R4
+   \   0000001A   0420               MOVS     R0,#+4
+   \   0000001C   6043               MULS     R0,R4,R0
+   \   0000001E   ....               LDR      R1,??DataTable2
+   \   00000020   0B18               ADDS     R3,R1,R0
+   \   00000022   8022               MOVS     R2,#+128
+   \   00000024   ....               LDR      R1,??DataTable2_1
+   \   00000026   ....               LDR      R0,??DataTable2_2
+   \   00000028   ........           BL       xTaskGenericCreate
+    125          	}
+   \   0000002C   641C               ADDS     R4,R4,#+1
+   \                     ??vStartIntegerMathTasks_0:
+   \   0000002E   24B2               SXTH     R4,R4
+   \   00000030   012C               CMP      R4,#+1
+   \   00000032   EADB               BLT      ??vStartIntegerMathTasks_1
+    126          }
+   \   00000034   05B0               ADD      SP,SP,#+20
+   \   00000036   30BD               POP      {R4,R5,PC}       ;; return
+    127          /*-----------------------------------------------------------*/
+    128          
+
+   \                                 In section .text, align 2, keep-with-next
+    129          static portTASK_FUNCTION( vCompeteingIntMathTask, pvParameters )
+    130          {
+   \                     vCompeteingIntMathTask:
+   \   00000000   38B5               PUSH     {R3-R5,LR}
+    131          /* These variables are all effectively set to constants so they are volatile to
+    132          ensure the compiler does not just get rid of them. */
+    133          volatile long lValue;
+    134          short sError = pdFALSE;
+   \   00000002   0024               MOVS     R4,#+0
+    135          volatile signed portBASE_TYPE *pxTaskHasExecuted;
+    136          
+    137          	/* Set a pointer to the variable we are going to set to true each
+    138          	iteration.  This is also a good test of the parameter passing mechanism
+    139          	within each port. */
+    140          	pxTaskHasExecuted = ( volatile signed portBASE_TYPE * ) pvParameters;
+   \   00000004   0500               MOVS     R5,R0
+    141          
+    142          	/* Keep performing a calculation and checking the result against a constant. */
+    143          	for( ;; )
+    144          	{
+    145          		/* Perform the calculation.  This will store partial value in
+    146          		registers, resulting in a good test of the context switch mechanism. */
+    147          		lValue = intgCONST1;
+   \                     ??vCompeteingIntMathTask_0:
+   \   00000006   7B20               MOVS     R0,#+123
+   \   00000008   0090               STR      R0,[SP, #+0]
+    148          		lValue += intgCONST2;
+   \   0000000A   0098               LDR      R0,[SP, #+0]
+   \   0000000C   ....               LDR      R1,??DataTable2_3  ;; 0x39447
+   \   0000000E   4018               ADDS     R0,R0,R1
+   \   00000010   0090               STR      R0,[SP, #+0]
+    149          
+    150          		/* Yield in case cooperative scheduling is being used. */
+    151          		#if configUSE_PREEMPTION == 0
+    152          		{
+    153          			taskYIELD();
+    154          		}
+    155          		#endif
+    156          
+    157          		/* Finish off the calculation. */
+    158          		lValue *= intgCONST3;
+   \   00000012   0098               LDR      R0,[SP, #+0]
+   \   00000014   0221               MOVS     R1,#+2
+   \   00000016   C943               MVNS     R1,R1            ;; #-3
+   \   00000018   4843               MULS     R0,R1,R0
+   \   0000001A   0090               STR      R0,[SP, #+0]
+    159          		lValue /= intgCONST4;
+   \   0000001C   0098               LDR      R0,[SP, #+0]
+   \   0000001E   0721               MOVS     R1,#+7
+   \   00000020   ........           BL       __aeabi_idiv
+   \   00000024   0090               STR      R0,[SP, #+0]
+    160          
+    161          		/* If the calculation is found to be incorrect we stop setting the 
+    162          		TaskHasExecuted variable so the check task can see an error has 
+    163          		occurred. */
+    164          		if( lValue != intgEXPECTED_ANSWER ) /*lint !e774 volatile used to prevent this being optimised out. */
+   \   00000026   0098               LDR      R0,[SP, #+0]
+   \   00000028   ....               LDR      R1,??DataTable2_4  ;; 0xfffe771b
+   \   0000002A   8842               CMP      R0,R1
+   \   0000002C   00D0               BEQ      ??vCompeteingIntMathTask_1
+    165          		{
+    166          			sError = pdTRUE;
+   \   0000002E   0124               MOVS     R4,#+1
+    167          		}
+    168          
+    169          		if( sError == pdFALSE )
+   \                     ??vCompeteingIntMathTask_1:
+   \   00000030   24B2               SXTH     R4,R4
+   \   00000032   002C               CMP      R4,#+0
+   \   00000034   E7D1               BNE      ??vCompeteingIntMathTask_0
+    170          		{
+    171          			/* We have not encountered any errors, so set the flag that show
+    172          			we are still executing.  This will be periodically cleared by
+    173          			the check task. */
+    174          			portENTER_CRITICAL();
+   \   00000036   ........           BL       vPortEnterCritical
+    175          				*pxTaskHasExecuted = pdTRUE;
+   \   0000003A   0120               MOVS     R0,#+1
+   \   0000003C   2860               STR      R0,[R5, #+0]
+    176          			portEXIT_CRITICAL();
+   \   0000003E   ........           BL       vPortExitCritical
+   \   00000042   E0E7               B        ??vCompeteingIntMathTask_0
+    177          		}
+    178          
+    179          		/* Yield in case cooperative scheduling is being used. */
+    180          		#if configUSE_PREEMPTION == 0
+    181          		{
+    182          			taskYIELD();
+    183          		}
+    184          		#endif
+    185          	}
+    186          }
+    187          /*-----------------------------------------------------------*/
+    188          
+    189          /* This is called to check that all the created tasks are still running. */
+
+   \                                 In section .text, align 2, keep-with-next
+    190          portBASE_TYPE xAreIntegerMathsTaskStillRunning( void )
+    191          {
+   \                     xAreIntegerMathsTaskStillRunning:
+   \   00000000   10B5               PUSH     {R4,LR}
+    192          portBASE_TYPE xReturn = pdTRUE;
+   \   00000002   0120               MOVS     R0,#+1
+    193          short sTask;
+    194          
+    195          	/* Check the maths tasks are still running by ensuring their check variables 
+    196          	are still being set to true. */
+    197          	for( sTask = 0; sTask < intgNUMBER_OF_TASKS; sTask++ )
+   \   00000004   0021               MOVS     R1,#+0
+   \   00000006   0EE0               B        ??xAreIntegerMathsTaskStillRunning_0
+    198          	{
+    199          		if( xTaskCheck[ sTask ] == pdFALSE )
+   \                     ??xAreIntegerMathsTaskStillRunning_1:
+   \   00000008   09B2               SXTH     R1,R1
+   \   0000000A   0422               MOVS     R2,#+4
+   \   0000000C   4A43               MULS     R2,R1,R2
+   \   0000000E   ....               LDR      R3,??DataTable2
+   \   00000010   9A58               LDR      R2,[R3, R2]
+   \   00000012   002A               CMP      R2,#+0
+   \   00000014   00D1               BNE      ??xAreIntegerMathsTaskStillRunning_2
+    200          		{
+    201          			/* The check has not incremented so an error exists. */
+    202          			xReturn = pdFALSE;
+   \   00000016   0020               MOVS     R0,#+0
+    203          		}
+    204          
+    205          		/* Reset the check variable so we can tell if it has been set by
+    206          		the next time around. */
+    207          		xTaskCheck[ sTask ] = pdFALSE;
+   \                     ??xAreIntegerMathsTaskStillRunning_2:
+   \   00000018   09B2               SXTH     R1,R1
+   \   0000001A   0422               MOVS     R2,#+4
+   \   0000001C   4A43               MULS     R2,R1,R2
+   \   0000001E   ....               LDR      R3,??DataTable2
+   \   00000020   0024               MOVS     R4,#+0
+   \   00000022   9C50               STR      R4,[R3, R2]
+    208          	}
+   \   00000024   491C               ADDS     R1,R1,#+1
+   \                     ??xAreIntegerMathsTaskStillRunning_0:
+   \   00000026   09B2               SXTH     R1,R1
+   \   00000028   0129               CMP      R1,#+1
+   \   0000002A   EDDB               BLT      ??xAreIntegerMathsTaskStillRunning_1
+    209          
+    210          	return xReturn;
+   \   0000002C   10BD               POP      {R4,PC}          ;; return
+    211          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   ........           DC32     xTaskCheck
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   ........           DC32     `?<Constant "IntMath">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   ........           DC32     vCompeteingIntMathTask
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \   00000000   47940300           DC32     0x39447
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_4:
+   \   00000000   1B77FEFF           DC32     0xfffe771b
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "IntMath">`:
+   \   00000000   496E744D6174       DC8 "IntMath"
+   \              6800        
+    212          
+
+   Maximum stack usage in bytes:
+
+     Function                       .cstack
+     --------                       -------
+     vCompeteingIntMathTask             16
+     vStartIntegerMathTasks             32
+     xAreIntegerMathsTaskStillRunning
+                                         8
+
+
+   Section sizes:
+
+     Function/Label                 Bytes
+     --------------                 -----
+     xTaskCheck                        4
+     vStartIntegerMathTasks           56
+     vCompeteingIntMathTask           68
+     xAreIntegerMathsTaskStillRunning
+                                      46
+     ??DataTable2                      4
+     ??DataTable2_1                    4
+     ??DataTable2_2                    4
+     ??DataTable2_3                    4
+     ??DataTable2_4                    4
+     ?<Constant "IntMath">             8
+
+ 
+   4 bytes in section .bss
+   8 bytes in section .rodata
+ 190 bytes in section .text
+ 
+ 190 bytes of CODE  memory
+   8 bytes of CONST memory
+   4 bytes of DATA  memory
+
+Errors: none
+Warnings: none

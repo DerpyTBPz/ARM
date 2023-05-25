@@ -1,0 +1,10 @@
+.\obj\drvps2.o: NUC1xx_lib\Driver\DrvPS2.c
+.\obj\drvps2.o: D:\Keil4\ARM\RV31\INC\stdio.h
+.\obj\drvps2.o: .\NUC1xx_lib\CMSIS\CM0\NUC1xx.h
+.\obj\drvps2.o: .\NUC1xx_lib\CMSIS\CM0\core_cm0.h
+.\obj\drvps2.o: D:\Keil4\ARM\RV31\INC\stdint.h
+.\obj\drvps2.o: .\NUC1xx_lib\CMSIS\CM0\system_NUC1xx.h
+.\obj\drvps2.o: .\NUC1xx_lib\Include\System\SysInfra.h
+.\obj\drvps2.o: .\NUC1xx_lib\Include\System\ModuleID.h
+.\obj\drvps2.o: .\NUC1xx_lib\Include\Driver\DrvPS2.h
+.\obj\drvps2.o: .\NUC1xx_lib\Include\Driver\DrvSYS.h

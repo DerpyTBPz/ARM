@@ -1,0 +1,1406 @@
+###############################################################################
+#                                                                             #
+#                                                       06/Jul/2010  14:34:51 #
+# IAR ANSI C/C++ Compiler V5.50.0.21878/W32 EVALUATION for ARM                #
+# Copyright (C) 1999-2010 IAR Systems AB.                                     #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\GenQTe #
+#                    st.c                                                     #
+#    Command line =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\GenQTe #
+#                    st.c -D IAR_ARM_CM0 -lCN E:\FreeRTOS_Keil_IAR\FreeRTOS\D #
+#                    emo\CORTEX_NUC1xx_Keil_IAR\Debug\List\ --diag_suppress   #
+#                    Pe550,Pa082,Pa039 -o E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\ #
+#                    CORTEX_NUC1xx_Keil_IAR\Debug\Obj\ --no_cse --no_unroll   #
+#                    --no_inline --no_code_motion --no_tbaa --no_clustering   #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M0  #
+#                    -e --fpu=None --dlib_config "D:\Program                  #
+#                    Files\ARM\INC\DLib_Config_Full.h" -I                     #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\..\common\include\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\..\..\source\include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_K #
+#                    eil_IAR\NUC1xxBSP\NuvotonPlatform_Keil\Include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\ -I      #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\ #
+#                    Demo\CORTEX_NUC1xx_Keil_IAR\User_Demo\include\ -I        #
+#                    "D:\Program Files\ARM\INC\" -Ol                          #
+#    List file    =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\GenQTest.lst                                #
+#    Object file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\GenQTest.o                                   #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\GenQTest.c
+      1          /*
+      2              FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
+      3          
+      4              ***************************************************************************
+      5              *                                                                         *
+      6              * If you are:                                                             *
+      7              *                                                                         *
+      8              *    + New to FreeRTOS,                                                   *
+      9              *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
+     10              *    + Looking for basic training,                                        *
+     11              *    + Wanting to improve your FreeRTOS skills and productivity           *
+     12              *                                                                         *
+     13              * then take a look at the FreeRTOS eBook                                  *
+     14              *                                                                         *
+     15              *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
+     16              *                  http://www.FreeRTOS.org/Documentation                  *
+     17              *                                                                         *
+     18              * A pdf reference manual is also available.  Both are usually delivered   *
+     19              * to your inbox within 20 minutes to two hours when purchased between 8am *
+     20              * and 8pm GMT (although please allow up to 24 hours in case of            *
+     21              * exceptional circumstances).  Thank you for your support!                *
+     22              *                                                                         *
+     23              ***************************************************************************
+     24          
+     25              This file is part of the FreeRTOS distribution.
+     26          
+     27              FreeRTOS is free software; you can redistribute it and/or modify it under
+     28              the terms of the GNU General Public License (version 2) as published by the
+     29              Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
+     30              ***NOTE*** The exception to the GPL is included to allow you to distribute
+     31              a combined work that includes FreeRTOS without being obliged to provide the
+     32              source code for proprietary components outside of the FreeRTOS kernel.
+     33              FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
+     34              ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+     35              FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+     36              more details. You should have received a copy of the GNU General Public 
+     37              License and the FreeRTOS license exception along with FreeRTOS; if not it 
+     38              can be viewed here: http://www.freertos.org/a00114.html and also obtained 
+     39              by writing to Richard Barry, contact details for whom are available on the
+     40              FreeRTOS WEB site.
+     41          
+     42              1 tab == 4 spaces!
+     43          
+     44              http://www.FreeRTOS.org - Documentation, latest information, license and
+     45              contact details.
+     46          
+     47              http://www.SafeRTOS.com - A version that is certified for use in safety
+     48              critical systems.
+     49          
+     50              http://www.OpenRTOS.com - Commercial support, development, porting,
+     51              licensing and training services.
+     52          */
+     53          
+     54          
+     55          /* 
+     56           * Tests the extra queue functionality introduced in FreeRTOS.org V4.5.0 - 
+     57           * including xQueueSendToFront(), xQueueSendToBack(), xQueuePeek() and 
+     58           * mutex behaviour. 
+     59           *
+     60           * See the comments above the prvSendFrontAndBackTest() and 
+     61           * prvLowPriorityMutexTask() prototypes below for more information.
+     62           */
+     63          
+     64          
+     65          #include <stdlib.h>
+     66          
+     67          /* Scheduler include files. */
+     68          #include "FreeRTOS.h"
+     69          #include "task.h"
+     70          #include "queue.h"
+     71          #include "semphr.h"
+     72          
+     73          /* Demo program include files. */
+     74          #include "GenQTest.h"
+     75          
+     76          #define genqQUEUE_LENGTH		( 5 )
+     77          #define genqNO_BLOCK			( 0 )
+     78          
+     79          #define genqMUTEX_LOW_PRIORITY		( tskIDLE_PRIORITY )
+     80          #define genqMUTEX_TEST_PRIORITY		( tskIDLE_PRIORITY + 1 )
+     81          #define genqMUTEX_MEDIUM_PRIORITY	( tskIDLE_PRIORITY + 2 )
+     82          #define genqMUTEX_HIGH_PRIORITY		( tskIDLE_PRIORITY + 3 )
+     83          
+     84          /*-----------------------------------------------------------*/
+     85          
+     86          /*
+     87           * Tests the behaviour of the xQueueSendToFront() and xQueueSendToBack()
+     88           * macros by using both to fill a queue, then reading from the queue to
+     89           * check the resultant queue order is as expected.  Queue data is also
+     90           * peeked.
+     91           */
+     92          static void prvSendFrontAndBackTest( void *pvParameters );
+     93          
+     94          /*
+     95           * The following three tasks are used to demonstrate the mutex behaviour.
+     96           * Each task is given a different priority to demonstrate the priority
+     97           * inheritance mechanism.
+     98           *
+     99           * The low priority task obtains a mutex.  After this a high priority task
+    100           * attempts to obtain the same mutex, causing its priority to be inherited
+    101           * by the low priority task.  The task with the inherited high priority then
+    102           * resumes a medium priority task to ensure it is not blocked by the medium
+    103           * priority task while it holds the inherited high priority.  Once the mutex
+    104           * is returned the task with the inherited priority returns to its original
+    105           * low priority, and is therefore immediately preempted by first the high
+    106           * priority task and then the medium prioroity task before it can continue.
+    107           */
+    108          static void prvLowPriorityMutexTask( void *pvParameters );
+    109          static void prvMediumPriorityMutexTask( void *pvParameters );
+    110          static void prvHighPriorityMutexTask( void *pvParameters );
+    111          
+    112          /*-----------------------------------------------------------*/
+    113          
+    114          /* Flag that will be latched to pdTRUE should any unexpected behaviour be
+    115          detected in any of the tasks. */
+
+   \                                 In section .bss, align 4
+    116          static portBASE_TYPE xErrorDetected = pdFALSE;
+   \                     xErrorDetected:
+   \   00000000                      DS8 4
+    117          
+    118          /* Counters that are incremented on each cycle of a test.  This is used to
+    119          detect a stalled task - a test that is no longer running. */
+
+   \                                 In section .bss, align 4
+    120          static volatile unsigned portLONG ulLoopCounter = 0;
+   \                     ulLoopCounter:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+    121          static volatile unsigned portLONG ulLoopCounter2 = 0;
+   \                     ulLoopCounter2:
+   \   00000000                      DS8 4
+    122          
+    123          /* The variable that is guarded by the mutex in the mutex demo tasks. */
+
+   \                                 In section .bss, align 4
+    124          static volatile unsigned portLONG ulGuardedVariable = 0;
+   \                     ulGuardedVariable:
+   \   00000000                      DS8 4
+    125          
+    126          /* Handles used in the mutext test to suspend and resume the high and medium
+    127          priority mutex test tasks. */
+
+   \                                 In section .bss, align 4
+    128          static xTaskHandle xHighPriorityMutexTask, xMediumPriorityMutexTask;
+   \                     xHighPriorityMutexTask:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     xMediumPriorityMutexTask:
+   \   00000000                      DS8 4
+    129          
+    130          /*-----------------------------------------------------------*/
+    131          
+
+   \                                 In section .text, align 2, keep-with-next
+    132          void vStartGenericQueueTasks( unsigned portBASE_TYPE uxPriority )
+    133          {
+   \                     vStartGenericQueueTasks:
+   \   00000000   1FB5               PUSH     {R0-R4,LR}
+   \   00000002   0400               MOVS     R4,R0
+    134          xQueueHandle xQueue;
+    135          xSemaphoreHandle xMutex;
+    136          
+    137          	/* Create the queue that we are going to use for the
+    138          	prvSendFrontAndBackTest demo. */
+    139          	xQueue = xQueueCreate( genqQUEUE_LENGTH, sizeof( unsigned portLONG ) );
+   \   00000004   0421               MOVS     R1,#+4
+   \   00000006   0520               MOVS     R0,#+5
+   \   00000008   ........           BL       xQueueCreate
+    140          
+    141          	/* vQueueAddToRegistry() adds the queue to the queue registry, if one is
+    142          	in use.  The queue registry is provided as a means for kernel aware 
+    143          	debuggers to locate queues and has no purpose if a kernel aware debugger
+    144          	is not being used.  The call to vQueueAddToRegistry() will be removed
+    145          	by the pre-processor if configQUEUE_REGISTRY_SIZE is not defined or is 
+    146          	defined to be less than 1. */
+    147          	vQueueAddToRegistry( xQueue, ( signed portCHAR * ) "Gen_Queue_Test" );
+    148          
+    149          	/* Create the demo task and pass it the queue just created.  We are
+    150          	passing the queue handle by value so it does not matter that it is
+    151          	declared on the stack here. */
+    152          	xTaskCreate( prvSendFrontAndBackTest, ( signed portCHAR * )"GenQ", configMINIMAL_STACK_SIZE, ( void * ) xQueue, uxPriority, NULL );
+   \   0000000C   0021               MOVS     R1,#+0
+   \   0000000E   0391               STR      R1,[SP, #+12]
+   \   00000010   0021               MOVS     R1,#+0
+   \   00000012   0291               STR      R1,[SP, #+8]
+   \   00000014   0021               MOVS     R1,#+0
+   \   00000016   0191               STR      R1,[SP, #+4]
+   \   00000018   0094               STR      R4,[SP, #+0]
+   \   0000001A   0300               MOVS     R3,R0
+   \   0000001C   8022               MOVS     R2,#+128
+   \   0000001E   ....               LDR      R1,??DataTable0
+   \   00000020   ....               LDR      R0,??DataTable0_1
+   \   00000022   ........           BL       xTaskGenericCreate
+    153          
+    154          	/* Create the mutex used by the prvMutexTest task. */
+    155          	xMutex = xSemaphoreCreateMutex();
+   \   00000026   ........           BL       xQueueCreateMutex
+   \   0000002A   0400               MOVS     R4,R0
+    156          
+    157          	/* vQueueAddToRegistry() adds the mutex to the registry, if one is
+    158          	in use.  The registry is provided as a means for kernel aware 
+    159          	debuggers to locate mutexes and has no purpose if a kernel aware debugger
+    160          	is not being used.  The call to vQueueAddToRegistry() will be removed
+    161          	by the pre-processor if configQUEUE_REGISTRY_SIZE is not defined or is 
+    162          	defined to be less than 1. */
+    163          	vQueueAddToRegistry( ( xQueueHandle ) xMutex, ( signed portCHAR * ) "Gen_Queue_Mutex" );
+    164          
+    165          	/* Create the mutex demo tasks and pass it the mutex just created.  We are
+    166          	passing the mutex handle by value so it does not matter that it is declared
+    167          	on the stack here. */
+    168          	xTaskCreate( prvLowPriorityMutexTask, ( signed portCHAR * )"MuLow", configMINIMAL_STACK_SIZE, ( void * ) xMutex, genqMUTEX_LOW_PRIORITY, NULL );
+   \   0000002C   0020               MOVS     R0,#+0
+   \   0000002E   0390               STR      R0,[SP, #+12]
+   \   00000030   0020               MOVS     R0,#+0
+   \   00000032   0290               STR      R0,[SP, #+8]
+   \   00000034   0020               MOVS     R0,#+0
+   \   00000036   0190               STR      R0,[SP, #+4]
+   \   00000038   0020               MOVS     R0,#+0
+   \   0000003A   0090               STR      R0,[SP, #+0]
+   \   0000003C   2300               MOVS     R3,R4
+   \   0000003E   8022               MOVS     R2,#+128
+   \   00000040   ....               LDR      R1,??DataTable1
+   \   00000042   ....               LDR      R0,??DataTable1_1
+   \   00000044   ........           BL       xTaskGenericCreate
+    169          	xTaskCreate( prvMediumPriorityMutexTask, ( signed portCHAR * )"MuMed", configMINIMAL_STACK_SIZE, NULL, genqMUTEX_MEDIUM_PRIORITY, &xMediumPriorityMutexTask );
+   \   00000048   0020               MOVS     R0,#+0
+   \   0000004A   0390               STR      R0,[SP, #+12]
+   \   0000004C   0020               MOVS     R0,#+0
+   \   0000004E   0290               STR      R0,[SP, #+8]
+   \   00000050   ....               LDR      R0,??DataTable1_2
+   \   00000052   0190               STR      R0,[SP, #+4]
+   \   00000054   0220               MOVS     R0,#+2
+   \   00000056   0090               STR      R0,[SP, #+0]
+   \   00000058   0023               MOVS     R3,#+0
+   \   0000005A   8022               MOVS     R2,#+128
+   \   0000005C   ....               LDR      R1,??DataTable1_3
+   \   0000005E   ....               LDR      R0,??DataTable1_4
+   \   00000060   ........           BL       xTaskGenericCreate
+    170          	xTaskCreate( prvHighPriorityMutexTask, ( signed portCHAR * )"MuHigh", configMINIMAL_STACK_SIZE, ( void * ) xMutex, genqMUTEX_HIGH_PRIORITY, &xHighPriorityMutexTask );
+   \   00000064   0020               MOVS     R0,#+0
+   \   00000066   0390               STR      R0,[SP, #+12]
+   \   00000068   0020               MOVS     R0,#+0
+   \   0000006A   0290               STR      R0,[SP, #+8]
+   \   0000006C   ....               LDR      R0,??DataTable1_5
+   \   0000006E   0190               STR      R0,[SP, #+4]
+   \   00000070   0320               MOVS     R0,#+3
+   \   00000072   0090               STR      R0,[SP, #+0]
+   \   00000074   2300               MOVS     R3,R4
+   \   00000076   8022               MOVS     R2,#+128
+   \   00000078   ....               LDR      R1,??DataTable1_6
+   \   0000007A   ....               LDR      R0,??DataTable1_7
+   \   0000007C   ........           BL       xTaskGenericCreate
+    171          }
+   \   00000080   1FBD               POP      {R0-R4,PC}       ;; return
+    172          /*-----------------------------------------------------------*/
+    173          
+
+   \                                 In section .text, align 2, keep-with-next
+    174          static void prvSendFrontAndBackTest( void *pvParameters )
+    175          {
+   \                     prvSendFrontAndBackTest:
+   \   00000000   1CB5               PUSH     {R2-R4,LR}
+    176          unsigned portLONG ulData, ulData2;
+    177          xQueueHandle xQueue;
+    178          
+    179          	#ifdef USE_STDIO
+    180          	void vPrintDisplayMessage( const portCHAR * const * ppcMessageToSend );
+    181          	
+    182          		const portCHAR * const pcTaskStartMsg = "Queue SendToFront/SendToBack/Peek test started.\r\n";
+    183          
+    184          		/* Queue a message for printing to say the task has started. */
+    185          		vPrintDisplayMessage( &pcTaskStartMsg );
+    186          	#endif
+    187          
+    188          	xQueue = ( xQueueHandle ) pvParameters;
+   \   00000002   0400               MOVS     R4,R0
+   \   00000004   24E0               B        ??prvSendFrontAndBackTest_0
+    189          
+    190          	for( ;; )
+    191          	{
+    192          		/* The queue is empty, so sending an item to the back of the queue
+    193          		should have the same efect as sending it to the front of the queue.
+    194          
+    195          		First send to the front and check everything is as expected. */
+    196          		xQueueSendToFront( xQueue, ( void * ) &ulLoopCounter, genqNO_BLOCK );
+    197          
+    198          		if( uxQueueMessagesWaiting( xQueue ) != 1 )
+    199          		{
+    200          			xErrorDetected = pdTRUE;
+    201          		}
+    202          
+    203          		if( xQueueReceive( xQueue, ( void * ) &ulData, genqNO_BLOCK ) != pdPASS )
+    204          		{
+    205          			xErrorDetected = pdTRUE;
+    206          		}
+    207          
+    208          		/* The data we sent to the queue should equal the data we just received
+    209          		from the queue. */
+    210          		if( ulLoopCounter != ulData )
+    211          		{
+    212          			xErrorDetected = pdTRUE;
+    213          		}
+    214          
+    215          		/* Then do the same, sending the data to the back, checking everything
+    216          		is as expected. */
+    217          		if( uxQueueMessagesWaiting( xQueue ) != 0 )
+    218          		{
+    219          			xErrorDetected = pdTRUE;
+    220          		}
+    221          
+    222          		xQueueSendToBack( xQueue, ( void * ) &ulLoopCounter, genqNO_BLOCK );
+    223          
+    224          		if( uxQueueMessagesWaiting( xQueue ) != 1 )
+    225          		{
+    226          			xErrorDetected = pdTRUE;
+    227          		}
+    228          
+    229          		if( xQueueReceive( xQueue, ( void * ) &ulData, genqNO_BLOCK ) != pdPASS )
+    230          		{
+    231          			xErrorDetected = pdTRUE;
+    232          		}
+    233          
+    234          		if( uxQueueMessagesWaiting( xQueue ) != 0 )
+    235          		{
+    236          			xErrorDetected = pdTRUE;
+    237          		}
+    238          
+    239          		/* The data we sent to the queue should equal the data we just received
+    240          		from the queue. */
+    241          		if( ulLoopCounter != ulData )
+    242          		{
+    243          			xErrorDetected = pdTRUE;
+    244          		}
+    245          
+    246          		#if configUSE_PREEMPTION == 0
+    247          			taskYIELD();
+    248          		#endif
+    249          
+    250          
+    251          
+    252          		/* Place 2, 3, 4 into the queue, adding items to the back of the queue. */
+    253          		for( ulData = 2; ulData < 5; ulData++ )
+    254          		{
+    255          			xQueueSendToBack( xQueue, ( void * ) &ulData, genqNO_BLOCK );
+    256          		}
+    257          
+    258          		/* Now the order in the queue should be 2, 3, 4, with 2 being the first
+    259          		thing to be read out.  Now add 1 then 0 to the front of the queue. */
+    260          		if( uxQueueMessagesWaiting( xQueue ) != 3 )
+    261          		{
+    262          			xErrorDetected = pdTRUE;
+    263          		}
+    264          		ulData = 1;
+    265          		xQueueSendToFront( xQueue, ( void * ) &ulData, genqNO_BLOCK );
+    266          		ulData = 0;
+    267          		xQueueSendToFront( xQueue, ( void * ) &ulData, genqNO_BLOCK );
+    268          
+    269          		/* Now the queue should be full, and when we read the data out we
+    270          		should receive 0, 1, 2, 3, 4. */
+    271          		if( uxQueueMessagesWaiting( xQueue ) != 5 )
+    272          		{
+    273          			xErrorDetected = pdTRUE;
+    274          		}
+    275          
+    276          		if( xQueueSendToFront( xQueue, ( void * ) &ulData, genqNO_BLOCK ) != errQUEUE_FULL )
+    277          		{
+    278          			xErrorDetected = pdTRUE;
+    279          		}
+    280          
+    281          		if( xQueueSendToBack( xQueue, ( void * ) &ulData, genqNO_BLOCK ) != errQUEUE_FULL )
+    282          		{
+    283          			xErrorDetected = pdTRUE;
+    284          		}
+    285          
+    286          		#if configUSE_PREEMPTION == 0
+    287          			taskYIELD();
+    288          		#endif
+    289          
+    290          		/* Check the data we read out is in the expected order. */
+    291          		for( ulData = 0; ulData < genqQUEUE_LENGTH; ulData++ )
+    292          		{
+    293          			/* Try peeking the data first. */
+    294          			if( xQueuePeek( xQueue, &ulData2, genqNO_BLOCK ) != pdPASS )
+    295          			{
+    296          				xErrorDetected = pdTRUE;
+    297          			}
+    298          
+    299          			if( ulData != ulData2 )
+    300          			{
+    301          				xErrorDetected = pdTRUE;
+    302          			}
+    303          			
+    304          
+    305          			/* Now try receiving the data for real.  The value should be the
+    306          			same.  Clobber the value first so we know we really received it. */
+    307          			ulData2 = ~ulData2;
+    308          			if( xQueueReceive( xQueue, &ulData2, genqNO_BLOCK ) != pdPASS )
+    309          			{
+    310          				xErrorDetected = pdTRUE;
+    311          			}
+    312          
+    313          			if( ulData != ulData2 )
+    314          			{
+    315          				xErrorDetected = pdTRUE;
+    316          			}
+    317          		}
+    318          
+    319          		/* The queue should now be empty again. */
+    320          		if( uxQueueMessagesWaiting( xQueue ) != 0 )
+    321          		{
+    322          			xErrorDetected = pdTRUE;
+    323          		}
+    324          
+    325          		#if configUSE_PREEMPTION == 0
+    326          			taskYIELD();
+    327          		#endif
+    328          
+    329          
+    330          		/* Our queue is empty once more, add 10, 11 to the back. */
+    331          		ulData = 10;
+    332          		if( xQueueSend( xQueue, &ulData, genqNO_BLOCK ) != pdPASS )
+    333          		{
+    334          			xErrorDetected = pdTRUE;
+    335          		}
+    336          		ulData = 11;
+    337          		if( xQueueSend( xQueue, &ulData, genqNO_BLOCK ) != pdPASS )
+    338          		{
+    339          			xErrorDetected = pdTRUE;
+    340          		}
+    341          
+    342          		if( uxQueueMessagesWaiting( xQueue ) != 2 )
+    343          		{
+    344          			xErrorDetected = pdTRUE;
+    345          		}
+    346          
+    347          		/* Now we should have 10, 11 in the queue.  Add 7, 8, 9 to the
+    348          		front. */
+    349          		for( ulData = 9; ulData >= 7; ulData-- )
+    350          		{
+    351          			if( xQueueSendToFront( xQueue, ( void * ) &ulData, genqNO_BLOCK ) != pdPASS )
+    352          			{
+    353          				xErrorDetected = pdTRUE;
+    354          			}
+    355          		}
+    356          
+    357          		/* Now check that the queue is full, and that receiving data provides
+    358          		the expected sequence of 7, 8, 9, 10, 11. */
+    359          		if( uxQueueMessagesWaiting( xQueue ) != 5 )
+    360          		{
+    361          			xErrorDetected = pdTRUE;
+    362          		}
+    363          
+    364          		if( xQueueSendToFront( xQueue, ( void * ) &ulData, genqNO_BLOCK ) != errQUEUE_FULL )
+    365          		{
+    366          			xErrorDetected = pdTRUE;
+    367          		}
+    368          
+    369          		if( xQueueSendToBack( xQueue, ( void * ) &ulData, genqNO_BLOCK ) != errQUEUE_FULL )
+    370          		{
+    371          			xErrorDetected = pdTRUE;
+    372          		}
+    373          
+    374          		#if configUSE_PREEMPTION == 0
+    375          			taskYIELD();
+    376          		#endif
+    377          
+    378          		/* Check the data we read out is in the expected order. */
+    379          		for( ulData = 7; ulData < ( 7 + genqQUEUE_LENGTH ); ulData++ )
+    380          		{
+    381          			if( xQueueReceive( xQueue, &ulData2, genqNO_BLOCK ) != pdPASS )
+   \                     ??prvSendFrontAndBackTest_1:
+   \   00000006   0023               MOVS     R3,#+0
+   \   00000008   0022               MOVS     R2,#+0
+   \   0000000A   01A9               ADD      R1,SP,#+4
+   \   0000000C   2000               MOVS     R0,R4
+   \   0000000E   ........           BL       xQueueGenericReceive
+   \   00000012   0128               CMP      R0,#+1
+   \   00000014   02D0               BEQ      ??prvSendFrontAndBackTest_2
+    382          			{
+    383          				xErrorDetected = pdTRUE;
+   \   00000016   ....               LDR      R0,??DataTable1_8
+   \   00000018   0121               MOVS     R1,#+1
+   \   0000001A   0160               STR      R1,[R0, #+0]
+    384          			}
+    385          
+    386          			if( ulData != ulData2 )
+   \                     ??prvSendFrontAndBackTest_2:
+   \   0000001C   0098               LDR      R0,[SP, #+0]
+   \   0000001E   0199               LDR      R1,[SP, #+4]
+   \   00000020   8842               CMP      R0,R1
+   \   00000022   02D0               BEQ      ??prvSendFrontAndBackTest_3
+    387          			{
+    388          				xErrorDetected = pdTRUE;
+   \   00000024   ....               LDR      R0,??DataTable1_8
+   \   00000026   0121               MOVS     R1,#+1
+   \   00000028   0160               STR      R1,[R0, #+0]
+    389          			}
+    390          		}
+   \                     ??prvSendFrontAndBackTest_3:
+   \   0000002A   0098               LDR      R0,[SP, #+0]
+   \   0000002C   401C               ADDS     R0,R0,#+1
+   \   0000002E   0090               STR      R0,[SP, #+0]
+   \                     ??prvSendFrontAndBackTest_4:
+   \   00000030   0098               LDR      R0,[SP, #+0]
+   \   00000032   0C28               CMP      R0,#+12
+   \   00000034   E7D3               BCC      ??prvSendFrontAndBackTest_1
+    391          
+    392          		if( uxQueueMessagesWaiting( xQueue ) != 0 )
+   \   00000036   2000               MOVS     R0,R4
+   \   00000038   ........           BL       uxQueueMessagesWaiting
+   \   0000003C   0028               CMP      R0,#+0
+   \   0000003E   02D0               BEQ      ??prvSendFrontAndBackTest_5
+    393          		{
+    394          			xErrorDetected = pdTRUE;
+   \   00000040   ....               LDR      R0,??DataTable1_8
+   \   00000042   0121               MOVS     R1,#+1
+   \   00000044   0160               STR      R1,[R0, #+0]
+    395          		}
+    396          
+    397          		ulLoopCounter++;
+   \                     ??prvSendFrontAndBackTest_5:
+   \   00000046   ....               LDR      R0,??DataTable1_9
+   \   00000048   0068               LDR      R0,[R0, #+0]
+   \   0000004A   401C               ADDS     R0,R0,#+1
+   \   0000004C   ....               LDR      R1,??DataTable1_9
+   \   0000004E   0860               STR      R0,[R1, #+0]
+   \                     ??prvSendFrontAndBackTest_0:
+   \   00000050   0123               MOVS     R3,#+1
+   \   00000052   0022               MOVS     R2,#+0
+   \   00000054   ....               LDR      R1,??DataTable1_9
+   \   00000056   2000               MOVS     R0,R4
+   \   00000058   ........           BL       xQueueGenericSend
+   \   0000005C   2000               MOVS     R0,R4
+   \   0000005E   ........           BL       uxQueueMessagesWaiting
+   \   00000062   0128               CMP      R0,#+1
+   \   00000064   02D0               BEQ      ??prvSendFrontAndBackTest_6
+   \   00000066   ....               LDR      R0,??DataTable1_8
+   \   00000068   0121               MOVS     R1,#+1
+   \   0000006A   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_6:
+   \   0000006C   0023               MOVS     R3,#+0
+   \   0000006E   0022               MOVS     R2,#+0
+   \   00000070   6946               MOV      R1,SP
+   \   00000072   2000               MOVS     R0,R4
+   \   00000074   ........           BL       xQueueGenericReceive
+   \   00000078   0128               CMP      R0,#+1
+   \   0000007A   02D0               BEQ      ??prvSendFrontAndBackTest_7
+   \   0000007C   ....               LDR      R0,??DataTable1_8
+   \   0000007E   0121               MOVS     R1,#+1
+   \   00000080   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_7:
+   \   00000082   ....               LDR      R0,??DataTable1_9
+   \   00000084   0068               LDR      R0,[R0, #+0]
+   \   00000086   0099               LDR      R1,[SP, #+0]
+   \   00000088   8842               CMP      R0,R1
+   \   0000008A   02D0               BEQ      ??prvSendFrontAndBackTest_8
+   \   0000008C   ....               LDR      R0,??DataTable1_8
+   \   0000008E   0121               MOVS     R1,#+1
+   \   00000090   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_8:
+   \   00000092   2000               MOVS     R0,R4
+   \   00000094   ........           BL       uxQueueMessagesWaiting
+   \   00000098   0028               CMP      R0,#+0
+   \   0000009A   02D0               BEQ      ??prvSendFrontAndBackTest_9
+   \   0000009C   ....               LDR      R0,??DataTable1_8
+   \   0000009E   0121               MOVS     R1,#+1
+   \   000000A0   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_9:
+   \   000000A2   0023               MOVS     R3,#+0
+   \   000000A4   0022               MOVS     R2,#+0
+   \   000000A6   ....               LDR      R1,??DataTable1_9
+   \   000000A8   2000               MOVS     R0,R4
+   \   000000AA   ........           BL       xQueueGenericSend
+   \   000000AE   2000               MOVS     R0,R4
+   \   000000B0   ........           BL       uxQueueMessagesWaiting
+   \   000000B4   0128               CMP      R0,#+1
+   \   000000B6   02D0               BEQ      ??prvSendFrontAndBackTest_10
+   \   000000B8   ....               LDR      R0,??DataTable1_8
+   \   000000BA   0121               MOVS     R1,#+1
+   \   000000BC   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_10:
+   \   000000BE   0023               MOVS     R3,#+0
+   \   000000C0   0022               MOVS     R2,#+0
+   \   000000C2   6946               MOV      R1,SP
+   \   000000C4   2000               MOVS     R0,R4
+   \   000000C6   ........           BL       xQueueGenericReceive
+   \   000000CA   0128               CMP      R0,#+1
+   \   000000CC   02D0               BEQ      ??prvSendFrontAndBackTest_11
+   \   000000CE   ....               LDR      R0,??DataTable1_8
+   \   000000D0   0121               MOVS     R1,#+1
+   \   000000D2   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_11:
+   \   000000D4   2000               MOVS     R0,R4
+   \   000000D6   ........           BL       uxQueueMessagesWaiting
+   \   000000DA   0028               CMP      R0,#+0
+   \   000000DC   02D0               BEQ      ??prvSendFrontAndBackTest_12
+   \   000000DE   ....               LDR      R0,??DataTable1_8
+   \   000000E0   0121               MOVS     R1,#+1
+   \   000000E2   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_12:
+   \   000000E4   ....               LDR      R0,??DataTable1_9
+   \   000000E6   0068               LDR      R0,[R0, #+0]
+   \   000000E8   0099               LDR      R1,[SP, #+0]
+   \   000000EA   8842               CMP      R0,R1
+   \   000000EC   02D0               BEQ      ??prvSendFrontAndBackTest_13
+   \   000000EE   ....               LDR      R0,??DataTable1_8
+   \   000000F0   0121               MOVS     R1,#+1
+   \   000000F2   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_13:
+   \   000000F4   0220               MOVS     R0,#+2
+   \   000000F6   0090               STR      R0,[SP, #+0]
+   \   000000F8   08E0               B        ??prvSendFrontAndBackTest_14
+   \                     ??prvSendFrontAndBackTest_15:
+   \   000000FA   0023               MOVS     R3,#+0
+   \   000000FC   0022               MOVS     R2,#+0
+   \   000000FE   6946               MOV      R1,SP
+   \   00000100   2000               MOVS     R0,R4
+   \   00000102   ........           BL       xQueueGenericSend
+   \   00000106   0098               LDR      R0,[SP, #+0]
+   \   00000108   401C               ADDS     R0,R0,#+1
+   \   0000010A   0090               STR      R0,[SP, #+0]
+   \                     ??prvSendFrontAndBackTest_14:
+   \   0000010C   0098               LDR      R0,[SP, #+0]
+   \   0000010E   0528               CMP      R0,#+5
+   \   00000110   F3D3               BCC      ??prvSendFrontAndBackTest_15
+   \   00000112   2000               MOVS     R0,R4
+   \   00000114   ........           BL       uxQueueMessagesWaiting
+   \   00000118   0328               CMP      R0,#+3
+   \   0000011A   02D0               BEQ      ??prvSendFrontAndBackTest_16
+   \   0000011C   ....               LDR      R0,??DataTable1_8
+   \   0000011E   0121               MOVS     R1,#+1
+   \   00000120   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_16:
+   \   00000122   0120               MOVS     R0,#+1
+   \   00000124   0090               STR      R0,[SP, #+0]
+   \   00000126   0123               MOVS     R3,#+1
+   \   00000128   0022               MOVS     R2,#+0
+   \   0000012A   6946               MOV      R1,SP
+   \   0000012C   2000               MOVS     R0,R4
+   \   0000012E   ........           BL       xQueueGenericSend
+   \   00000132   0020               MOVS     R0,#+0
+   \   00000134   0090               STR      R0,[SP, #+0]
+   \   00000136   0123               MOVS     R3,#+1
+   \   00000138   0022               MOVS     R2,#+0
+   \   0000013A   6946               MOV      R1,SP
+   \   0000013C   2000               MOVS     R0,R4
+   \   0000013E   ........           BL       xQueueGenericSend
+   \   00000142   2000               MOVS     R0,R4
+   \   00000144   ........           BL       uxQueueMessagesWaiting
+   \   00000148   0528               CMP      R0,#+5
+   \   0000014A   02D0               BEQ      ??prvSendFrontAndBackTest_17
+   \   0000014C   ....               LDR      R0,??DataTable1_8
+   \   0000014E   0121               MOVS     R1,#+1
+   \   00000150   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_17:
+   \   00000152   0123               MOVS     R3,#+1
+   \   00000154   0022               MOVS     R2,#+0
+   \   00000156   6946               MOV      R1,SP
+   \   00000158   2000               MOVS     R0,R4
+   \   0000015A   ........           BL       xQueueGenericSend
+   \   0000015E   0028               CMP      R0,#+0
+   \   00000160   02D0               BEQ      ??prvSendFrontAndBackTest_18
+   \   00000162   ....               LDR      R0,??DataTable1_8
+   \   00000164   0121               MOVS     R1,#+1
+   \   00000166   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_18:
+   \   00000168   0023               MOVS     R3,#+0
+   \   0000016A   0022               MOVS     R2,#+0
+   \   0000016C   6946               MOV      R1,SP
+   \   0000016E   2000               MOVS     R0,R4
+   \   00000170   ........           BL       xQueueGenericSend
+   \   00000174   0028               CMP      R0,#+0
+   \   00000176   02D0               BEQ      ??prvSendFrontAndBackTest_19
+   \   00000178   ....               LDR      R0,??DataTable1_8
+   \   0000017A   0121               MOVS     R1,#+1
+   \   0000017C   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_19:
+   \   0000017E   0020               MOVS     R0,#+0
+   \   00000180   0090               STR      R0,[SP, #+0]
+   \   00000182   29E0               B        ??prvSendFrontAndBackTest_20
+   \                     ??prvSendFrontAndBackTest_21:
+   \   00000184   0123               MOVS     R3,#+1
+   \   00000186   0022               MOVS     R2,#+0
+   \   00000188   01A9               ADD      R1,SP,#+4
+   \   0000018A   2000               MOVS     R0,R4
+   \   0000018C   ........           BL       xQueueGenericReceive
+   \   00000190   0128               CMP      R0,#+1
+   \   00000192   02D0               BEQ      ??prvSendFrontAndBackTest_22
+   \   00000194   ....               LDR      R0,??DataTable1_8
+   \   00000196   0121               MOVS     R1,#+1
+   \   00000198   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_22:
+   \   0000019A   0098               LDR      R0,[SP, #+0]
+   \   0000019C   0199               LDR      R1,[SP, #+4]
+   \   0000019E   8842               CMP      R0,R1
+   \   000001A0   02D0               BEQ      ??prvSendFrontAndBackTest_23
+   \   000001A2   ....               LDR      R0,??DataTable1_8
+   \   000001A4   0121               MOVS     R1,#+1
+   \   000001A6   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_23:
+   \   000001A8   0198               LDR      R0,[SP, #+4]
+   \   000001AA   C143               MVNS     R1,R0
+   \   000001AC   0191               STR      R1,[SP, #+4]
+   \   000001AE   0023               MOVS     R3,#+0
+   \   000001B0   0022               MOVS     R2,#+0
+   \   000001B2   01A9               ADD      R1,SP,#+4
+   \   000001B4   2000               MOVS     R0,R4
+   \   000001B6   ........           BL       xQueueGenericReceive
+   \   000001BA   0128               CMP      R0,#+1
+   \   000001BC   02D0               BEQ      ??prvSendFrontAndBackTest_24
+   \   000001BE   ....               LDR      R0,??DataTable1_8
+   \   000001C0   0121               MOVS     R1,#+1
+   \   000001C2   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_24:
+   \   000001C4   0098               LDR      R0,[SP, #+0]
+   \   000001C6   0199               LDR      R1,[SP, #+4]
+   \   000001C8   8842               CMP      R0,R1
+   \   000001CA   02D0               BEQ      ??prvSendFrontAndBackTest_25
+   \   000001CC   ....               LDR      R0,??DataTable1_8
+   \   000001CE   0121               MOVS     R1,#+1
+   \   000001D0   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_25:
+   \   000001D2   0098               LDR      R0,[SP, #+0]
+   \   000001D4   401C               ADDS     R0,R0,#+1
+   \   000001D6   0090               STR      R0,[SP, #+0]
+   \                     ??prvSendFrontAndBackTest_20:
+   \   000001D8   0098               LDR      R0,[SP, #+0]
+   \   000001DA   0528               CMP      R0,#+5
+   \   000001DC   D2D3               BCC      ??prvSendFrontAndBackTest_21
+   \   000001DE   2000               MOVS     R0,R4
+   \   000001E0   ........           BL       uxQueueMessagesWaiting
+   \   000001E4   0028               CMP      R0,#+0
+   \   000001E6   02D0               BEQ      ??prvSendFrontAndBackTest_26
+   \   000001E8   ....               LDR      R0,??DataTable1_8
+   \   000001EA   0121               MOVS     R1,#+1
+   \   000001EC   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_26:
+   \   000001EE   0A20               MOVS     R0,#+10
+   \   000001F0   0090               STR      R0,[SP, #+0]
+   \   000001F2   0023               MOVS     R3,#+0
+   \   000001F4   0022               MOVS     R2,#+0
+   \   000001F6   6946               MOV      R1,SP
+   \   000001F8   2000               MOVS     R0,R4
+   \   000001FA   ........           BL       xQueueGenericSend
+   \   000001FE   0128               CMP      R0,#+1
+   \   00000200   02D0               BEQ      ??prvSendFrontAndBackTest_27
+   \   00000202   ....               LDR      R0,??DataTable1_8
+   \   00000204   0121               MOVS     R1,#+1
+   \   00000206   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_27:
+   \   00000208   0B20               MOVS     R0,#+11
+   \   0000020A   0090               STR      R0,[SP, #+0]
+   \   0000020C   0023               MOVS     R3,#+0
+   \   0000020E   0022               MOVS     R2,#+0
+   \   00000210   6946               MOV      R1,SP
+   \   00000212   2000               MOVS     R0,R4
+   \   00000214   ........           BL       xQueueGenericSend
+   \   00000218   0128               CMP      R0,#+1
+   \   0000021A   02D0               BEQ      ??prvSendFrontAndBackTest_28
+   \   0000021C   ....               LDR      R0,??DataTable1_8
+   \   0000021E   0121               MOVS     R1,#+1
+   \   00000220   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_28:
+   \   00000222   2000               MOVS     R0,R4
+   \   00000224   ........           BL       uxQueueMessagesWaiting
+   \   00000228   0228               CMP      R0,#+2
+   \   0000022A   02D0               BEQ      ??prvSendFrontAndBackTest_29
+   \   0000022C   ....               LDR      R0,??DataTable1_8
+   \   0000022E   0121               MOVS     R1,#+1
+   \   00000230   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_29:
+   \   00000232   0920               MOVS     R0,#+9
+   \   00000234   0090               STR      R0,[SP, #+0]
+   \   00000236   0DE0               B        ??prvSendFrontAndBackTest_30
+   \                     ??prvSendFrontAndBackTest_31:
+   \   00000238   0123               MOVS     R3,#+1
+   \   0000023A   0022               MOVS     R2,#+0
+   \   0000023C   6946               MOV      R1,SP
+   \   0000023E   2000               MOVS     R0,R4
+   \   00000240   ........           BL       xQueueGenericSend
+   \   00000244   0128               CMP      R0,#+1
+   \   00000246   02D0               BEQ      ??prvSendFrontAndBackTest_32
+   \   00000248   ....               LDR      R0,??DataTable1_8
+   \   0000024A   0121               MOVS     R1,#+1
+   \   0000024C   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_32:
+   \   0000024E   0098               LDR      R0,[SP, #+0]
+   \   00000250   401E               SUBS     R0,R0,#+1
+   \   00000252   0090               STR      R0,[SP, #+0]
+   \                     ??prvSendFrontAndBackTest_30:
+   \   00000254   0098               LDR      R0,[SP, #+0]
+   \   00000256   0728               CMP      R0,#+7
+   \   00000258   EED2               BCS      ??prvSendFrontAndBackTest_31
+   \   0000025A   2000               MOVS     R0,R4
+   \   0000025C   ........           BL       uxQueueMessagesWaiting
+   \   00000260   0528               CMP      R0,#+5
+   \   00000262   02D0               BEQ      ??prvSendFrontAndBackTest_33
+   \   00000264   ....               LDR      R0,??DataTable1_8
+   \   00000266   0121               MOVS     R1,#+1
+   \   00000268   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_33:
+   \   0000026A   0123               MOVS     R3,#+1
+   \   0000026C   0022               MOVS     R2,#+0
+   \   0000026E   6946               MOV      R1,SP
+   \   00000270   2000               MOVS     R0,R4
+   \   00000272   ........           BL       xQueueGenericSend
+   \   00000276   0028               CMP      R0,#+0
+   \   00000278   02D0               BEQ      ??prvSendFrontAndBackTest_34
+   \   0000027A   ....               LDR      R0,??DataTable1_8
+   \   0000027C   0121               MOVS     R1,#+1
+   \   0000027E   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_34:
+   \   00000280   0023               MOVS     R3,#+0
+   \   00000282   0022               MOVS     R2,#+0
+   \   00000284   6946               MOV      R1,SP
+   \   00000286   2000               MOVS     R0,R4
+   \   00000288   ........           BL       xQueueGenericSend
+   \   0000028C   0028               CMP      R0,#+0
+   \   0000028E   02D0               BEQ      ??prvSendFrontAndBackTest_35
+   \   00000290   ....               LDR      R0,??DataTable1_8
+   \   00000292   0121               MOVS     R1,#+1
+   \   00000294   0160               STR      R1,[R0, #+0]
+   \                     ??prvSendFrontAndBackTest_35:
+   \   00000296   0720               MOVS     R0,#+7
+   \   00000298   0090               STR      R0,[SP, #+0]
+   \   0000029A   C9E6               B        ??prvSendFrontAndBackTest_4
+    398          	}
+    399          }
+    400          /*-----------------------------------------------------------*/
+    401          
+
+   \                                 In section .text, align 2, keep-with-next
+    402          static void prvLowPriorityMutexTask( void *pvParameters )
+    403          {
+   \                     prvLowPriorityMutexTask:
+   \   00000000   10B5               PUSH     {R4,LR}
+    404          xSemaphoreHandle xMutex = ( xSemaphoreHandle ) pvParameters;
+   \   00000002   0400               MOVS     R4,R0
+    405          
+    406          	#ifdef USE_STDIO
+    407          	void vPrintDisplayMessage( const portCHAR * const * ppcMessageToSend );
+    408          	
+    409          		const portCHAR * const pcTaskStartMsg = "Mutex with priority inheritance test started.\r\n";
+    410          
+    411          		/* Queue a message for printing to say the task has started. */
+    412          		vPrintDisplayMessage( &pcTaskStartMsg );
+    413          	#endif
+    414          
+    415          	for( ;; )
+    416          	{
+    417          		/* Take the mutex.  It should be available now. */
+    418          		if( xSemaphoreTake( xMutex, genqNO_BLOCK ) != pdPASS )
+   \                     ??prvLowPriorityMutexTask_0:
+   \   00000004   0023               MOVS     R3,#+0
+   \   00000006   0022               MOVS     R2,#+0
+   \   00000008   0021               MOVS     R1,#+0
+   \   0000000A   2000               MOVS     R0,R4
+   \   0000000C   ........           BL       xQueueGenericReceive
+   \   00000010   0128               CMP      R0,#+1
+   \   00000012   02D0               BEQ      ??prvLowPriorityMutexTask_1
+    419          		{
+    420          			xErrorDetected = pdTRUE;
+   \   00000014   ....               LDR      R0,??DataTable5
+   \   00000016   0121               MOVS     R1,#+1
+   \   00000018   0160               STR      R1,[R0, #+0]
+    421          		}
+    422          
+    423          		/* Set our guarded variable to a known start value. */
+    424          		ulGuardedVariable = 0;
+   \                     ??prvLowPriorityMutexTask_1:
+   \   0000001A   ....               LDR      R0,??DataTable5_1
+   \   0000001C   0021               MOVS     R1,#+0
+   \   0000001E   0160               STR      R1,[R0, #+0]
+    425          
+    426          		/* Our priority should be as per that assigned when the task was
+    427          		created. */
+    428          		if( uxTaskPriorityGet( NULL ) != genqMUTEX_LOW_PRIORITY )
+   \   00000020   0020               MOVS     R0,#+0
+   \   00000022   ........           BL       uxTaskPriorityGet
+   \   00000026   0028               CMP      R0,#+0
+   \   00000028   02D0               BEQ      ??prvLowPriorityMutexTask_2
+    429          		{
+    430          			xErrorDetected = pdTRUE;
+   \   0000002A   ....               LDR      R0,??DataTable5
+   \   0000002C   0121               MOVS     R1,#+1
+   \   0000002E   0160               STR      R1,[R0, #+0]
+    431          		}
+    432          
+    433          		/* Now unsuspend the high priority task.  This will attempt to take the
+    434          		mutex, and block when it finds it cannot obtain it. */
+    435          		vTaskResume( xHighPriorityMutexTask );
+   \                     ??prvLowPriorityMutexTask_2:
+   \   00000030   ....               LDR      R0,??DataTable5_2
+   \   00000032   0068               LDR      R0,[R0, #+0]
+   \   00000034   ........           BL       vTaskResume
+    436          
+    437          		/* We should now have inherited the prioritoy of the high priority task,
+    438          		as by now it will have attempted to get the mutex. */
+    439          		if( uxTaskPriorityGet( NULL ) != genqMUTEX_HIGH_PRIORITY )
+   \   00000038   0020               MOVS     R0,#+0
+   \   0000003A   ........           BL       uxTaskPriorityGet
+   \   0000003E   0328               CMP      R0,#+3
+   \   00000040   02D0               BEQ      ??prvLowPriorityMutexTask_3
+    440          		{
+    441          			xErrorDetected = pdTRUE;
+   \   00000042   ....               LDR      R0,??DataTable5
+   \   00000044   0121               MOVS     R1,#+1
+   \   00000046   0160               STR      R1,[R0, #+0]
+    442          		}
+    443          
+    444          		/* We can attempt to set our priority to the test priority - between the
+    445          		idle priority and the medium/high test priorities, but our actual
+    446          		prioroity should remain at the high priority. */
+    447          		vTaskPrioritySet( NULL, genqMUTEX_TEST_PRIORITY );
+   \                     ??prvLowPriorityMutexTask_3:
+   \   00000048   0121               MOVS     R1,#+1
+   \   0000004A   0020               MOVS     R0,#+0
+   \   0000004C   ........           BL       vTaskPrioritySet
+    448          		if( uxTaskPriorityGet( NULL ) != genqMUTEX_HIGH_PRIORITY )
+   \   00000050   0020               MOVS     R0,#+0
+   \   00000052   ........           BL       uxTaskPriorityGet
+   \   00000056   0328               CMP      R0,#+3
+   \   00000058   02D0               BEQ      ??prvLowPriorityMutexTask_4
+    449          		{
+    450          			xErrorDetected = pdTRUE;
+   \   0000005A   ....               LDR      R0,??DataTable5
+   \   0000005C   0121               MOVS     R1,#+1
+   \   0000005E   0160               STR      R1,[R0, #+0]
+    451          		}
+    452          
+    453          		/* Now unsuspend the medium priority task.  This should not run as our
+    454          		inherited priority is above that of the medium priority task. */
+    455          		vTaskResume( xMediumPriorityMutexTask );
+   \                     ??prvLowPriorityMutexTask_4:
+   \   00000060   ....               LDR      R0,??DataTable5_3
+   \   00000062   0068               LDR      R0,[R0, #+0]
+   \   00000064   ........           BL       vTaskResume
+    456          
+    457          		/* If the did run then it will have incremented our guarded variable. */
+    458          		if( ulGuardedVariable != 0 )
+   \   00000068   ....               LDR      R0,??DataTable5_1
+   \   0000006A   0068               LDR      R0,[R0, #+0]
+   \   0000006C   0028               CMP      R0,#+0
+   \   0000006E   02D0               BEQ      ??prvLowPriorityMutexTask_5
+    459          		{
+    460          			xErrorDetected = pdTRUE;
+   \   00000070   ....               LDR      R0,??DataTable5
+   \   00000072   0121               MOVS     R1,#+1
+   \   00000074   0160               STR      R1,[R0, #+0]
+    461          		}
+    462          
+    463          		/* When we give back the semaphore our priority should be disinherited
+    464          		back to the priority to which we attempted to set ourselves.  This means
+    465          		that when the high priority task next blocks, the medium priority task
+    466          		should execute and increment the guarded variable.   When we next run
+    467          		both the high and medium priority tasks will have been suspended again. */
+    468          		if( xSemaphoreGive( xMutex ) != pdPASS )
+   \                     ??prvLowPriorityMutexTask_5:
+   \   00000076   0023               MOVS     R3,#+0
+   \   00000078   0022               MOVS     R2,#+0
+   \   0000007A   0021               MOVS     R1,#+0
+   \   0000007C   2000               MOVS     R0,R4
+   \   0000007E   ........           BL       xQueueGenericSend
+   \   00000082   0128               CMP      R0,#+1
+   \   00000084   02D0               BEQ      ??prvLowPriorityMutexTask_6
+    469          		{
+    470          			xErrorDetected = pdTRUE;
+   \   00000086   ....               LDR      R0,??DataTable5
+   \   00000088   0121               MOVS     R1,#+1
+   \   0000008A   0160               STR      R1,[R0, #+0]
+    471          		}
+    472          
+    473          		/* Check that the guarded variable did indeed increment... */
+    474          		if( ulGuardedVariable != 1 )
+   \                     ??prvLowPriorityMutexTask_6:
+   \   0000008C   ....               LDR      R0,??DataTable5_1
+   \   0000008E   0068               LDR      R0,[R0, #+0]
+   \   00000090   0128               CMP      R0,#+1
+   \   00000092   02D0               BEQ      ??prvLowPriorityMutexTask_7
+    475          		{
+    476          			xErrorDetected = pdTRUE;
+   \   00000094   ....               LDR      R0,??DataTable5
+   \   00000096   0121               MOVS     R1,#+1
+   \   00000098   0160               STR      R1,[R0, #+0]
+    477          		}
+    478          
+    479          		/* ... and that our priority has been disinherited to
+    480          		genqMUTEX_TEST_PRIORITY. */
+    481          		if( uxTaskPriorityGet( NULL ) != genqMUTEX_TEST_PRIORITY )
+   \                     ??prvLowPriorityMutexTask_7:
+   \   0000009A   0020               MOVS     R0,#+0
+   \   0000009C   ........           BL       uxTaskPriorityGet
+   \   000000A0   0128               CMP      R0,#+1
+   \   000000A2   02D0               BEQ      ??prvLowPriorityMutexTask_8
+    482          		{
+    483          			xErrorDetected = pdTRUE;
+   \   000000A4   ....               LDR      R0,??DataTable5
+   \   000000A6   0121               MOVS     R1,#+1
+   \   000000A8   0160               STR      R1,[R0, #+0]
+    484          		}
+    485          
+    486          		/* Set our priority back to our original priority ready for the next
+    487          		loop around this test. */
+    488          		vTaskPrioritySet( NULL, genqMUTEX_LOW_PRIORITY );
+   \                     ??prvLowPriorityMutexTask_8:
+   \   000000AA   0021               MOVS     R1,#+0
+   \   000000AC   0020               MOVS     R0,#+0
+   \   000000AE   ........           BL       vTaskPrioritySet
+    489          
+    490          		/* Just to show we are still running. */
+    491          		ulLoopCounter2++;
+   \   000000B2   ....               LDR      R0,??DataTable5_4
+   \   000000B4   0068               LDR      R0,[R0, #+0]
+   \   000000B6   401C               ADDS     R0,R0,#+1
+   \   000000B8   ....               LDR      R1,??DataTable5_4
+   \   000000BA   0860               STR      R0,[R1, #+0]
+   \   000000BC   A2E7               B        ??prvLowPriorityMutexTask_0
+    492          
+    493          		#if configUSE_PREEMPTION == 0
+    494          			taskYIELD();
+    495          		#endif		
+    496          	}
+    497          }
+    498          /*-----------------------------------------------------------*/
+    499          
+
+   \                                 In section .text, align 2, keep-with-next
+    500          static void prvMediumPriorityMutexTask( void *pvParameters )
+    501          {
+   \                     prvMediumPriorityMutexTask:
+   \   00000000   80B5               PUSH     {R7,LR}
+    502          	( void ) pvParameters;
+    503          
+    504          	for( ;; )
+    505          	{
+    506          		/* The medium priority task starts by suspending itself.  The low
+    507          		priority task will unsuspend this task when required. */
+    508          		vTaskSuspend( NULL );
+   \                     ??prvMediumPriorityMutexTask_0:
+   \   00000002   0020               MOVS     R0,#+0
+   \   00000004   ........           BL       vTaskSuspend
+    509          
+    510          		/* When this task unsuspends all it does is increment the guarded
+    511          		variable, this is so the low priority task knows that it has
+    512          		executed. */
+    513          		ulGuardedVariable++;
+   \   00000008   ....               LDR      R0,??DataTable5_1
+   \   0000000A   0068               LDR      R0,[R0, #+0]
+   \   0000000C   401C               ADDS     R0,R0,#+1
+   \   0000000E   ....               LDR      R1,??DataTable5_1
+   \   00000010   0860               STR      R0,[R1, #+0]
+   \   00000012   F6E7               B        ??prvMediumPriorityMutexTask_0
+    514          	}
+    515          }
+    516          /*-----------------------------------------------------------*/
+    517          
+
+   \                                 In section .text, align 2, keep-with-next
+    518          static void prvHighPriorityMutexTask( void *pvParameters )
+    519          {
+   \                     prvHighPriorityMutexTask:
+   \   00000000   10B5               PUSH     {R4,LR}
+    520          xSemaphoreHandle xMutex = ( xSemaphoreHandle ) pvParameters;
+   \   00000002   0400               MOVS     R4,R0
+    521          
+    522          	for( ;; )
+    523          	{
+    524          		/* The high priority task starts by suspending itself.  The low
+    525          		priority task will unsuspend this task when required. */
+    526          		vTaskSuspend( NULL );
+   \                     ??prvHighPriorityMutexTask_0:
+   \   00000004   0020               MOVS     R0,#+0
+   \   00000006   ........           BL       vTaskSuspend
+    527          
+    528          		/* When this task unsuspends all it does is attempt to obtain
+    529          		the mutex.  It should find the mutex is not available so a
+    530          		block time is specified. */
+    531          		if( xSemaphoreTake( xMutex, portMAX_DELAY ) != pdPASS )
+   \   0000000A   0023               MOVS     R3,#+0
+   \   0000000C   0022               MOVS     R2,#+0
+   \   0000000E   D243               MVNS     R2,R2            ;; #-1
+   \   00000010   0021               MOVS     R1,#+0
+   \   00000012   2000               MOVS     R0,R4
+   \   00000014   ........           BL       xQueueGenericReceive
+   \   00000018   0128               CMP      R0,#+1
+   \   0000001A   02D0               BEQ      ??prvHighPriorityMutexTask_1
+    532          		{
+    533          			xErrorDetected = pdTRUE;
+   \   0000001C   ....               LDR      R0,??DataTable5
+   \   0000001E   0121               MOVS     R1,#+1
+   \   00000020   0160               STR      R1,[R0, #+0]
+    534          		}
+    535          
+    536          		/* When we eventually obtain the mutex we just give it back then
+    537          		return to suspend ready for the next test. */
+    538          		if( xSemaphoreGive( xMutex ) != pdPASS )
+   \                     ??prvHighPriorityMutexTask_1:
+   \   00000022   0023               MOVS     R3,#+0
+   \   00000024   0022               MOVS     R2,#+0
+   \   00000026   0021               MOVS     R1,#+0
+   \   00000028   2000               MOVS     R0,R4
+   \   0000002A   ........           BL       xQueueGenericSend
+   \   0000002E   0128               CMP      R0,#+1
+   \   00000030   E8D0               BEQ      ??prvHighPriorityMutexTask_0
+    539          		{
+    540          			xErrorDetected = pdTRUE;
+   \   00000032   ....               LDR      R0,??DataTable5
+   \   00000034   0121               MOVS     R1,#+1
+   \   00000036   0160               STR      R1,[R0, #+0]
+   \   00000038   E4E7               B        ??prvHighPriorityMutexTask_0
+    541          		}		
+    542          	}
+    543          }
+    544          /*-----------------------------------------------------------*/
+    545          
+    546          /* This is called to check that all the created tasks are still running. */
+
+   \                                 In section .text, align 2, keep-with-next
+    547          portBASE_TYPE xAreGenericQueueTasksStillRunning( void )
+    548          {
+   \                     xAreGenericQueueTasksStillRunning:
+   \   00000000   00B5               PUSH     {LR}
+    549          static unsigned portLONG ulLastLoopCounter = 0, ulLastLoopCounter2 = 0;
+    550          
+    551          	/* If the demo task is still running then we expect the loopcounters to
+    552          	have incremented since this function was last called. */
+    553          	if( ulLastLoopCounter == ulLoopCounter )
+   \   00000002   ....               LDR      R0,??DataTable5_5
+   \   00000004   0068               LDR      R0,[R0, #+0]
+   \   00000006   ....               LDR      R1,??DataTable5_6
+   \   00000008   0968               LDR      R1,[R1, #+0]
+   \   0000000A   8842               CMP      R0,R1
+   \   0000000C   02D1               BNE      ??xAreGenericQueueTasksStillRunning_0
+    554          	{
+    555          		xErrorDetected = pdTRUE;
+   \   0000000E   ....               LDR      R0,??DataTable5
+   \   00000010   0121               MOVS     R1,#+1
+   \   00000012   0160               STR      R1,[R0, #+0]
+    556          	}
+    557          
+    558          	if( ulLastLoopCounter2 == ulLoopCounter2 )
+   \                     ??xAreGenericQueueTasksStillRunning_0:
+   \   00000014   ....               LDR      R0,??DataTable5_7
+   \   00000016   0068               LDR      R0,[R0, #+0]
+   \   00000018   ....               LDR      R1,??DataTable5_4
+   \   0000001A   0968               LDR      R1,[R1, #+0]
+   \   0000001C   8842               CMP      R0,R1
+   \   0000001E   02D1               BNE      ??xAreGenericQueueTasksStillRunning_1
+    559          	{
+    560          		xErrorDetected = pdTRUE;
+   \   00000020   ....               LDR      R0,??DataTable5
+   \   00000022   0121               MOVS     R1,#+1
+   \   00000024   0160               STR      R1,[R0, #+0]
+    561          	}
+    562          
+    563          	ulLastLoopCounter = ulLoopCounter;
+   \                     ??xAreGenericQueueTasksStillRunning_1:
+   \   00000026   ....               LDR      R0,??DataTable5_5
+   \   00000028   ....               LDR      R1,??DataTable5_6
+   \   0000002A   0968               LDR      R1,[R1, #+0]
+   \   0000002C   0160               STR      R1,[R0, #+0]
+    564          	ulLastLoopCounter2 = ulLoopCounter2;	
+   \   0000002E   ....               LDR      R0,??DataTable5_7
+   \   00000030   ....               LDR      R1,??DataTable5_4
+   \   00000032   0968               LDR      R1,[R1, #+0]
+   \   00000034   0160               STR      R1,[R0, #+0]
+    565          
+    566          	/* Errors detected in the task itself will have latched xErrorDetected
+    567          	to true. */
+    568          
+    569          	return !xErrorDetected;
+   \   00000036   ....               LDR      R0,??DataTable5
+   \   00000038   0068               LDR      R0,[R0, #+0]
+   \   0000003A   0028               CMP      R0,#+0
+   \   0000003C   01D1               BNE      ??xAreGenericQueueTasksStillRunning_2
+   \   0000003E   0120               MOVS     R0,#+1
+   \   00000040   00E0               B        ??xAreGenericQueueTasksStillRunning_3
+   \                     ??xAreGenericQueueTasksStillRunning_2:
+   \   00000042   0020               MOVS     R0,#+0
+   \                     ??xAreGenericQueueTasksStillRunning_3:
+   \   00000044   C0B2               UXTB     R0,R0
+   \   00000046   00BD               POP      {PC}             ;; return
+    570          }
+
+   \                                 In section .bss, align 4
+   \                     ??ulLastLoopCounter:
+   \   00000000                      DS8 4
+
+   \                                 In section .bss, align 4
+   \                     ??ulLastLoopCounter2:
+   \   00000000                      DS8 4
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0:
+   \   00000000   ........           DC32     `?<Constant "GenQ">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable0_1:
+   \   00000000   ........           DC32     prvSendFrontAndBackTest
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1:
+   \   00000000   ........           DC32     `?<Constant "MuLow">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_1:
+   \   00000000   ........           DC32     prvLowPriorityMutexTask
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_2:
+   \   00000000   ........           DC32     xMediumPriorityMutexTask
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_3:
+   \   00000000   ........           DC32     `?<Constant "MuMed">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_4:
+   \   00000000   ........           DC32     prvMediumPriorityMutexTask
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_5:
+   \   00000000   ........           DC32     xHighPriorityMutexTask
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_6:
+   \   00000000   ........           DC32     `?<Constant "MuHigh">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_7:
+   \   00000000   ........           DC32     prvHighPriorityMutexTask
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_8:
+   \   00000000   ........           DC32     xErrorDetected
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable1_9:
+   \   00000000   ........           DC32     ulLoopCounter
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5:
+   \   00000000   ........           DC32     xErrorDetected
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_1:
+   \   00000000   ........           DC32     ulGuardedVariable
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_2:
+   \   00000000   ........           DC32     xHighPriorityMutexTask
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_3:
+   \   00000000   ........           DC32     xMediumPriorityMutexTask
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_4:
+   \   00000000   ........           DC32     ulLoopCounter2
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_5:
+   \   00000000   ........           DC32     ??ulLastLoopCounter
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_6:
+   \   00000000   ........           DC32     ulLoopCounter
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_7:
+   \   00000000   ........           DC32     ??ulLastLoopCounter2
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "GenQ">`:
+   \   00000000   47656E5100         DC8 "GenQ"
+   \   00000005   000000             DC8 0, 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "MuLow">`:
+   \   00000000   4D754C6F7700       DC8 "MuLow"
+   \   00000006   0000               DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "MuMed">`:
+   \   00000000   4D754D656400       DC8 "MuMed"
+   \   00000006   0000               DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "MuHigh">`:
+   \   00000000   4D7548696768       DC8 "MuHigh"
+   \              00          
+   \   00000007   00                 DC8 0
+    571          
+    572          
+
+   Maximum stack usage in bytes:
+
+     Function                       .cstack
+     --------                       -------
+     prvHighPriorityMutexTask            8
+     prvLowPriorityMutexTask             8
+     prvMediumPriorityMutexTask          8
+     prvSendFrontAndBackTest            16
+     vStartGenericQueueTasks            24
+     xAreGenericQueueTasksStillRunning
+                                         4
+
+
+   Section sizes:
+
+     Function/Label                 Bytes
+     --------------                 -----
+     xErrorDetected                    4
+     ulLoopCounter                     4
+     ulLoopCounter2                    4
+     ulGuardedVariable                 4
+     xHighPriorityMutexTask            4
+     xMediumPriorityMutexTask          4
+     vStartGenericQueueTasks         130
+     prvSendFrontAndBackTest         668
+     prvLowPriorityMutexTask         190
+     prvMediumPriorityMutexTask       20
+     prvHighPriorityMutexTask         58
+     xAreGenericQueueTasksStillRunning
+                                      72
+     ulLastLoopCounter                 4
+     ulLastLoopCounter2                4
+     ??DataTable0                      4
+     ??DataTable0_1                    4
+     ??DataTable1                      4
+     ??DataTable1_1                    4
+     ??DataTable1_2                    4
+     ??DataTable1_3                    4
+     ??DataTable1_4                    4
+     ??DataTable1_5                    4
+     ??DataTable1_6                    4
+     ??DataTable1_7                    4
+     ??DataTable1_8                    4
+     ??DataTable1_9                    4
+     ??DataTable5                      4
+     ??DataTable5_1                    4
+     ??DataTable5_2                    4
+     ??DataTable5_3                    4
+     ??DataTable5_4                    4
+     ??DataTable5_5                    4
+     ??DataTable5_6                    4
+     ??DataTable5_7                    4
+     ?<Constant "GenQ">                8
+     ?<Constant "MuLow">               8
+     ?<Constant "MuMed">               8
+     ?<Constant "MuHigh">              8
+
+ 
+    32 bytes in section .bss
+    32 bytes in section .rodata
+ 1 218 bytes in section .text
+ 
+ 1 218 bytes of CODE  memory
+    32 bytes of CONST memory
+    32 bytes of DATA  memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,203 @@
+###############################################################################
+#                                                                             #
+#                                                       06/Jul/2010  14:34:52 #
+# IAR ANSI C/C++ Compiler V5.50.0.21878/W32 EVALUATION for ARM                #
+# Copyright (C) 1999-2010 IAR Systems AB.                                     #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ParTest\ParTest.c                                      #
+#    Command line =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ParTest\ParTest.c -D IAR_ARM_CM0 -lCN                  #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\ --diag_suppress Pe550,Pa082,Pa039 -o       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\ --no_cse --no_unroll --no_inline            #
+#                    --no_code_motion --no_tbaa --no_clustering               #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M0  #
+#                    -e --fpu=None --dlib_config "D:\Program                  #
+#                    Files\ARM\INC\DLib_Config_Full.h" -I                     #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\..\common\include\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\..\..\source\include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_K #
+#                    eil_IAR\NUC1xxBSP\NuvotonPlatform_Keil\Include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\ -I      #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\ #
+#                    Demo\CORTEX_NUC1xx_Keil_IAR\User_Demo\include\ -I        #
+#                    "D:\Program Files\ARM\INC\" -Ol                          #
+#    List file    =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\ParTest.lst                                 #
+#    Object file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\ParTest.o                                    #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IAR\ParTest\ParTest.c
+      1          /*
+      2              FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
+      3          
+      4              ***************************************************************************
+      5              *                                                                         *
+      6              * If you are:                                                             *
+      7              *                                                                         *
+      8              *    + New to FreeRTOS,                                                   *
+      9              *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
+     10              *    + Looking for basic training,                                        *
+     11              *    + Wanting to improve your FreeRTOS skills and productivity           *
+     12              *                                                                         *
+     13              * then take a look at the FreeRTOS eBook                                  *
+     14              *                                                                         *
+     15              *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
+     16              *                  http://www.FreeRTOS.org/Documentation                  *
+     17              *                                                                         *
+     18              * A pdf reference manual is also available.  Both are usually delivered   *
+     19              * to your inbox within 20 minutes to two hours when purchased between 8am *
+     20              * and 8pm GMT (although please allow up to 24 hours in case of            *
+     21              * exceptional circumstances).  Thank you for your support!                *
+     22              *                                                                         *
+     23              ***************************************************************************
+     24          
+     25              This file is part of the FreeRTOS distribution.
+     26          
+     27              FreeRTOS is free software; you can redistribute it and/or modify it under
+     28              the terms of the GNU General Public License (version 2) as published by the
+     29              Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
+     30              ***NOTE*** The exception to the GPL is included to allow you to distribute
+     31              a combined work that includes FreeRTOS without being obliged to provide the
+     32              source code for proprietary components outside of the FreeRTOS kernel.
+     33              FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
+     34              ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+     35              FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+     36              more details. You should have received a copy of the GNU General Public 
+     37              License and the FreeRTOS license exception along with FreeRTOS; if not it 
+     38              can be viewed here: http://www.freertos.org/a00114.html and also obtained 
+     39              by writing to Richard Barry, contact details for whom are available on the
+     40              FreeRTOS WEB site.
+     41          
+     42              1 tab == 4 spaces!
+     43          
+     44              http://www.FreeRTOS.org - Documentation, latest information, license and
+     45              contact details.
+     46          
+     47              http://www.SafeRTOS.com - A version that is certified for use in safety
+     48              critical systems.
+     49          
+     50              http://www.OpenRTOS.com - Commercial support, development, porting,
+     51              licensing and training services.
+     52          */
+     53          
+     54          /*-----------------------------------------------------------
+     55           * Simple parallel port IO routines.
+     56           *-----------------------------------------------------------*/
+     57          
+     58          /* FreeRTOS.org includes. */
+     59          #include "FreeRTOS.h"
+     60          #include "task.h"
+     61          #include "partest.h"
+     62          
+     63          #include "Nuc1xx.h"
+     64          
+     65          #define partstMAX_OUTPUT_LED	( 4 )
+     66          #define partstFIRST_LED			(1<<0)
+     67          
+
+   \                                 In section .bss, align 2
+     68          static unsigned portSHORT usOutputValue = 0;
+   \                     usOutputValue:
+   \   00000000                      DS8 2
+     69          
+     70          /*-----------------------------------------------------------*/
+     71          
+
+   \                                 In section .text, align 4, keep-with-next
+     72          void vParTestToggleLED( unsigned portBASE_TYPE uxLED )
+     73          {
+   \                     vParTestToggleLED:
+   \   00000000   10B5               PUSH     {R4,LR}
+   \   00000002   0400               MOVS     R4,R0
+     74          unsigned portSHORT usBit;
+     75          
+     76          	vTaskSuspendAll();
+   \   00000004   ........           BL       vTaskSuspendAll
+     77          	{
+     78          		if( uxLED < partstMAX_OUTPUT_LED )
+   \   00000008   042C               CMP      R4,#+4
+   \   0000000A   14D2               BCS      ??vParTestToggleLED_0
+     79          		{
+     80          			usBit = partstFIRST_LED << uxLED;
+   \   0000000C   0120               MOVS     R0,#+1
+   \   0000000E   A040               LSLS     R0,R0,R4
+     81          
+     82          			if( usOutputValue & usBit )
+   \   00000010   0A49               LDR      R1,??vParTestToggleLED_1
+   \   00000012   0988               LDRH     R1,[R1, #+0]
+   \   00000014   0142               TST      R1,R0
+   \   00000016   05D0               BEQ      ??vParTestToggleLED_2
+     83          			{
+     84          				usOutputValue &= ~usBit;
+   \   00000018   0849               LDR      R1,??vParTestToggleLED_1
+   \   0000001A   0988               LDRH     R1,[R1, #+0]
+   \   0000001C   8143               BICS     R1,R1,R0
+   \   0000001E   0748               LDR      R0,??vParTestToggleLED_1
+   \   00000020   0180               STRH     R1,[R0, #+0]
+   \   00000022   04E0               B        ??vParTestToggleLED_3
+     85          			}
+     86          			else
+     87          			{
+     88          				usOutputValue |= usBit;
+   \                     ??vParTestToggleLED_2:
+   \   00000024   0549               LDR      R1,??vParTestToggleLED_1
+   \   00000026   0988               LDRH     R1,[R1, #+0]
+   \   00000028   0843               ORRS     R0,R0,R1
+   \   0000002A   0449               LDR      R1,??vParTestToggleLED_1
+   \   0000002C   0880               STRH     R0,[R1, #+0]
+     89          			}
+     90          
+     91          			GPIOC->DOUT = usOutputValue;
+   \                     ??vParTestToggleLED_3:
+   \   0000002E   0448               LDR      R0,??vParTestToggleLED_1+0x4  ;; 0x50004088
+   \   00000030   0249               LDR      R1,??vParTestToggleLED_1
+   \   00000032   0988               LDRH     R1,[R1, #+0]
+   \   00000034   0160               STR      R1,[R0, #+0]
+     92          		}
+     93          	}
+     94          	xTaskResumeAll();
+   \                     ??vParTestToggleLED_0:
+   \   00000036   ........           BL       xTaskResumeAll
+     95          }
+   \   0000003A   10BD               POP      {R4,PC}          ;; return
+   \                     ??vParTestToggleLED_1:
+   \   0000003C   ........           DC32     usOutputValue
+   \   00000040   88400050           DC32     0x50004088
+     96          /*-----------------------------------------------------------*/
+     97          
+
+   Maximum stack usage in bytes:
+
+     Function          .cstack
+     --------          -------
+     vParTestToggleLED      8
+
+
+   Section sizes:
+
+     Function/Label    Bytes
+     --------------    -----
+     usOutputValue        2
+     vParTestToggleLED   68
+
+ 
+  2 bytes in section .bss
+ 68 bytes in section .text
+ 
+ 68 bytes of CODE memory
+  2 bytes of DATA memory
+
+Errors: none
+Warnings: none

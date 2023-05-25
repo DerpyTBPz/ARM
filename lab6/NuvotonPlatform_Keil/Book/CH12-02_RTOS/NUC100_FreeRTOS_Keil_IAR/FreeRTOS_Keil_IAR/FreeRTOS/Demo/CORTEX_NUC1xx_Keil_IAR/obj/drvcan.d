@@ -1,0 +1,10 @@
+.\obj\drvcan.o: NUC1xx_lib\Driver\DrvCAN.c
+.\obj\drvcan.o: D:\Keil4\ARM\RV31\INC\stdio.h
+.\obj\drvcan.o: .\NUC1xx_lib\CMSIS\CM0\NUC1xx.h
+.\obj\drvcan.o: .\NUC1xx_lib\CMSIS\CM0\core_cm0.h
+.\obj\drvcan.o: D:\Keil4\ARM\RV31\INC\stdint.h
+.\obj\drvcan.o: .\NUC1xx_lib\CMSIS\CM0\system_NUC1xx.h
+.\obj\drvcan.o: .\NUC1xx_lib\Include\System\SysInfra.h
+.\obj\drvcan.o: .\NUC1xx_lib\Include\System\ModuleID.h
+.\obj\drvcan.o: .\NUC1xx_lib\Include\Driver\DrvCAN.h
+.\obj\drvcan.o: .\NUC1xx_lib\Include\Driver\DrvSYS.h

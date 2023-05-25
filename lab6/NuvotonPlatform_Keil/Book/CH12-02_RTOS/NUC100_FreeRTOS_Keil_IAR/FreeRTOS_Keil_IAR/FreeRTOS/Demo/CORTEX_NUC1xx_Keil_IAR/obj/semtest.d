@@ -1,0 +1,14 @@
+.\obj\semtest.o: ..\Common\Minimal\semtest.c
+.\obj\semtest.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\semtest.o: ..\..\Source\include\FreeRTOS.h
+.\obj\semtest.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\semtest.o: ..\..\Source\include\projdefs.h
+.\obj\semtest.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\semtest.o: ..\..\Source\include\portable.h
+.\obj\semtest.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\semtest.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\semtest.o: ..\..\Source\include\task.h
+.\obj\semtest.o: ..\..\Source\include\list.h
+.\obj\semtest.o: ..\..\Source\include\semphr.h
+.\obj\semtest.o: ..\..\Source\include\queue.h
+.\obj\semtest.o: ..\Common\include\semtest.h

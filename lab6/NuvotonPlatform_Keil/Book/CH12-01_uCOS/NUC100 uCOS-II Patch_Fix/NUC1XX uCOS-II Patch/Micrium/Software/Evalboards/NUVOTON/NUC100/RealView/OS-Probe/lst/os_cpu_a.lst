@@ -1,0 +1,1218 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;*******************************************************
+                       *************************************************
+    2 00000000         ;                                               uC/OS-II
+                       
+    3 00000000         ;                                         The Real-Time 
+                       Kernel
+    4 00000000         ;
+    5 00000000         ;                               (c) Copyright 1992-2010,
+                        Micrium, Weston, FL
+    6 00000000         ;                                          All Rights Re
+                       served
+    7 00000000         ;
+    8 00000000         ;                               ARM Cortex-M0 Port (with
+                       out OS extensions)
+    9 00000000         ;
+   10 00000000         ; File      : OS_CPU_A.ASM
+   11 00000000         ; Version   : V2.86
+   12 00000000         ; By        : Jean J. Labrosse
+   13 00000000         ;
+   14 00000000         ; For       : ARMv6M Cortex-M0 (without OS extensions)
+   15 00000000         ; Mode      : Thumb2
+   16 00000000         ; Toolchain : RealView Development Suite
+   17 00000000         ;             RealView Microcontroller Development Kit (
+                       MDK)
+   18 00000000         ;             ARM Developer Suite (ADS)
+   19 00000000         ;             Keil uVision
+   20 00000000         ;*******************************************************
+                       *************************************************
+   21 00000000         
+   22 00000000         ;*******************************************************
+                       *************************************************
+   23 00000000         ;                                           PUBLIC FUNCT
+                       IONS
+   24 00000000         ;*******************************************************
+                       *************************************************
+   25 00000000         
+   26 00000000                 EXTERN           OSRunning   ; External referenc
+                                                            es
+   27 00000000                 EXTERN           OSPrioCur
+   28 00000000                 EXTERN           OSPrioHighRdy
+   29 00000000                 EXTERN           OSTCBCur
+   30 00000000                 EXTERN           OSTCBHighRdy
+   31 00000000                 EXTERN           OSIntNesting
+   32 00000000                 EXTERN           OSIntExit
+   33 00000000                 EXTERN           OSTaskSwHook
+   34 00000000                 EXTERN           OS_CPU_ExceptHndlr
+   35 00000000                 EXTERN           OS_CPU_ExceptStkBase
+   36 00000000                 EXTERN           OS_CPU_CtxSw
+   37 00000000         
+   38 00000000         
+   39 00000000                 EXPORT           OS_CPU_SR_Save ; Functions decl
+                                                            ared in this file
+   40 00000000                 EXPORT           OS_CPU_SR_Restore
+   41 00000000                 EXPORT           OSStartHighRdy
+   42 00000000                 EXPORT           OSCtxSw
+   43 00000000                 EXPORT           OSIntCtxSw
+   44 00000000                 EXPORT           OS_CPU_CM0_ExceptHndlr
+   45 00000000         
+   46 00000000         
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   47 00000000         ;*******************************************************
+                       *************************************************
+   48 00000000         ;                                                EQUATES
+                       
+   49 00000000         ;*******************************************************
+                       *************************************************
+   50 00000000         
+   51 00000000 E000E200 
+                       CM0_SETPEND
+                               EQU              0xE000E200
+   52 00000000 FFFFFFFF 
+                       CM0_IRQ0SET
+                               EQU              0xFFFFFFFF
+   53 00000000         
+   54 00000000         ;*******************************************************
+                       *************************************************
+   55 00000000         ;                                      CODE GENERATION D
+                       IRECTIVES
+   56 00000000         ;*******************************************************
+                       *************************************************
+   57 00000000         
+   58 00000000                 AREA             |.text|, CODE, READONLY, ALIGN=
+2
+   59 00000000                 THUMB
+   60 00000000                 REQUIRE8
+   61 00000000                 PRESERVE8
+   62 00000000         
+   63 00000000         ;*******************************************************
+                       **************************************************
+   64 00000000         ;                                   CRITICAL SECTION MET
+                       HOD 3 FUNCTIONS
+   65 00000000         ;
+   66 00000000         ; Description: Disable/Enable interrupts by preserving t
+                       he state of interrupts.  Generally speaking you
+   67 00000000         ;              would store the state of the interrupt di
+                       sable flag in the local variable 'cpu_sr' and then
+   68 00000000         ;              disable interrupts.  'cpu_sr' is allocate
+                       d in all of uC/OS-II's functions that need to
+   69 00000000         ;              disable interrupts.  You would restore th
+                       e interrupt disable state by copying back 'cpu_sr'
+   70 00000000         ;              into the CPU's status register.
+   71 00000000         ;
+   72 00000000         ; Prototypes :     OS_CPU_SR  OS_CPU_SR_Save(void);
+   73 00000000         ;                  void       OS_CPU_SR_Restore(OS_CPU_S
+                       R cpu_sr);
+   74 00000000         ;
+   75 00000000         ;
+   76 00000000         ; Note(s)    : 1) These functions are used in general li
+                       ke this:
+   77 00000000         ;
+   78 00000000         ;                 void Task (void *p_arg)
+   79 00000000         ;                 {
+   80 00000000         ;                 #if OS_CRITICAL_METHOD == 3          /
+                       * Allocate storage for CPU status register */
+   81 00000000         ;                     OS_CPU_SR  cpu_sr;
+   82 00000000         ;                 #endif
+   83 00000000         ;
+   84 00000000         ;                          :
+   85 00000000         ;                          :
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+   86 00000000         ;                     OS_ENTER_CRITICAL();             /
+                       * cpu_sr = OS_CPU_SaveSR();                */
+   87 00000000         ;                          :
+   88 00000000         ;                          :
+   89 00000000         ;                     OS_EXIT_CRITICAL();              /
+                       * OS_CPU_RestoreSR(cpu_sr);                */
+   90 00000000         ;                          :
+   91 00000000         ;                          :
+   92 00000000         ;                 }
+   93 00000000         ;*******************************************************
+                       **************************************************
+   94 00000000         
+   95 00000000         OS_CPU_SR_Save
+   96 00000000 F3EF 8010       MRS              R0, PRIMASK ; Set prio int mask
+                                                             to mask all (excep
+                                                            t faults)
+   97 00000004 B672            CPSID            I
+   98 00000006 4770            BX               LR
+   99 00000008         
+  100 00000008         
+  101 00000008         OS_CPU_SR_Restore
+  102 00000008 F380 8810       MSR              PRIMASK, R0
+  103 0000000C 4770            BX               LR
+  104 0000000E         
+  105 0000000E         
+  106 0000000E         ;*******************************************************
+                       **************************************************
+  107 0000000E         ;                                          START MULTITA
+                       SKING
+  108 0000000E         ;                                       void OSStartHigh
+                       Rdy(void)
+  109 0000000E         ;
+  110 0000000E         ; Note(s) : 1) OSStartHighRdy() MUST:
+  111 0000000E         ;              a) Call OSTaskSwHook() then,
+  112 0000000E         ;              b) Set OSRunning to TRUE,
+  113 0000000E         ;              c) Switch to the highest priority task.
+  114 0000000E         ;
+  115 0000000E         ;           2) When tested with IAR EWARM, the processor
+                        reaches the startup code in handler mode.
+  116 0000000E         ;              Consequently, to re-enable interrupts, it
+                        is necessary to return from OSStartHighRdy()
+  117 0000000E         ;              as if returning from an exception.  The c
+                       ommented code at the end of this function
+  118 0000000E         ;              performs the 'normal' function return and
+                        MIGHT need to be substituted for the last three
+  119 0000000E         ;              lines of code in this function, which loa
+                       d the link register with the exception return
+  120 0000000E         ;              value and then return.
+  121 0000000E         ;*******************************************************
+                       **************************************************
+  122 0000000E         
+  123 0000000E         OSStartHighRdy
+  124 0000000E 4867            LDR              R0, __OS_TaskSwHook 
+                                                            ; OSTaskSwHook();
+  125 00000010 4780            BLX              R0
+  126 00000012         
+  127 00000012 486B            LDR              R0, __OS_Running 
+                                                            ; OSRunning = TRUE;
+                                                            
+
+
+
+ARM Macro Assembler    Page 4 
+
+
+  128 00000014 2101            MOVS             R1, #1
+  129 00000016 7001            STRB             R1, [R0]
+  130 00000018         
+  131 00000018         ; SWITCH TO HIGHEST PRIORITY TASK:
+  132 00000018 486B            LDR              R0, __OS_TCBHighRdy ;   Get hig
+                                                            hest priority task 
+                                                            TCB address,
+  133 0000001A 6801            LDR              R1, [R0]    ;   Get stack point
+                                                            er,
+  134 0000001C 680A            LDR              R2, [R1]
+  135 0000001E F382 8808       MSR              MSP, R2     ;   Switch to the n
+                                                            ew stack,
+  136 00000022         
+  137 00000022 BCFF            POP              {R0-R7}     ;   Pop new task's 
+                                                            R8-R11 (into R0-R3)
+                                                            , R4-R7
+  138 00000024 4680            MOV              R8,  R0
+  139 00000026 4689            MOV              R9,  R1
+  140 00000028 4692            MOV              R10, R2
+  141 0000002A 469B            MOV              R11, R3
+  142 0000002C         
+  143 0000002C         ; NORMAL FUNCTION RETURN (see Note #2)
+  144 0000002C B004            ADD              SP, #0x10
+  145 0000002E BC0F            POP              {R0-R3}     ;   Pop new task's 
+                                                            R12, PC, LR, PSR in
+                                                            to (R0, R1, R2, R3,
+                                                             respectively)
+  146 00000030 4684            MOV              R12, R0
+  147 00000032 468E            MOV              LR,  R1
+  148 00000034 F383 8803       MSR              PSR, R3
+  149 00000038         
+  150 00000038 B404            PUSH             {R2}        ;   Save PC
+  151 0000003A         
+  152 0000003A B087            SUB              SP, #0x1C
+  153 0000003C BC0F            POP              {R0-R3}     ;   Pop new task's 
+                                                            R0-R3
+  154 0000003E B003            ADD              SP, #0x0C
+  155 00000040         
+  156 00000040 B662            CPSIE            I           ;   Enable interrup
+                                                            ts
+  157 00000042         
+  158 00000042 BD00            POP              {PC}        ;   Pop new task's 
+                                                            PC
+  159 00000044         
+  160 00000044         ; EXCEPTION FUNCTION RETURN (see Note #2)
+  161 00000044         ;   LDR     R0, =CM1_EXCEPTRTN                          
+                               ; Load LR (R14) with exception return value.
+  162 00000044         ;   MOV     LR,  R0
+  163 00000044         ;
+  164 00000044         ;   BX      LR                                          
+                               ; Return, as if from exception.
+  165 00000044         
+  166 00000044         
+  167 00000044         ;*******************************************************
+                       **************************************************
+  168 00000044         ;                                PERFORM A CONTEXT SWITC
+                       H (From task level)                               
+  169 00000044         ;                                                OSCtxSw
+                       ()                                                    
+
+
+
+ARM Macro Assembler    Page 5 
+
+
+  170 00000044         ;
+  171 00000044         ; Note(s) : 1) OSCtxSw() is called when OS wants to do a
+                        task context switch.
+  172 00000044         ;
+  173 00000044         ;           2) This function triggers an IRQ #0, which w
+                       ill perform the context switch.  The variable
+  174 00000044         ;              OS_CPU_CtxSw is set to '1' to indicate th
+                       at a context switch should be performed.
+  175 00000044         ;*******************************************************
+                       **************************************************
+  176 00000044         
+  177 00000044         OSCtxSw
+  178 00000044         ;   LDR     R0, __OS_CPU_CtxSw                          
+                               ; OS_CPU_CtxSw = TRUE
+  179 00000044         ;   MOVS    R1, #1
+  180 00000044         ;   STRB    R1, [R0]
+  181 00000044         
+  182 00000044         ;   LDR     R0, =CM0_SETPEND                            
+                               ; Trigger interrupt
+  183 00000044         ;   LDR     R1, =CM0_IRQ0SET
+  184 00000044         ;   STR     R1, [R0]
+  185 00000044 B672            CPSID            I
+  186 00000046 B084            SUB              SP,#0x10
+  187 00000048 B40F            PUSH             {R0-R3}
+  188 0000004A         
+  189 0000004A B008            ADD              SP,#0x20
+  190 0000004C F3EF 8303       MRS              R3, PSR
+  191 00000050 4672            MOV              R2, LR
+  192 00000052 4671            MOV              R1, LR
+  193 00000054 4660            MOV              R0, R12
+  194 00000056 B40F            PUSH             {R0-R3}
+  195 00000058         
+  196 00000058 B084            SUB              SP, #0x10
+  197 0000005A 4640            MOV              R0, R8
+  198 0000005C 4649            MOV              R1, R9
+  199 0000005E 4652            MOV              R2, R10
+  200 00000060 465B            MOV              R3, R11
+  201 00000062 B4FF            PUSH             {R0-R7}
+  202 00000064         
+  203 00000064         ;    LDR     R0, __OS_CPU_CtxSw                         
+                                ; OS_CPU_CtxSw = TRUE
+  204 00000064         ;    MOVS    R1, #1
+  205 00000064         ;    STRB    R1, [R0]
+  206 00000064         
+  207 00000064 F3EF 8008       MRS              R0, MSP
+  208 00000068 4956            LDR              R1, __OS_TCBCur ; OSTCBCur->OST
+                                                            CBStkPtr = SP;
+  209 0000006A 6809            LDR              R1, [R1]
+  210 0000006C 6008            STR              R0, [R1]
+  211 0000006E         
+  212 0000006E 484F            LDR              R0, __OS_TaskSwHook 
+                                                            ; OSTaskSwHook();
+  213 00000070 4780            BLX              R0
+  214 00000072         ;    POP    {R0}
+  215 00000072         ;    MOV     LR, R0
+  216 00000072         
+  217 00000072 4851            LDR              R0, __OS_PrioCur ; OSPrioCur = 
+                                                            OSPrioHighRdy;
+  218 00000074 4951            LDR              R1, __OS_PrioHighRdy
+
+
+
+ARM Macro Assembler    Page 6 
+
+
+  219 00000076 780A            LDRB             R2, [R1]
+  220 00000078 7002            STRB             R2, [R0]
+  221 0000007A         
+  222 0000007A 4852            LDR              R0, __OS_TCBCur ; OSTCBCur  = O
+                                                            STCBHighRdy;
+  223 0000007C 4952            LDR              R1, __OS_TCBHighRdy
+  224 0000007E 680A            LDR              R2, [R1]
+  225 00000080 6002            STR              R2, [R0]
+  226 00000082         
+  227 00000082 6810            LDR              R0, [R2]    ; SP = OSTCBHighRdy
+                                                            ->OSTCBStkPtr;
+  228 00000084 F380 8808       MSR              MSP, R0
+  229 00000088         
+  230 00000088         ;    LDR     R0, __OS_CPU_CtxSw                         
+                                ; OS_CPU_CtxSw = 0;
+  231 00000088         ;    MOVS    R1, #0
+  232 00000088         ;    STRB    R1, [R0] 
+  233 00000088         ; RESTORE TASK's CONTEXT
+  234 00000088 BCFF            POP              {R0-R7}     ;   Pop new task's 
+                                                            R8-R11 (into R0-R3)
+                                                            , R4-R7
+  235 0000008A 4680            MOV              R8,  R0
+  236 0000008C 4689            MOV              R9,  R1
+  237 0000008E 4692            MOV              R10, R2
+  238 00000090 469B            MOV              R11, R3
+  239 00000092         
+  240 00000092 B004            ADD              SP, #0x10
+  241 00000094 BC0F            POP              {R0-R3}     ;   Pop new task's 
+                                                            R12, PC, LR, PSR in
+                                                            to (R0, R1, R2, R3,
+                                                             respectively)
+  242 00000096 4684            MOV              R12, R0
+  243 00000098 468E            MOV              LR,  R1
+  244 0000009A F383 8803       MSR              PSR, R3
+  245 0000009E         
+  246 0000009E B404            PUSH             {R2}        ;   Save PC
+  247 000000A0         
+  248 000000A0 B087            SUB              SP, #0x1C
+  249 000000A2 BC0F            POP              {R0-R3}     ;   Pop new task's 
+                                                            R0-R3
+  250 000000A4 B003            ADD              SP, #0x0C
+  251 000000A6 B662            CPSIE            I           ;   Enable interrup
+                                                            ts
+  252 000000A8         ;CPSID   I
+  253 000000A8         ;    BX      LR
+  254 000000A8 BD00            POP              {PC}
+  255 000000AA BF00            NOP
+  256 000000AC         
+  257 000000AC         ;*******************************************************
+                       **************************************************
+  258 000000AC         ;                             PERFORM A CONTEXT SWITCH (
+                       From interrupt level)                                
+  259 000000AC         ;                                               OSIntCtx
+                       Sw()                                               
+  260 000000AC         ;
+  261 000000AC         ; Notes:    1) OSIntCtxSw() is called by OSIntExit() whe
+                       n it determines a context switch is needed as 
+  262 000000AC         ;              the result of an interrupt.
+  263 000000AC         ;
+
+
+
+ARM Macro Assembler    Page 7 
+
+
+  264 000000AC         ;           2) This function triggers an IRQ #0, which w
+                       ill perform the context switch.  The variable
+  265 000000AC         ;              OS_CPU_CtxSw is set to '1' to indicate th
+                       at a context switch should be performed.
+  266 000000AC         ;*******************************************************
+                       **************************************************
+  267 000000AC         
+  268 000000AC         OSIntCtxSw
+  269 000000AC         ;   LDR     R0, __OS_CPU_CtxSw                          
+                               ; OS_CPU_CtxSw = TRUE
+  270 000000AC         ;  MOVS    R1, #1
+  271 000000AC         ;  STRB    R1, [R0]
+  272 000000AC         
+  273 000000AC         ;   LDR     R0, =CM0_SETPEND                            
+                               ; Trigger interrupt
+  274 000000AC         ;   LDR     R1, =CM0_IRQ0SET
+  275 000000AC         ;   STR     R1, [R0]
+  276 000000AC         ;   BX      LR
+  277 000000AC B672            CPSID            I
+  278 000000AE B084            SUB              SP,#0x10
+  279 000000B0 B40F            PUSH             {R0-R3}
+  280 000000B2         
+  281 000000B2 B008            ADD              SP,#0x20
+  282 000000B4 F3EF 8303       MRS              R3, PSR
+  283 000000B8 4672            MOV              R2, LR
+  284 000000BA 4671            MOV              R1, LR
+  285 000000BC 4660            MOV              R0, R12
+  286 000000BE B40F            PUSH             {R0-R3}
+  287 000000C0         
+  288 000000C0 B084            SUB              SP, #0x10
+  289 000000C2 4640            MOV              R0, R8
+  290 000000C4 4649            MOV              R1, R9
+  291 000000C6 4652            MOV              R2, R10
+  292 000000C8 465B            MOV              R3, R11
+  293 000000CA B4FF            PUSH             {R0-R7}
+  294 000000CC         
+  295 000000CC         ;    LDR     R0, __OS_CPU_CtxSw                         
+                                ; OS_CPU_CtxSw = TRUE
+  296 000000CC         ;    MOVS    R1, #1
+  297 000000CC         ;    STRB    R1, [R0]
+  298 000000CC         
+  299 000000CC F3EF 8008       MRS              R0, MSP
+  300 000000D0 493C            LDR              R1, __OS_TCBCur ; OSTCBCur->OST
+                                                            CBStkPtr = SP;
+  301 000000D2 6809            LDR              R1, [R1]
+  302 000000D4 6008            STR              R0, [R1]
+  303 000000D6         
+  304 000000D6 4835            LDR              R0, __OS_TaskSwHook 
+                                                            ; OSTaskSwHook();
+  305 000000D8 4780            BLX              R0
+  306 000000DA         ;    POP    {R0}
+  307 000000DA         ;    MOV     LR, R0
+  308 000000DA         
+  309 000000DA 4837            LDR              R0, __OS_PrioCur ; OSPrioCur = 
+                                                            OSPrioHighRdy;
+  310 000000DC 4937            LDR              R1, __OS_PrioHighRdy
+  311 000000DE 780A            LDRB             R2, [R1]
+  312 000000E0 7002            STRB             R2, [R0]
+  313 000000E2         
+
+
+
+ARM Macro Assembler    Page 8 
+
+
+  314 000000E2 4838            LDR              R0, __OS_TCBCur ; OSTCBCur  = O
+                                                            STCBHighRdy;
+  315 000000E4 4938            LDR              R1, __OS_TCBHighRdy
+  316 000000E6 680A            LDR              R2, [R1]
+  317 000000E8 6002            STR              R2, [R0]
+  318 000000EA         
+  319 000000EA 6810            LDR              R0, [R2]    ; SP = OSTCBHighRdy
+                                                            ->OSTCBStkPtr;
+  320 000000EC F380 8808       MSR              MSP, R0
+  321 000000F0         
+  322 000000F0         ;    LDR     R0, __OS_CPU_CtxSw                         
+                                ; OS_CPU_CtxSw = 0;
+  323 000000F0         ;    MOVS    R1, #0
+  324 000000F0         ;    STRB    R1, [R0] 
+  325 000000F0         ; RESTORE TASK's CONTEXT
+  326 000000F0 BCFF            POP              {R0-R7}     ;   Pop new task's 
+                                                            R8-R11 (into R0-R3)
+                                                            , R4-R7
+  327 000000F2 4680            MOV              R8,  R0
+  328 000000F4 4689            MOV              R9,  R1
+  329 000000F6 4692            MOV              R10, R2
+  330 000000F8 469B            MOV              R11, R3
+  331 000000FA         
+  332 000000FA B004            ADD              SP, #0x10
+  333 000000FC BC0F            POP              {R0-R3}     ;   Pop new task's 
+                                                            R12, PC, LR, PSR in
+                                                            to (R0, R1, R2, R3,
+                                                             respectively)
+  334 000000FE 4684            MOV              R12, R0
+  335 00000100 468E            MOV              LR,  R1
+  336 00000102 F383 8803       MSR              PSR, R3
+  337 00000106         
+  338 00000106 B404            PUSH             {R2}        ;   Save PC
+  339 00000108         
+  340 00000108 B087            SUB              SP, #0x1C
+  341 0000010A BC0F            POP              {R0-R3}     ;   Pop new task's 
+                                                            R0-R3
+  342 0000010C B003            ADD              SP, #0x0C
+  343 0000010E B662            CPSIE            I           ;   Enable interrup
+                                                            ts
+  344 00000110         ;    BX      LR
+  345 00000110 BD00            POP              {PC}
+  346 00000112 BF00            NOP
+  347 00000114         
+  348 00000114         
+  349 00000114         ;*******************************************************
+                       **************************************************
+  350 00000114         ;                                         HANDLE EXTERNA
+                       L IRQ #0
+  351 00000114         ;                                        OS_CPU_CM1_Exce
+                       ptHndlr()                                            
+  352 00000114         ;
+  353 00000114         ; Note(s) : 1) This function handles external IRQ #0.  T
+                       his port requires that this be the ONLY 
+  354 00000114         ;              external IRQ (though multiple interrupt s
+                       ources may be multiplexed onto the single vector
+  355 00000114         ;              via an external controller).
+  356 00000114         ;
+  357 00000114         ;           2) A context switch is accomplished by trigg
+
+
+
+ARM Macro Assembler    Page 9 
+
+
+                       ering an IRQ from OSCtxSw().  If the exception
+  358 00000114         ;              is going to be used for this purpose, the
+                        variable OS_CPU_CtxSw will have been assigned 
+  359 00000114         ;              the value '1' in OSCtxSw().
+  360 00000114         ;*******************************************************
+                       **************************************************
+  361 00000114         
+  362 00000114         OS_CPU_CM0_ExceptHndlr
+  363 00000114 B672            CPSID            I
+  364 00000116         ; SAVE CONTEXT ONTO TASK STACK:
+  365 00000116 4640            MOV              R0, R8
+  366 00000118 4649            MOV              R1, R9
+  367 0000011A 4652            MOV              R2, R10
+  368 0000011C 465B            MOV              R3, R11
+  369 0000011E B4FF            PUSH             {R0-R7}     ;   Push task's R8-
+                                                            R11, R4-R7.
+  370 00000120         
+  371 00000120         ;    LDR     R0, __OS_CPU_CtxSw                         
+                                ; if (OS_CPU_CtxSw == TRUE)
+  372 00000120 7801            LDRB             R1, [R0]
+  373 00000122 2901            CMP              R1, #1
+  374 00000124 D01F            BEQ              OS_CPU_CM0_ExceptHndlr_CtxSw
+  375 00000126         
+  376 00000126         
+  377 00000126         ;*******************************************************
+                       **************************************************
+  378 00000126         ;                                         HANDLE EXTERNA
+                       L IRQ #0
+  379 00000126         ;                                     OS_CPU_CM0_ExceptH
+                       ndlr_Except()                                           
+                        
+  380 00000126         ;
+  381 00000126         ; Note(s) : 1) This function handles external IRQ #0.  T
+                       his port requires that this be the ONLY 
+  382 00000126         ;              external IRQ (though multiple interrupt s
+                       ources may be multiplexed onto the single vector
+  383 00000126         ;              via an external controller).
+  384 00000126         ;
+  385 00000126         ;           2) The pseudo-code for OS_CPU_CM1_ExceptHndl
+                       r_Except() is:
+  386 00000126         ;              a) Save registers r4-r11 on task stack (w
+                       hich is the current stack);
+  387 00000126         ;              b) OSTCBCur->OSTCBStkPtr = SP;
+  388 00000126         ;              c) OSIntNesting++;
+  389 00000126         ;              d) SP = OS_CPU_ExceptStkBase;
+  390 00000126         ;              e) OS_CPU_ExceptHndlr();
+  391 00000126         ;              f) OSIntExit();
+  392 00000126         ;              g) SP = OSTCBCur->OSTCBStkPtr;
+  393 00000126         ;              h) Restore new task's R4-R11 from new tas
+                       k's stack;
+  394 00000126         ;              i) Perform exception return which will re
+                       store R0-R3, R12, LR, PC, PSR.
+  395 00000126         ;
+  396 00000126         ;           3) On entry into this function:
+  397 00000126         ;              a) OS_CPU_CtxSw == 0
+  398 00000126         ;              b) The following have been saved on the t
+                       ask stack (by processor):
+  399 00000126         ;                 xPSR, PC, LR, R12, R0-R3
+  400 00000126         ;              c) The following have been saved on the t
+
+
+
+ARM Macro Assembler    Page 10 
+
+
+                       ask stack (by OS_CPU_CM1_ExceptHndlr):
+  401 00000126         ;                 R8-R11, R4-R7
+  402 00000126         ;              d) OSTCBCur points to the OS_TCB of the c
+                       urrent task
+  403 00000126         ;*******************************************************
+                       **************************************************
+  404 00000126         
+  405 00000126         OS_CPU_CM0_ExceptHndlr_Except
+  406 00000126 4827            LDR              R0, __OS_TCBCur ;   OSTCBCur->O
+                                                            STCBStkPtr = SP;
+  407 00000128 6801            LDR              R1,  [R0]
+  408 0000012A F3EF 8208       MRS              R2,  MSP
+  409 0000012E 600A            STR              R2,  [R1]
+  410 00000130         
+  411 00000130         ; HANDLE NESTING COUNTER:
+  412 00000130 4820            LDR              R0, __OS_IntNesting 
+                                                            ;   OSIntNesting++;
+                                                            
+  413 00000132 7801            LDRB             R1, [R0]
+  414 00000134 3101            ADDS             R1, #1
+  415 00000136 7001            STRB             R1, [R0]
+  416 00000138         
+  417 00000138 481A            LDR              R0, __OS_CPU_ExceptStkBase ; SP
+                                                             = OS_CPU_ExceptStk
+                                                            Base;
+  418 0000013A 6801            LDR              R1, [R0]
+  419 0000013C F381 8808       MSR              MSP, R1
+  420 00000140         
+  421 00000140 B500            PUSH             {LR}        ; Push exception re
+                                                            turn.
+  422 00000142         
+  423 00000142         ; EXECUTE EXCEPTION HANDLER:
+  424 00000142 4819            LDR              R0, __OS_CPU_ExceptHndlr ;   OS
+                                                            _CPU_ExceptHndlr()
+  425 00000144 4780            BLX              R0
+  426 00000146         
+  427 00000146 481A            LDR              R0, __OS_IntExit ; OSIntExit()
+  428 00000148 4780            BLX              R0
+  429 0000014A         
+  430 0000014A BC01            POP              {R0}        ; Pop exception ret
+                                                            urn.
+  431 0000014C 4686            MOV              LR, R0
+  432 0000014E         
+  433 0000014E 481D            LDR              R0, __OS_TCBCur ; SP = OSTCBCur
+                                                            ->OSTCBStkPtr;
+  434 00000150 6801            LDR              R1,  [R0]
+  435 00000152 680A            LDR              R2,  [R1]
+  436 00000154 F382 8808       MSR              MSP,  R2
+  437 00000158         
+  438 00000158         ; RESTORE TASK's CONTEXT
+  439 00000158 BCFF            POP              {R0-R7}     ;   Pop new task's 
+                                                            R8-R11 (into R0-R3)
+                                                            , R4-R7
+  440 0000015A 4680            MOV              R8,  R0
+  441 0000015C 4689            MOV              R9,  R1
+  442 0000015E 4692            MOV              R10, R2
+  443 00000160 469B            MOV              R11, R3
+  444 00000162         
+  445 00000162 B662            CPSIE            I
+
+
+
+ARM Macro Assembler    Page 11 
+
+
+  446 00000164 4770            BX               LR          ; Exception return 
+                                                            restores R0-R3, R12
+                                                            , LR, PC, PSR
+  447 00000166         
+  448 00000166         ;*******************************************************
+                       **************************************************
+  449 00000166         ;                                         EXECUTE CONTEX
+                       T SWTICH
+  450 00000166         ;                                      OS_CPU_CM0_Except
+                       Hndlr_CtxSw()                                           
+                        
+  451 00000166         ;
+  452 00000166         ; Note(s) : 1) OS_CPU_CM1_ExceptHndlr_CtxSw(), called fr
+                       om OS_CPU_CM1_ExceptHndlr(), is used to cause a
+  453 00000166         ;              context switch, similar to the use of OSP
+                       endSV on a Cortex-M3.  Using the exception this way
+  454 00000166         ;              means that context saving and restoring i
+                       s identical whether it is initiated from a thread 
+  455 00000166         ;              or occurs due to an interrupt or exceptio
+                       n. 
+  456 00000166         ;
+  457 00000166         ;           2) The pseudo-code for OS_CPU_CM1_ExceptHndl
+                       r_CtxSw() is:
+  458 00000166         ;              b) OSTCBCur->OSTCBStkPtr = SP;
+  459 00000166         ;              c) OSTaskSwHook();
+  460 00000166         ;              d) OSPrioCur    = OSPrioHighRdy;
+  461 00000166         ;              e) OSTCBCur     = OSTCBHighRdy;
+  462 00000166         ;              f) SP           = OSTCBHighRdy->OSTCBStkP
+                       tr;
+  463 00000166         ;              g) Restore new task's R4-R11 from new tas
+                       k's stack;
+  464 00000166         ;              h) OS_CPU_CtxSw = 0;
+  465 00000166         ;              i) Perform exception return which will re
+                       store R0-R3, R12, LR, PC, PSR.
+  466 00000166         ;
+  467 00000166         ;           3) On entry into this function:
+  468 00000166         ;              a) OS_CPU_CtxSw == 1
+  469 00000166         ;              b) The following have been saved on the t
+                       ask stack (by processor):
+  470 00000166         ;                 xPSR, PC, LR, R12, R0-R3
+  471 00000166         ;              c) The following have been saved on the t
+                       ask stack (by OS_CPU_CM1_ExceptHndlr):
+  472 00000166         ;                 R8-R11, R4-R7
+  473 00000166         ;              d) OSTCBCur     points to the OS_TCB of t
+                       he task to suspend
+  474 00000166         ;                 OSTCBHighRdy points to the OS_TCB of t
+                       he task to resume
+  475 00000166         ;*******************************************************
+                       **************************************************
+  476 00000166         
+  477 00000166         OS_CPU_CM0_ExceptHndlr_CtxSw
+  478 00000166 B500            PUSH             {LR}
+  479 00000168 4810            LDR              R0, __OS_TaskSwHook 
+                                                            ; OSTaskSwHook();
+  480 0000016A 4780            BLX              R0
+  481 0000016C BC01            POP              {R0}
+  482 0000016E 4686            MOV              LR, R0
+  483 00000170         
+  484 00000170 F3EF 8008       MRS              R0, MSP
+
+
+
+ARM Macro Assembler    Page 12 
+
+
+  485 00000174 4913            LDR              R1, __OS_TCBCur ; OSTCBCur->OST
+                                                            CBStkPtr = SP;
+  486 00000176 6809            LDR              R1, [R1]
+  487 00000178 6008            STR              R0, [R1]
+  488 0000017A         
+  489 0000017A 480F            LDR              R0, __OS_PrioCur ; OSPrioCur = 
+                                                            OSPrioHighRdy;
+  490 0000017C 490F            LDR              R1, __OS_PrioHighRdy
+  491 0000017E 780A            LDRB             R2, [R1]
+  492 00000180 7002            STRB             R2, [R0]
+  493 00000182         
+  494 00000182 4810            LDR              R0, __OS_TCBCur ; OSTCBCur  = O
+                                                            STCBHighRdy;
+  495 00000184 4910            LDR              R1, __OS_TCBHighRdy
+  496 00000186 680A            LDR              R2, [R1]
+  497 00000188 6002            STR              R2, [R0]
+  498 0000018A         
+  499 0000018A 6810            LDR              R0, [R2]    ; SP = OSTCBHighRdy
+                                                            ->OSTCBStkPtr;
+  500 0000018C F380 8808       MSR              MSP, R0
+  501 00000190         
+  502 00000190         ; RESTORE NEW TASK's CONTEXT
+  503 00000190 BCFF            POP              {R0-R7}     ;   Pop new task's 
+                                                            R8-R11 (into R0-R3)
+                                                            , R4-R7
+  504 00000192 4680            MOV              R8,  R0
+  505 00000194 4689            MOV              R9,  R1
+  506 00000196 4692            MOV              R10, R2
+  507 00000198 469B            MOV              R11, R3
+  508 0000019A         
+  509 0000019A         ;    LDR     R0, __OS_CPU_CtxSw                         
+                                ; OS_CPU_CtxSw = 0;
+  510 0000019A         ;    MOVS    R1, #0
+  511 0000019A         ;    STRB    R1, [R0] 
+  512 0000019A         
+  513 0000019A B662            CPSIE            I
+  514 0000019C 4770            BX               LR          ; Exception return 
+                                                            restores R0-R3, R12
+                                                            , LR, PC, PSR
+  515 0000019E         
+  516 0000019E BF00            NOP
+  517 000001A0         
+  518 000001A0         ;*******************************************************
+                       **************************************************
+  519 000001A0         ;                                     POINTERS TO VARIAB
+                       LES
+  520 000001A0         ;*******************************************************
+                       **************************************************
+  521 000001A0         
+  522 000001A0         __OS_CPU_CtxSw
+  523 000001A0 00000000        DCD              OS_CPU_CtxSw
+  524 000001A4         
+  525 000001A4         __OS_CPU_ExceptStkBase
+  526 000001A4 00000000        DCD              OS_CPU_ExceptStkBase
+  527 000001A8         
+  528 000001A8         __OS_CPU_ExceptHndlr
+  529 000001A8 00000000        DCD              OS_CPU_ExceptHndlr
+  530 000001AC         
+  531 000001AC         __OS_TaskSwHook
+
+
+
+ARM Macro Assembler    Page 13 
+
+
+  532 000001AC 00000000        DCD              OSTaskSwHook
+  533 000001B0         
+  534 000001B0         __OS_IntExit
+  535 000001B0 00000000        DCD              OSIntExit
+  536 000001B4         
+  537 000001B4         __OS_IntNesting
+  538 000001B4 00000000        DCD              OSIntNesting
+  539 000001B8         
+  540 000001B8         __OS_PrioCur
+  541 000001B8 00000000        DCD              OSPrioCur
+  542 000001BC         
+  543 000001BC         __OS_PrioHighRdy
+  544 000001BC 00000000        DCD              OSPrioHighRdy
+  545 000001C0         
+  546 000001C0         __OS_Running
+  547 000001C0 00000000        DCD              OSRunning
+  548 000001C4         
+  549 000001C4         __OS_TCBCur
+  550 000001C4 00000000        DCD              OSTCBCur
+  551 000001C8         
+  552 000001C8         __OS_TCBHighRdy
+  553 000001C8 00000000        DCD              OSTCBHighRdy
+  554 000001CC         
+  555 000001CC                 END
+Command Line: --16 --debug --xref --device=DARMCM1 --apcs=interwork -o.\obj\os_
+cpu_a.o -IC:\Keil\ARM\INC\ARM --predefine="__EVAL SETA 1" --list=.\lst\os_cpu_a
+.lst ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os_cpu_a.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 58 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      None
+Comment: .text unused
+OSCtxSw 00000044
+
+Symbol: OSCtxSw
+   Definitions
+      At line 177 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 42 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+Comment: OSCtxSw used once
+OSIntCtxSw 000000AC
+
+Symbol: OSIntCtxSw
+   Definitions
+      At line 268 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 43 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+Comment: OSIntCtxSw used once
+OSStartHighRdy 0000000E
+
+Symbol: OSStartHighRdy
+   Definitions
+      At line 123 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 41 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+Comment: OSStartHighRdy used once
+OS_CPU_CM0_ExceptHndlr 00000114
+
+Symbol: OS_CPU_CM0_ExceptHndlr
+   Definitions
+      At line 362 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 44 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+Comment: OS_CPU_CM0_ExceptHndlr used once
+OS_CPU_CM0_ExceptHndlr_CtxSw 00000166
+
+Symbol: OS_CPU_CM0_ExceptHndlr_CtxSw
+   Definitions
+      At line 477 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 374 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OS_CPU_CM0_ExceptHndlr_CtxSw used once
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+OS_CPU_CM0_ExceptHndlr_Except 00000126
+
+Symbol: OS_CPU_CM0_ExceptHndlr_Except
+   Definitions
+      At line 405 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      None
+Comment: OS_CPU_CM0_ExceptHndlr_Except unused
+OS_CPU_SR_Restore 00000008
+
+Symbol: OS_CPU_SR_Restore
+   Definitions
+      At line 101 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 40 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+Comment: OS_CPU_SR_Restore used once
+OS_CPU_SR_Save 00000000
+
+Symbol: OS_CPU_SR_Save
+   Definitions
+      At line 95 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 39 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+Comment: OS_CPU_SR_Save used once
+__OS_CPU_CtxSw 000001A0
+
+Symbol: __OS_CPU_CtxSw
+   Definitions
+      At line 522 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      None
+Comment: __OS_CPU_CtxSw unused
+__OS_CPU_ExceptHndlr 000001A8
+
+Symbol: __OS_CPU_ExceptHndlr
+   Definitions
+      At line 528 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 424 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: __OS_CPU_ExceptHndlr used once
+__OS_CPU_ExceptStkBase 000001A4
+
+Symbol: __OS_CPU_ExceptStkBase
+   Definitions
+      At line 525 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 417 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: __OS_CPU_ExceptStkBase used once
+__OS_IntExit 000001B0
+
+
+
+ARM Macro Assembler    Page 3 Alphabetic symbol ordering
+Relocatable symbols
+
+
+Symbol: __OS_IntExit
+   Definitions
+      At line 534 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 427 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: __OS_IntExit used once
+__OS_IntNesting 000001B4
+
+Symbol: __OS_IntNesting
+   Definitions
+      At line 537 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 412 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: __OS_IntNesting used once
+__OS_PrioCur 000001B8
+
+Symbol: __OS_PrioCur
+   Definitions
+      At line 540 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 217 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 309 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 489 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+
+__OS_PrioHighRdy 000001BC
+
+Symbol: __OS_PrioHighRdy
+   Definitions
+      At line 543 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 218 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 310 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 490 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+
+__OS_Running 000001C0
+
+Symbol: __OS_Running
+   Definitions
+      At line 546 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 127 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: __OS_Running used once
+__OS_TCBCur 000001C4
+
+
+
+
+ARM Macro Assembler    Page 4 Alphabetic symbol ordering
+Relocatable symbols
+
+Symbol: __OS_TCBCur
+   Definitions
+      At line 549 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 208 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 222 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 300 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 314 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 406 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 433 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 485 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 494 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+
+__OS_TCBHighRdy 000001C8
+
+Symbol: __OS_TCBHighRdy
+   Definitions
+      At line 552 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 132 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 223 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 315 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 495 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+
+__OS_TaskSwHook 000001AC
+
+Symbol: __OS_TaskSwHook
+   Definitions
+      At line 531 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+   Uses
+      At line 124 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 212 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 304 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+      At line 479 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+
+20 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+CM0_IRQ0SET FFFFFFFF
+
+Symbol: CM0_IRQ0SET
+   Definitions
+      At line 52 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      None
+Comment: CM0_IRQ0SET unused
+CM0_SETPEND E000E200
+
+Symbol: CM0_SETPEND
+   Definitions
+      At line 51 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      None
+Comment: CM0_SETPEND unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+OSIntExit 00000000
+
+Symbol: OSIntExit
+   Definitions
+      At line 32 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 535 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OSIntExit used once
+OSIntNesting 00000000
+
+Symbol: OSIntNesting
+   Definitions
+      At line 31 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 538 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OSIntNesting used once
+OSPrioCur 00000000
+
+Symbol: OSPrioCur
+   Definitions
+      At line 27 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 541 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OSPrioCur used once
+OSPrioHighRdy 00000000
+
+Symbol: OSPrioHighRdy
+   Definitions
+      At line 28 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 544 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OSPrioHighRdy used once
+OSRunning 00000000
+
+Symbol: OSRunning
+   Definitions
+      At line 26 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 547 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OSRunning used once
+OSTCBCur 00000000
+
+Symbol: OSTCBCur
+   Definitions
+      At line 29 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 550 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+External symbols
+
+Comment: OSTCBCur used once
+OSTCBHighRdy 00000000
+
+Symbol: OSTCBHighRdy
+   Definitions
+      At line 30 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 553 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OSTCBHighRdy used once
+OSTaskSwHook 00000000
+
+Symbol: OSTaskSwHook
+   Definitions
+      At line 33 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 532 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OSTaskSwHook used once
+OS_CPU_CtxSw 00000000
+
+Symbol: OS_CPU_CtxSw
+   Definitions
+      At line 36 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 523 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OS_CPU_CtxSw used once
+OS_CPU_ExceptHndlr 00000000
+
+Symbol: OS_CPU_ExceptHndlr
+   Definitions
+      At line 34 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 529 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OS_CPU_ExceptHndlr used once
+OS_CPU_ExceptStkBase 00000000
+
+Symbol: OS_CPU_ExceptStkBase
+   Definitions
+      At line 35 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os
+_cpu_a.asm
+   Uses
+      At line 526 in file ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\o
+s_cpu_a.asm
+Comment: OS_CPU_ExceptStkBase used once
+11 symbols
+353 symbols in table

@@ -1,0 +1,15 @@
+.\obj\bsp.o: ..\BSP\bsp.c
+.\obj\bsp.o: ..\OS-Probe\includes.h
+.\obj\bsp.o: C:\Keil\ARM\RV31\INC\stdio.h
+.\obj\bsp.o: C:\Keil\ARM\RV31\INC\string.h
+.\obj\bsp.o: C:\Keil\ARM\RV31\INC\ctype.h
+.\obj\bsp.o: C:\Keil\ARM\RV31\INC\stdlib.h
+.\obj\bsp.o: C:\Keil\ARM\RV31\INC\stdarg.h
+.\obj\bsp.o: ..\..\..\..\..\uCOS-II\Source\ucos_ii.h
+.\obj\bsp.o: ..\OS-Probe\app_cfg.h
+.\obj\bsp.o: C:\Keil\ARM\RV31\INC\stdint.h
+.\obj\bsp.o: ..\OS-Probe\os_cfg.h
+.\obj\bsp.o: ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os_cpu.h
+.\obj\bsp.o: ..\..\..\..\..\uC-CPU\ARM-Cortex-M0\RealView\cpu.h
+.\obj\bsp.o: ..\..\..\..\..\uC-CPU\cpu_def.h
+.\obj\bsp.o: ..\BSP\bsp.h

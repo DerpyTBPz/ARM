@@ -1,0 +1,15 @@
+.\obj\altqtest.o: ..\Common\Minimal\AltQTest.c
+.\obj\altqtest.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\altqtest.o: ..\..\Source\include\FreeRTOS.h
+.\obj\altqtest.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\altqtest.o: ..\..\Source\include\projdefs.h
+.\obj\altqtest.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\altqtest.o: ..\..\Source\include\portable.h
+.\obj\altqtest.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\altqtest.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\altqtest.o: ..\..\Source\include\task.h
+.\obj\altqtest.o: ..\..\Source\include\list.h
+.\obj\altqtest.o: ..\..\Source\include\queue.h
+.\obj\altqtest.o: ..\..\Source\include\semphr.h
+.\obj\altqtest.o: ..\..\Source\include\queue.h
+.\obj\altqtest.o: ..\Common\include\AltQTest.h

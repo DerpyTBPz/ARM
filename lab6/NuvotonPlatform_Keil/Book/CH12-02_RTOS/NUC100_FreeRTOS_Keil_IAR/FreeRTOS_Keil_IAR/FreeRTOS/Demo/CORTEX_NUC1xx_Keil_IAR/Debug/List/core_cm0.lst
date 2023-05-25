@@ -1,0 +1,570 @@
+###############################################################################
+#                                                                             #
+#                                                       06/Jul/2010  14:34:54 #
+# IAR ANSI C/C++ Compiler V5.50.0.21878/W32 EVALUATION for ARM                #
+# Copyright (C) 1999-2010 IAR Systems AB.                                     #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\core_cm0.c                         #
+#    Command line =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\core_cm0.c -D IAR_ARM_CM0 -lCN     #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\ --diag_suppress Pe550,Pa082,Pa039 -o       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\ --no_cse --no_unroll --no_inline            #
+#                    --no_code_motion --no_tbaa --no_clustering               #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M0  #
+#                    -e --fpu=None --dlib_config "D:\Program                  #
+#                    Files\ARM\INC\DLib_Config_Full.h" -I                     #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\..\common\include\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\..\..\source\include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_K #
+#                    eil_IAR\NUC1xxBSP\NuvotonPlatform_Keil\Include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\ -I      #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\ #
+#                    Demo\CORTEX_NUC1xx_Keil_IAR\User_Demo\include\ -I        #
+#                    "D:\Program Files\ARM\INC\" -Ol                          #
+#    List file    =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\core_cm0.lst                                #
+#    Object file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\core_cm0.o                                   #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IAR\NUC1xxBSP\CMSIS\CM0\core_cm0.c
+      1          /******************************************************************************
+      2           * @file:    core_cm0.c
+      3           * @purpose: CMSIS Cortex-M0 Core Peripheral Access Layer Source File
+      4           * @version: V1.10
+      5           * @date:    24. Feb. 2009
+      6           *----------------------------------------------------------------------------
+      7           *
+      8           * Copyright (C) 2009 ARM Limited. All rights reserved.
+      9           *
+     10           * ARM Limited (ARM) is supplying this software for use with Cortex-Mx 
+     11           * processor based microcontrollers.  This file can be freely distributed 
+     12           * within development tools that are supporting such ARM based processors. 
+     13           *
+     14           * THIS SOFTWARE IS PROVIDED "AS IS".  NO WARRANTIES, WHETHER EXPRESS, IMPLIED
+     15           * OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF
+     16           * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE APPLY TO THIS SOFTWARE.
+     17           * ARM SHALL NOT, IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR
+     18           * CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+     19           *
+     20           ******************************************************************************/
+     21          
+     22          
+     23          
+     24          #include <stdint.h>
+     25          
+     26          
+     27          /* define compiler specific symbols */
+     28          #if defined   ( __CC_ARM   )
+     29            #define __ASM            __asm           /*!< asm keyword for armcc          */
+     30            #define __INLINE         __inline        /*!< inline keyword for armcc        */
+     31          
+     32          #elif defined ( __ICCARM__ )
+     33            #define __ASM           __asm            /*!< asm keyword for iarcc           */
+     34            #define __INLINE        inline           /*!< inline keyword for iarcc. Only avaiable in High optimization mode! */
+     35            #define __nop           __no_operation   /*!< no operation intrinsic in iarcc */
+     36          
+     37          #elif defined (  __GNUC__  )
+     38            #define __ASM             asm            /*!< asm keyword for gcc            */
+     39            #define __INLINE          inline         /*!< inline keyword for gcc         */
+     40          #endif
+     41          
+     42          
+     43          
+     44          #if defined ( __CC_ARM   ) /*------------------RealView Compiler -----------------*/
+     45          
+     46          /**
+     47           * @brief  Return the Process Stack Pointer
+     48           *
+     49           * @param  none
+     50           * @return uint32_t ProcessStackPointer
+     51           *
+     52           * Return the actual process stack pointer
+     53           */
+     54          __ASM uint32_t __get_PSP(void)
+     55          {
+     56            mrs r0, psp
+     57            bx lr
+     58          }
+     59          
+     60          /**
+     61           * @brief  Set the Process Stack Pointer
+     62           *
+     63           * @param  uint32_t Process Stack Pointer
+     64           * @return none
+     65           *
+     66           * Assign the value ProcessStackPointer to the MSP 
+     67           * (process stack pointer) Cortex processor register
+     68           */
+     69          __ASM void __set_PSP(uint32_t topOfProcStack)
+     70          {
+     71            msr psp, r0
+     72            bx lr
+     73          }
+     74          
+     75          /**
+     76           * @brief  Return the Main Stack Pointer
+     77           *
+     78           * @param  none
+     79           * @return uint32_t Main Stack Pointer
+     80           *
+     81           * Return the current value of the MSP (main stack pointer)
+     82           * Cortex processor register
+     83           */
+     84          __ASM uint32_t __get_MSP(void)
+     85          {
+     86            mrs r0, msp
+     87            bx lr
+     88          }
+     89          
+     90          /**
+     91           * @brief  Set the Main Stack Pointer
+     92           *
+     93           * @param  uint32_t Main Stack Pointer
+     94           * @return none
+     95           *
+     96           * Assign the value mainStackPointer to the MSP 
+     97           * (main stack pointer) Cortex processor register
+     98           */
+     99          __ASM void __set_MSP(uint32_t mainStackPointer)
+    100          {
+    101            msr msp, r0
+    102            bx lr
+    103          }
+    104          
+    105          /**
+    106           * @brief  Reverse byte order in unsigned short value
+    107           *
+    108           * @param  uint16_t value to reverse
+    109           * @return uint32_t reversed value
+    110           *
+    111           * Reverse byte order in unsigned short value
+    112           */
+    113          __ASM uint32_t __REV16(uint16_t value)
+    114          {
+    115            rev16 r0, r0
+    116            bx lr
+    117          }
+    118          
+    119          /**
+    120           * @brief  Reverse byte order in signed short value with sign extension to integer
+    121           *
+    122           * @param  int16_t value to reverse
+    123           * @return int32_t reversed value
+    124           *
+    125           * Reverse byte order in signed short value with sign extension to integer
+    126           */
+    127          __ASM int32_t __REVSH(int16_t value)
+    128          {
+    129            revsh r0, r0
+    130            bx lr
+    131          }
+    132          
+    133          
+    134          #if (__ARMCC_VERSION < 400000)
+    135          
+    136          
+    137          /**
+    138           * @brief  Return the Priority Mask value
+    139           *
+    140           * @param  none
+    141           * @return uint32_t PriMask
+    142           *
+    143           * Return the state of the priority mask bit from the priority mask
+    144           * register
+    145           */
+    146          __ASM uint32_t __get_PRIMASK(void)
+    147          {
+    148            mrs r0, primask
+    149            bx lr
+    150          }
+    151          
+    152          /**
+    153           * @brief  Set the Priority Mask value
+    154           *
+    155           * @param  uint32_t PriMask
+    156           * @return none
+    157           *
+    158           * Set the priority mask bit in the priority mask register
+    159           */
+    160          __ASM void __set_PRIMASK(uint32_t priMask)
+    161          {
+    162            msr primask, r0
+    163            bx lr
+    164          }
+    165          
+    166          
+    167          /**
+    168           * @brief  Return the Control Register value
+    169           * 
+    170           * @param  none
+    171           * @return uint32_t Control value
+    172           *
+    173           * Return the content of the control register
+    174           */
+    175          __ASM uint32_t  __get_CONTROL(void)
+    176          {
+    177            mrs r0, control
+    178            bx lr
+    179          }
+    180          
+    181          /**
+    182           * @brief  Set the Control Register value
+    183           *
+    184           * @param  uint32_t Control value
+    185           * @return none
+    186           *
+    187           * Set the control register
+    188           */
+    189          __ASM void __set_CONTROL(uint32_t control)
+    190          {
+    191            msr control, r0
+    192            bx lr
+    193          }
+    194          
+    195          #endif /* __ARMCC_VERSION  */ 
+    196          
+    197          
+    198          #elif (defined (__ICCARM__)) /*------------------ ICC Compiler -------------------*/
+    199          #pragma diag_suppress=Pe940
+    200          
+    201          /**
+    202           * @brief  Return the Process Stack Pointer
+    203           *
+    204           * @param  none
+    205           * @return uint32_t ProcessStackPointer
+    206           *
+    207           * Return the actual process stack pointer
+    208           */
+
+   \                                 In section .text, align 4, keep-with-next
+    209          uint32_t __get_PSP(void)
+    210          {
+    211            __ASM("mrs r0, psp");
+   \                     __get_PSP:
+   \   00000000   EFF30980           mrs r0, psp      
+    212            __ASM("bx lr");
+   \   00000004   7047               bx lr            
+    213          }
+   \   00000006   7047               BX       LR               ;; return
+    214          
+    215          /**
+    216           * @brief  Set the Process Stack Pointer
+    217           *
+    218           * @param  uint32_t Process Stack Pointer
+    219           * @return none
+    220           *
+    221           * Assign the value ProcessStackPointer to the MSP 
+    222           * (process stack pointer) Cortex processor register
+    223           */
+
+   \                                 In section .text, align 4, keep-with-next
+    224          void __set_PSP(uint32_t topOfProcStack)
+    225          {
+    226            __ASM("msr psp, r0");
+   \                     __set_PSP:
+   \   00000000   80F30988           msr psp, r0      
+    227            __ASM("bx lr");
+   \   00000004   7047               bx lr            
+    228          }
+   \   00000006   7047               BX       LR               ;; return
+    229          
+    230          /**
+    231           * @brief  Return the Main Stack Pointer
+    232           *
+    233           * @param  none
+    234           * @return uint32_t Main Stack Pointer
+    235           *
+    236           * Return the current value of the MSP (main stack pointer)
+    237           * Cortex processor register
+    238           */
+
+   \                                 In section .text, align 4, keep-with-next
+    239          uint32_t __get_MSP(void)
+    240          {
+    241            __ASM("mrs r0, msp");
+   \                     __get_MSP:
+   \   00000000   EFF30880           mrs r0, msp      
+    242            __ASM("bx lr");
+   \   00000004   7047               bx lr            
+    243          }
+   \   00000006   7047               BX       LR               ;; return
+    244          
+    245          /**
+    246           * @brief  Set the Main Stack Pointer
+    247           *
+    248           * @param  uint32_t Main Stack Pointer
+    249           * @return none
+    250           *
+    251           * Assign the value mainStackPointer to the MSP 
+    252           * (main stack pointer) Cortex processor register
+    253           */
+
+   \                                 In section .text, align 4, keep-with-next
+    254          void __set_MSP(uint32_t topOfMainStack)
+    255          {
+    256            __ASM("msr msp, r0");
+   \                     __set_MSP:
+   \   00000000   80F30888           msr msp, r0      
+    257            __ASM("bx lr");
+   \   00000004   7047               bx lr            
+    258          }
+   \   00000006   7047               BX       LR               ;; return
+    259          
+    260          /**
+    261           * @brief  Reverse byte order in unsigned short value
+    262           *
+    263           * @param  uint16_t value to reverse
+    264           * @return uint32_t reversed value
+    265           *
+    266           * Reverse byte order in unsigned short value
+    267           */
+
+   \                                 In section .text, align 4, keep-with-next
+    268          uint32_t __REV16(uint16_t value)
+    269          {
+    270            __ASM("rev16 r0, r0");
+   \                     __REV16:
+   \   00000000   40BA               rev16 r0, r0     
+    271            __ASM("bx lr");
+   \   00000002   7047               bx lr            
+    272          }
+   \   00000004   7047               BX       LR               ;; return
+    273          
+    274          
+    275          #pragma diag_default=Pe940
+    276          
+    277          
+    278          
+    279          
+    280          #elif (defined (__GNUC__)) /*------------------ GNU Compiler ---------------------*/
+    281          
+    282          /**
+    283           * @brief  Return the Process Stack Pointer
+    284           *
+    285           * @param  none
+    286           * @return uint32_t ProcessStackPointer
+    287           *
+    288           * Return the actual process stack pointer
+    289           */
+    290          uint32_t __get_PSP(void)
+    291          {
+    292            uint32_t result=0;
+    293          
+    294            __ASM volatile ("MRS %0, psp" : "=r" (result) );
+    295            return(result);
+    296          }
+    297          
+    298          /**
+    299           * @brief  Set the Process Stack Pointer
+    300           *
+    301           * @param  uint32_t Process Stack Pointer
+    302           * @return none
+    303           *
+    304           * Assign the value ProcessStackPointer to the MSP 
+    305           * (process stack pointer) Cortex processor register
+    306           */
+    307          void __set_PSP(uint32_t topOfProcStack)
+    308          {
+    309            __ASM volatile ("MSR psp, %0" : : "r" (topOfProcStack) );
+    310          }
+    311          
+    312          /**
+    313           * @brief  Return the Main Stack Pointer
+    314           *
+    315           * @param  none
+    316           * @return uint32_t Main Stack Pointer
+    317           *
+    318           * Return the current value of the MSP (main stack pointer)
+    319           * Cortex processor register
+    320           */
+    321          uint32_t __get_MSP(void)
+    322          {
+    323            uint32_t result=0;
+    324          
+    325            __ASM volatile ("MRS %0, msp" : "=r" (result) );
+    326            return(result);
+    327          }
+    328          
+    329          /**
+    330           * @brief  Set the Main Stack Pointer
+    331           *
+    332           * @param  uint32_t Main Stack Pointer
+    333           * @return none
+    334           *
+    335           * Assign the value mainStackPointer to the MSP 
+    336           * (main stack pointer) Cortex processor register
+    337           */
+    338          void __set_MSP(uint32_t topOfMainStack)
+    339          {
+    340            __ASM volatile ("MSR msp, %0" : : "r" (topOfMainStack) );
+    341          }
+    342          
+    343          
+    344          /**
+    345           * @brief  Return the Priority Mask value
+    346           *
+    347           * @param  none
+    348           * @return uint32_t PriMask
+    349           *
+    350           * Return the state of the priority mask bit from the priority mask
+    351           * register
+    352           */
+    353          uint32_t __get_PRIMASK(void)
+    354          {
+    355            uint32_t result=0;
+    356          
+    357            __ASM volatile ("MRS %0, primask" : "=r" (result) );
+    358            return(result);
+    359          }
+    360          
+    361          /**
+    362           * @brief  Set the Priority Mask value
+    363           *
+    364           * @param  uint32_t PriMask
+    365           * @return none
+    366           *
+    367           * Set the priority mask bit in the priority mask register
+    368           */
+    369          void __set_PRIMASK(uint32_t priMask)
+    370          {
+    371            __ASM volatile ("MSR primask, %0" : : "r" (priMask) );
+    372          }
+    373          
+    374          
+    375          /**
+    376           * @brief  Reverse byte order in integer value
+    377           *
+    378           * @param  uint32_t value to reverse
+    379           * @return uint32_t reversed value
+    380           *
+    381           * Reverse byte order in integer value
+    382           */
+    383          uint32_t __REV(uint32_t value)
+    384          {
+    385            uint32_t result=0;
+    386            
+    387            __ASM volatile ("rev %0, %1" : "=r" (result) : "r" (value) );
+    388            return(result);
+    389          }
+    390          
+    391          /**
+    392           * @brief  Reverse byte order in unsigned short value
+    393           *
+    394           * @param  uint16_t value to reverse
+    395           * @return uint32_t reversed value
+    396           *
+    397           * Reverse byte order in unsigned short value
+    398           */
+    399          uint32_t __REV16(uint16_t value)
+    400          {
+    401            uint32_t result=0;
+    402            
+    403            __ASM volatile ("rev16 %0, %1" : "=r" (result) : "r" (value) );
+    404            return(result);
+    405          }
+    406          
+    407          /**
+    408           * @brief  Reverse byte order in signed short value with sign extension to integer
+    409           *
+    410           * @param  int32_t value to reverse
+    411           * @return int32_t reversed value
+    412           *
+    413           * Reverse byte order in signed short value with sign extension to integer
+    414           */
+    415          int32_t __REVSH(int16_t value)
+    416          {
+    417            uint32_t result=0;
+    418            
+    419            __ASM volatile ("revsh %0, %1" : "=r" (result) : "r" (value) );
+    420            return(result);
+    421          }
+    422          
+    423          
+    424          /**
+    425           * @brief  Return the Control Register value
+    426           * 
+    427           * @param  none
+    428           * @return uint32_t Control value
+    429           *
+    430           * Return the content of the control register
+    431           */
+    432          uint32_t __get_CONTROL(void)
+    433          {
+    434            uint32_t result=0;
+    435          
+    436            __ASM volatile ("MRS %0, control" : "=r" (result) );
+    437            return(result);
+    438          }
+    439          
+    440          /**
+    441           * @brief  Set the Control Register value
+    442           *
+    443           * @param  uint32_t Control value
+    444           * @return none
+    445           *
+    446           * Set the control register
+    447           */
+    448          void __set_CONTROL(uint32_t control)
+    449          {
+    450            __ASM volatile ("MSR control, %0" : : "r" (control) );
+    451          }
+    452          
+    453          #endif
+    454          
+    455          
+    456          
+    457          
+    458          
+    459          
+    460          
+    461          
+    462          
+    463          
+    464          
+    465          
+    466          
+    467          
+    468          
+    469          
+    470          
+
+   Maximum stack usage in bytes:
+
+     Function  .cstack
+     --------  -------
+     __REV16        0
+     __get_MSP      0
+     __get_PSP      0
+     __set_MSP      0
+     __set_PSP      0
+
+
+   Section sizes:
+
+     Function/Label Bytes
+     -------------- -----
+     __get_PSP         8
+     __set_PSP         8
+     __get_MSP         8
+     __set_MSP         8
+     __REV16           6
+
+ 
+ 38 bytes in section .text
+ 
+ 38 bytes of CODE memory
+
+Errors: none
+Warnings: none

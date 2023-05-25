@@ -1,0 +1,13 @@
+.\obj\countsem.o: ..\Common\Minimal\countsem.c
+.\obj\countsem.o: ..\..\Source\include\FreeRTOS.h
+.\obj\countsem.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\countsem.o: ..\..\Source\include\projdefs.h
+.\obj\countsem.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\countsem.o: ..\..\Source\include\portable.h
+.\obj\countsem.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\countsem.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\countsem.o: ..\..\Source\include\task.h
+.\obj\countsem.o: ..\..\Source\include\list.h
+.\obj\countsem.o: ..\..\Source\include\semphr.h
+.\obj\countsem.o: ..\..\Source\include\queue.h
+.\obj\countsem.o: ..\Common\include\countsem.h

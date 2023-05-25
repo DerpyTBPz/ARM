@@ -1,0 +1,12 @@
+.\obj\altblock.o: ..\Common\Minimal\AltBlock.c
+.\obj\altblock.o: ..\..\Source\include\FreeRTOS.h
+.\obj\altblock.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\altblock.o: ..\..\Source\include\projdefs.h
+.\obj\altblock.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\altblock.o: ..\..\Source\include\portable.h
+.\obj\altblock.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\altblock.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\altblock.o: ..\..\Source\include\task.h
+.\obj\altblock.o: ..\..\Source\include\list.h
+.\obj\altblock.o: ..\..\Source\include\queue.h
+.\obj\altblock.o: ..\Common\include\AltBlock.h

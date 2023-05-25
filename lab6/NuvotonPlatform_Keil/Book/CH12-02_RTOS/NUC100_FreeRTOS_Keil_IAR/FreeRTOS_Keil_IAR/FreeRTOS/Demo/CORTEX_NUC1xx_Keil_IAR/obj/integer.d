@@ -1,0 +1,12 @@
+.\obj\integer.o: ..\Common\Minimal\integer.c
+.\obj\integer.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\integer.o: ..\..\Source\include\FreeRTOS.h
+.\obj\integer.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\integer.o: ..\..\Source\include\projdefs.h
+.\obj\integer.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\integer.o: ..\..\Source\include\portable.h
+.\obj\integer.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\integer.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\integer.o: ..\..\Source\include\task.h
+.\obj\integer.o: ..\..\Source\include\list.h
+.\obj\integer.o: ..\Common\include\integer.h

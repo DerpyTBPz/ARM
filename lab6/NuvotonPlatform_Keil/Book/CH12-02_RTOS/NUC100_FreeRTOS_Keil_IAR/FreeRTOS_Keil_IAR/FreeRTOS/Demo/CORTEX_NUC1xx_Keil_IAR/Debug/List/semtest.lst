@@ -1,0 +1,681 @@
+###############################################################################
+#                                                                             #
+#                                                       06/Jul/2010  14:34:57 #
+# IAR ANSI C/C++ Compiler V5.50.0.21878/W32 EVALUATION for ARM                #
+# Copyright (C) 1999-2010 IAR Systems AB.                                     #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\semtes #
+#                    t.c                                                      #
+#    Command line =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\semtes #
+#                    t.c -D IAR_ARM_CM0 -lCN E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\Debug\List\ --diag_suppress    #
+#                    Pe550,Pa082,Pa039 -o E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\ #
+#                    CORTEX_NUC1xx_Keil_IAR\Debug\Obj\ --no_cse --no_unroll   #
+#                    --no_inline --no_code_motion --no_tbaa --no_clustering   #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M0  #
+#                    -e --fpu=None --dlib_config "D:\Program                  #
+#                    Files\ARM\INC\DLib_Config_Full.h" -I                     #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\..\common\include\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\..\..\source\include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_K #
+#                    eil_IAR\NUC1xxBSP\NuvotonPlatform_Keil\Include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\ -I      #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\ #
+#                    Demo\CORTEX_NUC1xx_Keil_IAR\User_Demo\include\ -I        #
+#                    "D:\Program Files\ARM\INC\" -Ol                          #
+#    List file    =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\semtest.lst                                 #
+#    Object file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\semtest.o                                    #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\semtest.c
+      1          /*
+      2              FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
+      3          
+      4              ***************************************************************************
+      5              *                                                                         *
+      6              * If you are:                                                             *
+      7              *                                                                         *
+      8              *    + New to FreeRTOS,                                                   *
+      9              *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
+     10              *    + Looking for basic training,                                        *
+     11              *    + Wanting to improve your FreeRTOS skills and productivity           *
+     12              *                                                                         *
+     13              * then take a look at the FreeRTOS eBook                                  *
+     14              *                                                                         *
+     15              *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
+     16              *                  http://www.FreeRTOS.org/Documentation                  *
+     17              *                                                                         *
+     18              * A pdf reference manual is also available.  Both are usually delivered   *
+     19              * to your inbox within 20 minutes to two hours when purchased between 8am *
+     20              * and 8pm GMT (although please allow up to 24 hours in case of            *
+     21              * exceptional circumstances).  Thank you for your support!                *
+     22              *                                                                         *
+     23              ***************************************************************************
+     24          
+     25              This file is part of the FreeRTOS distribution.
+     26          
+     27              FreeRTOS is free software; you can redistribute it and/or modify it under
+     28              the terms of the GNU General Public License (version 2) as published by the
+     29              Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
+     30              ***NOTE*** The exception to the GPL is included to allow you to distribute
+     31              a combined work that includes FreeRTOS without being obliged to provide the
+     32              source code for proprietary components outside of the FreeRTOS kernel.
+     33              FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
+     34              ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+     35              FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+     36              more details. You should have received a copy of the GNU General Public 
+     37              License and the FreeRTOS license exception along with FreeRTOS; if not it 
+     38              can be viewed here: http://www.freertos.org/a00114.html and also obtained 
+     39              by writing to Richard Barry, contact details for whom are available on the
+     40              FreeRTOS WEB site.
+     41          
+     42              1 tab == 4 spaces!
+     43          
+     44              http://www.FreeRTOS.org - Documentation, latest information, license and
+     45              contact details.
+     46          
+     47              http://www.SafeRTOS.com - A version that is certified for use in safety
+     48              critical systems.
+     49          
+     50              http://www.OpenRTOS.com - Commercial support, development, porting,
+     51              licensing and training services.
+     52          */
+     53          
+     54          /*
+     55           * Creates two sets of two tasks.  The tasks within a set share a variable, access 
+     56           * to which is guarded by a semaphore.
+     57           * 
+     58           * Each task starts by attempting to obtain the semaphore.  On obtaining a 
+     59           * semaphore a task checks to ensure that the guarded variable has an expected 
+     60           * value.  It then clears the variable to zero before counting it back up to the 
+     61           * expected value in increments of 1.  After each increment the variable is checked 
+     62           * to ensure it contains the value to which it was just set. When the starting 
+     63           * value is again reached the task releases the semaphore giving the other task in 
+     64           * the set a chance to do exactly the same thing.  The starting value is high 
+     65           * enough to ensure that a tick is likely to occur during the incrementing loop.
+     66           *
+     67           * An error is flagged if at any time during the process a shared variable is 
+     68           * found to have a value other than that expected.  Such an occurrence would 
+     69           * suggest an error in the mutual exclusion mechanism by which access to the 
+     70           * variable is restricted.
+     71           *
+     72           * The first set of two tasks poll their semaphore.  The second set use blocking 
+     73           * calls.
+     74           *
+     75           */
+     76          
+     77          
+     78          #include <stdlib.h>
+     79          
+     80          /* Scheduler include files. */
+     81          #include "FreeRTOS.h"
+     82          #include "task.h"
+     83          #include "semphr.h"
+     84          
+     85          /* Demo app include files. */
+     86          #include "semtest.h"
+     87          
+     88          /* The value to which the shared variables are counted. */
+     89          #define semtstBLOCKING_EXPECTED_VALUE		( ( unsigned long ) 0xfff )
+     90          #define semtstNON_BLOCKING_EXPECTED_VALUE	( ( unsigned long ) 0xff  )
+     91          
+     92          #define semtstSTACK_SIZE			configMINIMAL_STACK_SIZE
+     93          
+     94          #define semtstNUM_TASKS				( 4 )
+     95          
+     96          #define semtstDELAY_FACTOR			( ( portTickType ) 10 )
+     97          
+     98          /* The task function as described at the top of the file. */
+     99          static portTASK_FUNCTION_PROTO( prvSemaphoreTest, pvParameters );
+    100          
+    101          /* Structure used to pass parameters to each task. */
+    102          typedef struct SEMAPHORE_PARAMETERS
+    103          {
+    104          	xSemaphoreHandle xSemaphore;
+    105          	volatile unsigned long *pulSharedVariable;
+    106          	portTickType xBlockTime;
+    107          } xSemaphoreParameters;
+    108          
+    109          /* Variables used to check that all the tasks are still running without errors. */
+
+   \                                 In section .bss, align 4
+    110          static volatile short sCheckVariables[ semtstNUM_TASKS ] = { 0 };
+   \                     sCheckVariables:
+   \   00000000                      DS8 8
+
+   \                                 In section .bss, align 2
+    111          static volatile short sNextCheckVariable = 0;
+   \                     sNextCheckVariable:
+   \   00000000                      DS8 2
+    112          
+    113          /*-----------------------------------------------------------*/
+    114          
+
+   \                                 In section .text, align 2, keep-with-next
+    115          void vStartSemaphoreTasks( unsigned portBASE_TYPE uxPriority )
+    116          {
+   \                     vStartSemaphoreTasks:
+   \   00000000   7FB5               PUSH     {R0-R6,LR}
+   \   00000002   0500               MOVS     R5,R0
+    117          xSemaphoreParameters *pxFirstSemaphoreParameters, *pxSecondSemaphoreParameters;
+    118          const portTickType xBlockTime = ( portTickType ) 100;
+   \   00000004   6426               MOVS     R6,#+100
+    119          
+    120          	/* Create the structure used to pass parameters to the first two tasks. */
+    121          	pxFirstSemaphoreParameters = ( xSemaphoreParameters * ) pvPortMalloc( sizeof( xSemaphoreParameters ) );
+   \   00000006   0C20               MOVS     R0,#+12
+   \   00000008   ........           BL       pvPortMalloc
+   \   0000000C   0400               MOVS     R4,R0
+    122          
+    123          	if( pxFirstSemaphoreParameters != NULL )
+   \   0000000E   002C               CMP      R4,#+0
+   \   00000010   35D0               BEQ      ??vStartSemaphoreTasks_0
+    124          	{
+    125          		/* Create the semaphore used by the first two tasks. */
+    126          		vSemaphoreCreateBinary( pxFirstSemaphoreParameters->xSemaphore );
+   \   00000012   0021               MOVS     R1,#+0
+   \   00000014   0120               MOVS     R0,#+1
+   \   00000016   ........           BL       xQueueCreate
+   \   0000001A   2060               STR      R0,[R4, #+0]
+   \   0000001C   2068               LDR      R0,[R4, #+0]
+   \   0000001E   0028               CMP      R0,#+0
+   \   00000020   05D0               BEQ      ??vStartSemaphoreTasks_1
+   \   00000022   0023               MOVS     R3,#+0
+   \   00000024   0022               MOVS     R2,#+0
+   \   00000026   0021               MOVS     R1,#+0
+   \   00000028   2068               LDR      R0,[R4, #+0]
+   \   0000002A   ........           BL       xQueueGenericSend
+    127          
+    128          		if( pxFirstSemaphoreParameters->xSemaphore != NULL )
+   \                     ??vStartSemaphoreTasks_1:
+   \   0000002E   2068               LDR      R0,[R4, #+0]
+   \   00000030   0028               CMP      R0,#+0
+   \   00000032   24D0               BEQ      ??vStartSemaphoreTasks_0
+    129          		{
+    130          			/* Create the variable which is to be shared by the first two tasks. */
+    131          			pxFirstSemaphoreParameters->pulSharedVariable = ( unsigned long * ) pvPortMalloc( sizeof( unsigned long ) );
+   \   00000034   0420               MOVS     R0,#+4
+   \   00000036   ........           BL       pvPortMalloc
+   \   0000003A   6060               STR      R0,[R4, #+4]
+    132          
+    133          			/* Initialise the share variable to the value the tasks expect. */
+    134          			*( pxFirstSemaphoreParameters->pulSharedVariable ) = semtstNON_BLOCKING_EXPECTED_VALUE;
+   \   0000003C   6068               LDR      R0,[R4, #+4]
+   \   0000003E   FF21               MOVS     R1,#+255
+   \   00000040   0160               STR      R1,[R0, #+0]
+    135          
+    136          			/* The first two tasks do not block on semaphore calls. */
+    137          			pxFirstSemaphoreParameters->xBlockTime = ( portTickType ) 0;
+   \   00000042   0020               MOVS     R0,#+0
+   \   00000044   A060               STR      R0,[R4, #+8]
+    138          
+    139          			/* Spawn the first two tasks.  As they poll they operate at the idle priority. */
+    140          			xTaskCreate( prvSemaphoreTest, ( signed char * ) "PolSEM1", semtstSTACK_SIZE, ( void * ) pxFirstSemaphoreParameters, tskIDLE_PRIORITY, ( xTaskHandle * ) NULL );
+   \   00000046   0020               MOVS     R0,#+0
+   \   00000048   0390               STR      R0,[SP, #+12]
+   \   0000004A   0020               MOVS     R0,#+0
+   \   0000004C   0290               STR      R0,[SP, #+8]
+   \   0000004E   0020               MOVS     R0,#+0
+   \   00000050   0190               STR      R0,[SP, #+4]
+   \   00000052   0020               MOVS     R0,#+0
+   \   00000054   0090               STR      R0,[SP, #+0]
+   \   00000056   2300               MOVS     R3,R4
+   \   00000058   8022               MOVS     R2,#+128
+   \   0000005A   ....               LDR      R1,??DataTable2
+   \   0000005C   ....               LDR      R0,??DataTable2_1
+   \   0000005E   ........           BL       xTaskGenericCreate
+    141          			xTaskCreate( prvSemaphoreTest, ( signed char * ) "PolSEM2", semtstSTACK_SIZE, ( void * ) pxFirstSemaphoreParameters, tskIDLE_PRIORITY, ( xTaskHandle * ) NULL );
+   \   00000062   0020               MOVS     R0,#+0
+   \   00000064   0390               STR      R0,[SP, #+12]
+   \   00000066   0020               MOVS     R0,#+0
+   \   00000068   0290               STR      R0,[SP, #+8]
+   \   0000006A   0020               MOVS     R0,#+0
+   \   0000006C   0190               STR      R0,[SP, #+4]
+   \   0000006E   0020               MOVS     R0,#+0
+   \   00000070   0090               STR      R0,[SP, #+0]
+   \   00000072   2300               MOVS     R3,R4
+   \   00000074   8022               MOVS     R2,#+128
+   \   00000076   ....               LDR      R1,??DataTable2_2
+   \   00000078   ....               LDR      R0,??DataTable2_1
+   \   0000007A   ........           BL       xTaskGenericCreate
+    142          		}
+    143          	}
+    144          
+    145          	/* Do exactly the same to create the second set of tasks, only this time 
+    146          	provide a block time for the semaphore calls. */
+    147          	pxSecondSemaphoreParameters = ( xSemaphoreParameters * ) pvPortMalloc( sizeof( xSemaphoreParameters ) );
+   \                     ??vStartSemaphoreTasks_0:
+   \   0000007E   0C20               MOVS     R0,#+12
+   \   00000080   ........           BL       pvPortMalloc
+   \   00000084   0400               MOVS     R4,R0
+    148          	if( pxSecondSemaphoreParameters != NULL )
+   \   00000086   002C               CMP      R4,#+0
+   \   00000088   36D0               BEQ      ??vStartSemaphoreTasks_2
+    149          	{
+    150          		vSemaphoreCreateBinary( pxSecondSemaphoreParameters->xSemaphore );
+   \   0000008A   0021               MOVS     R1,#+0
+   \   0000008C   0120               MOVS     R0,#+1
+   \   0000008E   ........           BL       xQueueCreate
+   \   00000092   2060               STR      R0,[R4, #+0]
+   \   00000094   2068               LDR      R0,[R4, #+0]
+   \   00000096   0028               CMP      R0,#+0
+   \   00000098   05D0               BEQ      ??vStartSemaphoreTasks_3
+   \   0000009A   0023               MOVS     R3,#+0
+   \   0000009C   0022               MOVS     R2,#+0
+   \   0000009E   0021               MOVS     R1,#+0
+   \   000000A0   2068               LDR      R0,[R4, #+0]
+   \   000000A2   ........           BL       xQueueGenericSend
+    151          
+    152          		if( pxSecondSemaphoreParameters->xSemaphore != NULL )
+   \                     ??vStartSemaphoreTasks_3:
+   \   000000A6   2068               LDR      R0,[R4, #+0]
+   \   000000A8   0028               CMP      R0,#+0
+   \   000000AA   25D0               BEQ      ??vStartSemaphoreTasks_2
+    153          		{
+    154          			pxSecondSemaphoreParameters->pulSharedVariable = ( unsigned long * ) pvPortMalloc( sizeof( unsigned long ) );
+   \   000000AC   0420               MOVS     R0,#+4
+   \   000000AE   ........           BL       pvPortMalloc
+   \   000000B2   6060               STR      R0,[R4, #+4]
+    155          			*( pxSecondSemaphoreParameters->pulSharedVariable ) = semtstBLOCKING_EXPECTED_VALUE;
+   \   000000B4   6068               LDR      R0,[R4, #+4]
+   \   000000B6   ....               LDR      R1,??DataTable2_3  ;; 0xfff
+   \   000000B8   0160               STR      R1,[R0, #+0]
+    156          			pxSecondSemaphoreParameters->xBlockTime = xBlockTime / portTICK_RATE_MS;
+   \   000000BA   3000               MOVS     R0,R6
+   \   000000BC   0121               MOVS     R1,#+1
+   \   000000BE   ........           BL       __aeabi_uidiv
+   \   000000C2   A060               STR      R0,[R4, #+8]
+    157          
+    158          			xTaskCreate( prvSemaphoreTest, ( signed char * ) "BlkSEM1", semtstSTACK_SIZE, ( void * ) pxSecondSemaphoreParameters, uxPriority, ( xTaskHandle * ) NULL );
+   \   000000C4   0020               MOVS     R0,#+0
+   \   000000C6   0390               STR      R0,[SP, #+12]
+   \   000000C8   0020               MOVS     R0,#+0
+   \   000000CA   0290               STR      R0,[SP, #+8]
+   \   000000CC   0020               MOVS     R0,#+0
+   \   000000CE   0190               STR      R0,[SP, #+4]
+   \   000000D0   0095               STR      R5,[SP, #+0]
+   \   000000D2   2300               MOVS     R3,R4
+   \   000000D4   8022               MOVS     R2,#+128
+   \   000000D6   ....               LDR      R1,??DataTable2_4
+   \   000000D8   ....               LDR      R0,??DataTable2_1
+   \   000000DA   ........           BL       xTaskGenericCreate
+    159          			xTaskCreate( prvSemaphoreTest, ( signed char * ) "BlkSEM2", semtstSTACK_SIZE, ( void * ) pxSecondSemaphoreParameters, uxPriority, ( xTaskHandle * ) NULL );
+   \   000000DE   0020               MOVS     R0,#+0
+   \   000000E0   0390               STR      R0,[SP, #+12]
+   \   000000E2   0020               MOVS     R0,#+0
+   \   000000E4   0290               STR      R0,[SP, #+8]
+   \   000000E6   0020               MOVS     R0,#+0
+   \   000000E8   0190               STR      R0,[SP, #+4]
+   \   000000EA   0095               STR      R5,[SP, #+0]
+   \   000000EC   2300               MOVS     R3,R4
+   \   000000EE   8022               MOVS     R2,#+128
+   \   000000F0   ....               LDR      R1,??DataTable2_5
+   \   000000F2   ....               LDR      R0,??DataTable2_1
+   \   000000F4   ........           BL       xTaskGenericCreate
+    160          		}
+    161          	}
+    162          
+    163          	/* vQueueAddToRegistry() adds the semaphore to the registry, if one is
+    164          	in use.  The registry is provided as a means for kernel aware 
+    165          	debuggers to locate semaphores and has no purpose if a kernel aware debugger
+    166          	is not being used.  The call to vQueueAddToRegistry() will be removed
+    167          	by the pre-processor if configQUEUE_REGISTRY_SIZE is not defined or is 
+    168          	defined to be less than 1. */
+    169          	vQueueAddToRegistry( ( xQueueHandle ) pxFirstSemaphoreParameters->xSemaphore, ( signed char * ) "Counting_Sem_1" );
+    170          	vQueueAddToRegistry( ( xQueueHandle ) pxSecondSemaphoreParameters->xSemaphore, ( signed char * ) "Counting_Sem_2" );
+    171          }
+   \                     ??vStartSemaphoreTasks_2:
+   \   000000F8   7FBD               POP      {R0-R6,PC}       ;; return
+    172          /*-----------------------------------------------------------*/
+    173          
+
+   \                                 In section .text, align 2, keep-with-next
+    174          static portTASK_FUNCTION( prvSemaphoreTest, pvParameters )
+    175          {
+   \                     prvSemaphoreTest:
+   \   00000000   F8B5               PUSH     {R3-R7,LR}
+   \   00000002   0500               MOVS     R5,R0
+    176          xSemaphoreParameters *pxParameters;
+    177          volatile unsigned long *pulSharedVariable, ulExpectedValue;
+    178          unsigned long ulCounter;
+    179          short sError = pdFALSE, sCheckVariableToUse;
+   \   00000004   0024               MOVS     R4,#+0
+    180          
+    181          	/* See which check variable to use.  sNextCheckVariable is not semaphore 
+    182          	protected! */
+    183          	portENTER_CRITICAL();
+   \   00000006   ........           BL       vPortEnterCritical
+    184          		sCheckVariableToUse = sNextCheckVariable;
+   \   0000000A   ....               LDR      R0,??DataTable2_6
+   \   0000000C   0021               MOVS     R1,#+0
+   \   0000000E   475E               LDRSH    R7,[R0, R1]
+    185          		sNextCheckVariable++;
+   \   00000010   ....               LDR      R0,??DataTable2_6
+   \   00000012   0088               LDRH     R0,[R0, #+0]
+   \   00000014   401C               ADDS     R0,R0,#+1
+   \   00000016   ....               LDR      R1,??DataTable2_6
+   \   00000018   0880               STRH     R0,[R1, #+0]
+    186          	portEXIT_CRITICAL();
+   \   0000001A   ........           BL       vPortExitCritical
+    187          
+    188          	/* A structure is passed in as the parameter.  This contains the shared 
+    189          	variable being guarded. */
+    190          	pxParameters = ( xSemaphoreParameters * ) pvParameters;
+    191          	pulSharedVariable = pxParameters->pulSharedVariable;
+   \   0000001E   6E68               LDR      R6,[R5, #+4]
+    192          
+    193          	/* If we are blocking we use a much higher count to ensure loads of context
+    194          	switches occur during the count. */
+    195          	if( pxParameters->xBlockTime > ( portTickType ) 0 )
+   \   00000020   A868               LDR      R0,[R5, #+8]
+   \   00000022   0028               CMP      R0,#+0
+   \   00000024   02D0               BEQ      ??prvSemaphoreTest_0
+    196          	{
+    197          		ulExpectedValue = semtstBLOCKING_EXPECTED_VALUE;
+   \   00000026   ....               LDR      R0,??DataTable2_3  ;; 0xfff
+   \   00000028   0090               STR      R0,[SP, #+0]
+   \   0000002A   2AE0               B        ??prvSemaphoreTest_1
+    198          	}
+    199          	else
+    200          	{
+    201          		ulExpectedValue = semtstNON_BLOCKING_EXPECTED_VALUE;
+   \                     ??prvSemaphoreTest_0:
+   \   0000002C   FF20               MOVS     R0,#+255
+   \   0000002E   0090               STR      R0,[SP, #+0]
+   \   00000030   27E0               B        ??prvSemaphoreTest_1
+    202          	}
+    203          
+    204          	for( ;; )
+    205          	{
+    206          		/* Try to obtain the semaphore. */
+    207          		if( xSemaphoreTake( pxParameters->xSemaphore, pxParameters->xBlockTime ) == pdPASS )
+    208          		{
+    209          			/* We have the semaphore and so expect any other tasks using the
+    210          			shared variable to have left it in the state we expect to find
+    211          			it. */
+    212          			if( *pulSharedVariable != ulExpectedValue )
+    213          			{
+    214          				sError = pdTRUE;
+    215          			}
+    216          			
+    217          			/* Clear the variable, then count it back up to the expected value
+    218          			before releasing the semaphore.  Would expect a context switch or
+    219          			two during this time. */
+    220          			for( ulCounter = ( unsigned long ) 0; ulCounter <= ulExpectedValue; ulCounter++ )
+    221          			{
+    222          				*pulSharedVariable = ulCounter;
+   \                     ??prvSemaphoreTest_2:
+   \   00000032   3060               STR      R0,[R6, #+0]
+    223          				if( *pulSharedVariable != ulCounter )
+   \   00000034   3168               LDR      R1,[R6, #+0]
+   \   00000036   8142               CMP      R1,R0
+   \   00000038   00D0               BEQ      ??prvSemaphoreTest_3
+    224          				{
+    225          					sError = pdTRUE;
+   \   0000003A   0124               MOVS     R4,#+1
+    226          				}
+    227          			}
+   \                     ??prvSemaphoreTest_3:
+   \   0000003C   401C               ADDS     R0,R0,#+1
+   \                     ??prvSemaphoreTest_4:
+   \   0000003E   0099               LDR      R1,[SP, #+0]
+   \   00000040   8142               CMP      R1,R0
+   \   00000042   F6D2               BCS      ??prvSemaphoreTest_2
+    228          
+    229          			/* Release the semaphore, and if no errors have occurred increment the check
+    230          			variable. */
+    231          			if(	xSemaphoreGive( pxParameters->xSemaphore ) == pdFALSE )
+   \   00000044   0023               MOVS     R3,#+0
+   \   00000046   0022               MOVS     R2,#+0
+   \   00000048   0021               MOVS     R1,#+0
+   \   0000004A   2868               LDR      R0,[R5, #+0]
+   \   0000004C   ........           BL       xQueueGenericSend
+   \   00000050   0028               CMP      R0,#+0
+   \   00000052   00D1               BNE      ??prvSemaphoreTest_5
+    232          			{
+    233          				sError = pdTRUE;
+   \   00000054   0124               MOVS     R4,#+1
+    234          			}
+    235          
+    236          			if( sError == pdFALSE )
+   \                     ??prvSemaphoreTest_5:
+   \   00000056   24B2               SXTH     R4,R4
+   \   00000058   002C               CMP      R4,#+0
+   \   0000005A   0DD1               BNE      ??prvSemaphoreTest_6
+    237          			{
+    238          				if( sCheckVariableToUse < semtstNUM_TASKS )
+   \   0000005C   3FB2               SXTH     R7,R7
+   \   0000005E   042F               CMP      R7,#+4
+   \   00000060   0ADA               BGE      ??prvSemaphoreTest_6
+    239          				{
+    240          					( sCheckVariables[ sCheckVariableToUse ] )++;
+   \   00000062   3FB2               SXTH     R7,R7
+   \   00000064   0220               MOVS     R0,#+2
+   \   00000066   7843               MULS     R0,R7,R0
+   \   00000068   ....               LDR      R1,??DataTable2_7
+   \   0000006A   085A               LDRH     R0,[R1, R0]
+   \   0000006C   401C               ADDS     R0,R0,#+1
+   \   0000006E   3FB2               SXTH     R7,R7
+   \   00000070   0221               MOVS     R1,#+2
+   \   00000072   7943               MULS     R1,R7,R1
+   \   00000074   ....               LDR      R2,??DataTable2_7
+   \   00000076   5052               STRH     R0,[R2, R1]
+    241          				}
+    242          			}
+    243          
+    244          			/* If we have a block time then we are running at a priority higher
+    245          			than the idle priority.  This task takes a long time to complete
+    246          			a cycle	(deliberately so to test the guarding) so will be starving
+    247          			out lower priority tasks.  Block for some time to allow give lower
+    248          			priority tasks some processor time. */
+    249          			vTaskDelay( pxParameters->xBlockTime * semtstDELAY_FACTOR );
+   \                     ??prvSemaphoreTest_6:
+   \   00000078   A868               LDR      R0,[R5, #+8]
+   \   0000007A   0A21               MOVS     R1,#+10
+   \   0000007C   4843               MULS     R0,R1,R0
+   \   0000007E   ........           BL       vTaskDelay
+   \                     ??prvSemaphoreTest_1:
+   \   00000082   0023               MOVS     R3,#+0
+   \   00000084   AA68               LDR      R2,[R5, #+8]
+   \   00000086   0021               MOVS     R1,#+0
+   \   00000088   2868               LDR      R0,[R5, #+0]
+   \   0000008A   ........           BL       xQueueGenericReceive
+   \   0000008E   0128               CMP      R0,#+1
+   \   00000090   06D1               BNE      ??prvSemaphoreTest_7
+   \   00000092   3068               LDR      R0,[R6, #+0]
+   \   00000094   0099               LDR      R1,[SP, #+0]
+   \   00000096   8842               CMP      R0,R1
+   \   00000098   00D0               BEQ      ??prvSemaphoreTest_8
+   \   0000009A   0124               MOVS     R4,#+1
+   \                     ??prvSemaphoreTest_8:
+   \   0000009C   0020               MOVS     R0,#+0
+   \   0000009E   CEE7               B        ??prvSemaphoreTest_4
+    250          		}
+    251          		else
+    252          		{
+    253          			if( pxParameters->xBlockTime == ( portTickType ) 0 )
+   \                     ??prvSemaphoreTest_7:
+   \   000000A0   A868               LDR      R0,[R5, #+8]
+   \   000000A2   0028               CMP      R0,#+0
+   \   000000A4   EDD1               BNE      ??prvSemaphoreTest_1
+    254          			{
+    255          				/* We have not got the semaphore yet, so no point using the
+    256          				processor.  We are not blocking when attempting to obtain the
+    257          				semaphore. */
+    258          				taskYIELD();
+   \   000000A6   ........           BL       vPortYieldFromISR
+   \   000000AA   EAE7               B        ??prvSemaphoreTest_1
+    259          			}
+    260          		}
+    261          	}
+    262          }
+    263          /*-----------------------------------------------------------*/
+    264          
+    265          /* This is called to check that all the created tasks are still running. */
+
+   \                                 In section .text, align 2, keep-with-next
+    266          portBASE_TYPE xAreSemaphoreTasksStillRunning( void )
+    267          {
+   \                     xAreSemaphoreTasksStillRunning:
+   \   00000000   30B5               PUSH     {R4,R5,LR}
+    268          static short sLastCheckVariables[ semtstNUM_TASKS ] = { 0 };
+    269          portBASE_TYPE xTask, xReturn = pdTRUE;
+   \   00000002   0120               MOVS     R0,#+1
+    270          
+    271          	for( xTask = 0; xTask < semtstNUM_TASKS; xTask++ )
+   \   00000004   0021               MOVS     R1,#+0
+   \   00000006   13E0               B        ??xAreSemaphoreTasksStillRunning_0
+    272          	{
+    273          		if( sLastCheckVariables[ xTask ] == sCheckVariables[ xTask ] )
+   \                     ??xAreSemaphoreTasksStillRunning_1:
+   \   00000008   0222               MOVS     R2,#+2
+   \   0000000A   4A43               MULS     R2,R1,R2
+   \   0000000C   ....               LDR      R3,??DataTable2_8
+   \   0000000E   9A5E               LDRSH    R2,[R3, R2]
+   \   00000010   0223               MOVS     R3,#+2
+   \   00000012   4B43               MULS     R3,R1,R3
+   \   00000014   ....               LDR      R4,??DataTable2_7
+   \   00000016   E35E               LDRSH    R3,[R4, R3]
+   \   00000018   9A42               CMP      R2,R3
+   \   0000001A   00D1               BNE      ??xAreSemaphoreTasksStillRunning_2
+    274          		{
+    275          			xReturn = pdFALSE;
+   \   0000001C   0020               MOVS     R0,#+0
+    276          		}
+    277          
+    278          		sLastCheckVariables[ xTask ] = sCheckVariables[ xTask ];
+   \                     ??xAreSemaphoreTasksStillRunning_2:
+   \   0000001E   0222               MOVS     R2,#+2
+   \   00000020   4A43               MULS     R2,R1,R2
+   \   00000022   ....               LDR      R3,??DataTable2_8
+   \   00000024   0224               MOVS     R4,#+2
+   \   00000026   4C43               MULS     R4,R1,R4
+   \   00000028   ....               LDR      R5,??DataTable2_7
+   \   0000002A   2C5B               LDRH     R4,[R5, R4]
+   \   0000002C   9C52               STRH     R4,[R3, R2]
+    279          	}
+   \   0000002E   491C               ADDS     R1,R1,#+1
+   \                     ??xAreSemaphoreTasksStillRunning_0:
+   \   00000030   0429               CMP      R1,#+4
+   \   00000032   E9DB               BLT      ??xAreSemaphoreTasksStillRunning_1
+    280          
+    281          	return xReturn;
+   \   00000034   30BD               POP      {R4,R5,PC}       ;; return
+    282          }
+
+   \                                 In section .bss, align 4
+   \                     ??sLastCheckVariables:
+   \   00000000                      DS8 8
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   ........           DC32     `?<Constant "PolSEM1">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   ........           DC32     prvSemaphoreTest
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   ........           DC32     `?<Constant "PolSEM2">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \   00000000   FF0F0000           DC32     0xfff
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_4:
+   \   00000000   ........           DC32     `?<Constant "BlkSEM1">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_5:
+   \   00000000   ........           DC32     `?<Constant "BlkSEM2">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_6:
+   \   00000000   ........           DC32     sNextCheckVariable
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_7:
+   \   00000000   ........           DC32     sCheckVariables
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_8:
+   \   00000000   ........           DC32     ??sLastCheckVariables
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "PolSEM1">`:
+   \   00000000   506F6C53454D       DC8 "PolSEM1"
+   \              3100        
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "PolSEM2">`:
+   \   00000000   506F6C53454D       DC8 "PolSEM2"
+   \              3200        
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "BlkSEM1">`:
+   \   00000000   426C6B53454D       DC8 "BlkSEM1"
+   \              3100        
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "BlkSEM2">`:
+   \   00000000   426C6B53454D       DC8 "BlkSEM2"
+   \              3200        
+    283          
+    284          
+
+   Maximum stack usage in bytes:
+
+     Function                       .cstack
+     --------                       -------
+     prvSemaphoreTest                   24
+     vStartSemaphoreTasks               32
+     xAreSemaphoreTasksStillRunning     12
+
+
+   Section sizes:
+
+     Function/Label                 Bytes
+     --------------                 -----
+     sCheckVariables                   8
+     sNextCheckVariable                2
+     vStartSemaphoreTasks            250
+     prvSemaphoreTest                172
+     xAreSemaphoreTasksStillRunning   54
+     sLastCheckVariables               8
+     ??DataTable2                      4
+     ??DataTable2_1                    4
+     ??DataTable2_2                    4
+     ??DataTable2_3                    4
+     ??DataTable2_4                    4
+     ??DataTable2_5                    4
+     ??DataTable2_6                    4
+     ??DataTable2_7                    4
+     ??DataTable2_8                    4
+     ?<Constant "PolSEM1">             8
+     ?<Constant "PolSEM2">             8
+     ?<Constant "BlkSEM1">             8
+     ?<Constant "BlkSEM2">             8
+
+ 
+  18 bytes in section .bss
+  32 bytes in section .rodata
+ 512 bytes in section .text
+ 
+ 512 bytes of CODE  memory
+  32 bytes of CONST memory
+  18 bytes of DATA  memory
+
+Errors: none
+Warnings: none

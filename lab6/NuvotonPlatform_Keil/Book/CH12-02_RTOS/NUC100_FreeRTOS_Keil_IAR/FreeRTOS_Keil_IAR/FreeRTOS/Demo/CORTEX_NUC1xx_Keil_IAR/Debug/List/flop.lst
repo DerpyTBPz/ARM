@@ -1,0 +1,1125 @@
+###############################################################################
+#                                                                             #
+#                                                       06/Jul/2010  14:34:55 #
+# IAR ANSI C/C++ Compiler V5.50.0.21878/W32 EVALUATION for ARM                #
+# Copyright (C) 1999-2010 IAR Systems AB.                                     #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\flop.c #
+#    Command line =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\flop.c #
+#                     -D IAR_ARM_CM0 -lCN E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\ #
+#                    CORTEX_NUC1xx_Keil_IAR\Debug\List\ --diag_suppress       #
+#                    Pe550,Pa082,Pa039 -o E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\ #
+#                    CORTEX_NUC1xx_Keil_IAR\Debug\Obj\ --no_cse --no_unroll   #
+#                    --no_inline --no_code_motion --no_tbaa --no_clustering   #
+#                    --no_scheduling --debug --endian=little --cpu=Cortex-M0  #
+#                    -e --fpu=None --dlib_config "D:\Program                  #
+#                    Files\ARM\INC\DLib_Config_Full.h" -I                     #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\..\common\include\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\De #
+#                    mo\CORTEX_NUC1xx_Keil_IAR\..\..\source\include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_K #
+#                    eil_IAR\NUC1xxBSP\NuvotonPlatform_Keil\Include\ -I       #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\NuvotonPlatform_Keil\Include\Driver\ -I      #
+#                    E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\NUC1xxBSP\CMSIS\CM0\ -I E:\FreeRTOS_Keil_IAR\FreeRTOS\ #
+#                    Demo\CORTEX_NUC1xx_Keil_IAR\User_Demo\include\ -I        #
+#                    "D:\Program Files\ARM\INC\" -Ol                          #
+#    List file    =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\List\flop.lst                                    #
+#    Object file  =  E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\CORTEX_NUC1xx_Keil_IA #
+#                    R\Debug\Obj\flop.o                                       #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+E:\FreeRTOS_Keil_IAR\FreeRTOS\Demo\Common\Minimal\flop.c
+      1          /*
+      2              FreeRTOS V6.0.5 - Copyright (C) 2010 Real Time Engineers Ltd.
+      3          
+      4              ***************************************************************************
+      5              *                                                                         *
+      6              * If you are:                                                             *
+      7              *                                                                         *
+      8              *    + New to FreeRTOS,                                                   *
+      9              *    + Wanting to learn FreeRTOS or multitasking in general quickly       *
+     10              *    + Looking for basic training,                                        *
+     11              *    + Wanting to improve your FreeRTOS skills and productivity           *
+     12              *                                                                         *
+     13              * then take a look at the FreeRTOS eBook                                  *
+     14              *                                                                         *
+     15              *        "Using the FreeRTOS Real Time Kernel - a Practical Guide"        *
+     16              *                  http://www.FreeRTOS.org/Documentation                  *
+     17              *                                                                         *
+     18              * A pdf reference manual is also available.  Both are usually delivered   *
+     19              * to your inbox within 20 minutes to two hours when purchased between 8am *
+     20              * and 8pm GMT (although please allow up to 24 hours in case of            *
+     21              * exceptional circumstances).  Thank you for your support!                *
+     22              *                                                                         *
+     23              ***************************************************************************
+     24          
+     25              This file is part of the FreeRTOS distribution.
+     26          
+     27              FreeRTOS is free software; you can redistribute it and/or modify it under
+     28              the terms of the GNU General Public License (version 2) as published by the
+     29              Free Software Foundation AND MODIFIED BY the FreeRTOS exception.
+     30              ***NOTE*** The exception to the GPL is included to allow you to distribute
+     31              a combined work that includes FreeRTOS without being obliged to provide the
+     32              source code for proprietary components outside of the FreeRTOS kernel.
+     33              FreeRTOS is distributed in the hope that it will be useful, but WITHOUT
+     34              ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+     35              FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+     36              more details. You should have received a copy of the GNU General Public 
+     37              License and the FreeRTOS license exception along with FreeRTOS; if not it 
+     38              can be viewed here: http://www.freertos.org/a00114.html and also obtained 
+     39              by writing to Richard Barry, contact details for whom are available on the
+     40              FreeRTOS WEB site.
+     41          
+     42              1 tab == 4 spaces!
+     43          
+     44              http://www.FreeRTOS.org - Documentation, latest information, license and
+     45              contact details.
+     46          
+     47              http://www.SafeRTOS.com - A version that is certified for use in safety
+     48              critical systems.
+     49          
+     50              http://www.OpenRTOS.com - Commercial support, development, porting,
+     51              licensing and training services.
+     52          */
+     53          
+     54          /*
+     55           * Creates eight tasks, each of which loops continuously performing an (emulated) 
+     56           * floating point calculation.
+     57           *
+     58           * All the tasks run at the idle priority and never block or yield.  This causes 
+     59           * all eight tasks to time slice with the idle task.  Running at the idle priority 
+     60           * means that these tasks will get pre-empted any time another task is ready to run
+     61           * or a time slice occurs.  More often than not the pre-emption will occur mid 
+     62           * calculation, creating a good test of the schedulers context switch mechanism - a 
+     63           * calculation producing an unexpected result could be a symptom of a corruption in 
+     64           * the context of a task.
+     65           */
+     66          
+     67          #include <stdlib.h>
+     68          #include <math.h>
+     69          
+     70          /* Scheduler include files. */
+     71          #include "FreeRTOS.h"
+     72          #include "task.h"
+     73          
+     74          /* Demo program include files. */
+     75          #include "flop.h"
+     76          
+     77          #define mathSTACK_SIZE		configMINIMAL_STACK_SIZE
+     78          #define mathNUMBER_OF_TASKS  ( 8 )
+     79          
+     80          /* Four tasks, each of which performs a different floating point calculation.  
+     81          Each of the four is created twice. */
+     82          static portTASK_FUNCTION_PROTO( vCompetingMathTask1, pvParameters );
+     83          static portTASK_FUNCTION_PROTO( vCompetingMathTask2, pvParameters );
+     84          static portTASK_FUNCTION_PROTO( vCompetingMathTask3, pvParameters );
+     85          static portTASK_FUNCTION_PROTO( vCompetingMathTask4, pvParameters );
+     86          
+     87          /* These variables are used to check that all the tasks are still running.  If a 
+     88          task gets a calculation wrong it will
+     89          stop incrementing its check variable. */
+
+   \                                 In section .bss, align 4
+     90          static volatile unsigned short usTaskCheck[ mathNUMBER_OF_TASKS ] = { ( unsigned short ) 0 };
+   \                     usTaskCheck:
+   \   00000000                      DS8 16
+     91          
+     92          /*-----------------------------------------------------------*/
+     93          
+
+   \                                 In section .text, align 2, keep-with-next
+     94          void vStartMathTasks( unsigned portBASE_TYPE uxPriority )
+     95          {
+   \                     vStartMathTasks:
+   \   00000000   1FB5               PUSH     {R0-R4,LR}
+   \   00000002   0400               MOVS     R4,R0
+     96          	xTaskCreate( vCompetingMathTask1, ( signed char * ) "Math1", mathSTACK_SIZE, ( void * ) &( usTaskCheck[ 0 ] ), uxPriority, NULL );
+   \   00000004   0020               MOVS     R0,#+0
+   \   00000006   0390               STR      R0,[SP, #+12]
+   \   00000008   0020               MOVS     R0,#+0
+   \   0000000A   0290               STR      R0,[SP, #+8]
+   \   0000000C   0020               MOVS     R0,#+0
+   \   0000000E   0190               STR      R0,[SP, #+4]
+   \   00000010   0094               STR      R4,[SP, #+0]
+   \   00000012   ....               LDR      R3,??DataTable3
+   \   00000014   8022               MOVS     R2,#+128
+   \   00000016   ....               LDR      R1,??DataTable2
+   \   00000018   ....               LDR      R0,??DataTable2_1
+   \   0000001A   ........           BL       xTaskGenericCreate
+     97          	xTaskCreate( vCompetingMathTask2, ( signed char * ) "Math2", mathSTACK_SIZE, ( void * ) &( usTaskCheck[ 1 ] ), uxPriority, NULL );
+   \   0000001E   0020               MOVS     R0,#+0
+   \   00000020   0390               STR      R0,[SP, #+12]
+   \   00000022   0020               MOVS     R0,#+0
+   \   00000024   0290               STR      R0,[SP, #+8]
+   \   00000026   0020               MOVS     R0,#+0
+   \   00000028   0190               STR      R0,[SP, #+4]
+   \   0000002A   0094               STR      R4,[SP, #+0]
+   \   0000002C   ....               LDR      R3,??DataTable3
+   \   0000002E   9B1C               ADDS     R3,R3,#+2
+   \   00000030   8022               MOVS     R2,#+128
+   \   00000032   ....               LDR      R1,??DataTable2_2
+   \   00000034   ....               LDR      R0,??DataTable3_1
+   \   00000036   ........           BL       xTaskGenericCreate
+     98          	xTaskCreate( vCompetingMathTask3, ( signed char * ) "Math3", mathSTACK_SIZE, ( void * ) &( usTaskCheck[ 2 ] ), uxPriority, NULL );
+   \   0000003A   0020               MOVS     R0,#+0
+   \   0000003C   0390               STR      R0,[SP, #+12]
+   \   0000003E   0020               MOVS     R0,#+0
+   \   00000040   0290               STR      R0,[SP, #+8]
+   \   00000042   0020               MOVS     R0,#+0
+   \   00000044   0190               STR      R0,[SP, #+4]
+   \   00000046   0094               STR      R4,[SP, #+0]
+   \   00000048   ....               LDR      R3,??DataTable3
+   \   0000004A   1B1D               ADDS     R3,R3,#+4
+   \   0000004C   8022               MOVS     R2,#+128
+   \   0000004E   ....               LDR      R1,??DataTable3_2
+   \   00000050   ....               LDR      R0,??DataTable3_3
+   \   00000052   ........           BL       xTaskGenericCreate
+     99          	xTaskCreate( vCompetingMathTask4, ( signed char * ) "Math4", mathSTACK_SIZE, ( void * ) &( usTaskCheck[ 3 ] ), uxPriority, NULL );
+   \   00000056   0020               MOVS     R0,#+0
+   \   00000058   0390               STR      R0,[SP, #+12]
+   \   0000005A   0020               MOVS     R0,#+0
+   \   0000005C   0290               STR      R0,[SP, #+8]
+   \   0000005E   0020               MOVS     R0,#+0
+   \   00000060   0190               STR      R0,[SP, #+4]
+   \   00000062   0094               STR      R4,[SP, #+0]
+   \   00000064   ....               LDR      R3,??DataTable3
+   \   00000066   9B1D               ADDS     R3,R3,#+6
+   \   00000068   8022               MOVS     R2,#+128
+   \   0000006A   ....               LDR      R1,??DataTable3_4
+   \   0000006C   ....               LDR      R0,??DataTable3_5
+   \   0000006E   ........           BL       xTaskGenericCreate
+    100          	xTaskCreate( vCompetingMathTask1, ( signed char * ) "Math5", mathSTACK_SIZE, ( void * ) &( usTaskCheck[ 4 ] ), uxPriority, NULL );
+   \   00000072   0020               MOVS     R0,#+0
+   \   00000074   0390               STR      R0,[SP, #+12]
+   \   00000076   0020               MOVS     R0,#+0
+   \   00000078   0290               STR      R0,[SP, #+8]
+   \   0000007A   0020               MOVS     R0,#+0
+   \   0000007C   0190               STR      R0,[SP, #+4]
+   \   0000007E   0094               STR      R4,[SP, #+0]
+   \   00000080   ....               LDR      R3,??DataTable3
+   \   00000082   0833               ADDS     R3,R3,#+8
+   \   00000084   8022               MOVS     R2,#+128
+   \   00000086   ....               LDR      R1,??DataTable3_6
+   \   00000088   ....               LDR      R0,??DataTable2_1
+   \   0000008A   ........           BL       xTaskGenericCreate
+    101          	xTaskCreate( vCompetingMathTask2, ( signed char * ) "Math6", mathSTACK_SIZE, ( void * ) &( usTaskCheck[ 5 ] ), uxPriority, NULL );
+   \   0000008E   0020               MOVS     R0,#+0
+   \   00000090   0390               STR      R0,[SP, #+12]
+   \   00000092   0020               MOVS     R0,#+0
+   \   00000094   0290               STR      R0,[SP, #+8]
+   \   00000096   0020               MOVS     R0,#+0
+   \   00000098   0190               STR      R0,[SP, #+4]
+   \   0000009A   0094               STR      R4,[SP, #+0]
+   \   0000009C   ....               LDR      R3,??DataTable3
+   \   0000009E   0A33               ADDS     R3,R3,#+10
+   \   000000A0   8022               MOVS     R2,#+128
+   \   000000A2   ....               LDR      R1,??DataTable3_7
+   \   000000A4   ....               LDR      R0,??DataTable3_1
+   \   000000A6   ........           BL       xTaskGenericCreate
+    102          	xTaskCreate( vCompetingMathTask3, ( signed char * ) "Math7", mathSTACK_SIZE, ( void * ) &( usTaskCheck[ 6 ] ), uxPriority, NULL );
+   \   000000AA   0020               MOVS     R0,#+0
+   \   000000AC   0390               STR      R0,[SP, #+12]
+   \   000000AE   0020               MOVS     R0,#+0
+   \   000000B0   0290               STR      R0,[SP, #+8]
+   \   000000B2   0020               MOVS     R0,#+0
+   \   000000B4   0190               STR      R0,[SP, #+4]
+   \   000000B6   0094               STR      R4,[SP, #+0]
+   \   000000B8   ....               LDR      R3,??DataTable3
+   \   000000BA   0C33               ADDS     R3,R3,#+12
+   \   000000BC   8022               MOVS     R2,#+128
+   \   000000BE   ....               LDR      R1,??DataTable3_8
+   \   000000C0   ....               LDR      R0,??DataTable3_3
+   \   000000C2   ........           BL       xTaskGenericCreate
+    103          	xTaskCreate( vCompetingMathTask4, ( signed char * ) "Math8", mathSTACK_SIZE, ( void * ) &( usTaskCheck[ 7 ] ), uxPriority, NULL );
+   \   000000C6   0020               MOVS     R0,#+0
+   \   000000C8   0390               STR      R0,[SP, #+12]
+   \   000000CA   0020               MOVS     R0,#+0
+   \   000000CC   0290               STR      R0,[SP, #+8]
+   \   000000CE   0020               MOVS     R0,#+0
+   \   000000D0   0190               STR      R0,[SP, #+4]
+   \   000000D2   0094               STR      R4,[SP, #+0]
+   \   000000D4   ....               LDR      R3,??DataTable3
+   \   000000D6   0E33               ADDS     R3,R3,#+14
+   \   000000D8   8022               MOVS     R2,#+128
+   \   000000DA   ....               LDR      R1,??DataTable3_9
+   \   000000DC   ....               LDR      R0,??DataTable3_5
+   \   000000DE   ........           BL       xTaskGenericCreate
+    104          }
+   \   000000E2   1FBD               POP      {R0-R4,PC}       ;; return
+    105          /*-----------------------------------------------------------*/
+    106          
+
+   \                                 In section .text, align 2, keep-with-next
+    107          static portTASK_FUNCTION( vCompetingMathTask1, pvParameters )
+    108          {
+   \                     vCompetingMathTask1:
+   \   00000000   30B5               PUSH     {R4,R5,LR}
+   \   00000002   8BB0               SUB      SP,SP,#+44
+   \   00000004   0500               MOVS     R5,R0
+    109          volatile portDOUBLE d1, d2, d3, d4;
+    110          volatile unsigned short *pusTaskCheckVariable;
+    111          volatile portDOUBLE dAnswer;
+    112          short sError = pdFALSE;
+   \   00000006   0024               MOVS     R4,#+0
+    113          
+    114          	d1 = 123.4567;
+   \   00000008   04AA               ADD      R2,SP,#+16
+   \   0000000A   ....               ADR      R0,??DataTable3_10
+   \   0000000C   03C8               LDM      R0,{R0,R1}
+   \   0000000E   03C2               STM      R2!,{R0,R1}
+   \   00000010   083A               SUBS     R2,R2,#+8
+    115          	d2 = 2345.6789;
+   \   00000012   02AA               ADD      R2,SP,#+8
+   \   00000014   ....               ADR      R0,??DataTable4
+   \   00000016   03C8               LDM      R0,{R0,R1}
+   \   00000018   03C2               STM      R2!,{R0,R1}
+   \   0000001A   083A               SUBS     R2,R2,#+8
+    116          	d3 = -918.222;
+   \   0000001C   6A46               MOV      R2,SP
+   \   0000001E   ....               ADR      R0,??DataTable4_1
+   \   00000020   03C8               LDM      R0,{R0,R1}
+   \   00000022   03C2               STM      R2!,{R0,R1}
+   \   00000024   083A               SUBS     R2,R2,#+8
+    117          
+    118          	dAnswer = ( d1 + d2 ) * d3;
+   \   00000026   04A8               ADD      R0,SP,#+16
+   \   00000028   03C8               LDM      R0,{R0,R1}
+   \   0000002A   02AA               ADD      R2,SP,#+8
+   \   0000002C   0CCA               LDM      R2,{R2,R3}
+   \   0000002E   ........           BL       __aeabi_dadd
+   \   00000032   0200               MOVS     R2,R0
+   \   00000034   0B00               MOVS     R3,R1
+   \   00000036   6846               MOV      R0,SP
+   \   00000038   03C8               LDM      R0,{R0,R1}
+   \   0000003A   ........           BL       __aeabi_dmul
+   \   0000003E   06AA               ADD      R2,SP,#+24
+   \   00000040   03C2               STM      R2!,{R0,R1}
+   \   00000042   083A               SUBS     R2,R2,#+8
+    119          
+    120          	/* The variable this task increments to show it is still running is passed in 
+    121          	as the parameter. */
+    122          	pusTaskCheckVariable = ( unsigned short * ) pvParameters;
+    123          
+    124          	/* Keep performing a calculation and checking the result against a constant. */
+    125          	for(;;)
+    126          	{
+    127          		d1 = 123.4567;
+   \                     ??vCompetingMathTask1_0:
+   \   00000044   04AA               ADD      R2,SP,#+16
+   \   00000046   ....               ADR      R0,??DataTable3_10
+   \   00000048   03C8               LDM      R0,{R0,R1}
+   \   0000004A   03C2               STM      R2!,{R0,R1}
+   \   0000004C   083A               SUBS     R2,R2,#+8
+    128          		d2 = 2345.6789;
+   \   0000004E   02AA               ADD      R2,SP,#+8
+   \   00000050   ....               ADR      R0,??DataTable4
+   \   00000052   03C8               LDM      R0,{R0,R1}
+   \   00000054   03C2               STM      R2!,{R0,R1}
+   \   00000056   083A               SUBS     R2,R2,#+8
+    129          		d3 = -918.222;
+   \   00000058   6A46               MOV      R2,SP
+   \   0000005A   ....               ADR      R0,??DataTable4_1
+   \   0000005C   03C8               LDM      R0,{R0,R1}
+   \   0000005E   03C2               STM      R2!,{R0,R1}
+   \   00000060   083A               SUBS     R2,R2,#+8
+    130          
+    131          		d4 = ( d1 + d2 ) * d3;
+   \   00000062   04A8               ADD      R0,SP,#+16
+   \   00000064   03C8               LDM      R0,{R0,R1}
+   \   00000066   02AA               ADD      R2,SP,#+8
+   \   00000068   0CCA               LDM      R2,{R2,R3}
+   \   0000006A   ........           BL       __aeabi_dadd
+   \   0000006E   0200               MOVS     R2,R0
+   \   00000070   0B00               MOVS     R3,R1
+   \   00000072   6846               MOV      R0,SP
+   \   00000074   03C8               LDM      R0,{R0,R1}
+   \   00000076   ........           BL       __aeabi_dmul
+   \   0000007A   08AA               ADD      R2,SP,#+32
+   \   0000007C   03C2               STM      R2!,{R0,R1}
+   \   0000007E   083A               SUBS     R2,R2,#+8
+    132          
+    133          		#if configUSE_PREEMPTION == 0
+    134          			taskYIELD();
+    135          		#endif
+    136          
+    137          		/* If the calculation does not match the expected constant, stop the 
+    138          		increment of the check variable. */
+    139          		if( fabs( d4 - dAnswer ) > 0.001 )
+   \   00000080   08A8               ADD      R0,SP,#+32
+   \   00000082   03C8               LDM      R0,{R0,R1}
+   \   00000084   06AA               ADD      R2,SP,#+24
+   \   00000086   0CCA               LDM      R2,{R2,R3}
+   \   00000088   ........           BL       __aeabi_dsub
+   \   0000008C   4900               LSLS     R1,R1,#+1        ;; ZeroExtS R1,R1,#+1,#+1
+   \   0000008E   4908               LSRS     R1,R1,#+1
+   \   00000090   ....               ADR      R2,??DataTable5
+   \   00000092   0CCA               LDM      R2,{R2,R3}
+   \   00000094   ........           BL       __aeabi_cdrcmple
+   \   00000098   00D8               BHI      ??vCompetingMathTask1_1
+    140          		{
+    141          			sError = pdTRUE;
+   \   0000009A   0124               MOVS     R4,#+1
+    142          		}
+    143          
+    144          		if( sError == pdFALSE )
+   \                     ??vCompetingMathTask1_1:
+   \   0000009C   24B2               SXTH     R4,R4
+   \   0000009E   002C               CMP      R4,#+0
+   \   000000A0   D0D1               BNE      ??vCompetingMathTask1_0
+    145          		{
+    146          			/* If the calculation has always been correct, increment the check 
+    147          			variable so we know this task is still running okay. */
+    148          			( *pusTaskCheckVariable )++;
+   \   000000A2   2888               LDRH     R0,[R5, #+0]
+   \   000000A4   401C               ADDS     R0,R0,#+1
+   \   000000A6   2880               STRH     R0,[R5, #+0]
+   \   000000A8   CCE7               B        ??vCompetingMathTask1_0
+    149          		}
+    150          
+    151          		#if configUSE_PREEMPTION == 0
+    152          			taskYIELD();
+    153          		#endif
+    154          
+    155          	}
+    156          }
+    157          /*-----------------------------------------------------------*/
+    158          
+
+   \                                 In section .text, align 2, keep-with-next
+    159          static portTASK_FUNCTION( vCompetingMathTask2, pvParameters )
+    160          {
+   \                     vCompetingMathTask2:
+   \   00000000   30B5               PUSH     {R4,R5,LR}
+   \   00000002   8BB0               SUB      SP,SP,#+44
+   \   00000004   0500               MOVS     R5,R0
+    161          volatile portDOUBLE d1, d2, d3, d4;
+    162          volatile unsigned short *pusTaskCheckVariable;
+    163          volatile portDOUBLE dAnswer;
+    164          short sError = pdFALSE;
+   \   00000006   0024               MOVS     R4,#+0
+    165          
+    166          	d1 = -389.38;
+   \   00000008   04AA               ADD      R2,SP,#+16
+   \   0000000A   ....               ADR      R0,??DataTable5_1
+   \   0000000C   03C8               LDM      R0,{R0,R1}
+   \   0000000E   03C2               STM      R2!,{R0,R1}
+   \   00000010   083A               SUBS     R2,R2,#+8
+    167          	d2 = 32498.2;
+   \   00000012   02AA               ADD      R2,SP,#+8
+   \   00000014   ....               ADR      R0,??DataTable5_2
+   \   00000016   03C8               LDM      R0,{R0,R1}
+   \   00000018   03C2               STM      R2!,{R0,R1}
+   \   0000001A   083A               SUBS     R2,R2,#+8
+    168          	d3 = -2.0001;
+   \   0000001C   6A46               MOV      R2,SP
+   \   0000001E   ....               ADR      R0,??DataTable5_3
+   \   00000020   03C8               LDM      R0,{R0,R1}
+   \   00000022   03C2               STM      R2!,{R0,R1}
+   \   00000024   083A               SUBS     R2,R2,#+8
+    169          
+    170          	dAnswer = ( d1 / d2 ) * d3;
+   \   00000026   04A8               ADD      R0,SP,#+16
+   \   00000028   03C8               LDM      R0,{R0,R1}
+   \   0000002A   02AA               ADD      R2,SP,#+8
+   \   0000002C   0CCA               LDM      R2,{R2,R3}
+   \   0000002E   ........           BL       __aeabi_ddiv
+   \   00000032   0200               MOVS     R2,R0
+   \   00000034   0B00               MOVS     R3,R1
+   \   00000036   6846               MOV      R0,SP
+   \   00000038   03C8               LDM      R0,{R0,R1}
+   \   0000003A   ........           BL       __aeabi_dmul
+   \   0000003E   06AA               ADD      R2,SP,#+24
+   \   00000040   03C2               STM      R2!,{R0,R1}
+   \   00000042   083A               SUBS     R2,R2,#+8
+    171          
+    172          
+    173          	/* The variable this task increments to show it is still running is passed in 
+    174          	as the parameter. */
+    175          	pusTaskCheckVariable = ( unsigned short * ) pvParameters;
+    176          
+    177          	/* Keep performing a calculation and checking the result against a constant. */
+    178          	for( ;; )
+    179          	{
+    180          		d1 = -389.38;
+   \                     ??vCompetingMathTask2_0:
+   \   00000044   04AA               ADD      R2,SP,#+16
+   \   00000046   ....               ADR      R0,??DataTable5_1
+   \   00000048   03C8               LDM      R0,{R0,R1}
+   \   0000004A   03C2               STM      R2!,{R0,R1}
+   \   0000004C   083A               SUBS     R2,R2,#+8
+    181          		d2 = 32498.2;
+   \   0000004E   02AA               ADD      R2,SP,#+8
+   \   00000050   ....               ADR      R0,??DataTable5_2
+   \   00000052   03C8               LDM      R0,{R0,R1}
+   \   00000054   03C2               STM      R2!,{R0,R1}
+   \   00000056   083A               SUBS     R2,R2,#+8
+    182          		d3 = -2.0001;
+   \   00000058   6A46               MOV      R2,SP
+   \   0000005A   ....               ADR      R0,??DataTable5_3
+   \   0000005C   03C8               LDM      R0,{R0,R1}
+   \   0000005E   03C2               STM      R2!,{R0,R1}
+   \   00000060   083A               SUBS     R2,R2,#+8
+    183          
+    184          		d4 = ( d1 / d2 ) * d3;
+   \   00000062   04A8               ADD      R0,SP,#+16
+   \   00000064   03C8               LDM      R0,{R0,R1}
+   \   00000066   02AA               ADD      R2,SP,#+8
+   \   00000068   0CCA               LDM      R2,{R2,R3}
+   \   0000006A   ........           BL       __aeabi_ddiv
+   \   0000006E   0200               MOVS     R2,R0
+   \   00000070   0B00               MOVS     R3,R1
+   \   00000072   6846               MOV      R0,SP
+   \   00000074   03C8               LDM      R0,{R0,R1}
+   \   00000076   ........           BL       __aeabi_dmul
+   \   0000007A   08AA               ADD      R2,SP,#+32
+   \   0000007C   03C2               STM      R2!,{R0,R1}
+   \   0000007E   083A               SUBS     R2,R2,#+8
+    185          
+    186          		#if configUSE_PREEMPTION == 0
+    187          			taskYIELD();
+    188          		#endif
+    189          		
+    190          		/* If the calculation does not match the expected constant, stop the 
+    191          		increment of the check variable. */
+    192          		if( fabs( d4 - dAnswer ) > 0.001 )
+   \   00000080   08A8               ADD      R0,SP,#+32
+   \   00000082   03C8               LDM      R0,{R0,R1}
+   \   00000084   06AA               ADD      R2,SP,#+24
+   \   00000086   0CCA               LDM      R2,{R2,R3}
+   \   00000088   ........           BL       __aeabi_dsub
+   \   0000008C   4900               LSLS     R1,R1,#+1        ;; ZeroExtS R1,R1,#+1,#+1
+   \   0000008E   4908               LSRS     R1,R1,#+1
+   \   00000090   ....               ADR      R2,??DataTable5
+   \   00000092   0CCA               LDM      R2,{R2,R3}
+   \   00000094   ........           BL       __aeabi_cdrcmple
+   \   00000098   00D8               BHI      ??vCompetingMathTask2_1
+    193          		{
+    194          			sError = pdTRUE;
+   \   0000009A   0124               MOVS     R4,#+1
+    195          		}
+    196          
+    197          		if( sError == pdFALSE )
+   \                     ??vCompetingMathTask2_1:
+   \   0000009C   24B2               SXTH     R4,R4
+   \   0000009E   002C               CMP      R4,#+0
+   \   000000A0   D0D1               BNE      ??vCompetingMathTask2_0
+    198          		{
+    199          			/* If the calculation has always been correct, increment the check 
+    200          			variable so we know
+    201          			this task is still running okay. */
+    202          			( *pusTaskCheckVariable )++;
+   \   000000A2   2888               LDRH     R0,[R5, #+0]
+   \   000000A4   401C               ADDS     R0,R0,#+1
+   \   000000A6   2880               STRH     R0,[R5, #+0]
+   \   000000A8   CCE7               B        ??vCompetingMathTask2_0
+    203          		}
+    204          
+    205          		#if configUSE_PREEMPTION == 0
+    206          			taskYIELD();
+    207          		#endif
+    208          	}
+    209          }
+    210          /*-----------------------------------------------------------*/
+    211          
+
+   \                                 In section .text, align 2, keep-with-next
+    212          static portTASK_FUNCTION( vCompetingMathTask3, pvParameters )
+    213          {
+   \                     vCompetingMathTask3:
+   \   00000000   F0B5               PUSH     {R4-R7,LR}
+   \   00000002   89B0               SUB      SP,SP,#+36
+    214          volatile portDOUBLE *pdArray, dTotal1, dTotal2, dDifference;
+    215          volatile unsigned short *pusTaskCheckVariable;
+    216          const size_t xArraySize = 10;
+   \   00000004   0A26               MOVS     R6,#+10
+    217          size_t xPosition;
+    218          short sError = pdFALSE;
+   \   00000006   0027               MOVS     R7,#+0
+    219          
+    220          	/* The variable this task increments to show it is still running is passed in 
+    221          	as the parameter. */
+    222          	pusTaskCheckVariable = ( unsigned short * ) pvParameters;
+   \   00000008   0490               STR      R0,[SP, #+16]
+    223          
+    224          	pdArray = ( portDOUBLE * ) pvPortMalloc( xArraySize * sizeof( portDOUBLE ) );
+   \   0000000A   0820               MOVS     R0,#+8
+   \   0000000C   7043               MULS     R0,R6,R0
+   \   0000000E   ........           BL       pvPortMalloc
+   \   00000012   0500               MOVS     R5,R0
+   \   00000014   29E0               B        ??vCompetingMathTask3_0
+    225          
+    226          	/* Keep filling an array, keeping a running total of the values placed in the 
+    227          	array.  Then run through the array adding up all the values.  If the two totals 
+    228          	do not match, stop the check variable from incrementing. */
+    229          	for( ;; )
+    230          	{
+    231          		dTotal1 = 0.0;
+    232          		dTotal2 = 0.0;
+    233          
+    234          		for( xPosition = 0; xPosition < xArraySize; xPosition++ )
+    235          		{
+    236          			pdArray[ xPosition ] = ( portDOUBLE ) xPosition + 5.5;
+    237          			dTotal1 += ( portDOUBLE ) xPosition + 5.5;	
+    238          		}
+    239          
+    240          		#if configUSE_PREEMPTION == 0
+    241          			taskYIELD();
+    242          		#endif
+    243          
+    244          		for( xPosition = 0; xPosition < xArraySize; xPosition++ )
+    245          		{
+    246          			dTotal2 += pdArray[ xPosition ];
+   \                     ??vCompetingMathTask3_1:
+   \   00000016   6846               MOV      R0,SP
+   \   00000018   0CC8               LDM      R0!,{R2,R3}
+   \   0000001A   0838               SUBS     R0,R0,#+8
+   \   0000001C   0820               MOVS     R0,#+8
+   \   0000001E   6043               MULS     R0,R4,R0
+   \   00000020   2818               ADDS     R0,R5,R0
+   \   00000022   03C8               LDM      R0,{R0,R1}
+   \   00000024   ........           BL       __aeabi_dadd
+   \   00000028   6A46               MOV      R2,SP
+   \   0000002A   03C2               STM      R2!,{R0,R1}
+   \   0000002C   083A               SUBS     R2,R2,#+8
+    247          		}
+   \   0000002E   641C               ADDS     R4,R4,#+1
+   \                     ??vCompetingMathTask3_2:
+   \   00000030   B442               CMP      R4,R6
+   \   00000032   F0D3               BCC      ??vCompetingMathTask3_1
+    248          
+    249          		dDifference = dTotal1 - dTotal2;
+   \   00000034   02A8               ADD      R0,SP,#+8
+   \   00000036   03C8               LDM      R0,{R0,R1}
+   \   00000038   6A46               MOV      R2,SP
+   \   0000003A   0CCA               LDM      R2,{R2,R3}
+   \   0000003C   ........           BL       __aeabi_dsub
+   \   00000040   06AA               ADD      R2,SP,#+24
+   \   00000042   03C2               STM      R2!,{R0,R1}
+   \   00000044   083A               SUBS     R2,R2,#+8
+    250          		if( fabs( dDifference ) > 0.001 )
+   \   00000046   06A8               ADD      R0,SP,#+24
+   \   00000048   03C8               LDM      R0,{R0,R1}
+   \   0000004A   4900               LSLS     R1,R1,#+1        ;; ZeroExtS R1,R1,#+1,#+1
+   \   0000004C   4908               LSRS     R1,R1,#+1
+   \   0000004E   ....               ADR      R2,??DataTable5
+   \   00000050   0CCA               LDM      R2,{R2,R3}
+   \   00000052   ........           BL       __aeabi_cdrcmple
+   \   00000056   00D8               BHI      ??vCompetingMathTask3_3
+    251          		{
+    252          			sError = pdTRUE;
+   \   00000058   0127               MOVS     R7,#+1
+    253          		}
+    254          
+    255          		#if configUSE_PREEMPTION == 0
+    256          			taskYIELD();
+    257          		#endif
+    258          
+    259          		if( sError == pdFALSE )
+   \                     ??vCompetingMathTask3_3:
+   \   0000005A   3FB2               SXTH     R7,R7
+   \   0000005C   002F               CMP      R7,#+0
+   \   0000005E   04D1               BNE      ??vCompetingMathTask3_0
+    260          		{
+    261          			/* If the calculation has always been correct, increment the check 
+    262          			variable so we know	this task is still running okay. */
+    263          			( *pusTaskCheckVariable )++;
+   \   00000060   0498               LDR      R0,[SP, #+16]
+   \   00000062   0088               LDRH     R0,[R0, #+0]
+   \   00000064   401C               ADDS     R0,R0,#+1
+   \   00000066   0499               LDR      R1,[SP, #+16]
+   \   00000068   0880               STRH     R0,[R1, #+0]
+    264          		}
+   \                     ??vCompetingMathTask3_0:
+   \   0000006A   02AA               ADD      R2,SP,#+8
+   \   0000006C   0020               MOVS     R0,#+0
+   \   0000006E   0021               MOVS     R1,#+0
+   \   00000070   03C2               STM      R2!,{R0,R1}
+   \   00000072   083A               SUBS     R2,R2,#+8
+   \   00000074   6A46               MOV      R2,SP
+   \   00000076   0020               MOVS     R0,#+0
+   \   00000078   0021               MOVS     R1,#+0
+   \   0000007A   03C2               STM      R2!,{R0,R1}
+   \   0000007C   083A               SUBS     R2,R2,#+8
+   \   0000007E   0024               MOVS     R4,#+0
+   \   00000080   20E0               B        ??vCompetingMathTask3_4
+   \                     ??vCompetingMathTask3_5:
+   \   00000082   2000               MOVS     R0,R4
+   \   00000084   ........           BL       __aeabi_ui2d
+   \   00000088   0200               MOVS     R2,R0
+   \   0000008A   0B00               MOVS     R3,R1
+   \   0000008C   0020               MOVS     R0,#+0
+   \   0000008E   ....               LDR      R1,??DataTable5_4  ;; 0x40160000
+   \   00000090   ........           BL       __aeabi_dadd
+   \   00000094   0822               MOVS     R2,#+8
+   \   00000096   6243               MULS     R2,R4,R2
+   \   00000098   AA18               ADDS     R2,R5,R2
+   \   0000009A   03C2               STM      R2!,{R0,R1}
+   \   0000009C   083A               SUBS     R2,R2,#+8
+   \   0000009E   2000               MOVS     R0,R4
+   \   000000A0   ........           BL       __aeabi_ui2d
+   \   000000A4   0200               MOVS     R2,R0
+   \   000000A6   0B00               MOVS     R3,R1
+   \   000000A8   0020               MOVS     R0,#+0
+   \   000000AA   ....               LDR      R1,??DataTable5_4  ;; 0x40160000
+   \   000000AC   ........           BL       __aeabi_dadd
+   \   000000B0   0200               MOVS     R2,R0
+   \   000000B2   0B00               MOVS     R3,R1
+   \   000000B4   02A8               ADD      R0,SP,#+8
+   \   000000B6   03C8               LDM      R0,{R0,R1}
+   \   000000B8   ........           BL       __aeabi_dadd
+   \   000000BC   02AA               ADD      R2,SP,#+8
+   \   000000BE   03C2               STM      R2!,{R0,R1}
+   \   000000C0   083A               SUBS     R2,R2,#+8
+   \   000000C2   641C               ADDS     R4,R4,#+1
+   \                     ??vCompetingMathTask3_4:
+   \   000000C4   B442               CMP      R4,R6
+   \   000000C6   DCD3               BCC      ??vCompetingMathTask3_5
+   \   000000C8   0024               MOVS     R4,#+0
+   \   000000CA   B1E7               B        ??vCompetingMathTask3_2
+    265          	}
+    266          }
+    267          /*-----------------------------------------------------------*/
+    268          
+
+   \                                 In section .text, align 2, keep-with-next
+    269          static portTASK_FUNCTION( vCompetingMathTask4, pvParameters )
+    270          {
+   \                     vCompetingMathTask4:
+   \   00000000   F0B5               PUSH     {R4-R7,LR}
+   \   00000002   89B0               SUB      SP,SP,#+36
+    271          volatile portDOUBLE *pdArray, dTotal1, dTotal2, dDifference;
+    272          volatile unsigned short *pusTaskCheckVariable;
+    273          const size_t xArraySize = 10;
+   \   00000004   0A26               MOVS     R6,#+10
+    274          size_t xPosition;
+    275          short sError = pdFALSE;
+   \   00000006   0027               MOVS     R7,#+0
+    276          
+    277          	/* The variable this task increments to show it is still running is passed in 
+    278          	as the parameter. */
+    279          	pusTaskCheckVariable = ( unsigned short * ) pvParameters;
+   \   00000008   0490               STR      R0,[SP, #+16]
+    280          
+    281          	pdArray = ( portDOUBLE * ) pvPortMalloc( xArraySize * sizeof( portDOUBLE ) );
+   \   0000000A   0820               MOVS     R0,#+8
+   \   0000000C   7043               MULS     R0,R6,R0
+   \   0000000E   ........           BL       pvPortMalloc
+   \   00000012   0500               MOVS     R5,R0
+   \   00000014   29E0               B        ??vCompetingMathTask4_0
+    282          
+    283          	/* Keep filling an array, keeping a running total of the values placed in the 
+    284          	array.  Then run through the array adding up all the values.  If the two totals 
+    285          	do not match, stop the check variable from incrementing. */
+    286          	for( ;; )
+    287          	{
+    288          		dTotal1 = 0.0;
+    289          		dTotal2 = 0.0;
+    290          
+    291          		for( xPosition = 0; xPosition < xArraySize; xPosition++ )
+    292          		{
+    293          			pdArray[ xPosition ] = ( portDOUBLE ) xPosition * 12.123;
+    294          			dTotal1 += ( portDOUBLE ) xPosition * 12.123;	
+    295          		}
+    296          
+    297          		#if configUSE_PREEMPTION == 0
+    298          			taskYIELD();
+    299          		#endif
+    300          
+    301          		for( xPosition = 0; xPosition < xArraySize; xPosition++ )
+    302          		{
+    303          			dTotal2 += pdArray[ xPosition ];
+   \                     ??vCompetingMathTask4_1:
+   \   00000016   6846               MOV      R0,SP
+   \   00000018   0CC8               LDM      R0!,{R2,R3}
+   \   0000001A   0838               SUBS     R0,R0,#+8
+   \   0000001C   0820               MOVS     R0,#+8
+   \   0000001E   6043               MULS     R0,R4,R0
+   \   00000020   2818               ADDS     R0,R5,R0
+   \   00000022   03C8               LDM      R0,{R0,R1}
+   \   00000024   ........           BL       __aeabi_dadd
+   \   00000028   6A46               MOV      R2,SP
+   \   0000002A   03C2               STM      R2!,{R0,R1}
+   \   0000002C   083A               SUBS     R2,R2,#+8
+    304          		}
+   \   0000002E   641C               ADDS     R4,R4,#+1
+   \                     ??vCompetingMathTask4_2:
+   \   00000030   B442               CMP      R4,R6
+   \   00000032   F0D3               BCC      ??vCompetingMathTask4_1
+    305          
+    306          		dDifference = dTotal1 - dTotal2;
+   \   00000034   02A8               ADD      R0,SP,#+8
+   \   00000036   03C8               LDM      R0,{R0,R1}
+   \   00000038   6A46               MOV      R2,SP
+   \   0000003A   0CCA               LDM      R2,{R2,R3}
+   \   0000003C   ........           BL       __aeabi_dsub
+   \   00000040   06AA               ADD      R2,SP,#+24
+   \   00000042   03C2               STM      R2!,{R0,R1}
+   \   00000044   083A               SUBS     R2,R2,#+8
+    307          		if( fabs( dDifference ) > 0.001 )
+   \   00000046   06A8               ADD      R0,SP,#+24
+   \   00000048   03C8               LDM      R0,{R0,R1}
+   \   0000004A   4900               LSLS     R1,R1,#+1        ;; ZeroExtS R1,R1,#+1,#+1
+   \   0000004C   4908               LSRS     R1,R1,#+1
+   \   0000004E   ....               ADR      R2,??DataTable5
+   \   00000050   0CCA               LDM      R2,{R2,R3}
+   \   00000052   ........           BL       __aeabi_cdrcmple
+   \   00000056   00D8               BHI      ??vCompetingMathTask4_3
+    308          		{
+    309          			sError = pdTRUE;
+   \   00000058   0127               MOVS     R7,#+1
+    310          		}
+    311          
+    312          		#if configUSE_PREEMPTION == 0
+    313          			taskYIELD();
+    314          		#endif
+    315          
+    316          		if( sError == pdFALSE )
+   \                     ??vCompetingMathTask4_3:
+   \   0000005A   3FB2               SXTH     R7,R7
+   \   0000005C   002F               CMP      R7,#+0
+   \   0000005E   04D1               BNE      ??vCompetingMathTask4_0
+    317          		{
+    318          			/* If the calculation has always been correct, increment the check 
+    319          			variable so we know	this task is still running okay. */
+    320          			( *pusTaskCheckVariable )++;
+   \   00000060   0498               LDR      R0,[SP, #+16]
+   \   00000062   0088               LDRH     R0,[R0, #+0]
+   \   00000064   401C               ADDS     R0,R0,#+1
+   \   00000066   0499               LDR      R1,[SP, #+16]
+   \   00000068   0880               STRH     R0,[R1, #+0]
+    321          		}
+   \                     ??vCompetingMathTask4_0:
+   \   0000006A   02AA               ADD      R2,SP,#+8
+   \   0000006C   0020               MOVS     R0,#+0
+   \   0000006E   0021               MOVS     R1,#+0
+   \   00000070   03C2               STM      R2!,{R0,R1}
+   \   00000072   083A               SUBS     R2,R2,#+8
+   \   00000074   6A46               MOV      R2,SP
+   \   00000076   0020               MOVS     R0,#+0
+   \   00000078   0021               MOVS     R1,#+0
+   \   0000007A   03C2               STM      R2!,{R0,R1}
+   \   0000007C   083A               SUBS     R2,R2,#+8
+   \   0000007E   0024               MOVS     R4,#+0
+   \   00000080   20E0               B        ??vCompetingMathTask4_4
+   \                     ??vCompetingMathTask4_5:
+   \   00000082   2000               MOVS     R0,R4
+   \   00000084   ........           BL       __aeabi_ui2d
+   \   00000088   0200               MOVS     R2,R0
+   \   0000008A   0B00               MOVS     R3,R1
+   \   0000008C   ....               ADR      R0,??DataTable5_5
+   \   0000008E   03C8               LDM      R0,{R0,R1}
+   \   00000090   ........           BL       __aeabi_dmul
+   \   00000094   0822               MOVS     R2,#+8
+   \   00000096   6243               MULS     R2,R4,R2
+   \   00000098   AA18               ADDS     R2,R5,R2
+   \   0000009A   03C2               STM      R2!,{R0,R1}
+   \   0000009C   083A               SUBS     R2,R2,#+8
+   \   0000009E   2000               MOVS     R0,R4
+   \   000000A0   ........           BL       __aeabi_ui2d
+   \   000000A4   0200               MOVS     R2,R0
+   \   000000A6   0B00               MOVS     R3,R1
+   \   000000A8   ....               ADR      R0,??DataTable5_5
+   \   000000AA   03C8               LDM      R0,{R0,R1}
+   \   000000AC   ........           BL       __aeabi_dmul
+   \   000000B0   0200               MOVS     R2,R0
+   \   000000B2   0B00               MOVS     R3,R1
+   \   000000B4   02A8               ADD      R0,SP,#+8
+   \   000000B6   03C8               LDM      R0,{R0,R1}
+   \   000000B8   ........           BL       __aeabi_dadd
+   \   000000BC   02AA               ADD      R2,SP,#+8
+   \   000000BE   03C2               STM      R2!,{R0,R1}
+   \   000000C0   083A               SUBS     R2,R2,#+8
+   \   000000C2   641C               ADDS     R4,R4,#+1
+   \                     ??vCompetingMathTask4_4:
+   \   000000C4   B442               CMP      R4,R6
+   \   000000C6   DCD3               BCC      ??vCompetingMathTask4_5
+   \   000000C8   0024               MOVS     R4,#+0
+   \   000000CA   B1E7               B        ??vCompetingMathTask4_2
+    322          	}
+    323          }				 
+    324          /*-----------------------------------------------------------*/
+    325          
+    326          /* This is called to check that all the created tasks are still running. */
+
+   \                                 In section .text, align 2, keep-with-next
+    327          portBASE_TYPE xAreMathsTaskStillRunning( void )
+    328          {
+   \                     xAreMathsTaskStillRunning:
+   \   00000000   30B5               PUSH     {R4,R5,LR}
+    329          /* Keep a history of the check variables so we know if they have been incremented 
+    330          since the last call. */
+    331          static unsigned short usLastTaskCheck[ mathNUMBER_OF_TASKS ] = { ( unsigned short ) 0 };
+    332          portBASE_TYPE xReturn = pdTRUE, xTask;
+   \   00000002   0120               MOVS     R0,#+1
+    333          
+    334          	/* Check the maths tasks are still running by ensuring their check variables 
+    335          	are still incrementing. */
+    336          	for( xTask = 0; xTask < mathNUMBER_OF_TASKS; xTask++ )
+   \   00000004   0021               MOVS     R1,#+0
+   \   00000006   13E0               B        ??xAreMathsTaskStillRunning_0
+    337          	{
+    338          		if( usTaskCheck[ xTask ] == usLastTaskCheck[ xTask ] )
+   \                     ??xAreMathsTaskStillRunning_1:
+   \   00000008   0222               MOVS     R2,#+2
+   \   0000000A   4A43               MULS     R2,R1,R2
+   \   0000000C   ....               LDR      R3,??DataTable5_6
+   \   0000000E   9A5A               LDRH     R2,[R3, R2]
+   \   00000010   0223               MOVS     R3,#+2
+   \   00000012   4B43               MULS     R3,R1,R3
+   \   00000014   ....               LDR      R4,??DataTable5_7
+   \   00000016   E35A               LDRH     R3,[R4, R3]
+   \   00000018   9A42               CMP      R2,R3
+   \   0000001A   00D1               BNE      ??xAreMathsTaskStillRunning_2
+    339          		{
+    340          			/* The check has not incremented so an error exists. */
+    341          			xReturn = pdFALSE;
+   \   0000001C   0020               MOVS     R0,#+0
+    342          		}
+    343          
+    344          		usLastTaskCheck[ xTask ] = usTaskCheck[ xTask ];
+   \                     ??xAreMathsTaskStillRunning_2:
+   \   0000001E   0222               MOVS     R2,#+2
+   \   00000020   4A43               MULS     R2,R1,R2
+   \   00000022   ....               LDR      R3,??DataTable5_7
+   \   00000024   0224               MOVS     R4,#+2
+   \   00000026   4C43               MULS     R4,R1,R4
+   \   00000028   ....               LDR      R5,??DataTable5_6
+   \   0000002A   2C5B               LDRH     R4,[R5, R4]
+   \   0000002C   9C52               STRH     R4,[R3, R2]
+    345          	}
+   \   0000002E   491C               ADDS     R1,R1,#+1
+   \                     ??xAreMathsTaskStillRunning_0:
+   \   00000030   0829               CMP      R1,#+8
+   \   00000032   E9DB               BLT      ??xAreMathsTaskStillRunning_1
+    346          
+    347          	return xReturn;
+   \   00000034   30BD               POP      {R4,R5,PC}       ;; return
+    348          }
+
+   \                                 In section .bss, align 4
+   \                     ??usLastTaskCheck:
+   \   00000000                      DS8 16
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   ........           DC32     `?<Constant "Math1">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   ........           DC32     vCompetingMathTask1
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   ........           DC32     `?<Constant "Math2">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \   00000000   ........           DC32     usTaskCheck
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_1:
+   \   00000000   ........           DC32     vCompetingMathTask2
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_2:
+   \   00000000   ........           DC32     `?<Constant "Math3">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_3:
+   \   00000000   ........           DC32     vCompetingMathTask3
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_4:
+   \   00000000   ........           DC32     `?<Constant "Math4">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_5:
+   \   00000000   ........           DC32     vCompetingMathTask4
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_6:
+   \   00000000   ........           DC32     `?<Constant "Math5">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_7:
+   \   00000000   ........           DC32     `?<Constant "Math6">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_8:
+   \   00000000   ........           DC32     `?<Constant "Math7">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_9:
+   \   00000000   ........           DC32     `?<Constant "Math8">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_10:
+   \   00000000   5305A3923ADD       DC32     0x92A30553,0x405EDD3A
+   \              5E40        
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4:
+   \   00000000   82E2C7985B53       DC32     0x98C7E282,0x40A2535B
+   \              A240        
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable4_1:
+   \   00000000   B29DEFA7C6B1       DC32     0xA7EF9DB2,0xC08CB1C6
+   \              8CC0        
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5:
+   \   00000000   FDA9F1D24D62       DC32     0xD2F1A9FD,0x3F50624D
+   \              503F        
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_1:
+   \   00000000   AE47E17A1456       DC32     0x7AE147AE,0xC0785614
+   \              78C0        
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_2:
+   \   00000000   CDCCCCCC8CBC       DC32     0xCCCCCCCD,0x40DFBC8C
+   \              DF40        
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_3:
+   \   00000000   39D6C56D3400       DC32     0x6DC5D639,0xC0000034
+   \              00C0        
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_4:
+   \   00000000   00001640           DC32     0x40160000
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_5:
+   \   00000000   E5D022DBF93E       DC32     0xDB22D0E5,0x40283EF9
+   \              2840        
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_6:
+   \   00000000   ........           DC32     usTaskCheck
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable5_7:
+   \   00000000   ........           DC32     ??usLastTaskCheck
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "Math1">`:
+   \   00000000   4D6174683100       DC8 "Math1"
+   \   00000006   0000               DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "Math2">`:
+   \   00000000   4D6174683200       DC8 "Math2"
+   \   00000006   0000               DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "Math3">`:
+   \   00000000   4D6174683300       DC8 "Math3"
+   \   00000006   0000               DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "Math4">`:
+   \   00000000   4D6174683400       DC8 "Math4"
+   \   00000006   0000               DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "Math5">`:
+   \   00000000   4D6174683500       DC8 "Math5"
+   \   00000006   0000               DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "Math6">`:
+   \   00000000   4D6174683600       DC8 "Math6"
+   \   00000006   0000               DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "Math7">`:
+   \   00000000   4D6174683700       DC8 "Math7"
+   \   00000006   0000               DC8 0, 0
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "Math8">`:
+   \   00000000   4D6174683800       DC8 "Math8"
+   \   00000006   0000               DC8 0, 0
+    349          
+    350          
+    351          
+
+   Maximum stack usage in bytes:
+
+     Function                  .cstack
+     --------                  -------
+     vCompetingMathTask1           56
+     vCompetingMathTask2           56
+     vCompetingMathTask3           56
+     vCompetingMathTask4           56
+     vStartMathTasks               24
+     xAreMathsTaskStillRunning     12
+
+
+   Section sizes:
+
+     Function/Label            Bytes
+     --------------            -----
+     usTaskCheck                 16
+     vStartMathTasks            228
+     vCompetingMathTask1        170
+     vCompetingMathTask2        170
+     vCompetingMathTask3        204
+     vCompetingMathTask4        204
+     xAreMathsTaskStillRunning   54
+     usLastTaskCheck             16
+     ??DataTable2                 4
+     ??DataTable2_1               4
+     ??DataTable2_2               4
+     ??DataTable3                 4
+     ??DataTable3_1               4
+     ??DataTable3_2               4
+     ??DataTable3_3               4
+     ??DataTable3_4               4
+     ??DataTable3_5               4
+     ??DataTable3_6               4
+     ??DataTable3_7               4
+     ??DataTable3_8               4
+     ??DataTable3_9               4
+     ??DataTable3_10              8
+     ??DataTable4                 8
+     ??DataTable4_1               8
+     ??DataTable5                 8
+     ??DataTable5_1               8
+     ??DataTable5_2               8
+     ??DataTable5_3               8
+     ??DataTable5_4               4
+     ??DataTable5_5               8
+     ??DataTable5_6               4
+     ??DataTable5_7               4
+     ?<Constant "Math1">          8
+     ?<Constant "Math2">          8
+     ?<Constant "Math3">          8
+     ?<Constant "Math4">          8
+     ?<Constant "Math5">          8
+     ?<Constant "Math6">          8
+     ?<Constant "Math7">          8
+     ?<Constant "Math8">          8
+
+ 
+    32 bytes in section .bss
+    64 bytes in section .rodata
+ 1 158 bytes in section .text
+ 
+ 1 158 bytes of CODE  memory
+    64 bytes of CONST memory
+    32 bytes of DATA  memory
+
+Errors: none
+Warnings: none
