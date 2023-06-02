@@ -1,0 +1,15 @@
+.\obj\genqtest.o: ..\Common\Minimal\GenQTest.c
+.\obj\genqtest.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\genqtest.o: ..\..\Source\include\FreeRTOS.h
+.\obj\genqtest.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\genqtest.o: ..\..\Source\include\projdefs.h
+.\obj\genqtest.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\genqtest.o: ..\..\Source\include\portable.h
+.\obj\genqtest.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\genqtest.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\genqtest.o: ..\..\Source\include\task.h
+.\obj\genqtest.o: ..\..\Source\include\list.h
+.\obj\genqtest.o: ..\..\Source\include\queue.h
+.\obj\genqtest.o: ..\..\Source\include\semphr.h
+.\obj\genqtest.o: ..\..\Source\include\queue.h
+.\obj\genqtest.o: ..\Common\include\GenQTest.h

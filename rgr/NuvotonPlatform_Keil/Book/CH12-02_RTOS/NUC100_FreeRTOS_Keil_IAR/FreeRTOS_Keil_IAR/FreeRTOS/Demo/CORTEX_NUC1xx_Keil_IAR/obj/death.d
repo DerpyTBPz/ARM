@@ -1,0 +1,12 @@
+.\obj\death.o: ..\Common\Minimal\death.c
+.\obj\death.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\death.o: ..\..\Source\include\FreeRTOS.h
+.\obj\death.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\death.o: ..\..\Source\include\projdefs.h
+.\obj\death.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\death.o: ..\..\Source\include\portable.h
+.\obj\death.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\death.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\death.o: ..\..\Source\include\task.h
+.\obj\death.o: ..\..\Source\include\list.h
+.\obj\death.o: ..\Common\include\death.h

@@ -1,0 +1,32 @@
+*** Creating Trace Output File '.\obj\SampleNUC100.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\obj\app.o"'
+### List of Objects: adding '".\obj\bsp.o"'
+### List of Objects: adding '".\obj\startup_nuc100.o"'
+### List of Objects: adding '".\obj\drvuart.o"'
+### List of Objects: adding '".\obj\retarget.o"'
+### List of Objects: adding '".\obj\drvgpio.o"'
+### List of Objects: adding '".\obj\drvsys.o"'
+### List of Objects: adding '".\obj\smpl_drvuart.o"'
+### List of Objects: adding '".\obj\cpu_a.o"'
+### List of Objects: adding '".\obj\core_cm0.o"'
+### List of Objects: adding '".\obj\system_nuc100.o"'
+### List of Objects: adding '".\obj\ucos_ii.o"'
+### List of Objects: adding '".\obj\os_dbg.o"'
+### List of Objects: adding '".\obj\os_cpu_c.o"'
+### List of Objects: adding '".\obj\os_cpu_a.o"'
+### ADS-LD Command completed:
+--device DARMCM1 ".\obj\app.o" ".\obj\bsp.o" ".\obj\startup_nuc100.o" ".\obj\drvuart.o" ".\obj\retarget.o" ".\obj\drvgpio.o" ".\obj\drvsys.o" ".\obj\smpl_drvuart.o" ".\obj\cpu_a.o" ".\obj\core_cm0.o" ".\obj\system_nuc100.o" ".\obj\ucos_ii.o" ".\obj\os_dbg.o" ".\obj\os_cpu_c.o" ".\obj\os_cpu_a.o" --ro-base 0x00000000 --entry 0x00000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --map --first='startup_NUC100.o(RESET)' --datacompressor=off --info=inline --entry Reset_Handler --autoat --summary_stderr --info summarysizes --map --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\lst\SampleNUC100.map" -o ".\obj\SampleNUC100.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\obj\SampleNUC100.axf'
+### ADS-LD Command File: '.\obj\SampleNUC100.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\obj\SampleNUC100.lnp', Handle=0x000002B0
+### Writing '.lnp' file
+### ADS-LD Command file '.\obj\SampleNUC100.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

@@ -1,0 +1,13 @@
+.\obj\altpollq.o: ..\Common\Minimal\AltPollQ.c
+.\obj\altpollq.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\altpollq.o: ..\..\Source\include\FreeRTOS.h
+.\obj\altpollq.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\altpollq.o: ..\..\Source\include\projdefs.h
+.\obj\altpollq.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\altpollq.o: ..\..\Source\include\portable.h
+.\obj\altpollq.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\altpollq.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\altpollq.o: ..\..\Source\include\task.h
+.\obj\altpollq.o: ..\..\Source\include\list.h
+.\obj\altpollq.o: ..\..\Source\include\queue.h
+.\obj\altpollq.o: ..\Common\include\AltPollQ.h

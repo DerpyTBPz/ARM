@@ -1,0 +1,14 @@
+.\obj\dynamic.o: ..\Common\Minimal\dynamic.c
+.\obj\dynamic.o: D:\Keil4\ARM\RV31\INC\stdlib.h
+.\obj\dynamic.o: ..\..\Source\include\FreeRTOS.h
+.\obj\dynamic.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\dynamic.o: ..\..\Source\include\projdefs.h
+.\obj\dynamic.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\dynamic.o: ..\..\Source\include\portable.h
+.\obj\dynamic.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\dynamic.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\dynamic.o: ..\..\Source\include\task.h
+.\obj\dynamic.o: ..\..\Source\include\list.h
+.\obj\dynamic.o: ..\..\Source\include\semphr.h
+.\obj\dynamic.o: ..\..\Source\include\queue.h
+.\obj\dynamic.o: ..\Common\include\dynamic.h

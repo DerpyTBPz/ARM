@@ -1,0 +1,13 @@
+.\obj\recmutex.o: ..\Common\Minimal\recmutex.c
+.\obj\recmutex.o: ..\..\Source\include\FreeRTOS.h
+.\obj\recmutex.o: D:\Keil4\ARM\RV31\INC\stddef.h
+.\obj\recmutex.o: ..\..\Source\include\projdefs.h
+.\obj\recmutex.o: ..\CORTEX_NUC1xx_Keil_IAR\FreeRTOSConfig.h
+.\obj\recmutex.o: ..\..\Source\include\portable.h
+.\obj\recmutex.o: ..\..\Source\include\../../Source/portable/RVDS/ARM_CM0/portmacro.h
+.\obj\recmutex.o: ..\..\Source\include\mpu_wrappers.h
+.\obj\recmutex.o: ..\..\Source\include\task.h
+.\obj\recmutex.o: ..\..\Source\include\list.h
+.\obj\recmutex.o: ..\..\Source\include\semphr.h
+.\obj\recmutex.o: ..\..\Source\include\queue.h
+.\obj\recmutex.o: ..\Common\include\recmutex.h

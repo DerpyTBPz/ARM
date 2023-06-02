@@ -1,0 +1,16 @@
+.\obj\app.o: app.c
+.\obj\app.o: ..\..\..\..\..\uCOS-II\Source\ucos_ii.h
+.\obj\app.o: ..\OS-Probe\app_cfg.h
+.\obj\app.o: C:\Keil\ARM\RV31\INC\stdint.h
+.\obj\app.o: ..\OS-Probe\os_cfg.h
+.\obj\app.o: ..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M0\RealView\os_cpu.h
+.\obj\app.o: ..\..\..\..\..\uC-CPU\ARM-Cortex-M0\RealView\cpu.h
+.\obj\app.o: ..\..\..\..\..\uC-CPU\cpu_def.h
+.\obj\app.o: C:\Keil\ARM\RV31\INC\stdio.h
+.\obj\app.o: ..\..\..\..\NUC1XX_BSP\NuvotonPlatform_Keil\Include\Driver\DrvUART.h
+.\obj\app.o: ..\..\..\..\NUC1XX_BSP\CMSIS\CM0\NUC100.h
+.\obj\app.o: ..\..\..\..\NUC1XX_BSP\CMSIS\CM0\core_cm0.h
+.\obj\app.o: ..\..\..\..\NUC1XX_BSP\CMSIS\CM0\system_NUC100.h
+.\obj\app.o: ..\..\..\..\NUC1XX_BSP\NuvotonPlatform_Keil\Include\System\SysInfra.h
+.\obj\app.o: ..\..\..\..\NUC1XX_BSP\NuvotonPlatform_Keil\Include\System\ModuleID.h
+.\obj\app.o: ..\..\..\..\NUC1XX_BSP\NuvotonPlatform_Keil\Include\Driver\DrvGPIO.h
