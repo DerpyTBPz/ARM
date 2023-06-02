@@ -49,48 +49,48 @@ SystemInit		PROC
 	MOVS		R1, #5
 	STR		R1, [R0, #SYST_CSR]
 		
-		
-		; Конфігурація виводів МК для роботи з UART
-	LDR R0, =GCR_BA ; PB.0 & PB.1 Pin Function Selection
-	MOVS R2, #0x3 ; 1 - UART0 TXD & RXD
-	STR R2, [R0, #GPB_MFP]
+;Init UART0
+	; Конфігурація виводів МК для роботи з UART
+	LDR 	R0, =GCR_BA ; PB.0 & PB.1 Pin Function Selection
+	MOVS 	R2, #0x3 ; 1 - UART0 TXD & RXD
+	STR		R2, [R0, #GPB_MFP]
 	; Визначення режиму роботи модуля UART0
-	LDR R0, =UART0_BA
-	MOVS R2, #0
-	STR R2, [R0, #UA_FUN_SEL]
+	LDR 	R0, =UART0_BA
+	MOVS 	R2, #0
+	STR 	R2, [R0, #UA_FUN_SEL]
 	; Сигнал Reset для UART0
-	LDR R0, =GCR_BA ; SYS->IPRSTC2.UART0_RST = 1;
-	MOVS R2, #0x1 ; SYS->IPRSTC2.UART0_RST = 0;
-	LSLS R2, #16
-	STR R2, [R0, #IPRSTC2]
-	MOVS R2, #0x0
-	STR R2, [R0, #IPRSTC2]
+	LDR 	R0, =GCR_BA ; SYS->IPRSTC2.UART0_RST = 1;
+	MOVS 	R2, #0x1 ; SYS->IPRSTC2.UART0_RST = 0;
+	LSLS 	R2, #16
+	STR 	R2, [R0, #IPRSTC2]
+	MOVS 	R2, #0x0
+	STR 	R2, [R0, #IPRSTC2]
 	; Ввімкнення UART0
-	LDR R0, =CLK_BA ; SYSCLK->APBCLK.UART0_EN = 1;
-	MOVS R2, #0x1;
-	LSLS R2, #16
-	STR R2, [R0, #APBCLK]
+	LDR 	R0, =CLK_BA ; SYSCLK->APBCLK.UART0_EN = 1;
+	MOVS 	R2, #0x1;
+	LSLS 	R2, #16
+	STR 	R2, [R0, #APBCLK]
 	 ; Сигнал скидання для буферів Tx та Rx FIFO
-	LDR R0, =UART0_BA ; Set Rx Trigger Level (FCR.RFITL)
-	MOVS R2, #0x6;
-	STR R2, [R0, #UA_FCR]
+	LDR 	R0, =UART0_BA ; Set Rx Trigger Level (FCR.RFITL)
+	MOVS 	R2, #0x6;
+	STR 	R2, [R0, #UA_FCR]
 	; Фомат даних: к-ть розр. даних, стопових біт,
-	LDR R0, =UART0_BA ; перевірка на парність
-	MOVS R2, #0x3 ; 1 StopBits; No Parity;
-	STR R2, [R0, #UA_LCR]
+	LDR 	R0, =UART0_BA ; перевірка на парність
+	MOVS 	R2, #0x3 ; 1 StopBits; No Parity;
+	STR 	R2, [R0, #UA_LCR]
 	; Set Time-Out (TOR.TOIC)
-	LDR R0, =UART0_BA
-	MOVS R2, #0x1;
-	LSLS R2, #12 ; TX Delay Time Value
-	STR R2, [R0, #UA_TOR]
+	LDR 	R0, =UART0_BA
+	MOVS 	R2, #0x1;
+	LSLS 	R2, #12 ; TX Delay Time Value
+	STR 	R2, [R0, #UA_TOR]
 	;Налаштування тактового сигналу для модуля UART0
-	LDR R0, =CLK_BA ; SYSCLK->CLKSEL1.UART_S = 0;
-	LDR R1, =0x00000000 ; XTL12M to UART
-	STR R1, [R0, #CLKSEL1]
+	LDR 	R0, =CLK_BA ; SYSCLK->CLKSEL1.UART_S = 0;
+	LDR 	R1, =0x00000000 ; XTL12M to UART
+	STR 	R1, [R0, #CLKSEL1]
 	; Mode 2, Baud rate = UART_CLK / (A+2), A must >=3
-	LDR R0, =UART0_BA ; Baud rate = 115200
-	LDR R2, =0x3f00026F ; DIV_X_EN=1 ; DIV_X_ONE=1 ; A=0x66
-	STR R2, [R0, #UA_BAUD]
+	LDR 	R0, =UART0_BA ; Baud rate = 115200
+	LDR 	R2, =0x3f00026F ; DIV_X_EN=1 ; DIV_X_ONE=1 ; A=0x66
+	STR 	R2, [R0, #UA_BAUD]
 		
 			
 	

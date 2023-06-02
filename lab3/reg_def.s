@@ -4,6 +4,15 @@
 GP_BA  			EQU		0x50004000;
 GCR_BA			EQU		0x50000000;
 UART0_BA		EQU		0x40050000;	
+GPIOA_PMD 	EQU		0x000;  R/W   GPIO Port A Pin I/O Mode Control  0xFFFF_FFFF 
+GPIOA_OFFD	EQU		0x004;  R/W   GPIO Port A Pin Digital Input Path Disable Control  0x0000_0000  
+GPIOA_DOUT	EQU		0x008;  R/W   GPIO Port A Data Output Value  0x0000_FFFF 
+GPIOA_DMASK	EQU		0x00C;  R/W   GPIO Port A Data Output Write Mask  0xXXXX_0000  
+GPIOA_PIN	EQU		0x010;  R  GPIO Port A Pin Value   0x0000_XXXX 
+GPIOA_DBEN	EQU		0x014;  R/W   GPIO Port A De - bounce Enable  0xXXXX_0000  
+GPIOA_IMD	EQU		0x018;  R/W   GPIO Port A Interrupt Mode Control  0xXXXX_0000  
+GPIOA_IEN	EQU		0x01C;  R/W   GPIO Port A Interrupt Enable  0x0000_0000  
+GPIOA_ISRC	EQU		0x020;  R/W   GPIO Port A Interrupt Source Flag  0xXXXX_XXXX
 GPIOC_PMD  		EQU		0x080;  R/W  GPIO Port C Pin I/O Mode Control  0xFFFF_FFFF
 GPIOC_OFFD  	EQU		0x084;  R/W  GPIO Port C Pin Digital Input Path Disable Control  0x0000_0000 
 GPIOC_DOUT  	EQU		0x088;  R/W  GPIO Port C Data Output Value  0x0000_FFFF
