@@ -1,0 +1,7 @@
+Dependencies for Project 'lab4', Target 'Target 1': (DO NOT MODIFY !)
+F (.\main.s)(0x647A0436)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Nuvoton\NuMicro_DFP\1.0.2\Device\NUC100\Include--list .\listings\main.lst --xref -o .\objects\main.o --depend .\objects\main.d)
+I (reg_def.s)(0x646E3C14)
+F (.\reg_def.s)(0x646E3C14)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Nuvoton\NuMicro_DFP\1.0.2\Device\NUC100\Include--list .\listings\reg_def.lst --xref -o .\objects\reg_def.o --depend .\objects\reg_def.d)
+F (.\startup_NUC1xx.s)(0x646E3C18)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Nuvoton\NuMicro_DFP\1.0.2\Device\NUC100\Include--list .\listings\startup_nuc1xx.lst --xref -o .\objects\startup_nuc1xx.o --depend .\objects\startup_nuc1xx.d)
+F (.\SystemInit.s)(0x646F92D6)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include-I C:\Keil_v5\ARM\PACK\Nuvoton\NuMicro_DFP\1.0.2\Device\NUC100\Include--list .\listings\systeminit.lst --xref -o .\objects\systeminit.o --depend .\objects\systeminit.d)
+I (reg_def.s)(0x646E3C14)
