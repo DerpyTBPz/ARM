@@ -30,7 +30,11 @@ Blinky_loop
 Wait_TE_FLAG
 	LDR 	R3, [R0, #UA_FSR]
 	TST 	R3, R2
-	BEQ Wait_TE_FLAG	
+	BEQ Wait_TE_FLAG
+	LDR 	R4, ='O'
+	STR 	R4, [R0, #UA_THR]
+	LDR 	R4, ='k'
+	STR 	R4, [R0, #UA_THR]	
 	LDR 	R4, ='\n'
 	STR 	R4, [R0, #UA_THR]
 	LDR 	R4, ='\r'

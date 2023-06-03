@@ -1,7 +1,7 @@
 Dependencies for Project 'laba3', Target 'Target 1': (DO NOT MODIFY !)
 F (.\startup_NUC1xx.s)(0x5C9888CE)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include--list .\startup_nuc1xx.lst --xref -o .\startup_nuc1xx.o --depend .\startup_nuc1xx.d)
-F (.\main.s)(0x64777466)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include--list .\main.lst --xref -o .\main.o --depend .\main.d)
-I (reg_def.s)(0x5C989CF4)
-F (.\reg_def.s)(0x5C989CF4)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include--list .\reg_def.lst --xref -o .\reg_def.o --depend .\reg_def.d)
-F (.\SystemInit.s)(0x5C98B5CF)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include--list .\systeminit.lst --xref -o .\systeminit.o --depend .\systeminit.d)
-I (reg_def.s)(0x5C989CF4)
+F (.\main.s)(0x6479D2DB)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include--list .\main.lst --xref -o .\main.o --depend .\main.d)
+I (reg_def.s)(0x64799D0F)
+F (.\reg_def.s)(0x64799D0F)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include--list .\reg_def.lst --xref -o .\reg_def.o --depend .\reg_def.d)
+F (.\SystemInit.s)(0x64799E1F)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil_v5\ARM\RV31\INC-I C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include--list .\systeminit.lst --xref -o .\systeminit.o --depend .\systeminit.d)
+I (reg_def.s)(0x64799D0F)
