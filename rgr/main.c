@@ -29,19 +29,20 @@ void Timer_initial(void)
 	{
 		/* Step 1. Enable and Select Timer clock source */
 		
-		SYSCLK->CLKSEL1.TMR1_S = 0;//Select 12Mhz for Timer0 clk src
+		SYSCLK->CLKSEL1.TMR1_S = 7;//Select 12Mhz for Timer0 clk src
 		SYSCLK->APBCLK.TMR1_EN = 1; //Enable Timer0 clock source
 		
 		/* Step 2. Select Operation mode */
 		
 		TIMER1->TCSR.MODE=1;//Sel. periodic mode for operation mode
 		
-		/* Step 3. Select Time out period = (Period of timer clock		
-		input) * (8-bit Prescale + 1) * (24-bit TCMP)*/
+		/* Step 3. Select Time out period = (Period of timer clock input) * (8-bit Prescale + 1) * (24-bit TCMP)*/
 		
-		TIMER1->TCSR.PRESCALE = 0; // Set Prescale [0~255]     		 1 - 200 Gz					 1 - 10 Hz    19
-		TIMER1->TCMPR = 100000;// Set TICR(TCMP) [0~16777215]   23999 - 200 Gz  		119999 - 1 Hz			59999
-		// (1/22118400)*(0+1)*(2765)= 125.01usec or 7999.42Hz
+		TIMER1->TCSR.PRESCALE = 0; // Set Prescale [0~255]     		 	
+		TIMER1->TCMPR = 30000 ;// Set TICR(TCMP) [0~16777215]				60000 - 100 Hz    30000 - 200 Hz
+		// (1/12000000)*(0+1)*(2765)= 125.01usec or 7999.42Hz
+		
+		//12000000/1/500 = 24000
 		
 		/* Step 4. Enable interrupt */
 		
@@ -66,7 +67,7 @@ int hex_to_ascii(unsigned int binary, unsigned char *ascii)
 	 
 	 for(n = 1; n <= 5; n++)//перетворення в двійково-десятковий код
 	 {
-		 num = (tmp % 10) * pow(10, n);
+		 //num = (tmp % 10) * pow(10, n);
 		 tmp = tmp / 10;
 		 if(tmp == 0) break;
 	 } 
@@ -151,7 +152,7 @@ void uart_transmit(unsigned int data)
 		uart_tx_char('\n');
 		uart_tx_char('\r');	
 		
-		GPIOC->DOUT = ~GPIOC->DOUT;		
+		GPIOD->DOUT = ~GPIOD->DOUT;		
 		
 //		uart_tx_char('C');
 //		uart_tx_char(tmp[4]);
@@ -221,10 +222,11 @@ void case1()
 
 void TMR1_IRQHandler(void) // Timer0 interrupt subroutine
 {
-		TIMER1->TISR.TIF =1;
-		ADC->ADSR.ADF=1;		
-		//UART0->DATA = ADC->ADDR[7].RSLT;
-		ADC->ADCR.ADST=1;
+			TIMER1->TISR.TIF =1;
+//		ADC->ADSR.ADF=1;		
+//		//UART0->DATA = ADC->ADDR[7].RSLT;
+//		ADC->ADCR.ADST=1;
+			GPIOC->DOUT = ~GPIOC->DOUT;
 }
 
 void case2()
@@ -302,15 +304,38 @@ int main()
 {	
 	unsigned int i = 0;
 	//unsigned char count;
+	
+	
+////	int i;
+//// SysTick Timer Initialization
+//SysTick->LOAD = (2000-1); // Count from 47999 to 0
+//SysTick->VAL = 0; // Clear SysTick value
+//SysTick->CTRL = 0x5; // Enable, using core clock
+////GPIO Init
+//GPIOC->PMD.PMD14 = 0x1;
+//GPIOC->PMD.PMD15 = 0x1;
+//GPIOC->DOUT = 0x1;
+	InterruptInit();
+	
 	Timer_initial();
 	InitADC();	
 	GPIOC->DOUT = 0x0000F000;		
 	while(1)
 	{
-		InterruptInit();
-		//case1();				
-		uart_transmit(ADC->ADDR[7].RSLT*625>>9);		
+		
+//		for (i=0; i<500; i++) { // Wait for 0.5 seconds
+//while ((SysTick->CTRL & 0x10000)==0)
+//; // Wait for counter underflow
+//}
+		
+		
+		
+		
+		//case1();			
+	
+		//uart_transmit(ADC->ADDR[7].RSLT*625>>9);		
 		//uart_transmit(ADC->ADDR[7].RSLT>>8);
+				
 	}
 	
 	//UART02_IRQHandler();
